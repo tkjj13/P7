@@ -1,0 +1,79 @@
+%pagestyle{fancy} %enable headers and footers again
+
+\begin{comment}
+\pdfbookmark[0]{Danish title page}{label:titlepage_en}
+\aautitlepage{%
+  \englishprojectinfo{
+    Project Title %title
+  }{%
+    Analoge kredsløb og systemer %theme
+  }{%
+    P3: 2. September 2014 - 17. December 2014 %project period
+  }{%
+    14gr313 % project group
+  }{%
+    %list of group members
+    Amalie Vistoft Petersen\\
+    Mikkel Krogh Simonsen\\
+    Rasmus Gundorff Sæderup\\
+    Simon Bjerre Krogh\\
+    Thomas Kær Juel Jørgensen\\
+    Thomas 'Godlike' Rasmussen
+  }{%
+    %list of supervisors
+    Tom S. Pedersen
+
+  }{%
+    9 % number of printed copies
+  }{%
+    \today % date of completion
+  }%
+}{%department and address
+  \textbf{Institut for Elektroniske Systemer}\\
+  Fredrik Bajers Vej 7\\
+  DK-9220 Aalborg Ø\\
+  }{% the abstract
+  Here is the abstract
+}
+
+\cleardoublepage
+
+\end{comment}
+
+\selectlanguage{english}
+\pdfbookmark[0]{Titelblad}{label:titelblad}
+\aautitlepage{%
+  \danishprojectinfo{
+    Communication Link for a cubesat\\ - an SDR approach%title
+  }{%
+    BSc Project (Communication Systems)  %theme
+  }{%
+    6. Semester %project period
+  }{%
+    16gr651 % project group
+  }{%
+    %list of group members
+    Amalie Vistoft Petersen\\
+    Rasmus Gundorff Sæderup\\
+    Thomas Kær Juel Jørgensen
+  }{%
+    %list of supervisors
+    Troels Bundgaard Sørensen
+    }{
+    Gilberto Berardinelli
+    }{%
+    3 % number of printed copies
+  }
+  {%
+    \today % date of completion
+  }%
+}{%department and address
+  \textrm{\textbf{Institute of Electronic Systems  }\\
+  Fredrik Bajers Vej 7\\
+  DK-9220 Aalborg Ø\\}
+ }{
+In this project, a communication link between a cubesat and a ground station is designed. This includes an investigation of available frequencies as well as performance characteristics of different antenna- and modulation types. From the investigation, it is chosen to use a 10.5 GHz link with a patch antenna and to use both OQPSK as well as 8-PSK modulation. A link budget is constructed, showing an SNR of 2.8 dB at the receiver, yielding a feasible bitrate of 1.3 Mbps in LEO (1000 km) and 900 bps in lunar orbit (384000 km). This link is simulated in MATLAB showing a plausible bit-error rate (BER) of $0.0251 \pm 0.5 \cdot 10^{-4}$  for the lunar link, and $0.0235 \pm 0.5 \cdot 10^{-4}$ for the LEO link, without forward error coding (FEC). Based on this, an Software Defined Radio (SDR) prototype is implemented on two USRP's using LabVIEW. The prototype has various reconfigurable parameters including modulation type, bitrate and carrier frequency.
+Synchronization issues are seen at low SNRs, and the BER is up to 18.5 times bigger than what the simulation shows. 
+%The prototype is tested and 4/8 requirements set is fulfilled leaving the strictest performance requirements unfulfilled. 
+The end result is a reconfigurable SDR that can transmit and decode data using OQPSK and 8-PSK with a bitrate of up to 500 kbps, with a BER of 0.0239 (without FEC) at an SNR of 5 to 6 dB.
+}
