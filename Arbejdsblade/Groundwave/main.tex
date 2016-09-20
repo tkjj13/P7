@@ -1,0 +1,53 @@
+\input{setup/preamble.tex}% package inclusion and set up of the document
+\input{setup/macros.tex}% my new macros
+
+
+
+
+\begin{document}
+%% prærapport %%
+\setlength\cftaftertoctitleskip{2pt}
+\setlength\cftafterloftitleskip{6pt}
+\setlength\cftafterlottitleskip{6pt}
+\captionsetup{belowskip=-1.5em}
+
+
+%% problemanalysen %%
+\pagenumbering{arabic} %use arabic page numbering in the mainmatter
+\fancyfoot[RO,LE]{\thepage \text{ of} \pageref{LastPage}}
+\fancyfoot[LO,RE]{16gr651}
+\fancyhead[RE,LO]{}
+\fancyhead[RO,LE]{\small\nouppercase\leftmark} %even page - chapter title
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%insert chapter/sections stuff here
+
+\include{worksheets/Groundwave}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%% literaturliste og bilag %%%%%%%
+\bookmarksetup{startatroot}% this is it
+\addtocontents{toc}{\bigskip}% perhaps as well
+\bibliography{setup/mybib}
+\label{bib:mybiblio}
+% 
+% \newpage
+% \fancyhead[RO]{\small Appendix \nouppercase\rightmark} %even page - chapter title
+% \fancyhead[LE]{\small Appendix \nouppercase\rightmark} %uneven page - section title
+%\fancyhead[RE,LO]{}
+% \titleformat{\section}[hang]{\Large\bfseries}{\thesection\hsp\textcolor{black}{|}\hsp}{0pt}{\Large\bfseries}
+%
+% \renewcommand{\thesection}{\Alph{section}}
+% \setcounter{section}{0}
+%
+%
+%
+%
+%\chapter*{Appendix}
+% \addcontentsline{toc}{chapter}{Appendix}
+% \addtocounter{chapter}{1}
+
+
+\end{document}
