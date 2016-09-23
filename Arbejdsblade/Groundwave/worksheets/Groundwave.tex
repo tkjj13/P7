@@ -1,6 +1,15 @@
 \chapter{Groundwave}
 
-When transmitting from one radio to another the signal travel as electromagnetic waves, these waves can reach the receiver taking multiple paths. It could be a direct path from transmitter to receiver, or a reflected wave of a surface such as the ground. This worksheet will focus on the paths close to the ground. The ground acts both as a reflector and also as an absorber \citep{Bullington}. This means that a received wave can be contributed from three main factors. In 1947 Burlington wrote that \textit{"The principal effect of plane earth on the propagation of radio waves is indicated by the following equation"}\citep{Bullington}. The surface part comes from the grounds absorption of the electromagnetic wave, when the energy enters the ground it sets up ground currents. These currents are a representation of the imperfect reflection.    
+When transmitting from one radio to another the signal travel as electromagnetic waves, these waves can reach the receiver taking multiple paths. It could be a direct path from transmitter to receiver, or a reflected wave of a surface such as the ground this can be seen in \autoref{fig:directReflectedPath}. 
+
+\begin{figure}[H]
+\centering
+\input{figure/planeEarth.tex}
+\caption{Direct and reflected path from transmitter to receiver}
+\label{fig:directReflectedPath}
+\end{figure}
+
+This worksheet will focus on the paths close to the ground, and primarily on the surface wave component since the direct and reflected wave are described in further detail in ??. The ground acts both as a reflector and also as an absorber \citep{Bullington}. This means that a received wave can be contributed from three main factors. In 1947 Burlington wrote that \textit{"The principal effect of plane earth on the propagation of radio waves is indicated by the following equation"}\citep{Bullington}. The surface part comes from the grounds absorption of the electromagnetic wave, when the energy enters the ground it sets up ground currents. These currents are a representation of the imperfect reflection.    
 
 \begin{equation}
 E=E_0\left[\underbrace{1}_{direct}+\underbrace{R\text{e}^{j\Delta}}_{reflected}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{surface}\right]
@@ -46,7 +55,7 @@ R=\frac{\sin(\theta)-z}{\sin(\theta)+z}
 \begin{where}
 \va{z}{$\frac{\sqrt{\epsilon_0-\cos^2(\theta)}}{\epsilon_0}$ for vertical polerization}{1}
 \va{z}{$\sqrt{\epsilon_0-\cos^2(\theta)}$ for horizontal polerization}{1}
-\va{$\epsilon_0$}{$\epsilon-j60\sigma\lambda$}{1}
+\va{$\epsilon_0$}{is the complex relative permittivity  = $\epsilon-j60\sigma\lambda$}{1}
 \va{$\epsilon$}{is the dielectric constant of the ground relative to unity
 in free space}{1}
 \va{$\sigma$}{is the conductivity of the ground in mhos per meter}{$\frac{mhos}{m}$}
@@ -82,10 +91,11 @@ By utilizing this \autoref{eq:surfaceApprox}, can be written as:
 |(1-R)A| \approx \frac{4 \pi h_0^2}{\lambda d}
 \end{equation}
 
-The received power can then be found using\citep{Chong}
+The received power can then be found using \citep{Chong}
 \begin{align}
 P_r&=P_0 \left(\frac{E}{E_0}\right)^2 \\
-P_r&=P_tG_rG_t\frac{\lambda^2}{(4\pi )^2 d^2} \left(\frac{E}{E_0}\right)^2
+P_r&=P_tG_rG_t\frac{\lambda^2}{(4\pi )^2 d^2} \left(\frac{E}{E_0}\right)^2\\
+P_r&=P_tG_rG_t\left(\frac{h_0}{d}\right)^4
 \end{align}
 \begin{where}
 \va{$P_r$}{is the received power at the receiver antenna}{W}
@@ -96,12 +106,7 @@ P_r&=P_tG_rG_t\frac{\lambda^2}{(4\pi )^2 d^2} \left(\frac{E}{E_0}\right)^2
 \end{where}
 
 
-\begin{figure}[H]
-\centering
-\input{figure/planeEarth.tex}
-\caption{Illustration}
-\label{fig:Ill}
-\end{figure}
+
 
 
 %\va{•}{•}{•}
