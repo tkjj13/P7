@@ -31,9 +31,10 @@ The phase difference $\Delta$, is the difference in phase resulting only from th
 \va{$\lambda$}{is wavelenght}{m}
 \end{where}
 
-For a plane earth case this is L is found as:
+For a plane earth case meaning that there are no bumps or curvatures on the earth, its just plane then L is found as:
 \begin{equation}
 L=\sqrt{(h_t+h_r)^2+d^2}-d
+\label{plane_earth}
 \end{equation}
 \begin{where}
 \va{d}{is the distance between the transmitter and receiver}{m}
@@ -41,7 +42,7 @@ L=\sqrt{(h_t+h_r)^2+d^2}-d
 \va{$h_r$}{is the height of the receiver}{m}
 \end{where}
 
-For cases where the $d > 5(h_t+h_r)$ this can be approximated as \citep{Bullington}:
+For cases where the $d > 5(h_t+h_r)$ \autoref{plane_earth} can be approximated as \citep{Bullington}:
 \begin{align}
 L &=\frac{2h_th_r}{d} \\
 \Delta &= 4\pi\frac{h_th_r}{d\lambda}
