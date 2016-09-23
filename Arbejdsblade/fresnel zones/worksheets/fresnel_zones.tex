@@ -1,0 +1,146 @@
+\chapter{Fresnel Zones}
+
+
+Fresnel zone \citep{Fres1} \citep{Fres2} calculations gives a mean to calculate on how to avoid the strongest radio signals to impact the direct line signal caused  by reflections of obstacles, which will make out of phase signals which will be added with the direct line signal, which can cause power loss. There are an infinite amount of Fresnel zones, and will all impact the direct line signal.  %Where these Fresnel zones are created, where there exists and infinite amount of them.   %and will make the reflected signals to be out of phase. 
+
+%the impact of out of phase signals caused by reflections of obstacles, on the signal as whole from the transmitter to the receiver.
+
+%are used to calculate the reflections and diffraction loss between an transmitter and a receiver. 
+In terms of a radio signal travelling from a transmitter to a receiver it can travel through different paths. It can travel directly without any reflection. %which is the most ideal%. 
+Or it could reflect of the ground and thereby carry on to the receiver, or it could be reflected by a hill, and carry on to the receiver. %which is not desirable, but in some circumstances inevitable. 
+These reflections cause a signal loss from the transmitter to the receiver. The receiver does not differentiate between the reflected and the direct line signals, and therefore it will consider both the reflected and the direct line signal as the intended signal. %So therefore when calculating the Fresnel zones it will take into consideration the reflections and diffraction loss, and will 
+\\
+\\
+If these signals reflect of an obstacle and are out of phase with the direct line signals, they may end up having phase cancellation effect which could end up minimizing the power of the signals. For example two identical radio signals out of phase will cancel each other out and therefore no signal will be received, by the receiver. So therefore when calculating Fresnel zones it must be taken into consideration which out of phase signals from reflections have the most effect on the direct line signal, and make sure that it does not lose a lot of power. 
+\\
+\\
+There are an infinite amount of Fresnel zones, but the most important Fresnel zone is the first one. This is due to that the strongest signals are the ones that are closets to the direct line signal %which travels without any reflections and will have the same power through the path, 
+and they always lie in the first Fresnel Zone.  
+Which also means that the second, third and so on Fresnel zones are further and further from the Direct signal and they will have a lesser impact. This can be seen on the following Figure, which is illustrated with 2 Fresnel zones, Fresnel zone 1 and 2:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{fresnel_ill_1.pdf}
+\caption{Illustration of the First and Second Fresnel zone, along with the Direct signal travelling from the Transmitter TX to the Receiver RX}
+\label{dijdk}
+\end{figure}
+
+As it can be seen the first Fresnel zone is closets to the direct signal and will have the strongest cancelling effect, if not taken into consideration. And the least amount of delay is in the reflected signal of the first Fresnel zone as it travels least from the transmitter to the receiver. And it will create signals that are $0^\circ$-$90^\circ$ out of phase, which is the least out of phase the signals can arrive. The less the reflected signal is out of phase, the less it will affect the direct line signal, as the receiver treats both as one. In terms of the second Fresnel zone, it can create problems, in zone two they will be $90^\circ$ to $270^\circ$ out of phase. The phase cancelling effect in even numbered Fresnel zones are bad while odd numbered zones are good, as they can have a positive effect, as they may add to the power. A rule of thumb in terms of the first Fresnel zone is that \textit{$60\%$ of the first Fresnel zone must be cleared of any obstacles}, as the strongest signals are in Fresnel zone 1. 
+\\
+\\
+
+
+\textbf{Fresnel zone 1}
+\\
+\\
+As mentioned $60\%$ of the first Fresnel zone must be cleared of objects, an illustration of this can be seen on the following Figure:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{fresnel_ill_obs.pdf}
+\caption{Illustration of the First Fresnel zone cleared $60\%$, with an building representing the obstacle}
+\label{dijdk}
+\end{figure}
+
+The obstacle on the Figure above could illustrate a building where $d_{1}$ is the distance from the transmitter $TX$ to the building while $d_{2}$ is the distance from the receiver $RX$ to the building. While $a$ is the center line of sight, which means that there is a obstacle free direct view to the receiver, for the signal to travel. So the building must not be closer than $60\%$ of the measured $r1$ which is the radius of the first Fresnel zone from the center line of sight $a$, to fulfil the requirement of $60\%$ clearance, in the first Fresnel zone. Which in other words means that there must be $60\%$ line of sight, according to the radius of the first Fresnel zone, which represents the impact of the reflected signal ,to travel with the direct signal. %Where the $60\%$ is calculated according to the radius of the first Fresnel zone.
+
+ %where from the center point to the receiver $RX$ shall represent the $60\%$. 
+
+%So $c$ is $r1 \cdot 0.6$
+
+
+
+\textbf{Fresnel Zone calculations}
+
+The general equation for calculating the Fresnel zone radius at any point a in between the endpoints is given as:
+
+\begin{equation}
+F_{n} = \sqrt{\frac{n \lambda d_{1} d_{2}}{d_{1}+d_{2}}}
+\label{fres:eq}
+\end{equation}
+
+\begin{where}
+\va{$F_{n}$}{The $n^{th}$ Fresnel Zone radius}{m}
+\va{$d_{1}$}{The distance of $a$ from TX}{m}
+\va{$d_{2}$}{The distance of $a$ from RX}{m}
+\va{$\lambda$}{The wavelength of the signal}{m}
+\end{where}
+
+It is useful to know the maximum radius of the first Fresnel zone. With the maximum radius of the first Fresnel zone and the obstacle height, the maximum obstacle height can be calculated, with respect to $60\%$ clearance. %so that the Transmitter and the Receiver can have LOS, and the first Fresnel zone will be $60\%$ cleared. 
+
+
+While we know that $\lambda$ is the wave length given by the following Equation:
+
+\begin{equation}
+\lambda = \frac{c}{f}
+\label{fres:eq}
+\end{equation}
+
+\begin{where}
+\va{$c$}{The speed of light in a vacuum}{3$\cdot$$10^{8}$$ms^{-1}$}
+\va{$f$}{Signal frequency}{$Hz$}
+\end{where}
+
+
+
+
+%While mostly the interest is the maximum radius of the Fresnel zone 
+
+
+And the by inserting $\lambda$, and where $n=1$ as it is the first Fresnel zone. And $d_{1}$ and $d_{2}$ can be classified as the total distance $D$. The when inserting there parameters in the general equation for calculating the maximum Fresnel zone radius, we get the following Equation:
+%While the equation for the maximum radius for the first Fresnel zone:
+
+\begin{equation}
+r = 8.67 \cdot \sqrt{\frac{D}{f}}
+\label{fres:eq}
+\end{equation}
+
+\begin{where}
+\va{$D$}{Total distance}{m}
+\va{$f$}{Signal frequency}{Hz}
+\end{where}
+
+As an example to calculate the maximum radius of the first Fresnel zone of two antennas operating 5.5 GHz, with a distance $D$ of 500m. The 60$\%$ clear Fresnel zone maximum radius $r$ is given as:
+
+\begin{equation}
+r = 8.67 \cdot \sqrt{\frac{0.60 \cdot 0.50}{5.5}} = 2.02 m
+\label{fres:eq_ex}
+\end{equation}
+
+The by subtracting the antenna height form $r$, the maximum height with respect to the 60$\%$ clearance, can be calculated. So if the the antenna height is 10m, then by subtracting 10m-2.02m we get 7.89 m, which is the maximum obstacle height.  %So to compare with the Figure illustrated with the obstacle \ref{dijdk}, the 10m is the height of the TX and RX where the antennas placed. While the the 60$\%$ clear Fresnel zone maximum radius $r$ is calculated to be 2.02 m. So
+%\newpage
+%\textbf{Earth curvature}
+
+
+
+%http://www.4gon.co.uk/solutions/technical_fresnel_zones.php
+
+%http://radiomobile.pe1mew.nl/?Calculations:Propagation_calculation:Fresnel_zones
+
+%http://www.zytrax.com/tech/wireless/fresnel.htm
+
+%https://s.campbellsci.com/documents/au/technical-papers/line-of-sight-obstruction.pdf
+
+%must lie in the direct line, 
+
+%which is always in the first Fresnel zone. 
+
+%In order to get the maximum signal strength, the effect of the out of phase signals must be minimised.         
+
+
+
+
+%%An illustration of Fresnel zones can be seen on the following Figure:
+ 
+
+
+
+
+%Fresnel zone radius describes this reflection in relation to the overall path of the signal, which means the whole path from the transmitter to the receiver is taken into account, with the reflections. A reflection can happen anywhere in the path between the transmitter and the receiver.
+%\\
+%\\
+%When a signal is reflected two things can happen:
+
+%\begin{itemize}
+%\item The phase of the signal reverses and the signal changes in phase by $180\deg$
+%\item As the signal is being reflected and thereby not going in a direct line, it will travel further. Therefore the signal is shifted further in phase, by the difference in path length 
+%\label{fres}
+%\end{itemize} 
