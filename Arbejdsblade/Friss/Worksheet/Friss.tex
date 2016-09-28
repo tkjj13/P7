@@ -1,0 +1,33 @@
+\chapter{Worksheet}
+\section{Friis}
+
+The reason why there is a loss through free space, is that the signal density gets lower, as it spread over a larger area, which happens when the distance, that the signal have travel, gets longer. 
+A example, is when using a isotropic antenna, the signal density is equal all the way around the antenna, forming a sphere around the antenna. As the power of the signal in total always is the same, the density of the signal power is depended on the surface of the sphere. As the signal travels longer away from the antenna, the sphere gets bigger and the surface bigger to, which means that the signal density gets lower. So the free space loss, is the loss of the signal that is not going in the direction of the receiving antenna.
+
+
+Friis transmission equation is used to calculate the power, that is received at the receiving antenna, out from the gains in the antenna, the power of the transmitted signal and the free space loss. 
+
+\begin{equation}
+P_r = P_t G_t G_r (\frac{\lambda}{4 \pi d})^2
+\end{equation}
+\begin{where}
+\va{$P_r$}{is the received power at the receiving antenna}{W}
+\va{$P_r$}{is the transmitted power at the transmitting antenna}{W}
+\va{$G_t$}{is the gain in the transmitting antenna}{1}
+\va{$G_r$}{is the gain in the receiving antenna}{1}
+\va{$\lambda$}{is the wavelength of the transmitted signal}{m}
+\va{$d$}{is the distance between the transmitting antenna and the receiving antenna}{m}
+\end{where}
+
+It is used to calculate the loss through the free space and do not take into account other waves, than the direct wave. The free space loss is equal to $(\frac{\lambda}{4 \pi d})^2$ and is multiply by the gains in both antennas and the power transmitted, to get the received power level.
+
+
+This is the simple form of friis formulae and it is only correct, if these conditions is met:
+\begin{itemize}
+\item $d$ is much greater than $\lambda$. If $d$ is smaller than $\lambda$, there will be gain power through the transmission between the antennas, which is a violation of the law of conservation of energy.
+\item The transmission goes through freespace, with no multipath. So no obstacle in the transmission line or around it (See worksheet about Line of sight (LOS)).
+\item The antennas is aligned and have the same polarization.
+\item The bandwidth is narrow enough, so that a single wavelength can be specified.
+\item $P_r$ and $P_t$ is the available power at the antennas, and do not take into account the loss through the cable running from antennas. Furthermore, the power will only be fully delivered and received, if the antennas and transmission lines are conjugate matched.
+\end{itemize}
+
