@@ -12,25 +12,6 @@
 %
 \usepackage{siunitx}
 
-%\makeglossaries
-\defcitealias{ITU-R}{ITU-R P.676-10}
-
-\defcitealias{401}{CCSDS, 1993}
-\defcitealias{SFCG-4-3R3}{SFCC, 1998}
-\defcitealias{ITU5}{ITU, 2009}
-\defcitealias{ITU3}{ITU, 1997}
-\defcitealias{AMSAT}{AMSAT, 1994}
-\defcitealias{AMSATIARU}{IARU, 2015}
-\defcitealias{monopolVSdipol}{NCJRS, 2016}
-\defcitealias{LNA}{AMTL, 2007}
-\defcitealias{ARRLPowerLimit}{ARRL, 2016}
-\defcitealias{ModulationSpace}{CCSDS, 2009}
-\graphicspath{{./figures/}}
-
-
-\hypersetup{pdfinfo={
-Title={Communication Link for a Cubesat}
-}}
 
 
 \begin{document}
@@ -42,47 +23,6 @@ Title={Communication Link for a Cubesat}
 
 
 \selectlanguage{english}
-\title{Design of SDR}
-
-\pagestyle{empty} %disable headers and footers
-\pagenumbering{roman} %use roman page numbering in the frontmatter I II...
-\fancyfoot[RE,LO]{16gr651} %page number on all pages
-\fancyfoot[LE,RO]{\thepage}
-\fancyhead[LE,LO,RE,RO]{}
-%\fancyhead[RO,LE]{\includegraphics[height=16pt]{logo_only.pdf}}
-%% indledende formalia %%
-
-%\listoftodos
-%\includepdf[pages={1}]{forside.pdf}
-\newgeometry{left = 0 cm, right = 0 cm, bottom=1cm}
-\include{formalia/frontpage}
-\restoregeometry
-
-\pagestyle{fancy}
-\include{formalia/colophon}
-
-\newgeometry{left = 2.5 cm, right = 2.5 cm, bottom=2.5cm}
-%\newgeometry{bottom=2.5cm}
-\include{formalia/titlepage}
-\restoregeometry
-
-%\restoregeometry
-
-\pdfbookmark[0]{Indholdsfortegnelse}{label:Indhold}
-\tableofcontents
-
-%\printglossary[title=List of Terms,toctitle=Terms and abbreviations,type=\acronymtype]
-
-%\glsaddall
-%\printglossary
-%\printglossary[type=\acronymtype]
-
-
-\cleardoublepage
-
-\include{formalia/preface}
-\cleardoublepage
-
 
 %% problemanalysen %%
 \pagenumbering{arabic} %use arabic page numbering in the mainmatter
