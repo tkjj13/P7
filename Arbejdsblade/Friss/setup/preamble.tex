@@ -151,6 +151,7 @@
 %\usepackage{natbib}
 % Appearance of the bibliography
 \bibliographystyle{setup/apalike}
+%\bibliographystyle{dinat}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Misc
@@ -336,6 +337,17 @@
 \newcommand{\walloftextalert}[0]{\includegraphics[width=\textwidth]{walloftext.png}}
 
 
+% Citation aliasses for nicer references in text
+\defcitealias{ARRL}{\scshape ARRL, 2014}
+\defcitealias{radio_standard}{\scshape IEC 61305-2, 1997}
+\defcitealias{tysk}{\scshape EN 60315-4, 1998}
+\defcitealias{REC}{\scshape Rec. ITU-R BS.704, 1990}
+\defcitealias{std581}{\scshape IEC 581-6, 1979}
+\defcitealias{std1305}{\scshape IEC 1305-3, 1995}
+\defcitealias{std268-3}{\scshape IEC 60268-3, 2000}
+\defcitealias{DS61938}{\scshape DS/EN 61938, 1997}
+\defcitealias{std581-8}{\scshape IEC 581-8, 1987}
+
 
 % URL break fix nede i bibfil
 
@@ -373,18 +385,3 @@
 \usepackage{pgfplots}
 \pgfplotsset{filter discard warning = true, unbounded coords=discard}
 \pgfplotsset{compat = newest}
-
-
-
-
-
-\usepackage{lastpage}
-\usepackage{epstopdf}
-\usepackage{graphicx} %Matlab figures
-%\usepackage[table]{xcolor}
-\setlength{\headheight}{21pt}
-\hfuzz=\maxdimen
-\tolerance=10000
-\hbadness=10000
-%
-\usepackage{siunitx}
