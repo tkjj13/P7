@@ -1,11 +1,11 @@
 \chapter{Groundwave}
 
-When transmitting from one radio to another the signal travel as electromagnetic waves, these waves can reach the receiver taking multiple paths. It could be a direct path from transmitter to receiver, or a reflected wave of a surface such as the ground this can be seen in \autoref{fig:directReflectedPath}. 
+When transmitting from one radio to another the signal travel as electromagnetic waves. These waves can reach the receiver taking multiple paths. It could be a direct path from transmitter to receiver, or a reflected wave of a surface such as the ground this can be seen in \autoref{fig:directReflectedPath}. 
 
 \begin{figure}[H]
 \centering
 \input{figure/planeEarth.tex}
-\caption{Direct and reflected path from transmitter to receiver}
+\caption{Direct and reflected path from transmitter to receiver.}
 \label{fig:directReflectedPath}
 \end{figure}
 
@@ -42,7 +42,7 @@ L=\sqrt{(h_t+h_r)^2+d^2}-d
 \va{$h_r$}{is the height of the receiver}{m}
 \end{where}
 
-For cases where the $d > 5(h_t+h_r)$ \autoref{plane_earth} can be approximated as \citep{Bullington}:
+For cases where $d > 5(h_t+h_r)$ \autoref{plane_earth} can be approximated as \citep{Bullington}:
 \begin{align}
 L &=\frac{2h_th_r}{d} \\
 \Delta &= 4\pi\frac{h_th_r}{d\lambda}
@@ -63,7 +63,7 @@ in free space}{1}
 \va{$\theta$}{is reflection angle}{rad}
 \end{where}
 
-By looking at this equation it can be seen that as $\theta$ goes towards 0, R goes towards -1. Which also implies that for sufficiently low receiver and transmitter, the direct and reflected wave is completely out of phase since $R\text{e}^{j\Delta} = -1$. This leaves only the surface wave part of the equation.
+By looking at this equation it can be seen that as $\theta$ goes towards 0, R goes towards -1. Which also implies that for sufficiently low receiver- and transmitter heights, the direct and reflected wave is completely out of phase since $R\text{e}^{j\Delta} = -1$. This leaves only the surface wave part of the equation.
 
 The surface wave attenuation factor can be approximated as\citep{Bullington}
 
@@ -73,7 +73,7 @@ A\approx\frac{-1}{1+j\frac{2\pi d}{\lambda}\left(\sin(\theta)+z\right)^2}
 
 This approximation holds for $A<0.1$, however for A approaching unity the phase approaches 180 degree \citep{Bullington}. 
 
-When $\theta$ approaches zero only the surface wave component remain and it is thus sufficient to look at the magnitude of it \citep{Chong}
+When $\theta$ approaches zero only the surface wave component remains and it is thus sufficient to look at the magnitude of it \citep{Chong}
 \begin{align}
 |(1-R)A| &\approx \left|2 \frac{-1}{1+j\frac{2\pi d}{\lambda}\left(\sin(\theta)+z\right)^2} \right| \\
 |(1-R)A| &\approx \frac{2}{\frac{2\pi d}{\lambda}z^2} \label{eq:surfaceApprox}
