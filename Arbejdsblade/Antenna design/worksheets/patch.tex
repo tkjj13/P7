@@ -91,7 +91,50 @@ X_2 = \sqrt{X_1^2+\left(\frac{\epsilon_r+1}{2\cdot \epsilon_r}\right)\cdot\pi^2}
 \end{equation}
 
 
+\section{Dimensions of Patch Antennas}
+
+The patch antennas have been designed for a FR4 board with a height of 1.6 mm and a copper thickness of 35 $\micro$m.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l|lll}
+                & \textbf{868MHz} & \textbf{2.4GHz} & \textbf{Unit} \\\hline
+\textbf{Width}  & 105.7           & 38.2            & mm            \\
+\textbf{Length} & 82.7            & 29.6            & mm            \\
+\textbf{Feedpoint}  & 29.5            & 10.9            & mm            \\
+\textbf{Feed Width}  & 3.06            & 3.06            & mm           
+\end{tabular}
+\caption{Calculated parameters}
+\label{tab:parameters}
+\end{table}
 
 
+\begin{figure}[H]
+\captionsetup{belowskip=0em}
+\begin{subfigure}[b]{0.48\textwidth}
+\missingfigure{868MHz}
+\caption{Designed patch for 868 MHz}
+\label{fig:868Patch}
+\end{subfigure}
+\begin{subfigure}[b]{0.48\textwidth}
+\missingfigure{2400MHz}
+\caption{Designed patch for 2.4 GHz}
+\label{fig:2.4Patch}
+\end{subfigure}
+\captionsetup{belowskip=-1.5em}
+\caption{The manufactored patch antennas}
+\end{figure}
 
 
+\section{Measured Performance}
+
+The antennas have been tested in Satimo Starlab see \autoref{fig:satimo}. 
+The radiation pattern can be seen on ??, and gain for vertical and horizontal polarization can be seen in ??. 
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{figure/starlab.png}
+\caption{Satimo starlab}
+\label{fig:satimo}
+\end{figure}
