@@ -107,3 +107,22 @@ for k=1:length(data)/127
 end
 
 surf(phiMat,thetaMat,dataMat)
+
+
+
+% %% invert signs in hal_meas.mat file
+% load('hal_meas.mat')
+% hal_demo_hor = -hal_demo_hor;
+% hal_demo_vert= -hal_demo_vert;
+% hal_mono2580_hor = -hal_mono2580_hor;
+% hal_mono2580_vert= -hal_mono2580_vert;
+% hal_mono858_hor =-hal_mono858_hor;
+% hal_mono858_vert=-hal_mono858_vert; 
+% hal_patch2580_hor = -hal_patch2580_hor; 
+% hal_patch2580_vert= -hal_patch2580_vert;
+% hal_patch858_hor = -hal_patch858_hor;
+% hal_patch858_vert= -hal_patch858_vert;
+% 
+% save hal_meas hal_demo_hor hal_demo_vert hal_mono2580_hor hal_mono2580_vert...
+% hal_mono858_hor hal_mono858_vert hal_patch2580_hor hal_patch2580_vert...
+%  hal_patch858_hor hal_patch858_vert
