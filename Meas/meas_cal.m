@@ -1,5 +1,5 @@
 clc;
-close all;
+%close all;
 clear all;
 load('pplads_meas_raw.mat');
 load('hal_meas_raw.mat');
@@ -8,10 +8,21 @@ load('hal_meas_raw.mat');
 %% patch 858 MHz
 % make setup parameters
 system_loss = -0.3;
-freq = 858E6;
-e0 = 1.706075279-0.2460374611*1i;
+
+e0 = 1.706075279-0.2460374611*1i;   % p-plads
+e0 = 0.9507767236-1.037792166*1i;   % hal
+%antennaFile = 'mono868tot.txt';
+% dataH = pplads_mono_858_hor;
+% dataV = pplads_mono_858_vert;
+% patch = 0;
+% freq = 868E6;
 
 antennaFile = 'patch800Ny.txt';
+dataH = pplads_patch_858_hor;
+dataV = pplads_patch_858_vert;
+patch = 1;
+freq = 858E6;
+
 h = [0.044 0.136 0.34 2];
 d = [1 2 4 8 15 30];
 
@@ -27,11 +38,15 @@ for n = 1:length(d)
 end
 
 % get gains from file
-[gainsHDir, gainsVDir] = gain_patch_func(antennaFile,freq,direct_angles);
+if patch ==  1
+    [gainsHDir, gainsVDir] = gain_patch_func(antennaFile,freq,direct_angles);
+else
+    [gainsHDir, gainsVDir] = gain_mono_func(antennaFile,freq,direct_angles);
+end
 
 % calculate PL for the received siganls 
-recVPL = pplads_patch_858_vert-2*gainsVDir-system_loss;
-recHPL = pplads_patch_858_hor-2*gainsHDir-system_loss;
+recVPL = dataV-2*gainsVDir-system_loss;
+recHPL = dataH-2*gainsHDir-system_loss;
 
 
 % calculate FSPL
@@ -47,8 +62,13 @@ for n = 1:length(hRx)
     reflected_angles(:,n) = pi/2-atan((dist./(hRx(n)./hTx(n)+1))./hTx(n));
 end
 
-[gainsHDir, gainsVDir] = gain_patch_func(antennaFile,freq,direct_angles2);
-[gainsHRef, gainsVRef] = gain_patch_func(antennaFile,freq,reflected_angles);
+if patch == 1
+    [gainsHDir, gainsVDir] = gain_patch_func(antennaFile,freq,direct_angles2);
+    [gainsHRef, gainsVRef] = gain_patch_func(antennaFile,freq,reflected_angles);
+else
+    [gainsHDir, gainsVDir] = gain_mono_func(antennaFile,freq,direct_angles2);
+    [gainsHRef, gainsVRef] = gain_mono_func(antennaFile,freq,reflected_angles);
+end
 
 alphaH = gainsHRef./gainsHDir;
 alphaV = gainsVRef./gainsVDir;
@@ -321,86 +341,5 @@ for n = 1:length(d)
     Friss_rec = 10*log10(((3E8/freq)./(4*pi*sqrt(d(n).^2+(hTx_grid-hRx_grid).^2))).^2);
     two_ray = -(40*log10(d(n))-20*log10(hTx_grid)-20*log10(hRx_grid));
 end
-
-
-
-
-
-%% Theoritical received power
-
-Tx = 0.001; %0dBm -> W
-[hRx_grid, hTx_grid] = meshgrid(linspace(min(hRx),max(hRx),1000),linspace(min(hTx),max(hTx),1000));
-
-for n = 6:6%length(d)
-%    Friss_rec(n,:) = 10*log10(Tx*2*(10.^(direct_angles(n,:)./10))*((3E8/freq)/(4*pi*d(n))).^2);
-    Friss_rec = 10*log10(((3E8/freq)./(4*pi*sqrt(d(n).^2+(hTx_grid-hRx_grid).^2))).^2);
-    two_ray = -(40*log10(d(n))-20*log10(hTx_grid)-20*log10(hRx_grid));
-end
-
-
-
-%% visualisering i 2D
-clc
-close all
-hr = 2;
-ht = 2;
-deltaD = (4*pi*ht*hr)/(3E8/freq);
-
-system_loss = 15;
-column = 10; 
-dist = linspace(1,30,300);
-reflect_angles = atan(ht./(dist./(ht/hr+1)));
-freq = 2450E6;
-eps = 6;
-zH= sqrt(eps-cos(reflect_angles).^2);
-h0 = abs((3E8/freq)./(2*pi*zH));
-gammaH = (sin(reflect_angles)-sqrt(eps-cos(reflect_angles).^2))./...
-        (sin(reflect_angles)+sqrt(eps-cos(reflect_angles).^2));
-A = -1./(1+1j.*2.*pi.*(3E8./freq)./dist.*(sin(reflect_angles+zH)));
-    
-    
-recP = recH(:,column)'-2*gainsH(:,column)';
-friis = 10*log10(((3E8/freq)./(4*pi*dist)).^2*abs(1));
-pe = 10*log10(((3E8/freq)./(4*pi*dist)).^2.*abs(1+gammaH.*exp(1j*deltaD.*dist)).^2);
-%pe = -(40*log10(dist)-20*log10(ht)-20*log10(hr));
-surface = 10*log10(((3E8/freq)./(4*pi*dist)).^2.*abs(1+gammaH.*...
-            exp(1j*deltaD.*dist)+(1-gammaH).*A.*exp(1j*deltaD.*dist)).^2);
-
-
-scatter(d,recP+system_loss);
-hold on
-plot(dist,friis);
-plot(dist,pe);
-plot(dist,surface);
-legend('rec','friis','pe','surface');
-%%
-close all;
-figure;
-d_index = 6;
-%surf(hRx_grid,hTx_grid,Friss_rec);
-%hold on
-mesh(hRx_grid,hTx_grid,two_ray);
-hold on
-for n = 1:16
-    for k = 1:length(hTx)
-        if ((hTx(k)==hTx_complete(n)) && (hRx(k)==hRx_complete(n)))
-            rec_complete(n) = recH(d_index,k);
-            gains_complete(n) = gainsH(d_index,k);
-        elseif ((hRx(k)==hTx_complete(n)) && (hTx(k)==hRx_complete(n)))
-            rec_complete(n) = recH(d_index,k);
-            gains_complete(n) = gainsH(d_index,k);
-        end
-    end
-end
-
-for n = 1:1%length(d)
-    scatter3(hRx_complete, hTx_complete, (rec_complete-2*gains_complete));
-    hold on
-end
-legend('d = 1','d = 2','d = 4','d = 8','d = 15','d = 30');
-xlabel('hRx');
-ylabel('hTx');
-zlabel('recH');
-
 
 
