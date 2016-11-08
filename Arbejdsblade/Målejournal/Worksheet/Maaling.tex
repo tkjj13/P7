@@ -18,7 +18,101 @@ To test the path loss near ground, the loss from the transmitting antenna to the
 \item Signal generator (AAU nr: )
 \item Spectrum analyser (AAU nr:)
 \end{itemize}
+
+\textbf{Setup equipment}
+\begin{itemize}
+\item 2x Measurements stand 2.5 m
+\item 2x Bags or low stands X.X m
+\end{itemize}
+
+\textbf{Extra}
+\begin{itemize}
+\item Computer to note down measurements
+\item Wagon
+\item 2x Clamps
+\item Extension cord +30 m
+\item 2x SMA cables and connectors
+\item Lots of coffee, coca cola and energy drink
+\item A lot of free time
+\end{itemize}
+
+\subsection*{Measurement points}
+
+\textbf{Heights of antennas}
+The transmitting and receiving antenna are set in one of these heights for each measurement. 
+
+\begin{itemize}
+\item 1 cm
+\item 8 cm
+\item 34 cm
+\item 200 cm
+\end{itemize}
+
+All combinations of different heights of the two antenna is measured, except those combination where the receiving antenna is place higher than the transmitting antenna, as these will give the same measurement, as if the two height where switched.
+
+\textbf{Distance between antenna}
+The distance between the antenna are set to one of these distances for each measurement.
+
+\begin{itemize}
+\item 1 m
+\item 2 m
+\item 4 m
+\item 8 m
+\item 15 m
+\item 30 m
+\end{itemize}
+
+\textbf{Total measurement points per setup}
+
+For each combinations of height, there will be measured at each distance. With 10 height combination and 6 distances, this gives 60 measurement points. In each point there will measured 10 times, which gives a total of 600 measurements per setup.
+
+\textbf{Different setups}
+As horizontal and vertical polarization do not act the same, each antenna set will be tested at both polarizations, given 10 setups in total.
+
 \subsection*{Setup}
+The setup is made of a stationary station and a moveable station. The moveable station is placed, so the setup have the right distance between the antennas.
+
+\textbf{Stationary station}
+At the stationary station the signal generator is placed and set to the frequency of the antenna set used and a amplitude on 0 dB. A measurement stand and a low stand is placed beside the signal generator. The transmitting antenna is set a the highest measure point on the measurement stand and is connected to the signal generator. The antenna is set to face the receiving antenna and have the same polarization directions as the receiving antenna.
+
+\textbf{Moveable station}
+At the moveable station the spectrum analyser is placed and set up to measure at the antenna sets frequency. As the spectrum analyser needs power and shall be moved with the moveable station, a extension cord is needed, to power it, and as the moveable station is moved back and forth with 30 m, this extension cord, shall have a length of over 30 m. A measurement stand and a low stand is placed beside the signal generator. The receiving antenna is set a the highest measure point on the measurement stand and is connected to the spectrum analyser. The moveable station is placed, so the antenna on the measurement stand is placed, so the antenna is facing the transmitting antenna and have the same polarization directions as the transmitting antenna. The distance between the two antennas is set to the smallest of the measurement distances, by placing the moveable station at the right spot.
+
+\textbf{Measurements with demo boards}
+When testing with the demo boards, the signal generator and spectrum analyser is not needed, as the demo boards it self provide the transmitted signal and measurement at the receiving end. The rest of the setup is still used the way as with the other antennas.
 
 \subsection*{Procedure}
+To minimize the time to make the measurement, a procedure is chosen, so that the time used on changing the position of the antennas between each measurement point is lowered.
+As changing the heights from 200 or 34 cm take longer than moving the moveable station, all measurements at these heights will be taken subsequently of each other, if possible. 
+The order of measurements, that is used is:
 
+\begin{enumerate}
+\item Transmitter on 200 cm
+\begin{itemize}
+\item Receiver on 200 cm, all length
+\item Receiver on 34 cm, all length
+\item Receiver shifting between 8 cm and 1 cm, all length
+\end{itemize}
+\item Transmitter on 34
+\begin{itemize}
+\item Receiver on 34 cm, all length
+\item Receiver shifting between 8 cm and 1 cm, all length
+\end{itemize}
+\item Transmitter/Receiver shifting between 8/8 cm, 8/1 cm and 1/1 cm , all length
+\end{enumerate}
+
+At each measurement point, there is taken 10 measurements, which is read from the spectrum analyser (on demo boards, when they are used) and writing down into the excel file. In the file, the mean and variance is found for the measurement point.
+
+All this is done for each polarization (vertical and horizontal) on all 5 sets of antennas.
+
+\subsection*{Results}
+The results will be the total system loss, from the signal generator to the spectrum analyser. The total system loss is a combination of:
+
+\begin{itemize}
+\item Cable loss, from the signal generator to the transmitter antenna.
+\item Antenna gain, in the transmitter antenna.
+\item Path loss, form the transmitter antenna to the receiver antenna.
+\item Alignment loss, from the polarization of the transmitter and receiver antenna.
+\item Antenna gain, in the receiver antenna.
+\item Cable loss, from the receiver antenna to the spectrum analyser.
+\end{itemize}
