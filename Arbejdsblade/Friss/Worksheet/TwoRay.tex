@@ -1,14 +1,50 @@
 \section{Two Ray Plane Earth}
+In contrast to the Friss pathloss model, the Two-ray-ground-reflection path loss model \citep{two_ray}, considers both the direct wave and the reflected ground wave. Also the Two-ray-ground-reflection path loss model does not depend on the frequency, as the Friss pathloss model does. The received power depending on the distance is given in the following Formula:
 
-$P_r(d) = \frac{P_t G_t G_r}{L} \frac{h^2_t h^2_r}{d^4}$
+\begin{equation}
+P_r(d) = \frac{P_t G_t G_r h^2_t h^2_r}{L \cdot d^4}
+\label{two_ray_model}
+\end{equation}
 
-if $d > \frac{20 h_t h_r}{\lambda}$
+Where $h^2_t$ and $h^2_r$ are the heights of the transmitter and receiver antennas respectively. And L is the system loss. 
 
-else will the received power theoretically oscillates between
-local maxima of 6dB above free space to $-\infty$ dB at local minima.
+If the distance $d$ is less then a critical point $d_{c}$: 
+
+\begin{equation}
+d<d_{c}
+\label{two_ray_cond}
+\end{equation}
+
+Where $d_{c}$ is given as:
+
+\begin{equation}
+d_{c} = \frac{4\pi \cdot h_t h_r}{\lambda}
+\label{critical_fac_dc}
+\end{equation}
+
+If this condition is true then the two-ray model shall not give good results due to oscillations which are caused by the constructive and destructive combination of the two rays. This condition is true for small distances $d$.
+
+%else will the received power theoretically oscillates between
+%local maxima of 6dB above free space to $-\infty$ dB at local minima.
+
+%\subsubsection{Power vs distance} 
+
+%\subsubsection{Propagation path}
+
+%The path can be divided into three segments the first being if:
+
+%\begin{equation}
+%d<h_{t}
+%\end{equation}
+
+%If this condition is true then:
+
+%\begin{itemize}
+%The two rays add constructively
+%Path loss is slowly increasing 
+%\end{itemize}
 
 
 
 
-
-LPE = 40 log10(d) $-$ 20 log10(ht) $-$ 20 log10(hr )
+%LPE = 40 log10(d) $-$ 20 log10(ht) $-$ 20 log10(hr )
