@@ -291,43 +291,43 @@ for k = 1:12
             s2 = 'VPpplads';
         case 7
             %HXHal
-            model1 = 2;
-            model2 = 6;
-            s1 = 'HMHal';
-            s2 = 'HPHal';
-        case 8
-            %HXpplads
-            model1 = 4;
-            model2 = 8;
-            s1 = 'HMpplads';
-            s2 = 'HPpplads';
-        case 9
-            %XPHal
             model1 = 5;
-            model2 = 6;
+            model2 = 7;
             s1 = 'VPHal';
-            s2 = 'HPHal';
+            s2 = 'VPpplads';
+        case 8
+            %VPX
+            model1 = 5;
+            model2 = 7;
+            s1 = 'VPHal';
+            s2 = 'VPpplads';
+        case 9
+            %VPX
+            model1 = 5;
+            model2 = 7;
+            s1 = 'VPHal';
+            s2 = 'VPpplads';
         case 10
-            %XPpplads
-            model1 = 7;
-            model2 = 8;
-            s1 = 'VPpplads';
-            s2 = 'HPpplads';
+            %VPX
+            model1 = 5;
+            model2 = 7;
+            s1 = 'VPHal';
+            s2 = 'VPpplads';
         case 11
-            %XMHal
-            model1 = 1;
-            model2 = 2;
-            s1 = 'VMHal';
-            s2 = 'HMHal';
+            %VPX
+            model1 = 5;
+            model2 = 7;
+            s1 = 'VPHal';
+            s2 = 'VPpplads';
         case 12
-            %XMpplads
-            model1 = 3;
-            model2 = 4;
-            s1 = 'VMpplads';
-            s2 = 'HMpplads';
+            %VPX
+            model1 = 5;
+            model2 = 7;
+            s1 = 'VPHal';
+            s2 = 'VPpplads';
         otherwise
     end
-    figure;
+    
 for n = 1:10
     subplot(3,4,n)
     trace = n;
@@ -377,7 +377,5 @@ NSPL2 = strcat('NSPL',s2);
 OurModel1 = strcat('OurModel',s1);
 OurModel2 = strcat('OurModel',s2);
 legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,'Location','NorthEast');
-load('myprinttemplate.mat') %loads the variable 'template'
-setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 
-end
+
