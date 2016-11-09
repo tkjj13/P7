@@ -254,73 +254,73 @@ clc
 for k = 1:12
     switch(k)
         case 1
-            %VPX
+            name = 'VPX';
             model1 = 5;
             model2 = 7;
             s1 = 'VPHal';
             s2 = 'VPpplads';
         case 2
-            %VMX
+            name = 'VMX';
             model1 = 1;
             model2 = 3;
             s1 = 'VMHal';
             s2 = 'VMpplads';
         case 3
-            %HPX
+            name = 'HPX';
             model1 = 6;
             model2 = 8;
             s1 = 'HPHal';
             s2 = 'HPpplads';
         case 4
-            %HMX
+            name = 'HMX';
             model1 = 2;
             model2 = 4;
             s1 = 'HMHal';
             s2 = 'HMpplads';
         case 5
-            %VXHal
+            name = 'VXHal';
             model1 = 1;
             model2 = 5;
             s1 = 'VMHal';
             s2 = 'VPHal';
         case 6
-            %VXpplads
+            name = 'VXpplads';
             model1 = 3;
             model2 = 7;
             s1 = 'VMpplads';
             s2 = 'VPpplads';
         case 7
-            %HXHal
+            name = 'HXHal';
             model1 = 2;
             model2 = 6;
             s1 = 'HMHal';
             s2 = 'HPHal';
         case 8
-            %HXpplads
+            name = 'HXpplads';
             model1 = 4;
             model2 = 8;
             s1 = 'HMpplads';
             s2 = 'HPpplads';
         case 9
-            %XPHal
+            name = 'XPHal';
             model1 = 5;
             model2 = 6;
             s1 = 'VPHal';
             s2 = 'HPHal';
         case 10
-            %XPpplads
+            name = 'XPpplads';
             model1 = 7;
             model2 = 8;
             s1 = 'VPpplads';
             s2 = 'HPpplads';
         case 11
-            %XMHal
+            name = 'XMHal';
             model1 = 1;
             model2 = 2;
             s1 = 'VMHal';
             s2 = 'HMHal';
         case 12
-            %XMpplads
+            name = 'XMpplads';
             model1 = 3;
             model2 = 4;
             s1 = 'VMpplads';
@@ -347,6 +347,7 @@ for n = 1:10
     ylim([ymin ymax]);
     string = sprintf('Trace %i',trace);
     title(string);
+    grid;
 end
 
 subplot(3,4,11)
@@ -379,5 +380,63 @@ OurModel2 = strcat('OurModel',s2);
 legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,'Location','NorthEast');
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
+path = strcat('figs/',name); 
+print(gcf,path,'-dpdf')
 
+
+ figure;
+for n = 1:10
+    subplot(3,4,n)
+    trace = n;
+    semilogx(dist,FSPL);
+    hold on
+    semilogx(dM(:,trace),rec(:,trace,model1),'*','MarkerSize',2);
+    semilogx(dP(:,trace),rec(:,trace,model2),'*','MarkerSize',2);
+    semilogx(dist,TRPL(:,trace,model1),'r')
+    semilogx(dist,TRPL(:,trace,model2))
+    semilogx(dist,GWPL(:,trace,model1),'g');
+    semilogx(dist,GWPL(:,trace,model2));
+    semilogx(dist,NSPL(:,trace,model1),'c');
+    semilogx(dist,NSPL(:,trace,model2));
+    semilogx(dist,OurModel(:,trace,model1),'k');
+    semilogx(dist,OurModel(:,trace,model2));
+    xlim([xmin xmax]);
+    ylim([ymin ymax]);
+    string = sprintf('Trace %i',trace);
+    title(string);
+    grid;
+end
+
+subplot(3,4,11)
+trace = 2;
+semilogx(dist,FSPL);
+hold on
+semilogx(dM(:,trace),recVMHal(:,trace),'*');
+semilogx(dP(:,trace),recVPHal(:,trace),'*');
+semilogx(dist,TRPLVMHal(:,trace),'r')
+semilogx(dist,TRPLVPHal(:,trace))
+semilogx(dist,GWPLVMHal(:,trace),'g');
+semilogx(dist,GWPLVPHal(:,trace));
+semilogx(dist,NSPLVMHal(:,trace),'c');
+semilogx(dist,NSPLVPHal(:,trace));
+semilogx(dist,OurModelVMHal(:,trace),'k');
+semilogx(dist,OurModelVPHal(:,trace));
+xlim([xmin xmax]);
+ylim([ymin ymax]);
+title('Legend');
+rec1 = strcat('rec',s1);
+rec2 = strcat('rec',s2);
+TRPL1 = strcat('TRPL',s1);
+TRPL2 = strcat('TRPL',s2);
+GWPL1 = strcat('GWPL',s1);
+GWPL2 = strcat('GWPL',s2);
+NSPL1 = strcat('NSPL',s1);
+NSPL2 = strcat('NSPL',s2);
+OurModel1 = strcat('OurModel',s1);
+OurModel2 = strcat('OurModel',s2);
+legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,'Location','NorthEast');
+load('myprinttemplate.mat') %loads the variable 'template'
+setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
+path = strcat('figs/',name,'Log'); 
+print(gcf,path,'-dpdf')
 end
