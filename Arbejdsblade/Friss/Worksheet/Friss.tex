@@ -1,7 +1,7 @@
 \chapter{Worksheet}
 \section{Friis}
 
-The reason why there is a loss through free space, is that the signal density gets lower, as it spread over a larger area, which happens when the distance, that the signal have travel, gets longer. 
+The reason why there is a loss through free space, is that the signal density gets lower, as it spread over a larger area, which happens when the distance, that the signal has travelled, gets longer. 
 
 A example, is when using a isotropic antenna, the signal density is equal all the way around the antenna, forming a sphere around the antenna. As the power of the signal in total always is the same, the density of the signal power is depended on the surface of the sphere. As the signal travels longer away from the antenna, the sphere gets bigger and the surface bigger to, which means that the signal density gets lower. So the free space loss, is the loss of the signal that is not going in the direction of the receiving antenna.
 
@@ -20,7 +20,7 @@ P_r = P_t G_t G_r (\frac{\lambda}{4 \pi d})^2
 \va{$d$}{is the distance between the transmitting antenna and the receiving antenna}{m}
 \end{where}
 
-It is used to calculate the loss through the free space and do not take into account other waves, than the direct wave. The free space loss is equal to $(\frac{\lambda}{4 \pi d})^2$ and is multiply by the gains in both antennas and the power transmitted, to get the received power level.
+It is used to calculate the loss through the free space and does not take into account other waves, than the direct wave. The free space loss is equal to $(\frac{\lambda}{4 \pi d})^2$ and is multiplied by the gains in both antennas and the power transmitted, to get the received power level.
 
 The free space loss comes from the spreading of the signal, which is compared to the spheres, which in the signal spread in, surface, which is calculated by $\frac{1}{4 \pi d^2}$. Furthermore, there also comes the loss, when the signal is received at the receiver, where the effective antenna area is equal to $\frac{\lambda^2}{4 \pi}$. These two losses give in total the free space loss. (Hans eberts pdf)
 
@@ -35,7 +35,7 @@ This is the simple form of friis formulae and it is only correct, if these condi
 \end{itemize}
 
 
-When the antennas is not aligned and/or not have the same polarization, the simple version of the equation can not be used. Another problem, is if the impedances is mismatched, which give a reflection at the antennas, which is another loss in the system. Also there is loss through the air, where the air absorb some of the power from the signal. With these losses, the equation is expanded to:
+When the antennas are not aligned and/or do not have the same polarization, the simple version of the equation cannot be used. Another problem, is if the impedances is mismatched, which gives a reflection at the antennas, which is another loss in the system. Also there is loss through the air, where the air absorb some of the power from the signal. With these losses, the equation is expanded to:
 
 \begin{equation}
 P_r = P_t G_t(\theta_t, \phi_t) G_r(\theta_r, \phi_r) (\frac{\lambda}{4 \pi d})^2 (1 - \mid \Gamma_t \mid^2) (1 - \mid \Gamma_r \mid^2) \mid a_t \cdot a_r^* \mid^2 e^{- \alpha d}
