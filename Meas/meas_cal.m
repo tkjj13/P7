@@ -82,6 +82,8 @@ recVPHal = dataVPHal-2*gainsVDirP-system_loss;
 recHPHal = dataHPHal-2*gainsHDirP-system_loss;
 recVPpplads = dataVPpplads-2*gainsVDirP-system_loss;
 recHPpplads = dataHPpplads-2*gainsHDirP-system_loss;
+rec = cat(3,recVMHal, recHMHal, recVMpplads, recHMpplads,...
+    recVPHal, recHPHal, recVPpplads, recHPpplads);
 
 
 % calculate FSPL
@@ -149,6 +151,8 @@ TRPLVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPHal
 TRPLHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPHal.*exp(1i*DeltaP))).^2);
 TRPLVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPpplads.*exp(1i*DeltaP))).^2);
 TRPLHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPpplads.*exp(1i*DeltaP))).^2);
+TRPL = cat(3,TRPLVMHal, TRPLHMHal, TRPLVMpplads, TRPLHMpplads,...
+    TRPLVPHal, TRPLHPHal, TRPLVPpplads, TRPLHPpplads);
 
 AVMHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesM)+sqrt(e0_hal-cos(reflected_anglesM).^2)/e0_hal));
 AHMHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesM)+sqrt(e0_hal-cos(reflected_anglesM).^2)));
@@ -175,6 +179,8 @@ GWPLVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
         abs((1+gammaVPpplads.*exp(1i*DeltaP)+(1-gammaVPpplads).*AVPpplads.*exp(1i*DeltaP))).^2);
 GWPLHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
         abs((1+gammaHPpplads.*exp(1i*DeltaP)+(1-gammaHPpplads).*AHPpplads.*exp(1i*DeltaP))).^2);
+GWPL = cat(3,GWPLVMHal, GWPLHMHal, GWPLVMpplads, GWPLHMpplads,...
+    GWPLVPHal, GWPLHPHal, GWPLVPpplads, GWPLHPpplads);
 
 
 NSPLVMHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesM).^2)/e0_hal))./repmat(dist',1,10));
@@ -185,6 +191,9 @@ NSPLVPHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesP).^
 NSPLHPHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesP).^2)))./repmat(dist',1,10));
 NSPLVPpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesP).^2)/e0_pplads))./repmat(dist',1,10));
 NSPLHPpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesP).^2)))./repmat(dist',1,10));
+NSPL = cat(3,NSPLVMHal, NSPLHMHal, NSPLVMpplads, NSPLHMpplads,...
+    NSPLVPHal, NSPLHPHal, NSPLVPpplads, NSPLHPpplads);
+
 
 OurModelVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMHal.*exp(1i*DeltaM))));
 OurModelHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMHal.*exp(1i*DeltaM))));
@@ -194,15 +203,19 @@ OurModelVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaV
 OurModelHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPHal.*exp(1i*DeltaP))));
 OurModelVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPpplads.*exp(1i*DeltaP))));
 OurModelHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPpplads.*exp(1i*DeltaP))));
+OurModel = cat(3,OurModelVMHal, OurModelHMHal, OurModelVMpplads, OurModelHMpplads,...
+    OurModelVPHal, OurModelHPHal, OurModelVPpplads, OurModelHPpplads);
 
 dM = sqrt(repmat(d,10,1)'.^2+repmat((hRxM-hTxM),6,1).^2);
 dP = sqrt(repmat(d,10,1)'.^2+repmat((hRxP-hTxP),6,1).^2);
+
 %%
 close all
 xmin = 0;
 xmax = 31;
-ymin = -100;
+ymin = -130;
 ymax = -20;
+%%
 for n = 1:10
     trace = n;
     figure;
@@ -223,338 +236,148 @@ for n = 1:10
     legend('recVMHal','recVMpplads','recVPHal','recVPpplads',...
            'recHMHal','recHMpplads','recHPHal','recHPpplads');
 end
-return
+
+
 
 %%
-  plot(dM(:,trace),recVMHal(:,10),'-*');
+close all
+clc
+%1 VMHal 
+%2 HMHal
+%3 VMpplads
+%4 HMpplads
+%5 VPHal 
+%6 HPHal 
+%7 VPpplads 
+%8 HPpplads
+
+for k = 1:12
+    switch(k)
+        case 1
+            %VPX
+            model1 = 5;
+            model2 = 7;
+            s1 = 'VPHal';
+            s2 = 'VPpplads';
+        case 2
+            %VMX
+            model1 = 1;
+            model2 = 3;
+            s1 = 'VMHal';
+            s2 = 'VMpplads';
+        case 3
+            %HPX
+            model1 = 6;
+            model2 = 8;
+            s1 = 'HPHal';
+            s2 = 'HPpplads';
+        case 4
+            %HMX
+            model1 = 2;
+            model2 = 4;
+            s1 = 'HMHal';
+            s2 = 'HMpplads';
+        case 5
+            %VXHal
+            model1 = 1;
+            model2 = 5;
+            s1 = 'VMHal';
+            s2 = 'VPHal';
+        case 6
+            %VXpplads
+            model1 = 3;
+            model2 = 7;
+            s1 = 'VMpplads';
+            s2 = 'VPpplads';
+        case 7
+            %HXHal
+            model1 = 2;
+            model2 = 6;
+            s1 = 'HMHal';
+            s2 = 'HPHal';
+        case 8
+            %HXpplads
+            model1 = 4;
+            model2 = 8;
+            s1 = 'HMpplads';
+            s2 = 'HPpplads';
+        case 9
+            %XPHal
+            model1 = 5;
+            model2 = 6;
+            s1 = 'VPHal';
+            s2 = 'HPHal';
+        case 10
+            %XPpplads
+            model1 = 7;
+            model2 = 8;
+            s1 = 'VPpplads';
+            s2 = 'HPpplads';
+        case 11
+            %XMHal
+            model1 = 1;
+            model2 = 2;
+            s1 = 'VMHal';
+            s2 = 'HMHal';
+        case 12
+            %XMpplads
+            model1 = 3;
+            model2 = 4;
+            s1 = 'VMpplads';
+            s2 = 'HMpplads';
+        otherwise
+    end
+    figure;
+for n = 1:10
+    subplot(3,4,n)
+    trace = n;
+    plot(dist,FSPL);
     hold on
-    plot(dM(:,trace),recVMpplads(:,10),'-*');
-    plot(dM(:,trace),recVPHal(:,10),'-*');
-    plot(dM(:,trace),recVPpplads(:,10),'-*');
-    plot(dM(:,trace),recHMHal(:,1),'-*');
-    plot(dM(:,trace),recHMpplads(:,1),'-*');
-    plot(dM(:,trace),recHPHal(:,1),'-*');
-    plot(dM(:,trace),recHPpplads(:,1),'-*k');
-%%
-
-plot(dM(:,5),data(:,5),'-*');
-plot(dM(:,8),data(:,8),'-*');
-plot(dM(:,10),data(:,10),'-*');
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('recVPLMHal hr=ht');
-legend('h = 0.01','h = 0.08','h = 0.34','h = 2');
-grid
-return
-
-
-
-figure;
-subplot(3,3,1)
-trace = 1;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recVPLMHal(:,trace),'*');
-plot(dP(:,trace),recVPLPHal(:,trace),'*');
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dP(:,trace),recHPLPHal(:,trace),'*');
-plot(dist,TRPLVMHal(:,trace),'r')
-plot(dist,TRPLHPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
-plot(dist,GWPLHPHal(:,trace));
-plot(dist,NSPLVMHal(:,trace),'c');
-plot(dist,NSPLHPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelHPHal(:,trace));
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('Trace 1');
-legend('FSPL','recVPLMHal','recVPLPHal','recHPLMHal','recHPLPHal','TRPLVMHal','TRPLHPHal','GWPLVMHal','GWPLHPHal','NSPLVMHal',...
-    'NSPLHPHal','OurModelVMHal','OurModelHPHal');
-return
-
-subplot(3,3,2)
-trace = 2;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recVPLMHal(:,trace),'*');
-plot(dP(:,trace),recVPLPHal(:,trace),'*');
-plot(dist,TRPLVMHal(:,trace),'r')
-plot(dist,TRPLVPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
-plot(dist,GWPLVPHal(:,trace));
-plot(dist,NSPLVMHal(:,trace),'c');
-plot(dist,NSPLVPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelVPHal(:,trace));
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('Trace 2');
-
-
-subplot(3,3,3)
-trace = 3;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recVPLMHal(:,trace),'*');
-plot(dP(:,trace),recVPLPHal(:,trace),'*');
-plot(dist,TRPLVMHal(:,trace),'r')
-plot(dist,TRPLVPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
-plot(dist,GWPLVPHal(:,trace));
-plot(dist,NSPLVMHal(:,trace),'c');
-plot(dist,NSPLVPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelVPHal(:,trace));
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('Trace 3');
-
-
-subplot(3,3,4)
-trace = 4;
-plot(dist,FSPL);
-hold on
-
-plot(dM(:,trace),recVPLMHal(:,trace),'*');
-plot(dP(:,trace),recVPLPHal(:,trace),'*');
-plot(dist,TRPLVMHal(:,trace),'r')
-plot(dist,TRPLVPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
-plot(dist,GWPLVPHal(:,trace));
-plot(dist,NSPLVMHal(:,trace),'c');
-plot(dist,NSPLVPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelVPHal(:,trace));
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('Trace 4');
-
-
-subplot(3,3,5)
-trace = 5;
-plot(dist,FSPL);
-hold on
-
-plot(dM(:,trace),recVPLMHal(:,trace),'*');
-plot(dP(:,trace),recVPLPHal(:,trace),'*');
-plot(dist,TRPLVMHal(:,trace),'r')
-plot(dist,TRPLVPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
-plot(dist,GWPLVPHal(:,trace));
-plot(dist,NSPLVMHal(:,trace),'c');
-plot(dist,NSPLVPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelVPHal(:,trace));
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('Trace 5');
-
-
-subplot(3,3,6)
-trace = 6;
-plot(dist,FSPL);
-hold on
-
-plot(dM(:,trace),recVPLMHal(:,trace),'*');
-plot(dP(:,trace),recVPLPHal(:,trace),'*');
-plot(dist,TRPLVMHal(:,trace),'r')
-plot(dist,TRPLVPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
-plot(dist,GWPLVPHal(:,trace));
-plot(dist,NSPLVMHal(:,trace),'c');
-plot(dist,NSPLVPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelVPHal(:,trace));
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('Trace 6');
-
-
-subplot(3,3,7)
-trace = 7;
-plot(dist,FSPL);
-hold on
-
-plot(dM(:,trace),recVPLMHal(:,trace),'*');
-plot(dP(:,trace),recVPLPHal(:,trace),'*');
-plot(dist,TRPLVMHal(:,trace),'r')
-plot(dist,TRPLVPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
-plot(dist,GWPLVPHal(:,trace));
-plot(dist,NSPLVMHal(:,trace),'c');
-plot(dist,NSPLVPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelVPHal(:,trace));
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('Trace 7');
-
-
-subplot(3,3,8)
-trace = 8;
-plot(dist,FSPL);
-hold on
-
-plot(dM(:,trace),recVPLMHal(:,trace),'*');
-plot(dP(:,trace),recVPLPHal(:,trace),'*');
-plot(dist,TRPLVMHal(:,trace),'r')
-plot(dist,TRPLVPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
-plot(dist,GWPLVPHal(:,trace));
-plot(dist,NSPLVMHal(:,trace),'c');
-plot(dist,NSPLVPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelVPHal(:,trace));
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('Trace 8');
-
-
-subplot(3,3,9)
-trace = 9;
-plot(dist,FSPL);
-hold on
-
-plot(dM(:,trace),recVPLMHal(:,trace),'*');
-plot(dP(:,trace),recVPLPHal(:,trace),'*');
-plot(dist,TRPLVMHal(:,trace),'r')
-plot(dist,TRPLVPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
-plot(dist,GWPLVPHal(:,trace));
-plot(dist,NSPLVMHal(:,trace),'c');
-plot(dist,NSPLVPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelVPHal(:,trace));
-xlim([xmin xmax]);
-ylim([ymin ymax]);
-title('Trace 9');
-
-%% horisontal plot
-figure;
-subplot(3,3,1)
-trace = 1;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dist,TRPLHMHal(:,trace),'r')
-plot(dist,GWPLHMHal(:,trace),'g');
-plot(dist,NSPLHMpplads(:,trace),'c');
-plot(dist,OurModelHMHal(:,trace),'k');
-title('Trace 1');
-
-
-subplot(3,3,2)
-trace = 2;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dist,TRPLHMHal(:,trace),'r')
-plot(dist,GWPLHMHal(:,trace),'g');
-plot(dist,NSPLHMpplads(:,trace),'c');
-plot(dist,OurModelHMHal(:,trace),'k');
-title('Trace 2');
-
-
-subplot(3,3,3)
-trace = 3;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dist,TRPLHMHal(:,trace),'r')
-plot(dist,GWPLHMHal(:,trace),'g');
-plot(dist,NSPLHMpplads(:,trace),'c');
-plot(dist,OurModelHMHal(:,trace),'k');
-title('Trace 3');
-
-
-subplot(3,3,4)
-trace = 4;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dist,TRPLHMHal(:,trace),'r')
-plot(dist,GWPLHMHal(:,trace),'g');
-plot(dist,NSPLHMpplads(:,trace),'c');
-plot(dist,OurModelHMHal(:,trace),'k');
-title('Trace 4');
-
-
-subplot(3,3,5)
-trace = 5;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dist,TRPLHMHal(:,trace),'r')
-plot(dist,GWPLHMHal(:,trace),'g');
-plot(dist,NSPLHMpplads(:,trace),'c');
-plot(dist,OurModelHMHal(:,trace),'k');
-title('Trace 5');
-
-
-subplot(3,3,6)
-trace = 6;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dist,TRPLHMHal(:,trace),'r')
-plot(dist,GWPLHMHal(:,trace),'g');
-plot(dist,NSPLHMpplads(:,trace),'c');
-plot(dist,OurModelHMHal(:,trace),'k');
-title('Trace 6');
-
-
-subplot(3,3,7)
-trace = 7;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dist,TRPLHMHal(:,trace),'r')
-plot(dist,GWPLHMHal(:,trace),'g');
-plot(dist,NSPLHMpplads(:,trace),'c');
-plot(dist,OurModelHMHal(:,trace),'k');
-title('Trace 7');
-
-
-subplot(3,3,8)
-trace = 8;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dist,TRPLHMHal(:,trace),'r')
-plot(dist,GWPLHMHal(:,trace),'g');
-plot(dist,NSPLHMpplads(:,trace),'c');
-plot(dist,OurModelHMHal(:,trace),'k');
-title('Trace 8');
-
-
-subplot(3,3,9)
-trace = 9;
-plot(dist,FSPL);
-hold on
-plot(dM(:,trace),recHPLMHal(:,trace),'*');
-plot(dist,TRPLHMHal(:,trace),'r')
-plot(dist,GWPLHMHal(:,trace),'g');
-plot(dist,NSPLHMpplads(:,trace),'c');
-plot(dist,OurModelHMHal(:,trace),'k');
-title('Trace 9');
-
-
-return
-
-%%
-angles = [0 pi/2-atan((2./(1./1+1))/1)];
-[gainsHDir, gainsVDir] = gain_patch_func(antennaFile,freq,angles);
-
-%%
-
-n = 1000;
-[hRx_grid, hTx_grid] = meshgrid(linspace(min(hRx),max(hRx),n),linspace(min(hTx),max(hTx),n));
-
-for n = 1:length(d)
-%    Friss_rec(n,:) = 10*log10(Tx*2*(10.^(direct_angles(n,:)./10))*((3E8/freq)/(4*pi*d(n))).^2);
-    Friss_rec = 10*log10(((3E8/freq)./(4*pi*sqrt(d(n).^2+(hTx_grid-hRx_grid).^2))).^2);
-    two_ray = -(40*log10(d(n))-20*log10(hTx_grid)-20*log10(hRx_grid));
+    plot(dM(:,trace),rec(:,trace,model1),'*','MarkerSize',2);
+    plot(dP(:,trace),rec(:,trace,model2),'*','MarkerSize',2);
+    plot(dist,TRPL(:,trace,model1),'r')
+    plot(dist,TRPL(:,trace,model2))
+    plot(dist,GWPL(:,trace,model1),'g');
+    plot(dist,GWPL(:,trace,model2));
+    plot(dist,NSPL(:,trace,model1),'c');
+    plot(dist,NSPL(:,trace,model2));
+    plot(dist,OurModel(:,trace,model1),'k');
+    plot(dist,OurModel(:,trace,model2));
+    xlim([xmin xmax]);
+    ylim([ymin ymax]);
+    string = sprintf('Trace %i',trace);
+    title(string);
 end
 
+subplot(3,4,11)
+trace = 2;
+plot(dist,FSPL);
+hold on
+plot(dM(:,trace),recVMHal(:,trace),'*');
+plot(dP(:,trace),recVPHal(:,trace),'*');
+plot(dist,TRPLVMHal(:,trace),'r')
+plot(dist,TRPLVPHal(:,trace))
+plot(dist,GWPLVMHal(:,trace),'g');
+plot(dist,GWPLVPHal(:,trace));
+plot(dist,NSPLVMHal(:,trace),'c');
+plot(dist,NSPLVPHal(:,trace));
+plot(dist,OurModelVMHal(:,trace),'k');
+plot(dist,OurModelVPHal(:,trace));
+xlim([xmin xmax]);
+ylim([ymin ymax]);
+title('Legend');
+rec1 = strcat('rec',s1);
+rec2 = strcat('rec',s2);
+TRPL1 = strcat('TRPL',s1);
+TRPL2 = strcat('TRPL',s2);
+GWPL1 = strcat('GWPL',s1);
+GWPL2 = strcat('GWPL',s2);
+NSPL1 = strcat('NSPL',s1);
+NSPL2 = strcat('NSPL',s2);
+OurModel1 = strcat('OurModel',s1);
+OurModel2 = strcat('OurModel',s2);
+legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,'Location','NorthEast');
+load('myprinttemplate.mat') %loads the variable 'template'
+setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 
+end
