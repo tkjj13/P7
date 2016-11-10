@@ -30,14 +30,15 @@ load('hal_meas_raw.mat');
 
 % recHPpplads = received data for horizontal polarization of the
 % patch on the p-plads
-
+%e0_pplads = 1.706075279-0.2460374611*1i;    % p-plads 2580
+%e0_hal = 1.032217622-0.02475786003*1i;       % hal 2580
 
 %% patch 858 MHz
 % make setup parameters
 system_loss = -0.934;
 
-e0_pplads = 1.706075279-0.2460374611*1i;    % p-plads
-e0_hal = 0.9507767236-1.037792166*1i;       % hal
+e0_pplads = 1.706075279-0.2460374611*1i;    % p-plads 858
+e0_hal = 0.9507767236-1.037792166*1i;       % hal 858
 antennaFileM = 'mono868tot.txt';
 dataHMHal = hal_mono858_hor;
 dataVMHal = hal_mono858_vert;
@@ -52,25 +53,36 @@ dataHPpplads = pplads_patch_858_hor;
 dataVPpplads = pplads_patch_858_vert;
 freqP = 858E6;
 
-hM = [0.043 0.135 0.383 2.043];
-hP = [0.044 0.136 0.34 2];
+hVM = [0.043 0.135 0.383 2.043];
+hHM = [0.043 0.135 0.383 2.043];
+hVP = [0.044 0.136 0.34 2];
+hHP = [0.044 0.136 0.34 2];
 d = [1 2 4 8 15 30];
 
 % extrapolate heights
-hRxM = [hM(1) hM(1) hM(1) hM(1) hM(2) hM(2) hM(2) hM(3) hM(3) hM(4)];
-hTxM = [hM(1) hM(2) hM(3) hM(4) hM(2) hM(3) hM(4) hM(3) hM(4) hM(4)];
-hRxP = [hP(1) hP(1) hP(1) hP(1) hP(2) hP(2) hP(2) hP(3) hP(3) hP(4)];
-hTxP = [hP(1) hP(2) hP(3) hP(4) hP(2) hP(3) hP(4) hP(3) hP(4) hP(4)];
+hRxVM = [hVM(1) hVM(1) hVM(1) hVM(1) hVM(2) hVM(2) hVM(2) hVM(3) hVM(3) hVM(4)];
+hTxVM = [hVM(1) hVM(2) hVM(3) hVM(4) hVM(2) hVM(3) hVM(4) hVM(3) hVM(4) hVM(4)];
+hRxVP = [hVP(1) hVP(1) hVP(1) hVP(1) hVP(2) hVP(2) hVP(2) hVP(3) hVP(3) hVP(4)];
+hTxVP = [hVP(1) hVP(2) hVP(3) hVP(4) hVP(2) hVP(3) hVP(4) hVP(3) hVP(4) hVP(4)];
+
+hRxHM = [hVM(1) hVM(1) hVM(1) hVM(1) hVM(2) hVM(2) hVM(2) hVM(3) hVM(3) hVM(4)];
+hTxHM = [hVM(1) hVM(2) hVM(3) hVM(4) hVM(2) hVM(3) hVM(4) hVM(3) hVM(4) hVM(4)];
+hRxHP = [hVP(1) hVP(1) hVP(1) hVP(1) hVP(2) hVP(2) hVP(2) hVP(3) hVP(3) hVP(4)];
+hTxHP = [hVP(1) hVP(2) hVP(3) hVP(4) hVP(2) hVP(3) hVP(4) hVP(3) hVP(4) hVP(4)];
 
 % calculate all angles
 for n = 1:length(d)
-    direct_anglesM(n,:) = atan(abs(hRxM-hTxM)/d(n));
-    direct_anglesP(n,:) = atan(abs(hRxP-hTxP)/d(n));
+    direct_anglesVM(n,:) = atan(abs(hRxVM-hTxVM)/d(n));
+    direct_anglesVP(n,:) = atan(abs(hRxVP-hTxVP)/d(n));
+    direct_anglesHM(n,:) = atan(abs(hRxHM-hTxHM)/d(n));
+    direct_anglesHP(n,:) = atan(abs(hRxHP-hTxHP)/d(n));
 end
 
 % get gains from file
-[gainsHDirM, gainsVDirM] = gain_mono_func(antennaFileM,freqM,direct_anglesM);
-[gainsHDirP, gainsVDirP] = gain_patch_func(antennaFileP,freqP,direct_anglesP);
+[~, gainsVDirM] = gain_mono_func(antennaFileM,freqM,direct_anglesVM);
+[~, gainsVDirP] = gain_patch_func(antennaFileP,freqP,direct_anglesVP);
+[gainsHDirM, ~] = gain_mono_func(antennaFileM,freqM,direct_anglesHM);
+[gainsHDirP, ~] = gain_patch_func(antennaFileP,freqP,direct_anglesHP);
 
 
 % calculate PL for the received siganls 
@@ -94,121 +106,135 @@ FSPL = 20*log10((3E8/freqP)./(4*pi*dist));
 
 % calculate recieved power using TRPL model
 
-for n = 1:length(hRxM)
-    direct_angles2M(:,n) = atan(abs(hRxM(n)-hTxM(n))./dist);
-    reflected_anglesM(:,n) = pi/2-atan((dist./(hRxM(n)./hTxM(n)+1))./hTxM(n));
-    direct_angles2P(:,n) = atan(abs(hRxP(n)-hTxP(n))./dist);
-    reflected_anglesP(:,n) = pi/2-atan((dist./(hRxP(n)./hTxP(n)+1))./hTxP(n));
+for n = 1:length(hRxVM)
+    direct_angles2VM(:,n) = atan(abs(hRxVM(n)-hTxVM(n))./dist);
+    reflected_anglesVM(:,n) = pi/2-atan((dist./(hRxVM(n)./hTxVM(n)+1))./hTxVM(n));
+    direct_angles2VP(:,n) = atan(abs(hRxVP(n)-hTxVP(n))./dist);
+    reflected_anglesVP(:,n) = pi/2-atan((dist./(hRxVP(n)./hTxVP(n)+1))./hTxVP(n));
+    
+    direct_angles2HM(:,n) = atan(abs(hRxHM(n)-hTxHM(n))./dist);
+    reflected_anglesHM(:,n) = pi/2-atan((dist./(hRxHM(n)./hTxHM(n)+1))./hTxHM(n));
+    direct_angles2HP(:,n) = atan(abs(hRxHP(n)-hTxHP(n))./dist);
+    reflected_anglesHP(:,n) = pi/2-atan((dist./(hRxHP(n)./hTxHP(n)+1))./hTxHP(n));
 end
 
-    [gainsHDirM, gainsVDirM] = gain_mono_func(antennaFileM,freqM,direct_angles2M);
-    [gainsHRefM, gainsVRefM] = gain_mono_func(antennaFileM,freqM,reflected_anglesM);
-    [gainsHDirP, gainsVDirP] = gain_patch_func(antennaFileP,freqP,direct_angles2P);
-    [gainsHRefP, gainsVRefP] = gain_patch_func(antennaFileP,freqP,reflected_anglesP);
+    [~, gainsVDirM] = gain_mono_func(antennaFileM,freqM,direct_angles2VM);
+    [~, gainsVRefM] = gain_mono_func(antennaFileM,freqM,reflected_anglesVM);
+    [~, gainsVDirP] = gain_patch_func(antennaFileP,freqP,direct_angles2VP);
+    [~, gainsVRefP] = gain_patch_func(antennaFileP,freqP,reflected_anglesVP);
 
-
+    [gainsHDirM, ~] = gain_mono_func(antennaFileM,freqM,direct_angles2HM);
+    [gainsHRefM, ~] = gain_mono_func(antennaFileM,freqM,reflected_anglesHM);
+    [gainsHDirP, ~] = gain_patch_func(antennaFileP,freqP,direct_angles2HP);
+    [gainsHRefP, ~] = gain_patch_func(antennaFileP,freqP,reflected_anglesHP);
+    
+    
 alphaHM = gainsHRefM./gainsHDirM;
 alphaVM = gainsVRefM./gainsVDirM;
 alphaHP = gainsHRefP./gainsHDirP;
 alphaVP = gainsVRefP./gainsVDirP;
 
 for n = 1:length(dist)
-    DeltaM(n,:) = (4.*pi.*hTxM.*hRxM)./(dist(n).*(3E8/freqP));
-    DeltaP(n,:) = (4.*pi.*hTxP.*hRxP)./(dist(n).*(3E8/freqP));
+    DeltaVM(n,:) = (4.*pi.*hTxVM.*hRxVM)./(dist(n).*(3E8/freqP));
+    DeltaVP(n,:) = (4.*pi.*hTxVP.*hRxVP)./(dist(n).*(3E8/freqP));
+    DeltaHM(n,:) = (4.*pi.*hTxHM.*hRxHM)./(dist(n).*(3E8/freqP));
+    DeltaHP(n,:) = (4.*pi.*hTxHP.*hRxHP)./(dist(n).*(3E8/freqP));
 end
 
-gammaVMHal = (sin(reflected_anglesM)-sqrt(e0_hal-cos(reflected_anglesM).^2))./...
-        (sin(reflected_anglesM)+sqrt(e0_hal-cos(reflected_anglesM).^2));
+gammaVMHal = (sin(reflected_anglesVM)-sqrt(e0_hal-cos(reflected_anglesVM).^2))./...
+        (sin(reflected_anglesVM)+sqrt(e0_hal-cos(reflected_anglesVM).^2));
 
-gammaHMHal = (sin(reflected_anglesM)-(sqrt(e0_hal-cos(reflected_anglesM).^2))/e0_hal)./...
-        (sin(reflected_anglesM)+(sqrt(e0_hal-cos(reflected_anglesM).^2))/e0_hal);
+gammaHMHal = (sin(reflected_anglesVM)-(sqrt(e0_hal-cos(reflected_anglesVM).^2))/e0_hal)./...
+        (sin(reflected_anglesVM)+(sqrt(e0_hal-cos(reflected_anglesVM).^2))/e0_hal);
 
-gammaVMpplads = (sin(reflected_anglesM)-sqrt(e0_pplads-cos(reflected_anglesM).^2))./...
-        (sin(reflected_anglesM)+sqrt(e0_pplads-cos(reflected_anglesM).^2));
+gammaVMpplads = (sin(reflected_anglesVM)-sqrt(e0_pplads-cos(reflected_anglesVM).^2))./...
+        (sin(reflected_anglesVM)+sqrt(e0_pplads-cos(reflected_anglesVM).^2));
 
-gammaHMpplads = (sin(reflected_anglesM)-(sqrt(e0_pplads-cos(reflected_anglesM).^2))/e0_pplads)./...
-        (sin(reflected_anglesM)+(sqrt(e0_pplads-cos(reflected_anglesM).^2))/e0_pplads);
+gammaHMpplads = (sin(reflected_anglesVM)-(sqrt(e0_pplads-cos(reflected_anglesVM).^2))/e0_pplads)./...
+        (sin(reflected_anglesVM)+(sqrt(e0_pplads-cos(reflected_anglesVM).^2))/e0_pplads);
 
-gammaVPHal = (sin(reflected_anglesP)-sqrt(e0_hal-cos(reflected_anglesP).^2))./...
-        (sin(reflected_anglesP)+sqrt(e0_hal-cos(reflected_anglesP).^2));
+gammaVPHal = (sin(reflected_anglesVP)-sqrt(e0_hal-cos(reflected_anglesVP).^2))./...
+        (sin(reflected_anglesVP)+sqrt(e0_hal-cos(reflected_anglesVP).^2));
 
-gammaHPHal = (sin(reflected_anglesP)-(sqrt(e0_hal-cos(reflected_anglesP).^2))/e0_hal)./...
-        (sin(reflected_anglesP)+(sqrt(e0_hal-cos(reflected_anglesP).^2))/e0_hal);
+gammaHPHal = (sin(reflected_anglesVP)-(sqrt(e0_hal-cos(reflected_anglesVP).^2))/e0_hal)./...
+        (sin(reflected_anglesVP)+(sqrt(e0_hal-cos(reflected_anglesVP).^2))/e0_hal);
 
-gammaVPpplads = (sin(reflected_anglesP)-sqrt(e0_pplads-cos(reflected_anglesP).^2))./...
-        (sin(reflected_anglesP)+sqrt(e0_pplads-cos(reflected_anglesP).^2));
+gammaVPpplads = (sin(reflected_anglesVP)-sqrt(e0_pplads-cos(reflected_anglesVP).^2))./...
+        (sin(reflected_anglesVP)+sqrt(e0_pplads-cos(reflected_anglesVP).^2));
 
-gammaHPpplads = (sin(reflected_anglesP)-(sqrt(e0_pplads-cos(reflected_anglesP).^2))/e0_pplads)./...
-        (sin(reflected_anglesP)+(sqrt(e0_pplads-cos(reflected_anglesP).^2))/e0_pplads);
+gammaHPpplads = (sin(reflected_anglesVP)-(sqrt(e0_pplads-cos(reflected_anglesVP).^2))/e0_pplads)./...
+        (sin(reflected_anglesVP)+(sqrt(e0_pplads-cos(reflected_anglesVP).^2))/e0_pplads);
     
     
 
-TRPLVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMHal.*exp(1i*DeltaM))).^2);
-TRPLHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMHal.*exp(1i*DeltaM))).^2);
-TRPLVMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMpplads.*exp(1i*DeltaM))).^2);
-TRPLHMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMpplads.*exp(1i*DeltaM))).^2);
-TRPLVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPHal.*exp(1i*DeltaP))).^2);
-TRPLHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPHal.*exp(1i*DeltaP))).^2);
-TRPLVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPpplads.*exp(1i*DeltaP))).^2);
-TRPLHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPpplads.*exp(1i*DeltaP))).^2);
+TRPLVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMHal.*exp(1i*DeltaVM))).^2);
+TRPLHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMHal.*exp(1i*DeltaHM))).^2);
+TRPLVMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMpplads.*exp(1i*DeltaVM))).^2);
+TRPLHMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMpplads.*exp(1i*DeltaHM))).^2);
+TRPLVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPHal.*exp(1i*DeltaVP))).^2);
+TRPLHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPHal.*exp(1i*DeltaHP))).^2);
+TRPLVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPpplads.*exp(1i*DeltaVP))).^2);
+TRPLHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPpplads.*exp(1i*DeltaHP))).^2);
 TRPL = cat(3,TRPLVMHal, TRPLHMHal, TRPLVMpplads, TRPLHMpplads,...
     TRPLVPHal, TRPLHPHal, TRPLVPpplads, TRPLHPpplads);
 
-AVMHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesM)+sqrt(e0_hal-cos(reflected_anglesM).^2)/e0_hal));
-AHMHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesM)+sqrt(e0_hal-cos(reflected_anglesM).^2)));
-AVMpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesM)+sqrt(e0_pplads-cos(reflected_anglesM).^2)/e0_pplads));
-AHMpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesM)+sqrt(e0_pplads-cos(reflected_anglesM).^2)));
-AVPHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesP)+sqrt(e0_hal-cos(reflected_anglesP).^2)/e0_hal));
-AHPHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesP)+sqrt(e0_hal-cos(reflected_anglesP).^2)));
-AVPpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesP)+sqrt(e0_pplads-cos(reflected_anglesP).^2)/e0_pplads));
-AHPpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesP)+sqrt(e0_pplads-cos(reflected_anglesP).^2)));
+AVMHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVM)+sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal));
+AHMHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVM)+sqrt(e0_hal-cos(reflected_anglesVM).^2)));
+AVMpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVM)+sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads));
+AHMpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVM)+sqrt(e0_pplads-cos(reflected_anglesVM).^2)));
+AVPHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVP)+sqrt(e0_hal-cos(reflected_anglesVP).^2)/e0_hal));
+AHPHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVP)+sqrt(e0_hal-cos(reflected_anglesVP).^2)));
+AVPpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVP)+sqrt(e0_pplads-cos(reflected_anglesVP).^2)/e0_pplads));
+AHPpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVP)+sqrt(e0_pplads-cos(reflected_anglesVP).^2)));
  
 GWPLVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaVMHal.*exp(1i*DeltaM)+(1-gammaVMHal).*AVMHal.*exp(1i*DeltaM))).^2);
+        abs((1+gammaVMHal.*exp(1i*DeltaVM)+(1-gammaVMHal).*AVMHal.*exp(1i*DeltaVM))).^2);
 GWPLHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaHMHal.*exp(1i*DeltaM)+(1-gammaHMHal).*AHMHal.*exp(1i*DeltaM))).^2); 
+        abs((1+gammaHMHal.*exp(1i*DeltaHM)+(1-gammaHMHal).*AHMHal.*exp(1i*DeltaHM))).^2); 
 GWPLVMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaVMpplads.*exp(1i*DeltaM)+(1-gammaVMpplads).*AVMpplads.*exp(1i*DeltaM))).^2);
+        abs((1+gammaVMpplads.*exp(1i*DeltaVM)+(1-gammaVMpplads).*AVMpplads.*exp(1i*DeltaVM))).^2);
 GWPLHMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaHMpplads.*exp(1i*DeltaM)+(1-gammaHMpplads).*AHMpplads.*exp(1i*DeltaM))).^2);
+        abs((1+gammaHMpplads.*exp(1i*DeltaHM)+(1-gammaHMpplads).*AHMpplads.*exp(1i*DeltaHM))).^2);
 GWPLVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaVPHal.*exp(1i*DeltaP)+(1-gammaVPHal).*AVPHal.*exp(1i*DeltaP))).^2);
+        abs((1+gammaVPHal.*exp(1i*DeltaVP)+(1-gammaVPHal).*AVPHal.*exp(1i*DeltaVP))).^2);
 GWPLHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaHPHal.*exp(1i*DeltaP)+(1-gammaHPHal).*AHPHal.*exp(1i*DeltaP))).^2); 
+        abs((1+gammaHPHal.*exp(1i*DeltaHP)+(1-gammaHPHal).*AHPHal.*exp(1i*DeltaHP))).^2); 
 GWPLVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaVPpplads.*exp(1i*DeltaP)+(1-gammaVPpplads).*AVPpplads.*exp(1i*DeltaP))).^2);
+        abs((1+gammaVPpplads.*exp(1i*DeltaVP)+(1-gammaVPpplads).*AVPpplads.*exp(1i*DeltaVP))).^2);
 GWPLHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaHPpplads.*exp(1i*DeltaP)+(1-gammaHPpplads).*AHPpplads.*exp(1i*DeltaP))).^2);
+        abs((1+gammaHPpplads.*exp(1i*DeltaHP)+(1-gammaHPpplads).*AHPpplads.*exp(1i*DeltaHP))).^2);
 GWPL = cat(3,GWPLVMHal, GWPLHMHal, GWPLVMpplads, GWPLHMpplads,...
     GWPLVPHal, GWPLHPHal, GWPLVPpplads, GWPLHPpplads);
 
 
-NSPLVMHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesM).^2)/e0_hal))./repmat(dist',1,10));
-NSPLHMHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesM).^2)))./repmat(dist',1,10));
-NSPLVMpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesM).^2)/e0_pplads))./repmat(dist',1,10));
-NSPLHMpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesM).^2)))./repmat(dist',1,10));
-NSPLVPHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesP).^2)/e0_hal))./repmat(dist',1,10));
-NSPLHPHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesP).^2)))./repmat(dist',1,10));
-NSPLVPpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesP).^2)/e0_pplads))./repmat(dist',1,10));
-NSPLHPpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesP).^2)))./repmat(dist',1,10));
+NSPLVMHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal))./repmat(dist',1,10));
+NSPLHMHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)))./repmat(dist',1,10));
+NSPLVMpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads))./repmat(dist',1,10));
+NSPLHMpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)))./repmat(dist',1,10));
+NSPLVPHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVP).^2)/e0_hal))./repmat(dist',1,10));
+NSPLHPHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVP).^2)))./repmat(dist',1,10));
+NSPLVPpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVP).^2)/e0_pplads))./repmat(dist',1,10));
+NSPLHPpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVP).^2)))./repmat(dist',1,10));
 NSPL = cat(3,NSPLVMHal, NSPLHMHal, NSPLVMpplads, NSPLHMpplads,...
     NSPLVPHal, NSPLHPHal, NSPLVPpplads, NSPLHPpplads);
 
 
-OurModelVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMHal.*exp(1i*DeltaM))));
-OurModelHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMHal.*exp(1i*DeltaM))));
-OurModelVMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMpplads.*exp(1i*DeltaM))));
-OurModelHMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMpplads.*exp(1i*DeltaM))));
-OurModelVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPHal.*exp(1i*DeltaP))));
-OurModelHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPHal.*exp(1i*DeltaP))));
-OurModelVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPpplads.*exp(1i*DeltaP))));
-OurModelHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPpplads.*exp(1i*DeltaP))));
+OurModelVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMHal.*exp(1i*DeltaVM))));
+OurModelHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMHal.*exp(1i*DeltaHM))));
+OurModelVMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMpplads.*exp(1i*DeltaVM))));
+OurModelHMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMpplads.*exp(1i*DeltaHM))));
+OurModelVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPHal.*exp(1i*DeltaVP))));
+OurModelHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPHal.*exp(1i*DeltaHP))));
+OurModelVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPpplads.*exp(1i*DeltaVP))));
+OurModelHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPpplads.*exp(1i*DeltaHP))));
 OurModel = cat(3,OurModelVMHal, OurModelHMHal, OurModelVMpplads, OurModelHMpplads,...
     OurModelVPHal, OurModelHPHal, OurModelVPpplads, OurModelHPpplads);
 
-dM = sqrt(repmat(d,10,1)'.^2+repmat((hRxM-hTxM),6,1).^2);
-dP = sqrt(repmat(d,10,1)'.^2+repmat((hRxP-hTxP),6,1).^2);
-
+dVM = sqrt(repmat(d,10,1)'.^2+repmat((hRxVM-hTxVM),6,1).^2);
+dVP = sqrt(repmat(d,10,1)'.^2+repmat((hRxVP-hTxVP),6,1).^2);
+dHM = sqrt(repmat(d,10,1)'.^2+repmat((hRxHM-hTxHM),6,1).^2);
+dHP = sqrt(repmat(d,10,1)'.^2+repmat((hRxHP-hTxHP),6,1).^2);
+dRec = cat(3,dVM,dHM,dVM,dHM,dVP,dHP,dVP,dHP);
 %%
 close all
 xmin = 0;
@@ -219,15 +245,15 @@ ymax = -20;
 for n = 1:10
     trace = n;
     figure;
-    plot(dM(:,trace),recVMHal(:,trace),'-*');
+    plot(dVM(:,trace),recVMHal(:,trace),'-*');
     hold on
-    plot(dM(:,trace),recVMpplads(:,trace),'-*');
-    plot(dM(:,trace),recVPHal(:,trace),'-*');
-    plot(dM(:,trace),recVPpplads(:,trace),'-*');
-    plot(dM(:,trace),recHMHal(:,trace),'-*');
-    plot(dM(:,trace),recHMpplads(:,trace),'-*');
-    plot(dM(:,trace),recHPHal(:,trace),'-*');
-    plot(dM(:,trace),recHPpplads(:,trace),'-*k');
+    plot(dVM(:,trace),recVMpplads(:,trace),'-*');
+    plot(dVM(:,trace),recVPHal(:,trace),'-*');
+    plot(dVM(:,trace),recVPpplads(:,trace),'-*');
+    plot(dVM(:,trace),recHMHal(:,trace),'-*');
+    plot(dVM(:,trace),recHMpplads(:,trace),'-*');
+    plot(dVM(:,trace),recHPHal(:,trace),'-*');
+    plot(dVM(:,trace),recHPpplads(:,trace),'-*k');
     grid
     string = sprintf('Trace %i',trace);
     title(string);
@@ -251,76 +277,76 @@ clc
 %7 VPpplads 
 %8 HPpplads
 
-for k = 1:1
+for k = 1:12
     switch(k)
         case 1
-            name = VPX;
+            name = 'VPX';
             model1 = 5;
             model2 = 7;
             s1 = 'VPHal';
             s2 = 'VPpplads';
         case 2
-            name = VMX;
+            name = 'VMX';
             model1 = 1;
             model2 = 3;
             s1 = 'VMHal';
             s2 = 'VMpplads';
         case 3
-            name = HPX;
+            name = 'HPX';
             model1 = 6;
             model2 = 8;
             s1 = 'HPHal';
             s2 = 'HPpplads';
         case 4
-            name = HMX;
+            name = 'HMX';
             model1 = 2;
             model2 = 4;
             s1 = 'HMHal';
             s2 = 'HMpplads';
         case 5
-            name = VXHal;
+            name = 'VXHal';
             model1 = 1;
             model2 = 5;
             s1 = 'VMHal';
             s2 = 'VPHal';
         case 6
-            name = VXpplads;
+            name = 'VXpplads';
             model1 = 3;
             model2 = 7;
             s1 = 'VMpplads';
             s2 = 'VPpplads';
         case 7
-            name = HXHal;
+            name = 'HXHal';
             model1 = 2;
             model2 = 6;
             s1 = 'HMHal';
             s2 = 'HPHal';
         case 8
-            name = HXpplads;
+            name = 'HXpplads';
             model1 = 4;
             model2 = 8;
             s1 = 'HMpplads';
             s2 = 'HPpplads';
         case 9
-            name = XPHal;
+            name = 'XPHal';
             model1 = 5;
             model2 = 6;
             s1 = 'VPHal';
             s2 = 'HPHal';
         case 10
-            name = XPpplads;
+            name = 'XPpplads';
             model1 = 7;
             model2 = 8;
             s1 = 'VPpplads';
             s2 = 'HPpplads';
         case 11
-            name = XMHal;
+            name = 'XMHal';
             model1 = 1;
             model2 = 2;
             s1 = 'VMHal';
             s2 = 'HMHal';
         case 12
-            name = XMpplads;
+            name = 'XMpplads';
             model1 = 3;
             model2 = 4;
             s1 = 'VMpplads';
@@ -331,10 +357,67 @@ for k = 1:1
 for n = 1:10
     subplot(3,4,n)
     trace = n;
+    plot(dist,FSPL);
+    hold on
+    plot(dRec(:,trace,model1),rec(:,trace,model1),'*','MarkerSize',2);
+    plot(dRec(:,trace,model2),rec(:,trace,model2),'*','MarkerSize',2);
+    plot(dist,TRPL(:,trace,model1),'r')
+    plot(dist,TRPL(:,trace,model2))
+    plot(dist,GWPL(:,trace,model1),'g');
+    plot(dist,GWPL(:,trace,model2));
+    plot(dist,NSPL(:,trace,model1),'c');
+    plot(dist,NSPL(:,trace,model2));
+    plot(dist,OurModel(:,trace,model1),'k');
+    plot(dist,OurModel(:,trace,model2));
+    xlim([xmin xmax]);
+    ylim([ymin ymax]);
+    string = sprintf('Trace %i',trace);
+    title(string);
+    grid;
+end
+%figure
+subplot(3,4,11)
+trace = 2;
+plot(dist,FSPL);
+hold on
+plot(dVM(:,trace),recVMHal(:,trace),'*');
+plot(dVP(:,trace),recVPHal(:,trace),'*');
+plot(dist,TRPLVMHal(:,trace),'r')
+plot(dist,TRPLVPHal(:,trace))
+plot(dist,GWPLVMHal(:,trace),'g');
+plot(dist,GWPLVPHal(:,trace));
+plot(dist,NSPLVMHal(:,trace),'c');
+plot(dist,NSPLVPHal(:,trace));
+plot(dist,OurModelVMHal(:,trace),'k');
+plot(dist,OurModelVPHal(:,trace));
+xlim([xmin xmax]);
+ylim([ymin ymax]);
+title('Legend');
+rec1 = strcat('rec',s1);
+rec2 = strcat('rec',s2);
+TRPL1 = strcat('TRPL',s1);
+TRPL2 = strcat('TRPL',s2);
+GWPL1 = strcat('GWPL',s1);
+GWPL2 = strcat('GWPL',s2);
+NSPL1 = strcat('NSPL',s1);
+NSPL2 = strcat('NSPL',s2);
+OurModel1 = strcat('OurModel',s1);
+OurModel2 = strcat('OurModel',s2);
+legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,'Location','NorthEast');
+load('myprinttemplate.mat') %loads the variable 'template'
+setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
+path = strcat('figs/',name); 
+print(gcf,path,'-dpdf')
+
+
+ figure;
+for n = 1:10
+    subplot(3,4,n)
+    trace = n;
     semilogx(dist,FSPL);
     hold on
-    semilogx(dM(:,trace),rec(:,trace,model1),'*','MarkerSize',2);
-    semilogx(dP(:,trace),rec(:,trace,model2),'*','MarkerSize',2);
+    semilogx(dRec(:,trace,model1),rec(:,trace,model1),'*','MarkerSize',2);
+    semilogx(dRec(:,trace,model2),rec(:,trace,model2),'*','MarkerSize',2);
     semilogx(dist,TRPL(:,trace,model1),'r')
     semilogx(dist,TRPL(:,trace,model2))
     semilogx(dist,GWPL(:,trace,model1),'g');
@@ -349,13 +432,13 @@ for n = 1:10
     title(string);
     grid;
 end
-
+%figure
 subplot(3,4,11)
 trace = 2;
 semilogx(dist,FSPL);
 hold on
-semilogx(dM(:,trace),recVMHal(:,trace),'*');
-semilogx(dP(:,trace),recVPHal(:,trace),'*');
+semilogx(dVM(:,trace),recVMHal(:,trace),'*');
+semilogx(dVP(:,trace),recVPHal(:,trace),'*');
 semilogx(dist,TRPLVMHal(:,trace),'r')
 semilogx(dist,TRPLVPHal(:,trace))
 semilogx(dist,GWPLVMHal(:,trace),'g');
@@ -380,6 +463,6 @@ OurModel2 = strcat('OurModel',s2);
 legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,'Location','NorthEast');
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
-path = strcat('figs/',name); 
+path = strcat('figs/',name,'Log'); 
 print(gcf,path,'-dpdf')
 end
