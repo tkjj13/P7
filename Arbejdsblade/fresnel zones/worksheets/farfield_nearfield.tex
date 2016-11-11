@@ -27,13 +27,19 @@ R > \frac{2 \cdot D^{2}}{\lambda}
 
 The Far field region $R$ provides the limit between Far field and Near field. The Far field region must also satisfy the following two equations:
 
-\begin{align}
-R &\gg D\\
-R &\gg \lambda
-\label{far_eq1_eq2}
-\end{align}
+\begin{equation}
+R \gg D
+\label{far_eq2}
+\end{equation}
 
-The first two equations, ensure that the power radiated in a given direction from different parts of the antenna are approximately parallel. This helps to ensure that waves in the Far field behave like plane waves. Plane waves only radiate towards the forward direction, and are in parallel. %This is illustrated on the following Figure:
+And
+
+\begin{equation}
+R \gg \lambda
+\label{far_eq_3}
+\end{equation}
+
+The first two equations given in \ref{far_field_eq1} and \ref{far_eq2} ensure that the power radiated in a given direction from different parts of the antenna are approximately parallel. This helps to ensure that waves in the Far field behave like plane waves. Plane waves only radiate towards the forward direction, and are in parallel. %This is illustrated on the following Figure:
 
 %\begin{figure}[H]
 %\centering
@@ -42,7 +48,7 @@ The first two equations, ensure that the power radiated in a given direction fro
 %\label{para_wave}
 %\end{figure}
 
-The third equation makes sure that the reactive Near fields are gone. The reactive near field is the region surrounding the antenna where the reactive field(standing waves or stored energy) are dominant. In a reactive field two oppositely waves are travelling, which are non-radiative, they do not radiate power, they store the energy. This means that the receiver antenna will not receive power in the Near field, as it does not radiate. %So the receiver antenna will not receive these standing waves, as a part of the power radiated, in the far field. 
+The third equation given in \ref{far_eq_3} makes sure that the reactive Near fields are gone. The reactive near field is the region surrounding the antenna where the reactive field(standing waves or stored energy) are dominant. In a reactive field two oppositely waves are travelling, which are non-radiative, they do not radiate power, they store the energy. This means that the receiver antenna will not receive power in the Near field, as it does not radiate. %So the receiver antenna will not receive these standing waves, as a part of the power radiated, in the far field. 
 The much larger sign $\gg$ stands for 10 times larger. 
 %The problem with the reactive field is that the receiving and the transmitting antenna may interact with each other 
 
@@ -70,7 +76,7 @@ In the Near field there are two regions the Non-radiative(Reactive) and Radiativ
 
 \begin{equation}
 R < 0.62 \cdot \sqrt{\frac{D^{3}}{\lambda}}
-\label{far_field_eq1}
+\label{near_field_eq}
 \end{equation}
 
 
@@ -78,8 +84,8 @@ While the Radiative(Fresnel) region is the region between the Near and Far field
 
 
 \begin{equation}
-0.62 \cdot \frac{D^{3}}{\lambda} < R < \frac{2 \cdot D^{2}}{\lambda}
-\label{far_field_eq1}
+0.62 \cdot \sqrt{\frac{D^{3}}{\lambda}} < R < \frac{2 \cdot D^{2}}{\lambda}
+\label{far_field_eq1_2}
 \end{equation}
 
 
@@ -93,13 +99,15 @@ The above can be summarized in the following Figure:
 \end{figure}
 
 
-\subsection{Far field calculation}
+\subsection{Far field Near field calculation}
 
-In order to calculate if the measurements are done in the Far field, the maximum dimension of a given antenna must be known. The maximum dimension $D$ is 0.105m. Then in terms of being in the Far field:
+\subsubsection{Patch 858Mhz}
+
+In order to calculate if the measurements are done in the Far field, the maximum dimension of a given antenna must be known. The maximum dimension $D$ is 0.105m, this given for the patch antenna of 858MHz. Then in terms of being in the Far field:
 
 \begin{equation}
 R > \frac{2 \cdot D^{2}}{\lambda}
-\label{far_field_eq1}
+\label{far_field_eq1_3}
 \end{equation}
 
 
@@ -116,4 +124,53 @@ Then:
 R> \frac{2 \cdot (0.105m)^{2}}{0.3453m} = 0.0639 m 
 \end{equation} 
 
-While the minimum R is 1m, as the minimum distance between the transmitter and receiver antenna is 1 m. And as it can be seen 1m, the Far field equation is fulfilled. 
+While the minimum R is 1m, as the minimum distance between the transmitter and receiver antenna is 1 m. And as it can be seen, the first Far field equation \ref{far_field_eq1_3} is fulfilled. 
+
+The two other Far field equations \ref{far_eq2} and \ref{far_eq_3}, the first one being:
+
+\begin{equation}
+1m \gg 0.105m
+\end{equation}
+
+Which is on the limit, to  being in the Far field. While the third one given in \ref{far_eq_3}:
+
+\begin{equation}
+1m \gg 0.3453m
+\end{equation}
+
+This is not fullfiled, and therefore it is not in the Far field the equation given in \ref{near_field_eq} is used.
+\newpage
+
+\subsubsection{Patch 2.58Ghz}
+
+The dimension $D$ is 0.037m. The wave length $\lambda$ for 2.58GHz is given as:
+
+\begin{equation}
+\lambda = \frac{3E8 ms^{-1}}{2.58 GHz} = 0.1161m
+\end{equation}
+
+Then, for 1m:
+
+\begin{equation}
+1m > \frac{2 \cdot (0.037m)^{2}}{0.1161m} = 0.0235m
+\end{equation} 
+
+Again the first equation is fulfilled. While the second:
+
+\begin{equation}
+1m \gg 0.037m
+\end{equation}
+
+As it can be seen is fulfilled. While the third one:
+
+\begin{equation}
+1m \gg 0.1161m
+\end{equation}
+
+
+
+ 
+
+
+
+

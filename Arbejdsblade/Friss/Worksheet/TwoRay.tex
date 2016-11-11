@@ -24,6 +24,58 @@ d_{c} = \frac{4\pi \cdot h_t h_r}{\lambda}
 
 If this condition is true then the two-ray model shall not give good results due to oscillations which are caused by the constructive and destructive combination of the two rays. This condition is true for small distances $d$.
 
+\subsection{Critical point calculation}
+For the measurements done, the condition is tested:
+
+\begin{equation}
+d<d_{c}
+\label{two_ray_cond_1}
+\end{equation}
+
+\subsubsection{For 2m and 2m heights of transmitter and receiver antennas}
+
+For 2m and 2m heights of the transmitter antenna and receiver antenna. This for a frequency of 858MHz:
+
+\begin{equation}
+d_{c} = \frac{4\pi \cdot 2m \cdot 2m}{0.3494m} = 143.86m
+\label{critical_fac_dc_calc_2_2_858MHz}
+\end{equation}
+
+So for 2m and 2m, for all distances from 1m to 30m between the sender and the receiver ,the results when using the Two-ray propagation model, shall experience oscillations which are caused by the constructive and destructive combination of the two rays, for a frequency of 858MHz.
+
+While the the same for 2.58GHz:
+
+\begin{equation}
+d_{c} = \frac{4\pi \cdot 2m \cdot 2m}{0.1161m} = 432.94m
+\label{critical_fac_dc_calc_2_2_2.58GHz}
+\end{equation}
+
+Again the condition is not met, for all distances, for 2m and 2m.
+
+
+\subsubsection{For 2m and 0.34 heights of transmitter and receiver antennas}
+While when the height of the transmitter antenna is 2m while the receiver antenna is placed at 0.34m, also for a frequency of 858Mhz:
+
+\begin{equation}
+d_{c} = \frac{4\pi \cdot 2m \cdot 0.34m}{0.3494m} = 24.45m
+\label{critical_fac_dc_calc_2_0.34}
+\end{equation}
+
+So for 2m and 0.34m for all distances from 1m to 15m, this condition is true while for a distance of 30m this condition is not true.
+
+While the the same for 2.58GHz:
+
+\begin{equation}
+d_{c} = \frac{4\pi \cdot 2m \cdot 0.34m}{0.1161m} = 73.60m
+\label{critical_fac_dc_calc_2_0.34.58GHz}
+\end{equation}
+
+Again this condition is not met for all distances.
+
+0.01, 0.08, 0.34, 2
+ 
+
+
 %else will the received power theoretically oscillates between
 %local maxima of 6dB above free space to $-\infty$ dB at local minima.
 
