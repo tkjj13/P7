@@ -88,7 +88,7 @@ Two different types of cables where used these are:
 \item SUCOFLEX$\_$104
 \end{itemize}
 
-The length for the  rg223/u cable is of 1M, while for the SUCOFLEX$\_$104 cable, two SUCOFLEX$\_$104 cables where used with different lengths of 1.5m and 2.20m.
+The length for the  rg223/u cable is of 1m, while for the SUCOFLEX$\_$104 cable, two SUCOFLEX$\_$104 cables where used with different lengths of 1.5m and 2.20m.
 
 The cable loss for the rg223/u cable is read from the data sheet then interpolated, from the data sheet it is given that the attenuation factor is given in dB per 100 meters. 
 
@@ -96,7 +96,7 @@ The cable loss for the rg223/u cable is read from the data sheet then interpolat
 %Attenuation factor = [dB/100]
 %\end{equation}
 
-In the data sheet it can be read that for 1000 Mhz a loss of  13.4dB per 100 m, while for 3 Ghz it is 24.8dB per 100 m. There has been made an interpolation of the Attenuation factors, so that a more precise Attenuation factor can be calculated so for 2.58 Ghz and 856 Mhz the following Attenuation factors have been calculated, for 1 m:
+In the data sheet it can be read that for 1000MHz a loss of  13.4dB per 100 m, while for 3 GHz it is 24.8dB per 100 m. There has been made an interpolation of the Attenuation factors, so that a more precise Attenuation factor can be calculated so for 2.58 GHz and 856 MHz the following Attenuation factors have been calculated, for 1 m:
 
 \begin{equation}
 Attenuation factor\_2.58 = \frac{22.4}{100}  = 0.224dB
@@ -117,7 +117,7 @@ a_{25} = a\cdot \sqrt{f(Ghz)} + b \cdot f(Ghz) \quad [db/m]
 \va{$b$}{Nom.attenuation = 0.0071}{-}
 \end{where}
 
-The attenuation factor for 858 Mhz is equal to 0.327dB while for 2.58 Ghz it is 0.579dB for 1.5m. While for 2.20m the attenuation factor for 858 Mhz is equal to 0.480dB, while for 2.58 Ghz it is 0.850dB. In the following an Table of the cable loss can be seen: 
+The attenuation factor for 858 MHz is equal to 0.327 dB while for 2.58 GHz it is 0.579dB for 1.5m. While for 2.20m the attenuation factor for 858 MHz is equal to 0.480 dB, while for 2.58 GHz it is 0.850 dB. In the following an Table of the cable loss can be seen: 
 \\
 \\
 \begin{table}[H]
@@ -126,7 +126,7 @@ The attenuation factor for 858 Mhz is equal to 0.327dB while for 2.58 Ghz it is 
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-                                                                            & \begin{tabular}[c]{@{}l@{}}Mono \\ 2.58 Ghz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Mono \\ 858 Mhz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Patch \\ 2.58Ghz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Patch \\ 858Mhz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Demo board \\ 868 Mhz\end{tabular} \\ \hline
+                                                                            & \begin{tabular}[c]{@{}l@{}}Mono \\ 2.58 Ghz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Mono \\ 858 MHz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Patch \\ 2.58GHz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Patch \\ 858MHz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Demo board \\ 868 MHz\end{tabular} \\ \hline
 Cable loss: rg223\_u                                                        & -0.224dB                                                 & -0.127dB                                                & -0.224dB                                                 & -0.127dB                                                & -                                                             \\ \hline
 \begin{tabular}[c]{@{}l@{}}Cable loss: SUCOFLEX\_104 \\ (1.5m)\end{tabular} & -0.579dB                                                 & -0.327dB                                                & -0.579dB                                                 & -0.327dB                                                & -                                                             \\ \hline
 \begin{tabular}[c]{@{}l@{}}Cable loss: SUCOFLEX\_104 \\ (2.5m)\end{tabular} & -0.850dB                                                 & -0.480dB                                                & -0.850dB                                                 & -0.480dB                                                & -                                                             \\ \hline
