@@ -32,7 +32,7 @@ d<d_{c}
 \label{two_ray_cond_1}
 \end{equation}
 
-\subsubsection{For 2m and 2m heights of transmitter and receiver antennas}
+\subsubsection{For 2m and 2m heights of transmitter and receiver antennas, for both 858MHz and 2.58GHz}
 
 For 2m and 2m heights of the transmitter antenna and receiver antenna. This for a frequency of 858MHz:
 
@@ -41,7 +41,7 @@ d_{c} = \frac{4\pi \cdot 2m \cdot 2m}{0.3494m} = 143.86m
 \label{critical_fac_dc_calc_2_2_858MHz}
 \end{equation}
 
-So for 2m and 2m, for all distances from 1m to 30m between the sender and the receiver ,the results when using the Two-ray propagation model, shall experience oscillations which are caused by the constructive and destructive combination of the two rays, for a frequency of 858MHz.
+So for 2m and 2m, for all distances from 1m to 30m between the sender and the receiver, the results when using the Two-ray propagation model, shall experience oscillations caused by the constructive and destructive combination of the two rays.
 
 While the the same for 2.58GHz:
 
@@ -53,28 +53,167 @@ d_{c} = \frac{4\pi \cdot 2m \cdot 2m}{0.1161m} = 432.94m
 Again the condition is not met, for all distances, for 2m and 2m.
 
 
-\subsubsection{For 2m and 0.34 heights of transmitter and receiver antennas}
-While when the height of the transmitter antenna is 2m while the receiver antenna is placed at 0.34m, also for a frequency of 858Mhz:
+%\subsubsection{For 2m and 0.34 heights of transmitter and receiver antennas, for both 858MHz and 2.58GHz}
+%While when the height of the transmitter antenna is 2m while the receiver antenna is placed at 0.34m, also for a frequency of 858Mhz:
 
-\begin{equation}
-d_{c} = \frac{4\pi \cdot 2m \cdot 0.34m}{0.3494m} = 24.45m
-\label{critical_fac_dc_calc_2_0.34}
-\end{equation}
+%\begin{equation}
+%d_{c} = \frac{4\pi \cdot 2m \cdot 0.34m}{0.3494m} = 24.45m
+%\label{critical_fac_dc_calc_2_0.34}
+%\end{equation}
 
-So for 2m and 0.34m for all distances from 1m to 15m, this condition is true while for a distance of 30m this condition is not true.
+%So for 2m and 0.34m for all distances from 1m to 15m, this condition is true while for a distance of 30m this condition is not true.
 
-While the the same for 2.58GHz:
+%While the the same for 2.58GHz:
 
-\begin{equation}
-d_{c} = \frac{4\pi \cdot 2m \cdot 0.34m}{0.1161m} = 73.60m
-\label{critical_fac_dc_calc_2_0.34.58GHz}
-\end{equation}
+%\begin{equation}
+%d_{c} = \frac{4\pi \cdot 2m \cdot 0.34m}{0.1161m} = 73.60m
+%\label{critical_fac_dc_calc_2_0.34.58GHz}
+%\end{equation}
 
-Again this condition is not met for all distances.
+%Again this condition is not met for all distances.
 
-0.01, 0.08, 0.34, 2
- 
+%0.01, 0.08, 0.34, 2.
 
+\subsubsection{858Mhz}
+
+In the following a table \ref{critical_dc_858_0.01} is made to illustrate if the condition stated in \ref{two_ray_cond_1}, is met for all distances, 1m,2m,4m,8m,15m and 30m, between the transmitter and receiver ,for the frequency 858MHz, with 0.01m set and compared with 0.01m, 0.08m, 0.34, and 2m transmitter and receiver height positions $h_{t}$ and $h_{r}$.
+\\
+\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|ll}
+\cline{1-3}
+                   & 858MHZ &                                                                               &  &  \\ \cline{1-3}
+$h_{t}$,$h_{r}$    & Met    & Not met                                                                       &  &  \\ \cline{1-3}
+0.01m, 0.01m, $d_{c}$ = 0.0036m        &    & \begin{tabular}[c]{@{}l@{}}At all distances\\ \end{tabular} &  &  \\ \cline{1-3}
+0.01m, 0.08m,  $d_{c}$ = 0.028m       &   & \begin{tabular}[c]{@{}l@{}}At all distances\\ \end{tabular}  &  &  \\ \cline{1-3}
+0.01m, 0.34m,  $d_{c}$ = 0.12m       &   & \begin{tabular}[c]{@{}l@{}}At all distances\\ \end{tabular}   &  &  \\ \cline{1-3}
+0.01m, 2m, $d_{c}$ = 0.72m          &    & \begin{tabular}[c]{@{}l@{}}At all distances\\ \end{tabular}   &  &  \\ \cline{1-3}
+\end{tabular}
+\label{critical_dc_858_0.01}
+\caption{My caption}
+\end{table}
+
+\newpage
+For 0.08m:
+
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|ll}
+\cline{1-3}
+                   & 858MHZ     &                                                                             &  &  \\ \cline{1-3}
+$h_{t}$,$h_{r}$    & Met        & Not met                                                                     &  &  \\ \cline{1-3}
+0.08m, 0.08m,$d_{c}$ = 0.23m         &        & \begin{tabular}[c]{@{}l@{}}At all distances\\ \end{tabular} &  &  \\ \cline{1-3}
+0.08m, 0.34, $d_{c}$ = 0.97m         &      & \begin{tabular}[c]{@{}l@{}}At all distances\\ \end{tabular} &  &  \\ \cline{1-3}
+0.08m, 2m, $d_{c}$ = 5.76m           & 1,2 and 4m  & \begin{tabular}[c]{@{}l@{}}At 8,15 and 30m\\ \end{tabular}  &  &  \\ \cline{1-3}
+\end{tabular}
+\caption{My caption}
+\end{table}
+
+So for 0.08m and 2 the condition $d<d_{c}$ for distances of 1m, 2m and 4m, is met. While for 0.08m and 0.08, and 0.08m and 0.34, the condition is not met and the results with Two ray model shall not experience oscillations caused by the constructive and destructive combination of the two rays. 
+
+
+For 0.34m
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|ll}
+\cline{1-3}
+                   & 858MHZ     &                                                                         &  &  \\ \cline{1-3}
+$h_{t}$,$h_{r}$ & Met          & Not met                                                                    &  &  \\ \cline{1-3}
+0.34m, 0.34m, $d_{c}$ = 4.16m       & 1,2,4       & \begin{tabular}[c]{@{}l@{}}At 8, 15,30m\\ \end{tabular} &  &  \\ \cline{1-3}
+0.34m, 2m, $d_{c}$ = 24.48m          & 1,2,4,8,15   & \begin{tabular}[c]{@{}l@{}}At 30\\\end{tabular}       &  &  \\ \cline{1-3}
+\end{tabular}
+\caption{My caption}
+\end{table}
+
+For 2m
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|ll}
+\cline{1-3}
+             & 858MHZ                                                                     &         &  &  \\ \cline{1-3}
+$h_{t}$,$h _{r}$ & Met                                                                    & Not met &  &  \\ \cline{1-3}
+2m,2m. $d_{c}$ = 144m        & \begin{tabular}[c]{@{}l@{}}At all distances\\  \end{tabular} &         &  &  \\ \cline{1-3}
+\end{tabular}
+\caption{My caption}
+\end{table}
+\newpage
+\subsubsection{2.58GHz}
+
+For 0.01m
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{lllll}
+\cline{1-3}
+\multicolumn{1}{|l|}{}                                                                         & \multicolumn{1}{l|}{2.58GHz}   & \multicolumn{1}{l|}{}                 &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{$h_{t}$,$h_{r}$}                                                       & \multicolumn{1}{l|}{Met}       & \multicolumn{1}{l|}{Not met}          &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}0.01m,0.01m\\ $d_{c}$ = 0.010\end{tabular}}   & \multicolumn{1}{l|}{}          & \multicolumn{1}{l|}{At all distances} &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}0.01m, 0.08m\\ $d_{c}$ = 0.0865\end{tabular}} & \multicolumn{1}{l|}{}          & \multicolumn{1}{l|}{At all distances} &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}0.01m,0.34m\\ $d_{c}$ = 0.36\end{tabular}}    & \multicolumn{1}{l|}{}          & \multicolumn{1}{l|}{At all distances} &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}0.01m,2m\\ $d_{c}$ = 2.16\end{tabular}}       & \multicolumn{1}{l|}{1m and 2m} & \multicolumn{1}{l|}{At 4,8,15,30m}    &  &  \\ \cline{1-3}
+                                                                                               &                                &                                       &  & 
+\end{tabular}
+\caption{My caption}
+\end{table}
+
+
+For 0.08m
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{lllll}
+\cline{1-3}
+\multicolumn{1}{|l|}{}                                                                       & \multicolumn{1}{l|}{2.58GHz}                                                   & \multicolumn{1}{l|}{}                                                             &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{$h_{t}$,$h_{r}$}                                                     & \multicolumn{1}{l|}{Met}                                                       & \multicolumn{1}{l|}{Not met}                                                      &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}0.08m,0.08m\\ $d_{c}$ = 0.69\end{tabular}}  & \multicolumn{1}{l|}{}                                                          & \multicolumn{1}{l|}{At all distances}                                             &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}0.08m, 0.34m\\ $d_{c}$ = 2.94\end{tabular}} & \multicolumn{1}{l|}{1, 2m}                                                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}At, 4,8,15 and\\ 15m\end{tabular}} &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}0.08m,2m\\ $d_{c}$ = 17.31\end{tabular}}    & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1,2,4,8\\ and 15m\end{tabular}} & \multicolumn{1}{l|}{At 30m}                                                       &  &  \\ \cline{1-3}
+
+\end{tabular}
+\caption{My caption}
+\end{table}
+\newpage
+For 0.34m
+
+
+\begin{table}[H]
+\centering
+
+\label{my-label}
+\begin{tabular}{lllll}
+\cline{1-3}
+\multicolumn{1}{|l|}{}                                                                       & \multicolumn{1}{l|}{2.58GHz}                                                    & \multicolumn{1}{l|}{}           &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{$h_{t}$,$h_{r}$}                                                     & \multicolumn{1}{l|}{Met}                                                        & \multicolumn{1}{l|}{Not met}    &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}0.34m,0.34m\\ $d_{c}$ = 12.51\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}At 1,2,4\\ and 8m\end{tabular}}  & \multicolumn{1}{l|}{At 15, 30m} &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}0.34m, 2m\\ $d_{c}$ = 73.6\end{tabular}}    & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}At all\\ distances\end{tabular}} & \multicolumn{1}{l|}{}           &  &  \\ \cline{1-3}
+\end{tabular}
+\caption{My caption}
+\end{table}
+
+
+For 2m
+
+\begin{table}[H]
+\centering
+
+\label{my-label}
+\begin{tabular}{lllll}
+\cline{1-3}
+\multicolumn{1}{|l|}{}                                                                 & \multicolumn{1}{l|}{2.58GHz}                                                     & \multicolumn{1}{l|}{}        &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{$h_{t}$,$h_{r}$}                                               & \multicolumn{1}{l|}{Met}                                                         & \multicolumn{1}{l|}{Not met} &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}2m,2m\\ $d_{c}$ = 432.9\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}At all \\ distances\end{tabular}} & \multicolumn{1}{l|}{}        &  &  \\ \cline{1-3}
+\end{tabular}
+\caption{My caption}
+\end{table}
 
 %else will the received power theoretically oscillates between
 %local maxima of 6dB above free space to $-\infty$ dB at local minima.
@@ -100,3 +239,24 @@ Again this condition is not met for all distances.
 
 
 %LPE = 40 log10(d) $-$ 20 log10(ht) $-$ 20 log10(hr )
+
+
+
+
+
+
+
+%\begin{table}[H]
+%\centering
+%\label{mylabel}
+%\begin{tabular}{|l|l|l|ll}
+%\cline{1-3}
+ %               & 858MHz        &                                                                                   &  &  \\              \cline{1-3}
+%$h_{t}$,$h_{r}$ & Not met & Met                                                                           &  &  \\ \cline{1-3}
+%0.01m, 0.01m       & At all distances               & \begin{tabular}[c]{@{}l@{}}\\ $d_{c}$ = 0.0036m\end{tabular}   &  &  \\ \cline{1-3}
+%2m, 0.34m          & 30m           & \begin{tabular}[c]{@{}l@{}}All other distances\\ $d_{c}$ = 24.45m\end{tabular} &  &  \\ \cline{1-3}
+%2m, 0.08m          & 8m, 15m, 30m  & \begin{tabular}[c]{@{}l@{}}At 1m, 2m, 4m\\ $d_{c}$ = 5.76m\end{tabular}        &  &  \\ \cline{1-3}
+%2m, 0.01m          & All distances & $d_{c}$ = 0.72m                                                                &  &  \\ \cline{1-3}
+%\end{tabular}
+%\caption{Table illustrating if the condition given in \ref{two_ray_cond_1}, is met. This is where 2m is set, with 0.34m,0.08m and 0.01m where it is set for which distances the condition is true.}
+%\end{table}
