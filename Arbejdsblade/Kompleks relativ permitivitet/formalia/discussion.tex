@@ -1,0 +1,26 @@
+\chapter{Discussion}
+Based on the system designed in this project, there are a wide range of things which can be improved upon to increase the performance of the system.
+
+Regarding the main functionality of the system, balancing in an upright position, different issues can be improved. In the project, a P-controller has been made for the motors and wheels, and a PID-controller is used for the inverted pendulum. This is sufficient to stabilise the system, but to further increase the performance, several cascaded control loops can be utilized. For instance, an inner controller for the angular velocity of the inverted pendulum, $\omega_p$ can be implemented, as it is known that cascaded control loops increase performance, assuming that the inner loops' responses are sufficiently fast.
+
+%No position controller has been designed, meaning that the segway might drift with regards to its position on the ground when standing. This can be removed by adding a position controller that uses the encoder data. This will also make the segway return to its original position when pushed.\\
+
+%A position controller will also allow the segway to be standing on an inclined plane, which is currently not possible.\\
+%The cascade controller will also help increase the performance of the system, by means of reducing overshoot and the steady-state error.
+
+
+Improving the system model may also be of considerable effect, as it has proved necessary to tune the controller parameters with a factor of nearly 50, to make the designed controller work on the real system. This implies an error in the model or the implementation of the controller.\\
+The turning functionality shall also be implemented, and the remote controller can be developed, such that a physical joystick can be used to remote control the segway, in order to make it more intuitive for the user to drive the segway.
+
+Regarding the digital filters, the CPU time available for the filtering shall be increased, in order to make it possible to run the filter code on the segway. A faster sampling frequency can also be used for the angle measurements, since the sampling frequency currently is too low to filter the noise noticeably.
+A hardware \iic  module can also be implemented in the microcontroller, since it requires less computation time to transmit and receive data from the sensors, freeing CPU time for other tasks.
+
+After designing the protocol used for the communication between the remote controller and the segway, it is seen that this can be improved to become more efficient. For instance, the \emph{reply} flag is not needed, as it is implied by the data transmitted to the segway, if a reply is to be sent or not. Removing the checksum can be done as well, as the radio modules already include a checksum. This will also reduce the computation time of running the communication code.\\
+In the remote controller, the timeout is currently implemented as a busy-wait, meaning the remote controller cannot perform other tasks until a reply is received or a timeout is achieved. This can be improved by changing it to an interrupt-based implementation.\\
+
+It is advantageous to change the type of the radio modules, as it has been observed that the data loss over the channel is rather big. A consequence being that data is requested multiple times before a reply is received.
+
+In the microcontroller, a real-time operating system (RTOS) can also be implemented, instead of having multiple timer interrups, which is currently used. This will make the implementation of multiple controller loops easier, since it allows for all control loops to run on the same timer, in independent tasks, instead of having a timer interrupt for each controller. It will also ease the job of prioritizing the tasks, as this can be done rather easily in a RTOS. However, additional computation time will be added when using a RTOS, due to context switching.\\
+Finally, the feasibility of the implemented code can be investigated in order to ensure that all deadlines are met, with respect to the different controllers, filters and communication handling.
+ 
+Implementing these suggestions will make the system perform better and result in an overall better product.
