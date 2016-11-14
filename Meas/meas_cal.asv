@@ -59,6 +59,7 @@ hHP = [0.082 0.174 0.34 2];
 d = [1 2 4 8 15 30];
 
 % extrapolate heights
+disp('Start calculation for 858 MHz')
 hRxVM = [hVM(1) hVM(1) hVM(1) hVM(1) hVM(2) hVM(2) hVM(2) hVM(3) hVM(3) hVM(4)];
 hTxVM = [hVM(1) hVM(2) hVM(3) hVM(4) hVM(2) hVM(3) hVM(4) hVM(3) hVM(4) hVM(4)];
 hRxVP = [hVP(1) hVP(1) hVP(1) hVP(1) hVP(2) hVP(2) hVP(2) hVP(3) hVP(3) hVP(4)];
@@ -265,6 +266,29 @@ for n = 1:10
     name = strcat(string,' rec');
     path = strcat('figs858/',name); 
     print(gcf,path,'-dpng')
+    
+    figure;
+    semilogx(dVM(:,trace),recVMHal(:,trace),'-*');
+    hold on
+    semilogx(dVM(:,trace),recVMpplads(:,trace),'-*');
+    semilogx(dVP(:,trace),recVPHal(:,trace),'-*');
+    semilogx(dVP(:,trace),recVPpplads(:,trace),'-*');
+    semilogx(dHM(:,trace),recHMHal(:,trace),'-*');
+    semilogx(dHM(:,trace),recHMpplads(:,trace),'-*');
+    semilogx(dHP(:,trace),recHPHal(:,trace),'-*');
+    semilogx(dHP(:,trace),recHPpplads(:,trace),'-*k');
+    grid
+    string = sprintf('Trace %i',trace);
+    title(string);
+    xlim([xmin xmax]);
+    ylim([ymin ymax]);
+    legend('recVMHal','recVMpplads','recVPHal','recVPpplads',...
+           'recHMHal','recHMpplads','recHPHal','recHPpplads');
+    load('myprinttemplate.mat') %loads the variable 'template'
+    setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
+    name = strcat(string,' rec Log');
+    path = strcat('figs858/',name); 
+    print(gcf,path,'-dpng')
 end
 
 
@@ -358,7 +382,8 @@ for k = 1:12
         otherwise
     end
     figure;
-for n = 1:10
+    diff858(:,:,k) = rec(:,:,model1)-rec(:,:,model2);
+for n = 1:1
     subplot(3,4,n)
     trace = n;
     plot(dist,FSPL);
@@ -415,7 +440,7 @@ print(gcf,path,'-dpdf')
 
 
  figure;
-for n = 1:10
+for n = 1:1
     subplot(3,4,n)
     trace = n;
     semilogx(dist,FSPL);
@@ -474,23 +499,22 @@ end
 
 %%
 close all
-clear all
 
 %% 2580 MHz
 % make setup parameters
 system_loss = -1.6;
 e0_pplads = 1.056328613365062 + 0.054890091028511i;    % p-plads 2580
 e0_hal = 1.032217622-0.02475786003*1i;       % hal 2580
-antennaFileM = 'mono24tot.txt';
+antennaFileM = 'monoStor.txt';
 dataHMHal = hal_mono2580_hor;
 dataVMHal = hal_mono2580_vert;
-dataHMpplads = pplads_mono_2850_hor;
-dataVMpplads = pplads_mono_2850_vert;
+dataHMpplads = pplads_mono_2580_hor;
+dataVMpplads = pplads_mono_2580_vert;
 freqM = 2580E6;
 
 antennaFileP = 'patch24nyv2.txt';
 dataHPHal = hal_patch2580_hor;
-dataVPHal = hal_patch2850_vert;
+dataVPHal = hal_patch2580_vert;
 dataHPpplads = pplads_patch_2580_hor;
 dataVPpplads = pplads_patch_2580_vert;
 freqP = 2580E6;
@@ -501,6 +525,7 @@ hVP = [0.038 0.13 0.34 2];
 hHP = [0.048 0.14 0.34 2];
 d = [1 2 4 8 15 30];
 
+disp('Start calculation for 2580 MHz')
 % extrapolate heights
 hRxVM = [hVM(1) hVM(1) hVM(1) hVM(1) hVM(2) hVM(2) hVM(2) hVM(3) hVM(3) hVM(4)];
 hTxVM = [hVM(1) hVM(2) hVM(3) hVM(4) hVM(2) hVM(3) hVM(4) hVM(3) hVM(4) hVM(4)];
@@ -708,6 +733,29 @@ for n = 1:10
     name = strcat(string,' rec');
     path = strcat('figs2580/',name); 
     print(gcf,path,'-dpng')
+    
+     figure;
+    semilogx(dVM(:,trace),recVMHal(:,trace),'-*');
+    hold on
+    semilogx(dVM(:,trace),recVMpplads(:,trace),'-*');
+    semilogx(dVP(:,trace),recVPHal(:,trace),'-*');
+    semilogx(dVP(:,trace),recVPpplads(:,trace),'-*');
+    semilogx(dHM(:,trace),recHMHal(:,trace),'-*');
+    semilogx(dHM(:,trace),recHMpplads(:,trace),'-*');
+    semilogx(dHP(:,trace),recHPHal(:,trace),'-*');
+    semilogx(dHP(:,trace),recHPpplads(:,trace),'-*k');
+    grid
+    string = sprintf('Trace %i',trace);
+    title(string);
+    xlim([xmin xmax]);
+    ylim([ymin ymax]);
+    legend('recVMHal','recVMpplads','recVPHal','recVPpplads',...
+           'recHMHal','recHMpplads','recHPHal','recHPpplads');
+    load('myprinttemplate.mat') %loads the variable 'template'
+    setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
+    name = strcat(string,' rec Log');
+    path = strcat('figs2580/',name); 
+    print(gcf,path,'-dpng')
 end
 
 
@@ -801,6 +849,7 @@ for k = 1:12
         otherwise
     end
     figure;
+    diff2580(:,:,k) = rec(:,:,model1)-rec(:,:,model2);
 for n = 1:10
     subplot(3,4,n)
     trace = n;

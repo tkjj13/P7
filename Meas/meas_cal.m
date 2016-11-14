@@ -382,6 +382,7 @@ for k = 1:12
         otherwise
     end
     figure;
+    diff858(:,:,k) = rec(:,:,model1)-rec(:,:,model2);
 for n = 1:10
     subplot(3,4,n)
     trace = n;
@@ -848,6 +849,7 @@ for k = 1:12
         otherwise
     end
     figure;
+    diff2580(:,:,k) = rec(:,:,model1)-rec(:,:,model2);
 for n = 1:10
     subplot(3,4,n)
     trace = n;
@@ -964,4 +966,14 @@ end
 
 %%
 close all
-
+clc
+for n = 1:12
+    for k = 1:10
+        %subplot(4,3,k)
+        %semilogx(dRec(:,k,1),diff858(:,k,n),'-*');
+        %hold on;
+        %xlim([0.9 31]);
+        %ylim([-30 30]);
+        tabel(:,n,k) = diff2580(:,k,n);
+    end
+end
