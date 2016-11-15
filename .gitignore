@@ -160,5 +160,6 @@ pythontex-files-*/
 TSWLatexianTemp*
 report/main.pdf
 
-#Matlab
+#Matlab and excel
 *.asv
+*~*.xlsx
