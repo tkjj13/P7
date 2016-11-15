@@ -1,13 +1,15 @@
 \subsection{Modeller}
 
-In terms of calculating the path loss, different path loss propagation models can be applied, to calculate the power received, given different conditions. The Friss transmission equation calculates the power received, given only free space loss, and is given in the following Equation:
+In terms of calculating the path loss, different path loss propagation models can be applied, to calculate the power received, given different conditions. The Friss free space path loss equation (FSPL) calculates the power received, given only free space loss, and is given in the following Equation:
 
 \begin{equation}
-P_r = P_t G_t G_r (\frac{\lambda}{4 \pi d})^2
+P_r = P_t G_t G_r \left(\frac{\lambda}{4 \pi d}\right)^2
 \label{simple_friss}
 \end{equation}
 
-where $P_{r}$ is the power received, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively. While $\lambda$ is the wavelength of the transmitted signal, $d$ is the distance between the transmitting and receiving antenna. The model given above given in Equation \ref{simple_friss} is not the the complete Friss transmission equation, as it indicates perfect polarization, and the the antennas are pointing directly at each other, and perfect matching between the system and antennas. The Friss transmission equation does not take into account the reflected wave. The reflected wave becomes significant as the distance increases between the transmitter and receiver antenna. Therefore another model can be used called, the two-ray-ground-reflection path loss model, and is given as:
+where $P_{r}$ is the power received, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively. While $\lambda$ is the wavelength of the transmitted signal, $d$ is the distance between the transmitting and receiving antenna. The model given above given in \eqref{simple_friss} is not the the complete FSPL, as it assumes no losses due to polarization mismatch, pointing error, and matching between the system and antennas. 
+
+FSPL does not take into account the reflected wave. The reflected wave becomes significant as the distance increases between the transmitter and receiver antenna. Therefore another model can be used called, the two-ray-ground-reflection path loss model, and is given as:
 
 \begin{equation}
 P_r(d) = \frac{P_t G_t G_r h^2_t h^2_r}{L \cdot d^4}
