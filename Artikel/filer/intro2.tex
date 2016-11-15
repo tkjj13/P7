@@ -1,0 +1,45 @@
+\subsection{Modeller}
+
+In terms of calculating the path loss, different path loss propagation models can be applied, to calculate the power received, given different conditions. The Friss transmission equation calculates the power received, given only free space loss, meaning no reflections are introduced ,and is given in the following Equation:
+
+\begin{equation}
+P_r = P_t G_t G_r (\frac{\lambda}{4 \pi d})^2
+\label{simple_friss}
+\end{equation}
+
+where $P_{r}$ is the power received, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively. While $\lambda$ is the wavelength of the transmitted signal, $d$ is the distance between the transmitting and receiving antenna. The model given above given in Equation \ref{simple_friss} is not the the complete Friss transmission equation, as it indicates perfect polarization, and the the antennas are pointing directly at each other, and perfect matching between the system and antennas. As it can be read the Friss transmission equation does not take into account the reflected wave. Therefore another model can be used called, the two-ray-ground-reflection path loss model, and is given as:
+
+\begin{equation}
+P_r(d) = \frac{P_t G_t G_r h^2_t h^2_r}{L \cdot d^4}
+\label{two_ray_model}
+\end{equation}
+
+where $P_r(d)$ is the power received given the distance between the transmitter and receiver antenna, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively. $h^2_t$, $h^2_r$ is the height of the transmitting and receiving antenna respectively.  While $L$ is the system loss, and $d^{4}$ is the distance between the transmitter and receiver antenna. As the two-ray-ground-reflection path loss model considers two signals, a direct and a reflected signal, this gives the following condition
+
+
+%a condition is introduced given as:
+
+\begin{equation}
+d < d_{c}
+\label{two_ray_cond}
+\end{equation}
+
+where $d$ is the distance between the transmitter and receiver antenna, while $d_{c}$ is called the cross over distance and is given as:
+
+\begin{equation}
+d_{c} = \frac{4\pi \cdot h^2_t h^2_r }{\lambda}
+\label{two_ray_cross_dis}
+\end{equation}  
+
+
+If introduced condition is true the model predicts oscillations which are caused by the constructive and destructive combination of the two rays.
+
+
+%a parameter called the cross over distance $d_{c}$ is introduced, and is given as:
+
+
+
+
+
+
+%Another model which takes into account the free space loss and the reflection   
