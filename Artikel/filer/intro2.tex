@@ -1,0 +1,83 @@
+\subsection{Modeller}
+
+In terms of calculating the path loss, different path loss propagation models can be applied, to calculate the power received, given different conditions. The Friss free space path loss equation (FSPL) \eqref{simple_friss} calculates the power received, given only free space loss \cite{?}.
+
+\begin{equation}
+P_r = \frac{P_t G_t G_r}{L} \left(\frac{\lambda}{4 \pi d}\right)^2
+\label{simple_friss}
+\end{equation}
+
+Where $P_{r}$ is the power received, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively. While $\lambda$ is the wavelength of the transmitted signal, $d$ is the distance between the transmitting and receiving antenna. The model given above given in \eqref{simple_friss} is not the the complete FSPL, as it assumes no losses due to polarization mismatch, pointing error, and matching between the system and antennas\cite{?}. \\
+
+However FSPL only accounts for the direct wave between receiver and transmitter. A model that also accounts for the single point reflected wave is the two-ray-ground-reflection path loss model (TRPL)\eqref{two_ray_model}. A way to decide between which models to use, is based on the condition \eqref{two_ray_cond}, if false use the FSPL if true use the TRPL. The cross over distance $d_c$ can be found using \eqref{two_ray_cross_dis} \cite{web}. 
+
+
+\begin{equation}
+P_r(d) = \frac{P_t G_t G_r }{L}\left(\frac{h_t h_r}{d^2}\right)^2
+\label{two_ray_model}
+\end{equation}
+
+Where $P_r(d)$ is the power received given the distance between the transmitter and receiver antenna, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively. $h_t$, $h_r$ is the height of the transmitting and receiving antenna respectively.  While $L$ is the system loss, and $d$ is the distance between the transmitter and receiver antenna. As the two-ray-ground-reflection path loss model considers two waves,a direct and a reflected wave. Due to this the model predicts  oscillations which are caused by the constructive and destructive combination of the two waves, if the following condition is true:
+
+
+%this gives the following condition:
+
+
+%a condition is introduced given as:
+
+\begin{equation}
+d < d_{c}
+\label{two_ray_cond}
+\end{equation}
+
+Where $d$ is the distance between the transmitter and receiver antenna, while $d_{c}$ is called the cross over distance and is given as:
+
+\begin{equation}
+d_{c} = \frac{4\pi \cdot h^2_t h^2_r }{\lambda}
+\label{two_ray_cross_dis}
+\end{equation}  
+
+When considering the power received, when placing the antennas at the ground another wave becomes a factor. This wave is called the surface wave, and is given by the following Equation:
+
+\begin{equation}
+P_r=\frac{P_t G_t G_r }{L}\frac{h_0}{d}^4
+\label{surface_wave}
+\end{equation}
+
+where $P_{r}$ is the power received, $P_{t}$ is the power transmitted from the transmitter, $G_{r}$ is the gain of the receiver antenna, while $G_{t}$ is the gain of the transmitter antenna. A combination of the above mentioned models, shall give the power received, with respect to the direct wave, reflected wave and the surface wave this can be expressed as the $ground$ wave and is given in the following equation:
+
+
+\begin{equation}
+P_r=P_0 \left|\frac{E}{E_0}\right|^2 
+\label{ground_wave}
+\end{equation}
+
+where
+
+\begin{equation}
+\frac{E}{E_{0}}=[\underbrace{1}_{direct}+\underbrace{R\text{e}^{j\Delta}}_{reflected}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{surface}]
+\end{equation}
+
+$P_{0}$ is the desired path loss model, where if the friis transmission equation is used, the $direct wave$ is in use, and therefore the friis transmission equation will be multiplied by 1. While if the two-ray-ground-reflection path loss model it is indicated as $P_{0}$, and is multiplied with the $reflected wave$ factor, where the rest is set as zero. 
+
+
+
+
+%where ${direct}$ represents the friis transmission equation, ${reflected}$ represents two-ray-ground-reflection path loss model, and  ${surface}$ represents the surface wave. 
+
+%In order to also get the 
+
+%The two-ray-ground-reflection path loss model,  
+
+
+%If introduced condition is true the model predicts oscillations which are caused by the constructive and destructive combination of the two rays.
+
+
+%a parameter called the cross over distance $d_{c}$ is introduced, and is given as:
+
+
+
+
+
+
+%Another model which takes into account the free space loss and the reflection   
