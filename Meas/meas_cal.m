@@ -3,7 +3,7 @@ close all;
 clear all;
 load('pplads_meas_raw.mat');
 load('hal_meas_raw.mat');
-
+printFigs = 0;
 % arcronym guide
 % first model type
 % rec = recieved data
@@ -265,8 +265,9 @@ for n = 1:10
     setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
     name = strcat(string,' rec');
     path = strcat('figs858/',name); 
-    print(gcf,path,'-dpng')
-    
+    if printFigs
+        print(gcf,path,'-dpng')
+    end
     figure;
     semilogx(dVM(:,trace),recVMHal(:,trace),'-*');
     hold on
@@ -287,8 +288,10 @@ for n = 1:10
     load('myprinttemplate.mat') %loads the variable 'template'
     setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
     name = strcat(string,' rec Log');
-    path = strcat('figs858/',name); 
-    print(gcf,path,'-dpng')
+    path = strcat('figs858/',name);
+    if printFigs
+        print(gcf,path,'-dpng')
+    end
 end
 
 
@@ -436,8 +439,9 @@ legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 path = strcat('figs858/',name); 
-print(gcf,path,'-dpdf')
-
+if printFigs
+    print(gcf,path,'-dpdf')
+end
 
  figure;
 for n = 1:10
@@ -493,7 +497,9 @@ legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 path = strcat('figs858/',name,'Log'); 
-print(gcf,path,'-dpdf')
+if printFigs
+    print(gcf,path,'-dpdf')
+end
 end
 %%
 for k = 1:15
@@ -547,7 +553,7 @@ for k = 1:15
     end
     for par = 1:8
         for trace = 1:10
-            diffdist((par-1)*10+trace,k) = rec(d1,trace,par)-rec(d2,trace,par);
+            diff858dist((par-1)*10+trace,k) = rec(d1,trace,par)-rec(d2,trace,par);
         end
     end
 end
@@ -695,7 +701,7 @@ for k = 1:45
     end
     for par = 1:8
         for dist = 1:6
-            difftrace((par-1)*6+dist,k) = rec(dist,t1,par)-rec(dist,t2,par);
+            diff858trace((par-1)*6+dist,k) = rec(dist,t1,par)-rec(dist,t2,par);
         end
     end
 end
@@ -936,7 +942,9 @@ for n = 1:10
     setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
     name = strcat(string,' rec');
     path = strcat('figs2580/',name); 
-    print(gcf,path,'-dpng')
+    if printFigs
+        print(gcf,path,'-dpng')
+    end
     
      figure;
     semilogx(dVM(:,trace),recVMHal(:,trace),'-*');
@@ -959,7 +967,9 @@ for n = 1:10
     setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
     name = strcat(string,' rec Log');
     path = strcat('figs2580/',name); 
-    print(gcf,path,'-dpng')
+    if printFigs
+        print(gcf,path,'-dpng')
+    end
 end
 
 
@@ -1107,8 +1117,9 @@ legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 path = strcat('figs2580/',name); 
-print(gcf,path,'-dpdf')
-
+if printFigs
+    print(gcf,path,'-dpdf')
+end
 
  figure;
 for n = 1:10
@@ -1164,9 +1175,213 @@ legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 path = strcat('figs2580/',name,'Log'); 
-print(gcf,path,'-dpdf')
+if printFigs
+    print(gcf,path,'-dpdf')
+end
+end
+for k = 1:15
+    switch(k)
+        case 1
+            d1 = 1;
+            d2 = 2;
+        case 2
+            d1 = 1;
+            d2 = 3;
+        case 3
+            d1 = 1;
+            d2 = 4;
+        case 4
+            d1 = 1;
+            d2 = 5;
+        case 5
+            d1 = 1;
+            d2 = 6;
+        case 6
+            d1 = 2;
+            d2 = 3;
+        case 7
+            d1 = 2;
+            d2 = 4;
+        case 8
+            d1 = 2;
+            d2 = 5;
+        case 9
+            d1 = 2;
+            d2 = 6;
+        case 10
+            d1 = 3;
+            d2 = 4;
+        case 11
+            d1 = 3;
+            d2 = 5;
+        case 12
+            d1 = 3;
+            d2 = 6;
+        case 13
+            d1 = 4;
+            d2 = 5;
+        case 14
+            d1 = 4;
+            d2 = 6;
+        case 15
+            d1 = 5;
+            d2 = 6;
+        otherwise
+    end
+    for par = 1:8
+        for trace = 1:10
+            diff2580dist((par-1)*10+trace,k) = rec(d1,trace,par)-rec(d2,trace,par);
+        end
+    end
 end
 
+
+%%
+for k = 1:45
+    switch(k)
+        case 1
+            t1 = 1;
+            t2 = 2;
+        case 2
+            t1 = 1;
+            t2 = 3;
+        case 3
+            t1 = 1;
+            t2 = 4;
+        case 4
+            t1 = 1;
+            t2 = 5;
+        case 5
+            t1 = 1;
+            t2 = 6;
+        case 6
+            t1 = 1;
+            t2 = 7;
+        case 7
+            t1 = 1;
+            t2 = 8;
+        case 8
+            t1 = 1;
+            t2 = 9;
+        case 9
+            t1 = 1;
+            t2 = 10;
+        case 10
+            t1 = 2;
+            t2 = 3;
+        case 11
+            t1 = 2;
+            t2 = 4;
+        case 12
+            t1 = 2;
+            t2 = 5;
+        case 13
+            t1 = 2;
+            t2 = 6;
+        case 14
+            t1 = 2;
+            t2 = 7;
+        case 15
+            t1 = 2;
+            t2 = 8;
+        case 16
+            t1 = 2;
+            t2 = 9;
+        case 17
+            t1 = 2;
+            t2 = 10;
+        case 18
+            t1 = 3;
+            t2 = 4;
+        case 19
+            t1 = 3;
+            t2 = 5;
+        case 20
+            t1 = 3;
+            t2 = 6;
+        case 21
+            t1 = 3;
+            t2 = 7;
+        case 22
+            t1 = 3;
+            t2 = 8;
+        case 23
+            t1 = 3;
+            t2 = 9;
+        case 24
+            t1 = 3;
+            t2 = 10;
+        case 25
+            t1 = 4;
+            t2 = 5;
+        case 26
+            t1 = 4;
+            t2 = 6;
+        case 27
+            t1 = 4;
+            t2 = 7;
+        case 28
+            t1 = 4;
+            t2 = 8;
+        case 29
+            t1 = 4;
+            t2 = 9;
+        case 30
+            t1 = 4;
+            t2 = 10;
+        case 31
+            t1 = 5;
+            t2 = 6;
+        case 32
+            t1 = 5;
+            t2 = 7;
+        case 33
+            t1 = 5;
+            t2 = 8;
+        case 34
+            t1 = 5;
+            t2 = 9;
+        case 35
+            t1 = 5;
+            t2 = 10;
+        case 36
+            t1 = 6;
+            t2 = 7;
+        case 37
+            t1 = 6;
+            t2 = 8;
+        case 38
+            t1 = 6;
+            t2 = 9;
+        case 39
+            t1 = 6;
+            t2 = 10;
+        case 40
+            t1 = 7;
+            t2 = 8;
+        case 41
+            t1 = 7;
+            t2 = 9;
+        case 42
+            t1 = 7;
+            t2 = 10;
+        case 43
+            t1 = 8;
+            t2 = 9;
+        case 44
+            t1 = 8;
+            t2 = 10;
+        case 45
+            t1 = 9;
+            t2 = 10;
+        otherwise
+    end
+    for par = 1:8
+        for dist = 1:6
+            diff2580trace((par-1)*6+dist,k) = rec(dist,t1,par)-rec(dist,t2,par);
+        end
+    end
+end
 
 %%
 close all
