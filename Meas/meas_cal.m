@@ -3,7 +3,7 @@ close all;
 clear all;
 load('pplads_meas_raw.mat');
 load('hal_meas_raw.mat');
-
+printFigs = 1;
 % arcronym guide
 % first model type
 % rec = recieved data
@@ -166,43 +166,48 @@ gammaHPpplads = (sin(reflected_anglesVP)-(sqrt(e0_pplads-cos(reflected_anglesVP)
         (sin(reflected_anglesVP)+(sqrt(e0_pplads-cos(reflected_anglesVP).^2))/e0_pplads);
     
     
-
-TRPLVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMHal.*exp(1i*DeltaVM))).^2);
-TRPLHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMHal.*exp(1i*DeltaHM))).^2);
-TRPLVMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMpplads.*exp(1i*DeltaVM))).^2);
-TRPLHMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMpplads.*exp(1i*DeltaHM))).^2);
-TRPLVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPHal.*exp(1i*DeltaVP))).^2);
-TRPLHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPHal.*exp(1i*DeltaHP))).^2);
-TRPLVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPpplads.*exp(1i*DeltaVP))).^2);
-TRPLHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPpplads.*exp(1i*DeltaHP))).^2);
+P0 = repmat(((3E8/freqP)./(4*pi*dist))',1,10).^2;
+TRPLVMHal = 10*log10(P0.*abs((1+gammaVMHal.*exp(1i*DeltaVM))).^2);
+TRPLHMHal = 10*log10(P0.*abs((1+gammaHMHal.*exp(1i*DeltaHM))).^2);
+TRPLVMpplads = 10*log10(P0.*abs((1+gammaVMpplads.*exp(1i*DeltaVM))).^2);
+TRPLHMpplads = 10*log10(P0.*abs((1+gammaHMpplads.*exp(1i*DeltaHM))).^2);
+TRPLVPHal = 10*log10(P0.*abs((1+gammaVPHal.*exp(1i*DeltaVP))).^2);
+TRPLHPHal = 10*log10(P0.*abs((1+gammaHPHal.*exp(1i*DeltaHP))).^2);
+TRPLVPpplads = 10*log10(P0.*abs((1+gammaVPpplads.*exp(1i*DeltaVP))).^2);
+TRPLHPpplads = 10*log10(P0.*abs((1+gammaHPpplads.*exp(1i*DeltaHP))).^2);
 TRPL = cat(3,TRPLVMHal, TRPLHMHal, TRPLVMpplads, TRPLHMpplads,...
     TRPLVPHal, TRPLHPHal, TRPLVPpplads, TRPLHPpplads);
 
-AVMHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVM)+sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal));
-AHMHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVM)+sqrt(e0_hal-cos(reflected_anglesVM).^2)));
-AVMpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVM)+sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads));
-AHMpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVM)+sqrt(e0_pplads-cos(reflected_anglesVM).^2)));
-AVPHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVP)+sqrt(e0_hal-cos(reflected_anglesVP).^2)/e0_hal));
-AHPHal = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVP)+sqrt(e0_hal-cos(reflected_anglesVP).^2)));
-AVPpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVP)+sqrt(e0_pplads-cos(reflected_anglesVP).^2)/e0_pplads));
-AHPpplads = -1./(1+1j.*2.*pi.*repmat(((3E8/freqP)./(4*pi*dist))',1,10).*(sin(reflected_anglesVP)+sqrt(e0_pplads-cos(reflected_anglesVP).^2)));
+TRPLVMHalaprox = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2))).^2)';
+TRPLHMHalaprox = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2))).^2)';
+TRPLVMppladsaprox = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2))).^2)';
+TRPLHMppladsaprox = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2))).^2)';
+TRPLVPHalaprox = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2))).^2)';
+TRPLHPHalaprox = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2))).^2)';
+TRPLVPppladsaprox = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2))).^2)';
+TRPLHPppladsaprox = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2))).^2)';
+TRPLaprox = cat(3,TRPLVMHalaprox, TRPLHMHalaprox, TRPLVMppladsaprox, TRPLHMppladsaprox,...
+    TRPLVPHalaprox, TRPLHPHalaprox, TRPLVPppladsaprox, TRPLHPppladsaprox);
+
+
+AVMHal = -1./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVM)+sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal));
+AHMHal = -1./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVM)+sqrt(e0_hal-cos(reflected_anglesVM).^2)));
+AVMpplads = -1./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVM)+sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads));
+AHMpplads = -1./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVM)+sqrt(e0_pplads-cos(reflected_anglesVM).^2)));
+AVPHal = -1./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVP)+sqrt(e0_hal-cos(reflected_anglesVP).^2)/e0_hal));
+AHPHal = -1./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVP)+sqrt(e0_hal-cos(reflected_anglesVP).^2)));
+AVPpplads = -1./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVP)+sqrt(e0_pplads-cos(reflected_anglesVP).^2)/e0_pplads));
+AHPpplads = -1./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVP)+sqrt(e0_pplads-cos(reflected_anglesVP).^2)));
  
-GWPLVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaVMHal.*exp(1i*DeltaVM)+(1-gammaVMHal).*AVMHal.*exp(1i*DeltaVM))).^2);
-GWPLHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaHMHal.*exp(1i*DeltaHM)+(1-gammaHMHal).*AHMHal.*exp(1i*DeltaHM))).^2); 
-GWPLVMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaVMpplads.*exp(1i*DeltaVM)+(1-gammaVMpplads).*AVMpplads.*exp(1i*DeltaVM))).^2);
-GWPLHMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaHMpplads.*exp(1i*DeltaHM)+(1-gammaHMpplads).*AHMpplads.*exp(1i*DeltaHM))).^2);
-GWPLVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaVPHal.*exp(1i*DeltaVP)+(1-gammaVPHal).*AVPHal.*exp(1i*DeltaVP))).^2);
-GWPLHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaHPHal.*exp(1i*DeltaHP)+(1-gammaHPHal).*AHPHal.*exp(1i*DeltaHP))).^2); 
-GWPLVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaVPpplads.*exp(1i*DeltaVP)+(1-gammaVPpplads).*AVPpplads.*exp(1i*DeltaVP))).^2);
-GWPLHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*...
-        abs((1+gammaHPpplads.*exp(1i*DeltaHP)+(1-gammaHPpplads).*AHPpplads.*exp(1i*DeltaHP))).^2);
+
+GWPLVMHal = 10*log10(P0.*abs((1+gammaVMHal.*exp(1i*DeltaVM)+(1-gammaVMHal).*AVMHal.*exp(1i*DeltaVM))).^2);
+GWPLHMHal = 10*log10(P0.*abs((1+gammaHMHal.*exp(1i*DeltaHM)+(1-gammaHMHal).*AHMHal.*exp(1i*DeltaHM))).^2); 
+GWPLVMpplads = 10*log10(P0.*abs((1+gammaVMpplads.*exp(1i*DeltaVM)+(1-gammaVMpplads).*AVMpplads.*exp(1i*DeltaVM))).^2);
+GWPLHMpplads = 10*log10(P0.*abs((1+gammaHMpplads.*exp(1i*DeltaHM)+(1-gammaHMpplads).*AHMpplads.*exp(1i*DeltaHM))).^2);
+GWPLVPHal = 10*log10(P0.*abs((1+gammaVPHal.*exp(1i*DeltaVP)+(1-gammaVPHal).*AVPHal.*exp(1i*DeltaVP))).^2);
+GWPLHPHal = 10*log10(P0.*abs((1+gammaHPHal.*exp(1i*DeltaHP)+(1-gammaHPHal).*AHPHal.*exp(1i*DeltaHP))).^2); 
+GWPLVPpplads = 10*log10(P0.*abs((1+gammaVPpplads.*exp(1i*DeltaVP)+(1-gammaVPpplads).*AVPpplads.*exp(1i*DeltaVP))).^2);
+GWPLHPpplads = 10*log10(P0.*abs((1+gammaHPpplads.*exp(1i*DeltaHP)+(1-gammaHPpplads).*AHPpplads.*exp(1i*DeltaHP))).^2);
 GWPL = cat(3,GWPLVMHal, GWPLHMHal, GWPLVMpplads, GWPLHMpplads,...
     GWPLVPHal, GWPLHPHal, GWPLVPpplads, GWPLHPpplads);
 
@@ -219,16 +224,16 @@ NSPL = cat(3,NSPLVMHal, NSPLHMHal, NSPLVMpplads, NSPLHMpplads,...
     NSPLVPHal, NSPLHPHal, NSPLVPpplads, NSPLHPpplads);
 
 
-OurModelVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMHal.*exp(1i*DeltaVM))));
-OurModelHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMHal.*exp(1i*DeltaHM))));
-OurModelVMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMpplads.*exp(1i*DeltaVM))));
-OurModelHMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMpplads.*exp(1i*DeltaHM))));
-OurModelVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPHal.*exp(1i*DeltaVP))));
-OurModelHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPHal.*exp(1i*DeltaHP))));
-OurModelVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPpplads.*exp(1i*DeltaVP))));
-OurModelHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPpplads.*exp(1i*DeltaHP))));
-OurModel = cat(3,OurModelVMHal, OurModelHMHal, OurModelVMpplads, OurModelHMpplads,...
-    OurModelVPHal, OurModelHPHal, OurModelVPpplads, OurModelHPpplads);
+% OurModelVMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMHal.*exp(1i*DeltaVM))));
+% OurModelHMHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMHal.*exp(1i*DeltaHM))));
+% OurModelVMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVMpplads.*exp(1i*DeltaVM))));
+% OurModelHMpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHMpplads.*exp(1i*DeltaHM))));
+% OurModelVPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPHal.*exp(1i*DeltaVP))));
+% OurModelHPHal = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPHal.*exp(1i*DeltaHP))));
+% OurModelVPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaVPpplads.*exp(1i*DeltaVP))));
+% OurModelHPpplads = 20*log10(repmat(((3E8/freqP)./(4*pi*dist))',1,10).*abs((1+gammaHPpplads.*exp(1i*DeltaHP))));
+% OurModel = cat(3,OurModelVMHal, OurModelHMHal, OurModelVMpplads, OurModelHMpplads,...
+%    OurModelVPHal, OurModelHPHal, OurModelVPpplads, OurModelHPpplads);
 
 dVM = sqrt(repmat(d,10,1)'.^2+repmat((hRxVM-hTxVM),6,1).^2);
 dVP = sqrt(repmat(d,10,1)'.^2+repmat((hRxVP-hTxVP),6,1).^2);
@@ -239,7 +244,7 @@ dRec = cat(3,dVM,dHM,dVM,dHM,dVP,dHP,dVP,dHP);
 close all
 xmin = 0;
 xmax = 31;
-ymin = -130;
+ymin = -100;
 ymax = -20;
 %%
 for n = 1:10
@@ -265,8 +270,9 @@ for n = 1:10
     setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
     name = strcat(string,' rec');
     path = strcat('figs858/',name); 
-    print(gcf,path,'-dpng')
-    
+    if printFigs
+        print(gcf,path,'-dpng')
+    end
     figure;
     semilogx(dVM(:,trace),recVMHal(:,trace),'-*');
     hold on
@@ -287,8 +293,10 @@ for n = 1:10
     load('myprinttemplate.mat') %loads the variable 'template'
     setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
     name = strcat(string,' rec Log');
-    path = strcat('figs858/',name); 
-    print(gcf,path,'-dpng')
+    path = strcat('figs858/',name);
+    if printFigs
+        print(gcf,path,'-dpng')
+    end
 end
 
 
@@ -392,12 +400,14 @@ for n = 1:10
     plot(dRec(:,trace,model2),rec(:,trace,model2),'*','MarkerSize',2);
     plot(dist,TRPL(:,trace,model1),'r')
     plot(dist,TRPL(:,trace,model2))
-    plot(dist,GWPL(:,trace,model1),'g');
+    plot(dist,TRPLaprox(:,trace,model1),'g')
+    plot(dist,TRPLaprox(:,trace,model2))
+    plot(dist,GWPL(:,trace,model1),'k');
     plot(dist,GWPL(:,trace,model2));
     plot(dist,NSPL(:,trace,model1),'c');
     plot(dist,NSPL(:,trace,model2));
-    plot(dist,OurModel(:,trace,model1),'k');
-    plot(dist,OurModel(:,trace,model2));
+%    plot(dist,OurModel(:,trace,model1),'k');
+%    plot(dist,OurModel(:,trace,model2));
     xlim([xmin xmax]);
     ylim([ymin ymax]);
     string = sprintf('Trace %i',trace);
@@ -413,12 +423,14 @@ plot(dVM(:,trace),recVMHal(:,trace),'*');
 plot(dVP(:,trace),recVPHal(:,trace),'*');
 plot(dist,TRPLVMHal(:,trace),'r')
 plot(dist,TRPLVPHal(:,trace))
-plot(dist,GWPLVMHal(:,trace),'g');
+plot(dist,TRPLVMHal(:,trace),'g')
+plot(dist,TRPLVPHal(:,trace))
+plot(dist,GWPLVMHal(:,trace),'k');
 plot(dist,GWPLVPHal(:,trace));
 plot(dist,NSPLVMHal(:,trace),'c');
 plot(dist,NSPLVPHal(:,trace));
-plot(dist,OurModelVMHal(:,trace),'k');
-plot(dist,OurModelVPHal(:,trace));
+%plot(dist,OurModelVMHal(:,trace),'k');
+%plot(dist,OurModelVPHal(:,trace));
 xlim([xmin xmax]);
 ylim([ymin ymax]);
 title('Legend');
@@ -426,18 +438,21 @@ rec1 = strcat('rec',s1);
 rec2 = strcat('rec',s2);
 TRPL1 = strcat('TRPL',s1);
 TRPL2 = strcat('TRPL',s2);
+TRPL1aprox = strcat('TRPL',s1,'aprox');
+TRPL2aprox = strcat('TRPL',s2,'aprox');
 GWPL1 = strcat('GWPL',s1);
 GWPL2 = strcat('GWPL',s2);
 NSPL1 = strcat('NSPL',s1);
 NSPL2 = strcat('NSPL',s2);
-OurModel1 = strcat('OurModel',s1);
-OurModel2 = strcat('OurModel',s2);
-legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,'Location','NorthEast');
+%OurModel1 = strcat('OurModel',s1);
+%OurModel2 = strcat('OurModel',s2);
+legend('FSPL',rec1,rec2,TRPL1,TRPL2,TRPL1aprox,TRPL2aprox,GWPL1,GWPL2,NSPL1,NSPL2,'Location','NorthEast');
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 path = strcat('figs858/',name); 
-print(gcf,path,'-dpdf')
-
+if printFigs
+    print(gcf,path,'-dpdf')
+end
 
  figure;
 for n = 1:10
@@ -449,12 +464,14 @@ for n = 1:10
     semilogx(dRec(:,trace,model2),rec(:,trace,model2),'*','MarkerSize',2);
     semilogx(dist,TRPL(:,trace,model1),'r')
     semilogx(dist,TRPL(:,trace,model2))
-    semilogx(dist,GWPL(:,trace,model1),'g');
+    semilogx(dist,TRPLaprox(:,trace,model1),'g')
+    semilogx(dist,TRPLaprox(:,trace,model2))
+    semilogx(dist,GWPL(:,trace,model1),'k');
     semilogx(dist,GWPL(:,trace,model2));
     semilogx(dist,NSPL(:,trace,model1),'c');
     semilogx(dist,NSPL(:,trace,model2));
-    semilogx(dist,OurModel(:,trace,model1),'k');
-    semilogx(dist,OurModel(:,trace,model2));
+%    semilogx(dist,OurModel(:,trace,model1),'k');
+%    semilogx(dist,OurModel(:,trace,model2));
     xlim([xmin xmax]);
     ylim([ymin ymax]);
     string = sprintf('Trace %i',trace);
@@ -470,12 +487,14 @@ semilogx(dVM(:,trace),recVMHal(:,trace),'*');
 semilogx(dVP(:,trace),recVPHal(:,trace),'*');
 semilogx(dist,TRPLVMHal(:,trace),'r')
 semilogx(dist,TRPLVPHal(:,trace))
-semilogx(dist,GWPLVMHal(:,trace),'g');
+semilogx(dist,TRPLVMHal(:,trace),'g')
+semilogx(dist,TRPLVPHal(:,trace))
+semilogx(dist,GWPLVMHal(:,trace),'k');
 semilogx(dist,GWPLVPHal(:,trace));
 semilogx(dist,NSPLVMHal(:,trace),'c');
 semilogx(dist,NSPLVPHal(:,trace));
-semilogx(dist,OurModelVMHal(:,trace),'k');
-semilogx(dist,OurModelVPHal(:,trace));
+%semilogx(dist,OurModelVMHal(:,trace),'k');
+%semilogx(dist,OurModelVPHal(:,trace));
 xlim([xmin xmax]);
 ylim([ymin ymax]);
 title('Legend');
@@ -483,17 +502,226 @@ rec1 = strcat('rec',s1);
 rec2 = strcat('rec',s2);
 TRPL1 = strcat('TRPL',s1);
 TRPL2 = strcat('TRPL',s2);
+TRPL1aprox = strcat('TRPL',s1,'approx');
+TRPL2aprox = strcat('TRPL',s2,'approx');
 GWPL1 = strcat('GWPL',s1);
 GWPL2 = strcat('GWPL',s2);
 NSPL1 = strcat('NSPL',s1);
 NSPL2 = strcat('NSPL',s2);
 OurModel1 = strcat('OurModel',s1);
 OurModel2 = strcat('OurModel',s2);
-legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,'Location','NorthEast');
+legend('FSPL',rec1,rec2,TRPL1,TRPL2,TRPL1aprox,TRPL2aprox,GWPL1,GWPL2,NSPL1,NSPL2,'Location','NorthEast');
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 path = strcat('figs858/',name,'Log'); 
-print(gcf,path,'-dpdf')
+if printFigs
+    print(gcf,path,'-dpdf')
+end
+end
+return
+%%
+for k = 1:15
+    switch(k)
+        case 1
+            d1 = 1;
+            d2 = 2;
+        case 2
+            d1 = 1;
+            d2 = 3;
+        case 3
+            d1 = 1;
+            d2 = 4;
+        case 4
+            d1 = 1;
+            d2 = 5;
+        case 5
+            d1 = 1;
+            d2 = 6;
+        case 6
+            d1 = 2;
+            d2 = 3;
+        case 7
+            d1 = 2;
+            d2 = 4;
+        case 8
+            d1 = 2;
+            d2 = 5;
+        case 9
+            d1 = 2;
+            d2 = 6;
+        case 10
+            d1 = 3;
+            d2 = 4;
+        case 11
+            d1 = 3;
+            d2 = 5;
+        case 12
+            d1 = 3;
+            d2 = 6;
+        case 13
+            d1 = 4;
+            d2 = 5;
+        case 14
+            d1 = 4;
+            d2 = 6;
+        case 15
+            d1 = 5;
+            d2 = 6;
+        otherwise
+    end
+    for par = 1:8
+        for trace = 1:10
+            diff858dist((par-1)*10+trace,k) = rec(d1,trace,par)-rec(d2,trace,par);
+        end
+    end
+end
+
+
+%%
+for k = 1:45
+    switch(k)
+        case 1
+            t1 = 1;
+            t2 = 2;
+        case 2
+            t1 = 1;
+            t2 = 3;
+        case 3
+            t1 = 1;
+            t2 = 4;
+        case 4
+            t1 = 1;
+            t2 = 5;
+        case 5
+            t1 = 1;
+            t2 = 6;
+        case 6
+            t1 = 1;
+            t2 = 7;
+        case 7
+            t1 = 1;
+            t2 = 8;
+        case 8
+            t1 = 1;
+            t2 = 9;
+        case 9
+            t1 = 1;
+            t2 = 10;
+        case 10
+            t1 = 2;
+            t2 = 3;
+        case 11
+            t1 = 2;
+            t2 = 4;
+        case 12
+            t1 = 2;
+            t2 = 5;
+        case 13
+            t1 = 2;
+            t2 = 6;
+        case 14
+            t1 = 2;
+            t2 = 7;
+        case 15
+            t1 = 2;
+            t2 = 8;
+        case 16
+            t1 = 2;
+            t2 = 9;
+        case 17
+            t1 = 2;
+            t2 = 10;
+        case 18
+            t1 = 3;
+            t2 = 4;
+        case 19
+            t1 = 3;
+            t2 = 5;
+        case 20
+            t1 = 3;
+            t2 = 6;
+        case 21
+            t1 = 3;
+            t2 = 7;
+        case 22
+            t1 = 3;
+            t2 = 8;
+        case 23
+            t1 = 3;
+            t2 = 9;
+        case 24
+            t1 = 3;
+            t2 = 10;
+        case 25
+            t1 = 4;
+            t2 = 5;
+        case 26
+            t1 = 4;
+            t2 = 6;
+        case 27
+            t1 = 4;
+            t2 = 7;
+        case 28
+            t1 = 4;
+            t2 = 8;
+        case 29
+            t1 = 4;
+            t2 = 9;
+        case 30
+            t1 = 4;
+            t2 = 10;
+        case 31
+            t1 = 5;
+            t2 = 6;
+        case 32
+            t1 = 5;
+            t2 = 7;
+        case 33
+            t1 = 5;
+            t2 = 8;
+        case 34
+            t1 = 5;
+            t2 = 9;
+        case 35
+            t1 = 5;
+            t2 = 10;
+        case 36
+            t1 = 6;
+            t2 = 7;
+        case 37
+            t1 = 6;
+            t2 = 8;
+        case 38
+            t1 = 6;
+            t2 = 9;
+        case 39
+            t1 = 6;
+            t2 = 10;
+        case 40
+            t1 = 7;
+            t2 = 8;
+        case 41
+            t1 = 7;
+            t2 = 9;
+        case 42
+            t1 = 7;
+            t2 = 10;
+        case 43
+            t1 = 8;
+            t2 = 9;
+        case 44
+            t1 = 8;
+            t2 = 10;
+        case 45
+            t1 = 9;
+            t2 = 10;
+        otherwise
+    end
+    for par = 1:8
+        for dist = 1:6
+            diff858trace((par-1)*6+dist,k) = rec(dist,t1,par)-rec(dist,t2,par);
+        end
+    end
 end
 
 
@@ -732,7 +960,9 @@ for n = 1:10
     setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
     name = strcat(string,' rec');
     path = strcat('figs2580/',name); 
-    print(gcf,path,'-dpng')
+    if printFigs
+        print(gcf,path,'-dpng')
+    end
     
      figure;
     semilogx(dVM(:,trace),recVMHal(:,trace),'-*');
@@ -755,7 +985,9 @@ for n = 1:10
     setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
     name = strcat(string,' rec Log');
     path = strcat('figs2580/',name); 
-    print(gcf,path,'-dpng')
+    if printFigs
+        print(gcf,path,'-dpng')
+    end
 end
 
 
@@ -903,8 +1135,9 @@ legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 path = strcat('figs2580/',name); 
-print(gcf,path,'-dpdf')
-
+if printFigs
+    print(gcf,path,'-dpdf')
+end
 
  figure;
 for n = 1:10
@@ -960,9 +1193,213 @@ legend('FSPL',rec1,rec2,TRPL1,TRPL2,GWPL1,GWPL2,NSPL1,NSPL2,OurModel1,OurModel2,
 load('myprinttemplate.mat') %loads the variable 'template'
 setprinttemplate(gcf,template) %sets the print template for the current figure to be one you just loaded
 path = strcat('figs2580/',name,'Log'); 
-print(gcf,path,'-dpdf')
+if printFigs
+    print(gcf,path,'-dpdf')
+end
+end
+for k = 1:15
+    switch(k)
+        case 1
+            d1 = 1;
+            d2 = 2;
+        case 2
+            d1 = 1;
+            d2 = 3;
+        case 3
+            d1 = 1;
+            d2 = 4;
+        case 4
+            d1 = 1;
+            d2 = 5;
+        case 5
+            d1 = 1;
+            d2 = 6;
+        case 6
+            d1 = 2;
+            d2 = 3;
+        case 7
+            d1 = 2;
+            d2 = 4;
+        case 8
+            d1 = 2;
+            d2 = 5;
+        case 9
+            d1 = 2;
+            d2 = 6;
+        case 10
+            d1 = 3;
+            d2 = 4;
+        case 11
+            d1 = 3;
+            d2 = 5;
+        case 12
+            d1 = 3;
+            d2 = 6;
+        case 13
+            d1 = 4;
+            d2 = 5;
+        case 14
+            d1 = 4;
+            d2 = 6;
+        case 15
+            d1 = 5;
+            d2 = 6;
+        otherwise
+    end
+    for par = 1:8
+        for trace = 1:10
+            diff2580dist((par-1)*10+trace,k) = rec(d1,trace,par)-rec(d2,trace,par);
+        end
+    end
 end
 
+
+%%
+for k = 1:45
+    switch(k)
+        case 1
+            t1 = 1;
+            t2 = 2;
+        case 2
+            t1 = 1;
+            t2 = 3;
+        case 3
+            t1 = 1;
+            t2 = 4;
+        case 4
+            t1 = 1;
+            t2 = 5;
+        case 5
+            t1 = 1;
+            t2 = 6;
+        case 6
+            t1 = 1;
+            t2 = 7;
+        case 7
+            t1 = 1;
+            t2 = 8;
+        case 8
+            t1 = 1;
+            t2 = 9;
+        case 9
+            t1 = 1;
+            t2 = 10;
+        case 10
+            t1 = 2;
+            t2 = 3;
+        case 11
+            t1 = 2;
+            t2 = 4;
+        case 12
+            t1 = 2;
+            t2 = 5;
+        case 13
+            t1 = 2;
+            t2 = 6;
+        case 14
+            t1 = 2;
+            t2 = 7;
+        case 15
+            t1 = 2;
+            t2 = 8;
+        case 16
+            t1 = 2;
+            t2 = 9;
+        case 17
+            t1 = 2;
+            t2 = 10;
+        case 18
+            t1 = 3;
+            t2 = 4;
+        case 19
+            t1 = 3;
+            t2 = 5;
+        case 20
+            t1 = 3;
+            t2 = 6;
+        case 21
+            t1 = 3;
+            t2 = 7;
+        case 22
+            t1 = 3;
+            t2 = 8;
+        case 23
+            t1 = 3;
+            t2 = 9;
+        case 24
+            t1 = 3;
+            t2 = 10;
+        case 25
+            t1 = 4;
+            t2 = 5;
+        case 26
+            t1 = 4;
+            t2 = 6;
+        case 27
+            t1 = 4;
+            t2 = 7;
+        case 28
+            t1 = 4;
+            t2 = 8;
+        case 29
+            t1 = 4;
+            t2 = 9;
+        case 30
+            t1 = 4;
+            t2 = 10;
+        case 31
+            t1 = 5;
+            t2 = 6;
+        case 32
+            t1 = 5;
+            t2 = 7;
+        case 33
+            t1 = 5;
+            t2 = 8;
+        case 34
+            t1 = 5;
+            t2 = 9;
+        case 35
+            t1 = 5;
+            t2 = 10;
+        case 36
+            t1 = 6;
+            t2 = 7;
+        case 37
+            t1 = 6;
+            t2 = 8;
+        case 38
+            t1 = 6;
+            t2 = 9;
+        case 39
+            t1 = 6;
+            t2 = 10;
+        case 40
+            t1 = 7;
+            t2 = 8;
+        case 41
+            t1 = 7;
+            t2 = 9;
+        case 42
+            t1 = 7;
+            t2 = 10;
+        case 43
+            t1 = 8;
+            t2 = 9;
+        case 44
+            t1 = 8;
+            t2 = 10;
+        case 45
+            t1 = 9;
+            t2 = 10;
+        otherwise
+    end
+    for par = 1:8
+        for dist = 1:6
+            diff2580trace((par-1)*6+dist,k) = rec(dist,t1,par)-rec(dist,t2,par);
+        end
+    end
+end
 
 %%
 close all
