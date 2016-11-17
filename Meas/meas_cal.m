@@ -495,6 +495,210 @@ setprinttemplate(gcf,template) %sets the print template for the current figure t
 path = strcat('figs858/',name,'Log'); 
 print(gcf,path,'-dpdf')
 end
+%%
+for k = 1:15
+    switch(k)
+        case 1
+            d1 = 1;
+            d2 = 2;
+        case 2
+            d1 = 1;
+            d2 = 3;
+        case 3
+            d1 = 1;
+            d2 = 4;
+        case 4
+            d1 = 1;
+            d2 = 5;
+        case 5
+            d1 = 1;
+            d2 = 6;
+        case 6
+            d1 = 2;
+            d2 = 3;
+        case 7
+            d1 = 2;
+            d2 = 4;
+        case 8
+            d1 = 2;
+            d2 = 5;
+        case 9
+            d1 = 2;
+            d2 = 6;
+        case 10
+            d1 = 3;
+            d2 = 4;
+        case 11
+            d1 = 3;
+            d2 = 5;
+        case 12
+            d1 = 3;
+            d2 = 6;
+        case 13
+            d1 = 4;
+            d2 = 5;
+        case 14
+            d1 = 4;
+            d2 = 6;
+        case 15
+            d1 = 5;
+            d2 = 6;
+        otherwise
+    end
+    for par = 1:8
+        for trace = 1:10
+            diffdist((par-1)*10+trace,k) = rec(d1,trace,par)-rec(d2,trace,par);
+        end
+    end
+end
+
+
+%%
+for k = 1:45
+    switch(k)
+        case 1
+            t1 = 1;
+            t2 = 2;
+        case 2
+            t1 = 1;
+            t2 = 3;
+        case 3
+            t1 = 1;
+            t2 = 4;
+        case 4
+            t1 = 1;
+            t2 = 5;
+        case 5
+            t1 = 1;
+            t2 = 6;
+        case 6
+            t1 = 1;
+            t2 = 7;
+        case 7
+            t1 = 1;
+            t2 = 8;
+        case 8
+            t1 = 1;
+            t2 = 9;
+        case 9
+            t1 = 1;
+            t2 = 10;
+        case 10
+            t1 = 2;
+            t2 = 3;
+        case 11
+            t1 = 2;
+            t2 = 4;
+        case 12
+            t1 = 2;
+            t2 = 5;
+        case 13
+            t1 = 2;
+            t2 = 6;
+        case 14
+            t1 = 2;
+            t2 = 7;
+        case 15
+            t1 = 2;
+            t2 = 8;
+        case 16
+            t1 = 2;
+            t2 = 9;
+        case 17
+            t1 = 2;
+            t2 = 10;
+        case 18
+            t1 = 3;
+            t2 = 4;
+        case 19
+            t1 = 3;
+            t2 = 5;
+        case 20
+            t1 = 3;
+            t2 = 6;
+        case 21
+            t1 = 3;
+            t2 = 7;
+        case 22
+            t1 = 3;
+            t2 = 8;
+        case 23
+            t1 = 3;
+            t2 = 9;
+        case 24
+            t1 = 3;
+            t2 = 10;
+        case 25
+            t1 = 4;
+            t2 = 5;
+        case 26
+            t1 = 4;
+            t2 = 6;
+        case 27
+            t1 = 4;
+            t2 = 7;
+        case 28
+            t1 = 4;
+            t2 = 8;
+        case 29
+            t1 = 4;
+            t2 = 9;
+        case 30
+            t1 = 4;
+            t2 = 10;
+        case 31
+            t1 = 5;
+            t2 = 6;
+        case 32
+            t1 = 5;
+            t2 = 7;
+        case 33
+            t1 = 5;
+            t2 = 8;
+        case 34
+            t1 = 5;
+            t2 = 9;
+        case 35
+            t1 = 5;
+            t2 = 10;
+        case 36
+            t1 = 6;
+            t2 = 7;
+        case 37
+            t1 = 6;
+            t2 = 8;
+        case 38
+            t1 = 6;
+            t2 = 9;
+        case 39
+            t1 = 6;
+            t2 = 10;
+        case 40
+            t1 = 7;
+            t2 = 8;
+        case 41
+            t1 = 7;
+            t2 = 9;
+        case 42
+            t1 = 7;
+            t2 = 10;
+        case 43
+            t1 = 8;
+            t2 = 9;
+        case 44
+            t1 = 8;
+            t2 = 10;
+        case 45
+            t1 = 9;
+            t2 = 10;
+        otherwise
+    end
+    for par = 1:8
+        for dist = 1:6
+            difftrace((par-1)*6+dist,k) = rec(dist,t1,par)-rec(dist,t2,par);
+        end
+    end
+end
 
 
 %%
