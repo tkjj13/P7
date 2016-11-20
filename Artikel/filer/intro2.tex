@@ -7,18 +7,43 @@ P_r = \frac{P_t G_t G_r}{L} \left(\frac{\lambda}{4 \pi d}\right)^2
 \label{simple_friss}
 \end{equation}
 
-Where $P_{r}$ and $P_{t}$ is the power received and transmitted respectively, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively and $L$ is the system loss. While $\lambda$ is the wavelength of the transmitted signal, $d$ is the distance between the transmitting and receiving antenna. The model above given in \eqref{simple_friss} is not the the complete FSPL, as it assumes no losses due to polarization mismatch, pointing error, and matching between the system and antennas \cite{full_friss}. \\
+where $P_{r}$ and $P_{t}$ are the power received and transmitted respectively, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively and $L$ is the system loss. While $\lambda$ is the wavelength of the transmitted signal, $d$ is the distance between the transmitting and receiving antenna. The model above given in \eqref{simple_friss} is not the the complete FSPL, as it assumes no losses due to polarization mismatch, pointing error, and matching between the system and antennas \cite{full_friss}. \\
 
-However FSPL only accounts for the direct wave between receiver and transmitter. A model that also accounts for the single point reflected wave is the two-ray-ground-reflection path loss model (TRPL)\eqref{two_ray_model}. A way to decide between which models to use, is based on the condition \eqref{two_ray_cond}, if false use the FSPL if true use the TRPL. The cross over distance $d_c$ can be found using \eqref{two_ray_cross_dis} \cite{two_ray}. 
-
+The FSPL only accounts for the direct wave between the receiver and the transmitter. A model that also accounts for the single point reflected wave is the two-ray-ground-reflection path loss model (TRPL) \cite{two_ray}. %and is given in the following Equation:
 
 \begin{equation}
 P_r(d) = \frac{P_t G_t G_r }{L}\left(\frac{h_t h_r}{d^2}\right)^2
 \label{two_ray_model}
 \end{equation}
 
-Where $h_t$, $h_r$ is the height of the transmitting and receiving antenna respectively. \\
-As the TRPL model considers two waves, a direct and a reflected wave, this model predicts oscillations, which are caused by the constructive and destructive combination of the two waves. The oscillations are dominant if \eqref{two_ray_cond} is true\cite{two_ray}.
+where $h_t$, $h_r$ are the heights of the transmitting and receiving antenna respectively. \\
+
+
+A way to decide between which models to use the FSPL or the TRPL, is based on the following condition \cite{two_ray}. 
+
+\begin{equation}
+d < d_{c}
+\label{two_ray_cond}
+\end{equation}
+
+where $d_{c}$ is called the cross over distance and is given as:
+
+\begin{equation}
+d_{c} = \frac{4\pi \cdot h^2_t h^2_r }{\lambda}
+\label{two_ray_cross_dis}
+\end{equation}  
+%\eqref{two_ray_cond}, 
+
+The condition above \eqref{two_ray_cond}, is given as the TRPL model considers two waves, a direct and a reflected wave, this model predicts interferences, which are caused by the constructive and destructive combination of the two waves. If the condition is true use  use TRPL, while if false use FSPL.   %The cross over distance $d_c$ can be found using \eqref{two_ray_cross_dis} \cite{two_ray}. 
+\\
+
+%\begin{equation}
+%P_r(d) = \frac{P_t G_t G_r }{L}\left(\frac{h_t h_r}{d^2}\right)^2
+%\label{two_ray_model}
+%\end{equation}
+
+%where $h_t$, $h_r$ are the heights of the transmitting and receiving antenna respectively. \\
+%As the TRPL model considers two waves, a direct and a reflected wave, this model predicts interferences, which are caused by the constructive and destructive combination of the two waves. The interference is dominant if \eqref{two_ray_cond} is true\cite{two_ray}.
 
 
 %this gives the following condition:
@@ -26,26 +51,27 @@ As the TRPL model considers two waves, a direct and a reflected wave, this model
 
 %a condition is introduced given as:
 
-\begin{equation}
-d < d_{c}
-\label{two_ray_cond}
-\end{equation}
+%\begin{equation}
+%d < d_{c}
+%\label{two_ray_cond}
+%\end{equation}
 
-Where %$d_{c}$ is called the cross over distance and is given as:
+%where %$d_{c}$ is called the cross over distance and is given as:
 
-\begin{equation}
-d_{c} = \frac{4\pi \cdot h^2_t h^2_r }{\lambda}
-\label{two_ray_cross_dis}
-\end{equation}  
+%\begin{equation}
+%d_{c} = \frac{4\pi \cdot h^2_t h^2_r }{\lambda}
+%\label{two_ray_cross_dis}
+%\end{equation}  
 
-This model however has a flaw when placing the antennas at ground level the model predicts that the power received is zero, which is not the case. The reason is that another wave becomes a factor. This wave is called the surface wave \cite{Chong}. The surface wave assumes a minimum effective height of the antennas as can be seen in \eqref{surface_wave}. 
+However when placing the antennas at ground level, the TRLP predicts that the power received is zero, which is not the case.
+The reason is that another wave becomes a factor. This wave is called the surface wave \cite{Chong}. The surface wave assumes a minimum effective height of the antennas as can be seen in \eqref{surface_wave}. 
 
 \begin{equation}
 P_r=\frac{P_t G_t G_r }{L}\left(\frac{h_0}{d}\right)^4
 \label{surface_wave}
 \end{equation}
 
-Where $h_0$ is the minimum effective height of the antennas. The condition in terms of when the surface wave becomes an dominant factor is, when the antennas are located near the ground, thus when $h_{r,t}$ $<$ $\lambda$ \cite{Chong}. When this condition is true $\Delta$ $\approx$ 0, thus the TRLP and FSLP can be neglected.    
+where $h_0$ is the minimum effective height of the antennas. The condition in terms of when the surface wave becomes an dominant factor is, when the antennas are located near the ground, thus when $h_{r,t}$ $<$ $\lambda$ \cite{Chong}. When this condition is true $\Delta$ $\approx$ 0, thus the TRLP and FSLP can be neglected.    
 While when both of the antennas are elevated at least one $\lambda$ above ground, or 5-10 $\lambda$ above water \cite{Chong}, the surface wave can be neglected. 
 The three above mentioned models \eqref{simple_friss}\eqref{two_ray_model}\eqref{surface_wave} originate from the same model \eqref{ground_wave}, but is approximations given different circumstances. The complete model is called the ground wave model \cite{Chong,Bullington}. %\fxnote{Hvornår skal denne model bruges}
 %A combination of the above mentioned models, shall give the power received, with respect to the direct wave, reflected wave and the surface wave this can be expressed as the ground wave \cite{Chong} and is given in the following equation:
@@ -55,7 +81,7 @@ The three above mentioned models \eqref{simple_friss}\eqref{two_ray_model}\eqref
 P_r=P_0 \left|\frac{E}{E_0}\right|^2 
 \label{ground_wave}
 \end{equation}
-Where
+where
 \begin{equation}
 \frac{E}{E_{0}}=[\underbrace{\underbrace{1}_{FSPL}+R\text{e}^{j\Delta}}_{TRPL}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{surface}]
 \label{ground_wave_EE0}
