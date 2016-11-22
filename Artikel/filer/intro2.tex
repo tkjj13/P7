@@ -34,7 +34,7 @@ d_{c} = \frac{4\pi \cdot h^2_t h^2_r }{\lambda}
 \end{equation}  
 %\eqref{two_ray_cond}, 
 
-The condition above \eqref{two_ray_cond}, is given as the TRPL model considers two waves, a direct and a reflected wave, this model predicts interferences, which are caused by the constructive and destructive combination of the two waves. If the condition is true use  use TRPL, while if false use FSPL.   %The cross over distance $d_c$ can be found using \eqref{two_ray_cross_dis} \cite{two_ray}. 
+The condition above \eqref{two_ray_cond}, is given as the TRPL model considers two waves, a direct and a reflected wave, this model predicts interferences, which are caused by the constructive and destructive combination of the two waves. If the condition is true use   FSPL, while if false use TRPL.   %The cross over distance $d_c$ can be found using \eqref{two_ray_cross_dis} \cite{two_ray}. 
 \\
 
 %\begin{equation}
@@ -87,7 +87,37 @@ where
 \label{ground_wave_EE0}
 \end{equation}
 
-Here $P_{0}$ is equivalent to FSPL, $R$ is the reflection coefficient of the surface, $\Delta$ is the phase difference between the direct and reflected wave and $A$ is the surface attenuation factor.
+Here $P_{0}$ is equivalent to FSPL, $R$ is the reflection coefficient of the surface, and is given as.
+
+\begin{equation}
+R = \frac{\sin(\theta)-z}{\sin(\theta)-z}
+\end{equation}
+
+where $z$ is different for vertical or horizontal polarization, and respectively given as.
+
+\begin{align}
+z &= \frac{\sqrt{\epsilon_{0}-\cos^{2}\theta}}{\epsilon_{0}} \\
+z &= \sqrt{\epsilon_{0}-\cos^{2}\theta}
+\end{align}
+
+where $\epsilon_{0}$ is the Complex relative permittivity and is given as 
+
+\begin{equation}
+\epsilon_{0} = \epsilon-j60\sigma \lambda
+\label{eps_0}
+\end{equation}
+
+where $\epsilon$ is is the dielectric constant of the ground relative to
+unity in free space, $\sigma$ is the Conductivity of ground (mhos per meter). $\Delta$ is the phase difference between the direct and reflected wave $\approx$ $\frac{4\pi h_{r} h_{t}}{\lambda d}$. $A$ is the attenuation factor and is given as.
+
+\begin{equation}
+A \approx \frac{-1}{1+j\frac{2\pi d}{\lambda}(\sin(\theta)+2+z)^{2}}
+\label{attenuation_factor_A}
+\end{equation}
+
+
+
+
 
 The three models are obtained by taking \eqref{ground_wave_EE0} and setting the terms outside their\footnote{Burde der stå " the three models"} respective brackets to 0 and using appropriate approximations.
 
