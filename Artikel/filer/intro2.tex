@@ -71,7 +71,12 @@ P_r=\frac{P_t G_t G_r }{L}\left(\frac{h_0}{d}\right)^4
 \label{surface_wave}
 \end{equation}
 
-where $h_0$ is the minimum effective height of the antennas. The condition in terms of when the surface wave becomes an dominant factor is, when the antennas are located near the ground, thus when $h_{r,t}$ $<$ $\lambda$ \cite{Chong}. When this condition is true $\Delta$ $\approx$ 0, thus the TRLP and FSLP can be neglected.    
+where $h_0$ is the minimum effective height of the antennas.  This equation assume that the phase difference between reflected and direct wave is $\approx 0$ and the reflection coefficient $\approx -1$. The condition in terms of when to use the surface wave is depending on the height of the antennas \cite{Chong}.
+\begin{equation}
+h_{r,t} < \lambda
+\label{cond_surface}
+\end{equation}
+When \eqref{cond_surface} is true the FSPL and TRPL respectively under and overestimate the PL.
 While when both of the antennas are elevated at least one $\lambda$ above ground, or 5-10 $\lambda$ above water \cite{Chong}, the surface wave can be neglected. 
 The three above mentioned models \eqref{simple_friss}\eqref{two_ray_model}\eqref{surface_wave} originate from the same model \eqref{ground_wave}, but is approximations given different circumstances. The complete model is called the ground wave model \cite{Chong,Bullington}. %\fxnote{Hvornår skal denne model bruges}
 %A combination of the above mentioned models, shall give the power received, with respect to the direct wave, reflected wave and the surface wave this can be expressed as the ground wave \cite{Chong} and is given in the following equation:
@@ -92,7 +97,7 @@ Here $P_{0}$ is equivalent to FSPL, $R$ is the reflection coefficient of the sur
 The three models are obtained by taking \eqref{ground_wave_EE0} and setting the terms outside their\footnote{Burde der stå " the three models"} respective brackets to 0 and using appropriate approximations.
 
 From the complete ground wave model given in \eqref{ground_wave_EE0}, the TRLP can be simplified to \eqref{two_ray_model}, 
-when $\Delta$/$2$ $<$ $\pi$/$10$ $\Rightarrow$ $\sin$ $\frac{\Delta}{2}$ $\approx$ $\frac{\Delta}{2}$. This is given for $d$ $<$ $(20h_{t}h_{r}/\lambda)$, if this condition is true the simplified TRLP \eqref{two_ray_cond} can be applied.  
+when $\Delta$/$2$ $<$ $\pi$/$10$ $\Rightarrow$ $\sin$ $\frac{\Delta}{2}$ $\approx$ $\frac{\Delta}{2}$. This is given for $d$ $<$ $(20h_{t}h_{r}/\lambda)$, if this condition is true the simplified TRPL \eqref{two_ray_cond} can be applied.  
   
   
 % the direct wave is in use, and therefore the FSPL will be multiplied by 1. While if the TRPL it is indicated as $P_{0}$, and is multiplied with the reflected wave factor, where the rest is set as zero. 

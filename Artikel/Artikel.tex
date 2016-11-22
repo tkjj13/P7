@@ -93,7 +93,7 @@
 
 % *** CITATION PACKAGES ***
 %
-\usepackage{cite}
+\usepackage[noadjust]{cite}
 % cite.sty was written by Donald Arseneau
 % V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
 % \cite{} output to follow that of the IEEE. Loading the cite package will
@@ -329,7 +329,18 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 \bibliographystyle{setup/IEEEtran}
 
+
+\usepackage{caption}
+
 \begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% skips and distances setup
+\captionsetup{belowskip=-1.5em}
+
+
+
+
 %
 % paper title
 % Titles are generally capitalized except for words such as a, an, and, as,
