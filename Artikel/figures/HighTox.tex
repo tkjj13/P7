@@ -1,0 +1,76 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=12.4in,
+height=6.357in,
+at={(2.08in,0.858in)},
+scale only axis,
+xmode=log,
+xmin=0,
+xmax=31,
+xminorticks=true,
+xmajorgrids,
+xminorgrids,
+ymin=-100,
+ymax=-20,
+ymajorgrids,
+axis background/.style={fill=white},
+legend style={legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+2.23606797749979	-40.2024392944793\\
+2.82842712474619	-41.1498149750094\\
+4.47213595499958	-45.3166779228563\\
+8.24621125123532	-51.29571423555\\
+15.1327459504216	-61.8265071697177\\
+30.0665927567458	-73.152023643832\\
+};
+\addlegendentry{4};
+
+\addplot [color=mycolor2,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+2.1541736234575	-40.5286184873639\\
+2.7641389255969	-41.7634386176021\\
+4.43175631099003	-43.3569736894665\\
+8.22438228683468	-49.22358923555\\
+15.1208618801972	-58.5868821697177\\
+30.060613167399	-67.725648643832\\
+};
+\addlegendentry{7};
+
+\addplot [color=mycolor3,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+1.93793704748116	-37.947787309918\\
+2.59915370842126	-41.5490546940608\\
+4.33077360294902	-43.1688945864033\\
+8.17041002643074	-46.5688884715957\\
+15.0915738079234	-52.6026681377669\\
+30.0458915660694	-64.022898643832\\
+};
+\addlegendentry{9};
+
+\addplot [color=mycolor4,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+1	-28.6391813268286\\
+2	-35.8754849006033\\
+4	-42.4804405321866\\
+8	-48.4989721484843\\
+15	-51.0989481335614\\
+30	-59.847479174472\\
+};
+\addlegendentry{10};
+
+\end{axis}
+\end{tikzpicture}%

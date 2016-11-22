@@ -1,15 +1,57 @@
-\subsection{Path loss models}\fixme{mere om conditions for approximationerne evt i footnotes}
+\subsection{Path loss models}
 
-In terms of calculating the PL, different propagation models can be applied, to calculate the power received, given different conditions. The Friss free space path loss (FSPL) equation  \eqref{simple_friss} calculates the power received, given only free space loss \cite{Chong}.
+In terms of calculating the PL, different propagation models can be applied, to calculate the power received, given different conditions. One of the more extensive models is Ground Wave Path Loss (GWPL) model. The GWPL model takes the three most dominant factors into account when calculating the PL \cite{Chong,Bullington}, the direct wave the reflected wave and the surface wave.  
+
+
+\begin{equation}
+P_r=P_0 \cdot \Big|\underbrace{1}_{\begin{subarray}{c}Direct\\wave\end{subarray}}+\underbrace{R\text{e}^{j\Delta}}_{\begin{subarray}{c}Reflected\\wave\end{subarray}}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{\begin{subarray}{c}Surface\\wave\end{subarray}}\Big|^2 
+\label{ground_wave}
+\end{equation}
+where
+\begin{equation}
+P_0 = \frac{P_t G_t G_r}{L} \left(\frac{\lambda}{4 \pi d}\right)^2 
+\label{ground_wave_P0}
+\end{equation}
+
+$P_{r}$ and $P_{t}$ are the power received and transmitted respectively, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively, $L$ is the system loss, $\lambda$ is the wavelength of the transmitted signal, $d$ is the distance between the transmitting and receiving antenna, $\Delta$ is the phase difference between the direct and reflected wave, $R$ is the complex reflection coefficient and $A$ is the surface wave attenuation factor \cite{Chong,Bullington}. 
+
+%$\Delta$ $\approx$ $\frac{4\pi h_{r} h_{t}}{\lambda d}$
+
+The complex reflection coefficient is dependent on the incidence angle and the surface materiel.
+\begin{equation}
+R = \frac{\sin(\theta)-z}{\sin(\theta)-z}
+\label{reflection_coefficient}
+\end{equation}
+
+where $\theta$ is the incidence angle and $z$ is different for vertical or horizontal polarization, and respectively given as.
+
+\begin{align}
+z &= \frac{\sqrt{\epsilon_{0}-\cos^{2}\theta}}{\epsilon_{0}} \\
+z &= \sqrt{\epsilon_{0}-\cos^{2}\theta}
+\end{align}
+
+where $\epsilon_{0}$ is the Complex relative permittivity for the surface and can be found using the methods described in \cite{Kim}.\\
+The surface wave attenuation factor can approximated as \eqref{attenuation_factor_A}\cite{Chong, Bullington}. 
+
+
+\begin{equation}
+A \approx \frac{-1}{1+j\frac{2\pi d}{\lambda}(\sin(\theta)+z)^{2}}
+\label{attenuation_factor_A}
+\end{equation}
+
+
+As the GWPL model is quite complex different approximations of it has been made that makes it possible to calculate the PL without making measurements of the environment. The most simple model is the Friss free space path loss (FSPL) model \eqref{simple_friss} which calculates the power received, given only free space loss \cite{Chong}. This means that the reflected wave and surface wave can be set to 0 in \eqref{ground_wave}. 
 
 \begin{equation}
 P_r = \frac{P_t G_t G_r}{L} \left(\frac{\lambda}{4 \pi d}\right)^2
 \label{simple_friss}
 \end{equation}
 
-where $P_{r}$ and $P_{t}$ are the power received and transmitted respectively, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively and $L$ is the system loss. While $\lambda$ is the wavelength of the transmitted signal, $d$ is the distance between the transmitting and receiving antenna. The model above given in \eqref{simple_friss} is not the the complete FSPL, as it assumes no losses due to polarization mismatch, pointing error, and matching between the system and antennas \cite{full_friss}. \\
+This model \eqref{simple_friss} is not the the complete FSPL, as it assumes no losses due to polarization mismatch, pointing error, and matching between the system and antennas \cite{full_friss}. \\
 
-The FSPL only accounts for the direct wave between the receiver and the transmitter. A model that also accounts for the single point reflected wave is the two-ray-ground-reflection path loss model (TRPL) \cite{two_ray}. %and is given in the following Equation:
+
+
+As the FSPL only accounts for the direct wave between the receiver and the transmitter. A model that also accounts for the single point reflected wave is the two-ray-ground-reflection path loss model (TRPL) \cite{two_ray}. 
 
 \begin{equation}
 P_r(d) = \frac{P_t G_t G_r }{L}\left(\frac{h_t h_r}{d^2}\right)^2
@@ -17,24 +59,15 @@ P_r(d) = \frac{P_t G_t G_r }{L}\left(\frac{h_t h_r}{d^2}\right)^2
 \end{equation}
 
 where $h_t$, $h_r$ are the heights of the transmitting and receiving antenna respectively. \\
-
-
-A way to decide between which models to use the FSPL or the TRPL, is based on the following condition \cite{two_ray}. 
-
+From the complete ground wave model given in \eqref{ground_wave}, the TRLP can be simplified to \eqref{two_ray_model}, when $\frac{\Delta}{2}$ $<$ $\pi$/$10$ $\Rightarrow$ $\sin$ $\frac{\Delta}{2}$ $\approx$ $\frac{\Delta}{2}$. This approximation holds when \eqref{two_ray_cond} is true and thus the simplified TRPL \eqref{two_ray_model} can be applied. If \eqref{two_ray_cond} is false FSPL \eqref{simple_friss} can be applied.
+  
 \begin{equation}
-d < d_{c}
+d > \frac{4\pi \cdot h_t h_r }{\lambda}
 \label{two_ray_cond}
 \end{equation}
+ 
 
-where $d_{c}$ is called the cross over distance and is given as:
-
-\begin{equation}
-d_{c} = \frac{4\pi \cdot h^2_t h^2_r }{\lambda}
-\label{two_ray_cross_dis}
-\end{equation}  
-%\eqref{two_ray_cond}, 
-
-The condition above \eqref{two_ray_cond}, is given as the TRPL model considers two waves, a direct and a reflected wave, this model predicts interferences, which are caused by the constructive and destructive combination of the two waves. If the condition is true use   FSPL, while if false use TRPL.   %The cross over distance $d_c$ can be found using \eqref{two_ray_cross_dis} \cite{two_ray}. 
+The condition above \eqref{two_ray_cond}, is given as the TRPL model considers two waves, a direct and a reflected wave, this model predicts interferences, which are caused by the constructive and destructive combination of the two waves. If the condition is true use FSPL, while if false use TRPL.   %The cross over distance $d_c$ can be found using \eqref{two_ray_cross_dis} \cite{two_ray}. 
 \\
 
 %\begin{equation}
@@ -71,80 +104,10 @@ P_r=\frac{P_t G_t G_r }{L}\left(\frac{h_0}{d}\right)^4
 \label{surface_wave}
 \end{equation}
 
-where $h_0$ is the minimum effective height of the antennas. The condition in terms of when the surface wave becomes an dominant factor is, when the antennas are located near the ground, thus when $h_{r,t}$ $<$ $\lambda$ \cite{Chong}. When this condition is true $\Delta$ $\approx$ 0, thus the TRLP and FSLP can be neglected.    
+where $h_0$ is the minimum effective height of the antennas.  This equation assume that the phase difference between reflected and direct wave is $\approx 0$ and the reflection coefficient $\approx -1$. The condition in terms of when to use the surface wave is depending on the height of the antennas \cite{Chong}.
+\begin{equation}
+h_{r,t} < \lambda
+\label{cond_surface}
+\end{equation}
+When \eqref{cond_surface} is true the FSPL and TRPL respectively under and overestimate the PL.
 While when both of the antennas are elevated at least one $\lambda$ above ground, or 5-10 $\lambda$ above water \cite{Chong}, the surface wave can be neglected. 
-The three above mentioned models \eqref{simple_friss}\eqref{two_ray_model}\eqref{surface_wave} originate from the same model \eqref{ground_wave}, but is approximations given different circumstances. The complete model is called the ground wave model \cite{Chong,Bullington}. %\fxnote{Hvornår skal denne model bruges}
-%A combination of the above mentioned models, shall give the power received, with respect to the direct wave, reflected wave and the surface wave this can be expressed as the ground wave \cite{Chong} and is given in the following equation:
-
-
-\begin{equation}
-P_r=P_0 \left|\frac{E}{E_0}\right|^2 
-\label{ground_wave}
-\end{equation}
-where
-\begin{equation}
-\frac{E}{E_{0}}=[\underbrace{\underbrace{1}_{FSPL}+R\text{e}^{j\Delta}}_{TRPL}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{surface}]
-\label{ground_wave_EE0}
-\end{equation}
-
-Here $P_{0}$ is equivalent to FSPL, $R$ is the reflection coefficient of the surface, and is given as.
-
-\begin{equation}
-R = \frac{\sin(\theta)-z}{\sin(\theta)-z}
-\end{equation}
-
-where $z$ is different for vertical or horizontal polarization, and respectively given as.
-
-\begin{align}
-z &= \frac{\sqrt{\epsilon_{0}-\cos^{2}\theta}}{\epsilon_{0}} \\
-z &= \sqrt{\epsilon_{0}-\cos^{2}\theta}
-\end{align}
-
-where $\epsilon_{0}$ is the Complex relative permittivity and is given as 
-
-\begin{equation}
-\epsilon_{0} = \epsilon-j60\sigma \lambda
-\label{eps_0}
-\end{equation}
-
-where $\epsilon$ is is the dielectric constant of the ground relative to
-unity in free space, $\sigma$ is the Conductivity of ground (mhos per meter). $\Delta$ is the phase difference between the direct and reflected wave $\approx$ $\frac{4\pi h_{r} h_{t}}{\lambda d}$. $A$ is the attenuation factor and is given as.
-
-\begin{equation}
-A \approx \frac{-1}{1+j\frac{2\pi d}{\lambda}(\sin(\theta)+2+z)^{2}}
-\label{attenuation_factor_A}
-\end{equation}
-
-
-
-
-
-The three models are obtained by taking \eqref{ground_wave_EE0} and setting the terms outside their\footnote{Burde der stå " the three models"} respective brackets to 0 and using appropriate approximations.
-
-From the complete ground wave model given in \eqref{ground_wave_EE0}, the TRLP can be simplified to \eqref{two_ray_model}, 
-when $\Delta$/$2$ $<$ $\pi$/$10$ $\Rightarrow$ $\sin$ $\frac{\Delta}{2}$ $\approx$ $\frac{\Delta}{2}$. This is given for $d$ $<$ $(20h_{t}h_{r}/\lambda)$, if this condition is true the simplified TRLP \eqref{two_ray_cond} can be applied.  
-  
-  
-% the direct wave is in use, and therefore the FSPL will be multiplied by 1. While if the TRPL it is indicated as $P_{0}$, and is multiplied with the reflected wave factor, where the rest is set as zero. 
-
-
-
-
-%where ${direct}$ represents the friis transmission equation, ${reflected}$ represents two-ray-ground-reflection path loss model, and  ${surface}$ represents the surface wave. 
-
-%In order to also get the 
-
-%The two-ray-ground-reflection path loss model,  
-
-
-%If introduced condition is true the model predicts oscillations which are caused by the constructive and destructive combination of the two rays.
-
-
-%a parameter called the cross over distance $d_{c}$ is introduced, and is given as:
-
-
-
-
-
-
-%Another model which takes into account the free space loss and the reflection   

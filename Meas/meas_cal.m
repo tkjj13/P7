@@ -261,7 +261,7 @@ dHP = sqrt(repmat(d,10,1)'.^2+repmat((hRxHP-hTxHP),6,1).^2);
 dRec = cat(3,dVM,dHM,dVM,dHM,dVP,dHP,dVP,dHP);
 
 
-%
+%%
 rec2 = mean(rec,3);
 TRPL2 = mean(TRPL,3);
 GWPL2 = mean(GWPL,3);
@@ -269,30 +269,89 @@ NSPL2 = mean(NSPL,3);
 TRPLaprox2 = mean(TRPLaprox,3);
 OurModel2 = mean(OurModel,3);
 
-MSE_TRPL2 = zeros(size(rec2));
-MSE_GWPL2 = zeros(size(rec2));
-MSE_NSPL2 = zeros(size(rec2));
-MSE_TRPLaprox2 = zeros(size(rec2));
-MSE_OurModel2 = zeros(size(rec2));
+hRx = mean([hRxVM; hRxHM; hRxVP; hRxHP]);
+hTx = mean([hTxVM; hTxHM; hTxVP; hTxHP]);
 
-for n = 1:8
-    %MSE = MSE+(rec(:,:,n)-repmat(FSPL(:,:)',1,10)).^2;
-    MSE_TRPL2 = MSE_TRPL2+(rec2-TRPL2).^2;
-    MSE_GWPL2 = MSE_GWPL2+(rec2-GWPL2).^2;
-    MSE_NSPL2 = MSE_NSPL2+(rec2-NSPL2).^2;
-    MSE_TRPLaprox2 = MSE_TRPLaprox2+(rec2-TRPLaprox2).^2;
-    MSE_OurModel2 = MSE_OurModel2+(rec2-OurModel2).^2
-end
-MSE_OurModel2 = MSE_OurModel2./8;
-%MSE_OurModel2(:,1:6)
+dc = 4*pi*hRx.*hTx/(3E8/freqP)
 
-[mean(mean(MSE_TRPL2./8))...
-mean(mean(MSE_GWPL2./8))...
-mean(mean(MSE_NSPL2./8))...
-mean(mean(MSE_TRPLaprox2./8))...
+
+
+save values rec2 TRPL2 GWPL2 NSPL2 TRPLaprox2 OurModel2 dc hRx hTx FSPL
+
+
+
+MSE_TRPL2 = (rec2-TRPL2).^2;
+MSE_GWPL2 = (rec2-GWPL2).^2;
+MSE_NSPL2 = (rec2-NSPL2).^2;
+MSE_TRPLaprox2 = (rec2-TRPLaprox2).^2;
+MSE_OurModel2 = (rec2-OurModel2).^2;
+
+
+[mean(mean(MSE_TRPL2))...
+mean(mean(MSE_GWPL2))...
+mean(mean(MSE_NSPL2))...
+mean(mean(MSE_TRPLaprox2))...
 mean(mean(MSE_OurModel2))];
-MSE = [mean(MSE_TRPL2./8); mean(MSE_GWPL2./8); mean(MSE_NSPL2./8); mean(MSE_TRPLaprox2./8); mean(MSE_OurModel2)];
+
+MSE = [mean(MSE_TRPL2); mean(MSE_GWPL2); mean(MSE_NSPL2); mean(MSE_TRPLaprox2); mean(MSE_OurModel2)];
 MSE(:,1:9)
+
+figure;
+
+close all
+xmin = 0;
+xmax = 31;
+ymin = -100;
+ymax = -20;
+figure;
+semilogx(dRec(:,1),rec2(:,1),'-*','MarkerSize',2);
+hold on
+semilogx(dRec(:,2),rec2(:,2),'-*','MarkerSize',2);
+semilogx(dRec(:,3),rec2(:,3),'-*','MarkerSize',2);
+semilogx(dRec(:,4),rec2(:,4),'-*','MarkerSize',2);
+semilogx(dRec(:,5),rec2(:,5),'-*','MarkerSize',2);
+semilogx(dRec(:,6),rec2(:,6),'-*','MarkerSize',2);
+semilogx(dRec(:,7),rec2(:,7),'-*','MarkerSize',2);
+semilogx(dRec(:,8),rec2(:,8),'-*k','MarkerSize',2);
+semilogx(dRec(:,9),rec2(:,9),'-*c','MarkerSize',2);
+semilogx(dRec(:,10),rec2(:,10),'-*m','MarkerSize',2);
+xlim([xmin xmax]);
+ylim([ymin ymax]);
+grid;
+legend('1','2','3','4','5','6','7','8','9','10');
+
+figure
+semilogx(dRec(:,1),rec2(:,1),'-*','MarkerSize',2);
+hold on
+semilogx(dRec(:,2),rec2(:,2),'-*','MarkerSize',2);
+semilogx(dRec(:,3),rec2(:,3),'-*','MarkerSize',2);
+semilogx(dRec(:,4),rec2(:,4),'-*','MarkerSize',2);
+xlim([xmin xmax]);
+ylim([ymin ymax]);
+grid;
+legend('1','2','3','4');
+
+figure
+semilogx(dRec(:,1),rec2(:,1),'-*','MarkerSize',2);
+hold on
+semilogx(dRec(:,5),rec2(:,5),'-*','MarkerSize',2);
+semilogx(dRec(:,8),rec2(:,8),'-*','MarkerSize',2);
+semilogx(dRec(:,10),rec2(:,10),'-*','MarkerSize',2);
+xlim([xmin xmax]);
+ylim([ymin ymax]);
+grid;
+legend('1','5','8','10');
+
+figure
+semilogx(dRec(:,4),rec2(:,4),'-*','MarkerSize',2);
+hold on
+semilogx(dRec(:,7),rec2(:,7),'-*','MarkerSize',2);
+semilogx(dRec(:,9),rec2(:,9),'-*','MarkerSize',2);
+semilogx(dRec(:,10),rec2(:,10),'-*','MarkerSize',2);
+xlim([xmin xmax]);
+ylim([ymin ymax]);
+grid;
+legend('4','7','9','10');
 
 %%
 rec3 = (rec(:,:,3)+rec(:,:,4)+rec(:,:,7)+rec(:,:,8))/4;
