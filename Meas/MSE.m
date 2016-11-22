@@ -28,11 +28,11 @@ items = 0;
 MSE_TRPL = 0;
 for row = 1:6
     for column = 1:10
-        if (lambda < hRx(column)) && (lambda < hTx(column))
+        
             MSE_TRPL = MSE_TRPL +(rec2(row,column)-TRPL2(row,column)).^2;
             items = items + 1;
             inUse(row,column) = inUse(row,column) + 10000;
-        end
+        
     end
 end
 MSE_TRPL = MSE_TRPL/items;
@@ -44,7 +44,7 @@ items = 0;
 MSE_TRPLaprox = 0;
 for row = 1:6
     for column = 1:10
-        if d(row) > dc(column) && (lambda < hRx(column)) && (lambda < hTx(column))
+        if d(row) > dc(column) 
             MSE_TRPLaprox = MSE_TRPLaprox +(rec2(row,column)-TRPLaprox2(row,column)).^2;
             items = items + 1;
             inUse(row,column) = inUse(row,column) + 1000;

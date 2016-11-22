@@ -1,0 +1,76 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=12.4in,
+height=6.357in,
+at={(2.08in,0.858in)},
+scale only axis,
+xmode=log,
+xmin=0,
+xmax=31,
+xminorticks=true,
+xmajorgrids,
+xminorgrids,
+ymin=-100,
+ymax=-20,
+ymajorgrids,
+axis background/.style={fill=white},
+legend style={legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+1	-39.176832441447\\
+2	-50.0236813268286\\
+4	-61.7627349006033\\
+8	-69.1568155321866\\
+15	-80.2784721484843\\
+30	-81.8463231335614\\
+};
+\addlegendentry{1};
+
+\addplot [color=mycolor2,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+1	-32.6162301822822\\
+2	-42.7733202106742\\
+4	-53.7406598744587\\
+8	-66.7692891298477\\
+15	-74.3619892107941\\
+30	-78.384604174472\\
+};
+\addlegendentry{5};
+
+\addplot [color=mycolor3,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+1	-26.9292301822822\\
+2	-34.0517673842044\\
+4	-42.7927848744587\\
+8	-54.0404141298477\\
+15	-65.4297392107941\\
+30	-70.718229174472\\
+};
+\addlegendentry{8};
+
+\addplot [color=mycolor4,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+1	-28.6391813268286\\
+2	-35.8754849006033\\
+4	-42.4804405321866\\
+8	-48.4989721484843\\
+15	-51.0989481335614\\
+30	-59.847479174472\\
+};
+\addlegendentry{10};
+
+\end{axis}
+\end{tikzpicture}%
