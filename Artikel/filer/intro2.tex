@@ -1,6 +1,6 @@
 \subsection{Path loss models}
 
-In terms of calculating the PL, different propagation models can be applied, to calculate the power received, given different conditions. One of the more extensive models is Ground Wave Path Loss (GWPL) model. The GWPL model takes the three most dominant factors into account when calculating the PL \cite{Chong,Bullington}, the direct wave the reflected wave and the surface wave.  
+In terms of calculating the PL, different propagation models can be applied, to calculate the power received, given different conditions. One of the more extensive models is the Ground Wave Path Loss (GWPL) model. The GWPL model takes the three most dominant factors into account when calculating the PL \cite{Chong,Bullington}, the direct wave the reflected wave and the surface wave.  
 
 
 \begin{equation}
@@ -17,13 +17,13 @@ $P_{r}$ and $P_{t}$ are the power received and transmitted respectively, $G_t$ a
 
 %$\Delta$ $\approx$ $\frac{4\pi h_{r} h_{t}}{\lambda d}$
 
-The complex reflection coefficient is dependent on the incidence angle and the surface materiel.
+The complex reflection coefficient \eqref{reflection_coefficient} is dependent on the incidence angle and the surface materiel.
 \begin{equation}
 R = \frac{\sin(\theta)-z}{\sin(\theta)-z}
 \label{reflection_coefficient}
 \end{equation}
 
-where $\theta$ is the incidence angle and $z$ is different for vertical or horizontal polarization, and respectively given as.
+where $\theta$ is the incidence angle, and where $z$ is different for vertical or horizontal polarization, and respectively given as.
 
 \begin{align}
 z &= \frac{\sqrt{\epsilon_{0}-\cos^{2}\theta}}{\epsilon_{0}} \\
@@ -51,7 +51,7 @@ This model \eqref{simple_friss} is not the the complete FSPL, as it assumes no l
 
 
 
-As the FSPL only accounts for the direct wave between the receiver and the transmitter. A model that also accounts for the single point reflected wave is the two-ray-ground-reflection path loss model (TRPL) \cite{two_ray}. 
+As the FSPL only accounts for the direct wave between the receiver and the transmitter. A model that also accounts for the single point reflected wave is the two-ray-ground-reflection path loss model (TRPL) \eqref{two_ray_model} \cite{two_ray}. 
 
 \begin{equation}
 P_r(d) = \frac{P_t G_t G_r }{L}\left(\frac{h_t h_r}{d^2}\right)^2
@@ -96,14 +96,21 @@ The condition \eqref{two_ray_cond}, exists because the TRPL model considers two 
 %\end{equation}  
 
 However when placing the antennas at ground level, the TRLP predicts that the power received is zero, which is not the case.
-The reason is that the surface wave becomes relevant\cite{Chong}. The surface wave assumes a minimum effective height of the antennas as can be seen in \eqref{surface_wave}. 
+The reason is that the surface wave becomes relevant \cite{Chong}. The surface wave assumes a minimum effective height of the antennas as can be seen in \eqref{surface_wave}. 
 
 \begin{equation}
 P_r=\frac{P_t G_t G_r }{L}\left(\frac{h_0}{d}\right)^4
 \label{surface_wave}
 \end{equation}
 
-where $h_0$ is the minimum effective height of the antennas.  This equation assume that $\Delta \approx 0$ and the reflection coefficient $\approx -1$ \cite{Chong}. The condition in terms of when to use the surface wave is depending on the height of the antennas \cite{Chong}.
+where $h_0$ is the minimum effective height of the antennas. 
+
+\begin{equation}
+h_{0} = |\frac{\lambda}{2\pi z}|
+\label{h_0}
+\end{equation}
+
+This equation assume that $\Delta \approx 0$ and the reflection coefficient $\approx -1$ in the GWPL model \cite{Chong}. The condition in terms of when to use the surface wave \eqref{surface_wave} is dependent on the height of the antennas \cite{Chong}.
 \begin{equation}
 h_{r,t} < \lambda
 \label{cond_surface}
