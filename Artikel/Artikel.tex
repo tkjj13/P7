@@ -335,6 +335,12 @@
 \usepackage{tikz}
 \usepackage[americanresistors,americaninductors,americancurrents, americanvoltages]{circuitikz}
 
+\usepackage{pdfpages}
+\usepackage{pgfplots}
+\pgfplotsset{filter discard warning = true, unbounded coords=discard}
+\pgfplotsset{compat = newest}
+
+
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -438,7 +444,7 @@ The abstract goes here.
 \input{filer/Methods.tex}
 
 \section{Results}
-\input{filer/Discussion}
+\input{filer/Meas}
 \input{filer/Model_estimation}
 \input{filer/delkonlusion}
 

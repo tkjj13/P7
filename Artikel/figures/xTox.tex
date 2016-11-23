@@ -12,19 +12,22 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=12.4in,
-height=6.357in,
+width=2.8in,
+height=1.8in,
 at={(2.08in,0.858in)},
 scale only axis,
 xmode=log,
-xmin=0,
+xmin=0.9,
 xmax=31,
+xlabel=Distance (m),
 xminorticks=true,
 xmajorgrids,
 xminorgrids,
 ymin=-100,
 ymax=-20,
+ylabel=Path loss (dB),
 ymajorgrids,
+legend pos = south west,
 axis background/.style={fill=white},
 legend style={legend cell align=left,align=left,draw=white!15!black}
 ]
@@ -37,7 +40,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	-80.2784721484843\\
 30	-81.8463231335614\\
 };
-\addlegendentry{1};
+\addlegendentry{2.00m};
 
 \addplot [color=mycolor2,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
@@ -48,7 +51,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	-74.3619892107941\\
 30	-78.384604174472\\
 };
-\addlegendentry{5};
+\addlegendentry{0.34m};
 
 \addplot [color=mycolor3,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
@@ -59,7 +62,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	-65.4297392107941\\
 30	-70.718229174472\\
 };
-\addlegendentry{8};
+\addlegendentry{0.08m};
 
 \addplot [color=mycolor4,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
@@ -70,7 +73,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	-51.0989481335614\\
 30	-59.847479174472\\
 };
-\addlegendentry{10};
+\addlegendentry{0.01m};
 
 \end{axis}
 \end{tikzpicture}%
