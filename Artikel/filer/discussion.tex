@@ -1,4 +1,16 @@
- The aim is therefore to make an simple model, that involves the simplified PL models, which do not require complex data processing. However when using the surface wave model \eqref{surface_wave} it is necessary to make measurements to find $z$, the aim is then to make an table of $z$ values. As the simplified models have there conditions these same conditions will be applied to our model \\
+In terms of making our PL model the antenna type, polarization and placement needed to be considered. As it can be seen in Appendix they have very little influence compared to the distance and height, by comparing the MSEs. Therefore these factors are deemed unnecessary to consider, compared to the height and distance, and will therefore not be considered in our purposed model. When designing our PL model it is necessary to take the GRPL \eqref{ground_wave} into consideration as it is the most complete model, but also the most complex. The aim is therefore to make an simple model, that involves the simplified PL models, which does not require complex data processing. However when using the Norton surface wave PL model \eqref{surface_wave} it is necessary to make measurements to find $z$, the aim is then to make an average of $z$ values, that is only valid for the two surfaces the measurement have been made, which can be used as the $z$ value. The purposed model shall consist of the simplified TRPL \eqref{two_ray_model} added together with the NSPL \eqref{surface_wave}.
+
+\begin{equation}
+Our \quad model = TRPL + NSPL
+\end{equation}
+
+The reasoning behind adding exactly these two models is that the TRPL and NSPL overlap each other, given there conditions, where if the purposed model included FSPL, then the TRPL is not valid where FSPL is valid. 
+
+
+%both takes into account the direct and reflected wave, while the NSPL, takes into account the surface wave. This is given for the conditions that the two models have to uphold \eqref{cond_surface}, \eqref{two_ray_cond}.
+
+%As both the TRPL and NSPL have their conditions these same conditions will be applied to the our purposed model. 
+When comparing the MSE and coverage are of our purposed model and the GRPL, where the MSE of our purposed model is 65.42, while the coverage is 65.00$\%$. The MSE of the GRPL is still better.  \\
 
 
 %The measurements at the smallest distances between the transmitter and the receiver, will suffer from not being in the Far Field, this could indicate why some of the measurements behave as they do. \\
