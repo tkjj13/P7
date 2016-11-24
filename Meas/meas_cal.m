@@ -100,8 +100,8 @@ rec = cat(3,recVMHal, recHMHal, recVMpplads, recHMpplads,...
 
 % calculate FSPL
 numbers = 100;
-dist = linspace(1,30,numbers);
-%dist = d;
+%dist = linspace(1,30,numbers);
+dist = d;
 FSPL = 20*log10((3E8/freqP)./(4*pi*dist));
 
 
