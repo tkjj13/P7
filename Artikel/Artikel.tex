@@ -305,6 +305,7 @@
 	pdfstartview=FitH%
 }
 \renewcommand*{\figureautorefname}{Fig.}
+\renewcommand*{\tableautorefname}{Tab.}
 
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
@@ -331,6 +332,7 @@
 
 
 \usepackage{caption}
+\captionsetup[table]{name=Tab.}
 % Figures - TIKZ
 \usepackage{tikz}
 \usepackage[americanresistors,americaninductors,americancurrents, americanvoltages]{circuitikz}
@@ -339,13 +341,13 @@
 \usepackage{pgfplots}
 \pgfplotsset{filter discard warning = true, unbounded coords=discard}
 \pgfplotsset{compat = newest}
-
+\renewcommand{\thetable}{\arabic{table}}
 
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%
 % skips and distances setup
-\captionsetup{belowskip=-1.5em}
+%\captionsetup{belowskip=-1.5em}
 
 
 

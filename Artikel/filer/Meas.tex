@@ -29,6 +29,35 @@ Secondly there will be looked at the case, where the height of the transmitting 
 
 In both cases, it is seen that the lower the heights of the antennas is, the higher the PL. Some of the measurements are very close at the short distance on \autoref{Meas3}. This comes from the destructive interference, that comes at different angles. As the different heights of the receiver antenna gives different angles, where the difference is much higher close by the transmitter antenna, the difference in destructive interference is larger and the measurements get closer to each other.
 
-Lastly there will make a comparison of the measured data and the model described earlier, to see if the model estimated the measured data correctly.
+Lastly there will make a comparison of the measured data and the model described earlier, to see if the model estimated the measured data correctly, this is done at at selected Tx and Rx as seen on \autoref{Models1}, \autoref{Models7} and \autoref{Models10}.
 
-THOMAS, INSERT FIGURER HER, SOM VISER AT DE FORSKELLIGE MODELLER VIRKER I FORSKELLIGE OMRÅDE... SÅ BURDE DU HAVE EN GOD NOK OVERGANG TIL DIT :)
+%THOMAS, INSERT FIGURER HER, SOM VISER AT DE FORSKELLIGE MODELLER VIRKER I FORSKELLIGE OMRÅDE... SÅ BURDE DU HAVE EN GOD NOK OVERGANG TIL DIT :)
+
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/Models1.tex}
+\caption{Comparison between measured path loss and predicted path loss from models at a Tx and Rx height of 0.04 m}
+\label{Models1}
+\end{figure}
+
+On \autoref{Models1} it can be seen that GWPL and NSPL predicts the PL best, however both model overestimate the PL by close to 10 dB, which could indicate that the measurements of $\epsilon_0$ might not be completely accurate. Here the general problem with low heigth is also seen as FSPL greatly underestimate the PL where TRPL greatly overestimate the PL.
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/Models7.tex}
+\caption{Comparison between measured path loss and predicted path loss from models at a Tx and Rx height of 0.14 m and 2.02 m respectively}
+\label{Models7}
+\end{figure}
+
+On \autoref{Models7} it can be seen that GWPL predicts the path loss across all distances, where the predictions from FSPL and TRPL crosses at a distance which matches the condition mentioned in \autoref{two_ray_cond}. The NSPL greatly overestimate the PL which is expected since \autoref{cond_surface} is not true.
+
+\begin{figure}[!htbp]
+\centering
+\input{figures/Models10.tex}
+\caption{Comparison between measured path loss and predicted path loss from models at a Tx and Rx height of 2.02 m}
+\label{Models10}
+\end{figure}
+
+On \autoref{Models10} it can be seen that GWPL together with the FSPL predicts the path loss across all distances, where the predictions from TRPL is underestimating the path loss which is because \autoref{two_ray_cond} is false. The NSPL greatly overestimate the PL which is expected since \autoref{cond_surface} is not true.
+

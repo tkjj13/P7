@@ -100,8 +100,8 @@ rec = cat(3,recVMHal, recHMHal, recVMpplads, recHMpplads,...
 
 % calculate FSPL
 numbers = 100;
-%dist = linspace(1,30,numbers);
-dist = d;
+dist = linspace(1,30,numbers);
+%dist = d;
 FSPL = 20*log10((3E8/freqP)./(4*pi*dist));
 
 
@@ -190,7 +190,7 @@ TRPLHPppladsaprox = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2))).^2)';
 TRPLaprox = cat(3,TRPLVMHalaprox, TRPLHMHalaprox, TRPLVMppladsaprox, TRPLHMppladsaprox,...
     TRPLVPHalaprox, TRPLHPHalaprox, TRPLVPppladsaprox, TRPLHPppladsaprox);
 
-k = 7;
+k = 1;
 AVMHal = -k./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVM)+sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal));
 AHMHal = -k./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVM)+sqrt(e0_hal-cos(reflected_anglesVM).^2)));
 AVMpplads = -k./(1+1j.*2.*pi.*repmat(dist',1,10)./(3E8/freqP).*(sin(reflected_anglesVM)+sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads));
@@ -212,15 +212,15 @@ GWPLHPpplads = 10*log10(P0.*abs((1+gammaHPpplads.*exp(1i*DeltaHP)+(1-gammaHPppla
 GWPL = cat(3,GWPLVMHal, GWPLHMHal, GWPLVMpplads, GWPLHMpplads,...
     GWPLVPHal, GWPLHPHal, GWPLVPpplads, GWPLHPpplads);
 
-
-NSPLVMHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal))./repmat(dist',1,10));
-NSPLHMHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)))./repmat(dist',1,10));
-NSPLVMpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads))./repmat(dist',1,10));
-NSPLHMpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)))./repmat(dist',1,10));
-NSPLVPHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVP).^2)/e0_hal))./repmat(dist',1,10));
-NSPLHPHal = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVP).^2)))./repmat(dist',1,10));
-NSPLVPpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVP).^2)/e0_pplads))./repmat(dist',1,10));
-NSPLHPpplads = 40*log10(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVP).^2)))./repmat(dist',1,10));
+k = 1;
+NSPLVMHal = 40*log10(k*abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal))./repmat(dist',1,10));
+NSPLHMHal = 40*log10(k*abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)))./repmat(dist',1,10));
+NSPLVMpplads = 40*log10(k*abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads))./repmat(dist',1,10));
+NSPLHMpplads = 40*log10(k*abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)))./repmat(dist',1,10));
+NSPLVPHal = 40*log10(k*abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVP).^2)/e0_hal))./repmat(dist',1,10));
+NSPLHPHal = 40*log10(k*abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVP).^2)))./repmat(dist',1,10));
+NSPLVPpplads = 40*log10(k*abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVP).^2)/e0_pplads))./repmat(dist',1,10));
+NSPLHPpplads = 40*log10(k*abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVP).^2)))./repmat(dist',1,10));
 NSPL = cat(3,NSPLVMHal, NSPLHMHal, NSPLVMpplads, NSPLHMpplads,...
     NSPLVPHal, NSPLHPHal, NSPLVPpplads, NSPLHPpplads);
 
@@ -232,14 +232,14 @@ abs(sqrt(e0_pplads-cos(reflected_anglesVM).^2)))/4))
 %%
 zV = 0.2;
 zH = 0.8;
-OurModelVMHal = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal))./repmat(dist',1,10)).^4);
-OurModelHMHal = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesHM).^2)/e0_hal))./repmat(dist',1,10)).^4);
-OurModelVMpplads = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads))./repmat(dist',1,10)).^4);
-OurModelHMpplads = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesHM).^2)/e0_pplads))./repmat(dist',1,10)).^4);
-OurModelVPHal = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal))./repmat(dist',1,10)).^4);
-OurModelHPHal = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesHM).^2)/e0_hal))./repmat(dist',1,10)).^4);
-OurModelVPpplads = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads))./repmat(dist',1,10)).^4);
-OurModelHPpplads = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesHM).^2)/e0_pplads))./repmat(dist',1,10)).^4);
+OurModelVMHal = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2)))'.^2+(2*abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal))./repmat(dist',1,10)).^4);
+OurModelHMHal = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2)))'.^2+(2*abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesHM).^2)/e0_hal))./repmat(dist',1,10)).^4);
+OurModelVMpplads = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2)))'.^2+(2*abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads))./repmat(dist',1,10)).^4);
+OurModelHMpplads = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2)))'.^2+(2*abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesHM).^2)/e0_pplads))./repmat(dist',1,10)).^4);
+OurModelVPHal = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2)))'.^2+(2*abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesVM).^2)/e0_hal))./repmat(dist',1,10)).^4);
+OurModelHPHal = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2)))'.^2+(2*abs((3E8/freqP)./(2*pi*sqrt(e0_hal-cos(reflected_anglesHM).^2)/e0_hal))./repmat(dist',1,10)).^4);
+OurModelVPpplads = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2)))'.^2+(2*abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesVM).^2)/e0_pplads))./repmat(dist',1,10)).^4);
+OurModelHPpplads = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2)))'.^2+(2*abs((3E8/freqP)./(2*pi*sqrt(e0_pplads-cos(reflected_anglesHM).^2)/e0_pplads))./repmat(dist',1,10)).^4);
 
 % OurModelVMHal = 10*log10(((hRxVM.*hTxVM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*zV))./repmat(dist',1,10)).^4);
 % OurModelHMHal = 10*log10(((hRxHM.*hTxHM)'*(dist.^(-2)))'.^2+(abs((3E8/freqP)./(2*pi*zH))./repmat(dist',1,10)).^4);
@@ -294,7 +294,7 @@ mean(mean(MSE_TRPLaprox2))...
 mean(mean(MSE_OurModel2))];
 
 MSE = [mean(MSE_TRPL2); mean(MSE_GWPL2); mean(MSE_NSPL2); mean(MSE_TRPLaprox2); mean(MSE_OurModel2)];
-MSE(:,1:9)
+MSE(:,1:10)
 
 figure;
 
@@ -365,16 +365,17 @@ ymax = -20;
 figure
 for n = 1:10
     trace = n;
-    subplot(3,4,n);
-    semilogx(dist,FSPL,'-*');
+    %subplot(3,4,n);
+    figure
+    semilogx(dRec(:,trace),rec2(:,trace),'*','MarkerSize',5);
     hold on
-    semilogx(dRec(:,trace),rec2(:,trace),'*','MarkerSize',2);
-    semilogx(dRec(:,trace),rec3(:,trace),'*','MarkerSize',2);
-    semilogx(dist,TRPL2(:,trace),'-*')
-    semilogx(dist,TRPLaprox2(:,trace),'-*')
-    semilogx(dist,GWPL2(:,trace),'-*');
-    semilogx(dist,NSPL2(:,trace),'-*');
-    semilogx(dist,OurModel2(:,trace),'-*k');
+    semilogx(dist,FSPL,'-');
+    %semilogx(dRec(:,trace),rec3(:,trace),'*','MarkerSize',2);
+    %semilogx(dist,TRPL2(:,trace),'-*')
+    semilogx(dist,TRPLaprox2(:,trace),'-')
+    semilogx(dist,GWPL2(:,trace),'-');
+    semilogx(dist,NSPL2(:,trace),'-');
+    %semilogx(dist,OurModel2(:,trace),'-*k');
     grid
     string = sprintf('Trace %i',trace);
     title(string);
