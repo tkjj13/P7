@@ -364,7 +364,7 @@ ymin = -100;
 ymax = -20;
 %
 figure
-for n = 2:2
+for n = 7:7
     trace = n;
     %subplot(3,4,n);
     %figure

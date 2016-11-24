@@ -9,28 +9,33 @@
 \definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
 \definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
 \definecolor{mycolor5}{rgb}{0.46600,0.67400,0.18800}%
+
 %
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=4.521in,
-height=3.566in,
+width=2.8in,
+height=2.3in,
 at={(0.758in,0.481in)},
 scale only axis,
 xmode=log,
 xmin=0,
 xmax=31,
+xlabel=Distance (m),
 xminorticks=true,
 xmajorgrids,
 xminorgrids,
 ymin=-100,
 ymax=-20,
+ylabel=Path loss (dB),
 ymajorgrids,
 axis background/.style={fill=white},
 title style={font=\bfseries},
-title={Trace 1}
+legend style={legend cell align=left,align=left,draw=white!15!black},
+%legend pos = south west
 ]
-\addplot [color=mycolor1,mark size=2.5pt,only marks,mark=asterisk,mark options={solid},forget plot]
+
+\addplot [color=mycolor1,mark size=2.5pt,only marks,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
 1	-39.176832441447\\
 2	-50.0236813268286\\
@@ -39,7 +44,9 @@ title={Trace 1}
 15	-80.2784721484843\\
 30	-81.8463231335614\\
 };
-\addplot [color=mycolor2,solid,forget plot]
+\addlegendentry{rec};
+
+\addplot [color=mycolor2,solid]
   table[row sep=crcr]{%
 1	-31.1115179430228\\
 1.29292929292929	-33.3430134440292\\
@@ -142,7 +149,9 @@ title={Trace 1}
 29.7070707070707	-60.5687145412132\\
 30	-60.653943037416\\
 };
-\addplot [color=mycolor3,solid,forget plot]
+\addlegendentry{FSPL};
+
+\addplot [color=mycolor3,solid]
   table[row sep=crcr]{%
 1	-54.6612617768166\\
 1.29292929292929	-59.1242527788293\\
@@ -245,7 +254,9 @@ title={Trace 1}
 29.7070707070707	-113.575654973197\\
 30	-113.746111965603\\
 };
-\addplot [color=mycolor4,solid,forget plot]
+\addlegendentry{TRPL};
+
+\addplot [color=mycolor4,solid]
   table[row sep=crcr]{%
 1	-44.9214537765832\\
 1.29292929292929	-49.050887223414\\
@@ -348,7 +359,9 @@ title={Trace 1}
 29.7070707070707	-102.371203878887\\
 30	-102.541143848821\\
 };
-\addplot [color=mycolor5,solid,forget plot]
+\addlegendentry{GWPL};
+
+\addplot [color=mycolor5,solid]
   table[row sep=crcr]{%
 1	-45.2757493241887\\
 1.29292929292929	-49.7228898745648\\
@@ -451,5 +464,17 @@ title={Trace 1}
 29.7070707070707	-104.150525549075\\
 30	-104.320981660217\\
 };
+\addlegendentry{NSPL};
+
+\addplot [color=black,solid]
+  table[row sep=crcr]{%
+1	-45.9420286016976\\
+2	-57.9832284282568\\
+4	-70.0244282548161\\
+8	-82.0656280813753\\
+15	-92.9856789639248\\
+30	-105.026878790484\\
+};
+\addlegendentry{Proposed model};
 \end{axis}
 \end{tikzpicture}%
