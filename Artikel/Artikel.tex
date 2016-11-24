@@ -154,7 +154,7 @@
 %
 % You can find documentation about the pdfTeX application at:
 % http://www.tug.org/applications/pdftex
-
+\usepackage{float}
 
 
 
@@ -263,7 +263,7 @@
 % http://www.ctan.org/pkg/fixltx2e
 
 
-\usepackage{stfloats}
+%\usepackage{stfloats}
 % stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
 % the ability to do double column floats at the bottom of the page as well
 % as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
@@ -342,7 +342,9 @@
 \pgfplotsset{filter discard warning = true, unbounded coords=discard}
 \pgfplotsset{compat = newest}
 \renewcommand{\thetable}{\arabic{table}}
-
+\newcommand{\subparagraph}{}
+\usepackage[compact]{titlesec}  
+\titlespacing*{\section}{0pt}{1.1\baselineskip}{\baselineskip}
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -417,7 +419,7 @@ Email: mgotth13@student.aau.dk}}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-The abstract goes here.
+As it is seen from the figures \autoref{Models1}, \autoref{Models7}, \autoref{Models10}, the different models, besides GWPL, have different areas where they are accurate, while having other areas, where they either over and underestimate the PL. To compare the different models accuracy the mean square error (MSE) is calculated based on the measurements. To make this estimate valid it is necessary to work only inside the valid region of the different models, which is found based on \eqref{two_ray_cond} and \eqref{cond_surface}. As it is seen from the figures \autoref{Models1}, \autoref{Models7}, \autoref{Models10}, the different models, besides GWPL, have different areas where they are accurate, while having other areas, where they either over and underestimate the PL. To compare the different models accuracy the mean square error (MSE) is calculated based on the measurements. To make this estimate valid it is necessary to work only inside the valid region of the different models, which is found based on \eqref{two_ray_cond} and \eqref{cond_surface}. As it is seen from the figures \autoref{Models1}, \autoref{Models7}, \autoref{Models10}, the different models, besides GWPL, have different areas where they are accurate, while having other areas, where they either over and underestimate the PL. To compare the different models accuracy the mean square error (MSE) is calculated based on the measurements. To make this estimate valid it is  To make this estimate valid it is  which is found based on \eqref{two_ray_cond} and \eqref{cond_surface}. As it is seen from the figures \autoref{Models1}, \autoref{Models7}, \autoref{Models10}, the different models, besides GWPL, have different areas where they are accurate, while having other areas, where they either
 \end{abstract}
 
 % no keywords
@@ -442,10 +444,10 @@ The abstract goes here.
 \input{filer/intro2}
 \input{filer/potentiet}
 
-\section{Methods and materials}
+
 \input{filer/Methods.tex}
 
-\section{Results}
+
 \input{filer/Meas}
 \input{filer/Model_estimation}
 \input{filer/delkonlusion}

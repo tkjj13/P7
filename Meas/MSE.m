@@ -1,5 +1,5 @@
 clc
-%close all
+close all
 clear all
 
 load values.mat

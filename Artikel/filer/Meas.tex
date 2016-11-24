@@ -1,3 +1,6 @@
+\newpage
+\section{Results}
+%\vspace{-1em}
 From the analysis of the results of the measurements in Appendix \autoref{App2}, it is shown, that the height of the antennas and the distance between them have a much higher influence on the PL, than the other parameters, which is the placement, antenna type and polarization. As these parameters have a much less influence on the PL, there will only be focused on the different height combinations and distance between the antennas.
 
 Firstly there will be looked at the case, where the height of the transmitting antenna and the receiving antenna is at the same heights, over the different distance.
@@ -20,7 +23,7 @@ Secondly there will be looked at the case, where the height of the transmitting 
 \label{Meas2}
 \end{figure}
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 \centering
 \input{figures/HighTox.tex}
 \caption{Mesurements of PL for transmitter at 2.00m and receiver antenna at varying heights}
@@ -29,12 +32,12 @@ Secondly there will be looked at the case, where the height of the transmitting 
 
 In both cases, it is seen that the lower the heights of the antennas is, the higher the PL. Some of the measurements are very close at the short distance on \autoref{Meas3}. This comes from the destructive interference, that comes at different angles. As the different heights of the receiver antenna gives different angles, where the difference is much higher close by the transmitter antenna, the difference in destructive interference is larger and the measurements get closer to each other.
 
-Lastly there will make a comparison of the measured data and the model described earlier, to see if the model estimated the measured data correctly, this is done at at selected heights of the transmitting and receiving antenna, as seen on \autoref{Models1}, \autoref{Models7} and \autoref{Models10}.
+Lastly there will make a comparison of the measured data and the model described earlier, to see if the model estimated the measured data correctly, this is done at selected heights of the transmitting and receiving antenna, as seen on \autoref{Models1}, \autoref{Models7} and \autoref{Models10}.
 
 %THOMAS, INSERT FIGURER HER, SOM VISER AT DE FORSKELLIGE MODELLER VIRKER I FORSKELLIGE OMRÅDE... SÅ BURDE DU HAVE EN GOD NOK OVERGANG TIL DIT :)
 
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 \centering
 \input{figures/Models1.tex}
 \caption{Comparison between measured path loss and predicted path loss from models at a height of 0.04 m for the transmitting and receiving antenna}
@@ -43,7 +46,7 @@ Lastly there will make a comparison of the measured data and the model described
 
 On \autoref{Models1} it can be seen that GWPL and NSPL predicts the PL best, however both model overestimate the PL by close to 10 dB, which could indicate that the measurements of $\epsilon_0$ might not be completely accurate. Here the general problem with low heigth is also seen as FSPL greatly underestimate the PL where TRPL greatly overestimate the PL.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 \centering
 \input{figures/Models7.tex}
 \caption{Comparison between measured path loss and predicted path loss from models at a height of 0.14 m and 2.00 m for the transmitting and receiving antenna respectively}
@@ -52,12 +55,46 @@ On \autoref{Models1} it can be seen that GWPL and NSPL predicts the PL best, how
 
 On \autoref{Models7} it can be seen that GWPL predicts the path loss across all distances, where the predictions from FSPL and TRPL crosses at a distance which matches the condition mentioned in \autoref{two_ray_cond}. The NSPL greatly overestimate the PL which is expected since \autoref{cond_surface} is not true.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 \centering
 \input{figures/Models10.tex}
 \caption{Comparison between measured path loss and predicted path loss from models at a height of 2.00 m for the transmitting and receiving antenna}
 \label{Models10}
 \end{figure}
 
-On \autoref{Models10} it can be seen that GWPL together with the FSPL predicts the path loss across all distances, where the predictions from TRPL is underestimating the path loss which is because \autoref{two_ray_cond} is false. The NSPL greatly overestimate the PL which is expected since \autoref{cond_surface} is not true.
+On \autoref{Models10} it can be seen that GWPL together with the FSPL predicts the path loss across all distances, where the predictions from TRPL is underestimating the path loss which is because \autoref{two_ray_cond} is false. The NSPL greatly overestimate the PL which is expected since \autoref{cond_surface} is not true.\\
+
+
+
+As it is seen from the figures \autoref{Models1}, \autoref{Models7}, \autoref{Models10}, the different models, besides GWPL, have different areas where they are accurate, while having other areas, where they either over and underestimate the PL. To compare the different models accuracy the mean square error (MSE) is calculated based on the measurements. To make this estimate valid it is necessary to work only inside the valid region of the different models, which is found based on \eqref{two_ray_cond} and \eqref{cond_surface}. 
+
+%Conditions
+%GWPL = none
+%TRPL = (virker bedst ved højde over lambda)
+%TRPL approx = d > dc = (4 pi ht hr)/lambda
+%NSPL = h < lambda
+%FSPL = no multipath
+
+
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Models} & \textbf{MSE} & \textbf{Covarge in \%} \\ \hline
+FSPL            & 15.95        & 35 \%                  \\ \hline
+TRPL 		    & 141.58       & 65 \%                  \\ \hline %approx.
+%TRPL     		& 42.12        & 100 \%                 \\ \hline
+GWPL            & 35.49        & 100 \%                 \\ \hline
+NSPL            & 230.05       & 30 \%                  \\ \hline
+%Our            & 60.18        & 65 \%                  \\ \hline
+\end{tabular}
+\caption{The MSE of the different models, inside the areas, where the different models are valid. The coverage, is the percent of the measurement points, that is inside this area.}
+\label{model_comparison}
+\end{table}
+
+%From \autoref{model_comparison} it can be seen that GWPL works quite well but 
+
+
+
 
