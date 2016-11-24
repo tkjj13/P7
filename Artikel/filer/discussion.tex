@@ -4,21 +4,24 @@ By looking at \autoref{model_comparison} it can be seen that be making the simpl
 
 In terms proposing a PL model six parameters is considered distance, height of Tx, height of Rx, antenna type, polarization and environment. In Appendix it is shown that there is very little correlation between signal level and antenna type, polarization and environment compared to the distance and heights, therefore those factors are deemed unnecessary to consider, which leaves only the distance and heights as needed to be considered in our proposed model. This is in expected as only the NSPL has some dependency on polarization and environment. 
 
-This means that when designing a PL model it is reasonable build it around the existing models. The aim is to make a simple version of the GWPL model, has high applicability and high accuracy, but is still simple to calculate compared to GWPL. Therefore the
+This means that when designing a PL model it is reasonable build it around the existing models. The aim is to make a simple version of the GWPL model, has high applicability and high accuracy, but is still simple to calculate compared to GWPL. Therefore the as a base for the model will be the TRPL the weak point here was it inaccuracy at very low heights which could be accommodated by adding the NSPL. 
 
-that involves the simplified PL models, which does not require complex data processing. However when using the NSPL model \eqref{surface_wave} it is necessary to make measurements to find $z$, the aim is then to make an average of $z$ values, that is only valid for the two surfaces the measurement have been made, which can be used as the $z$ value. The purposed model shall consist of the simplified TRPL \eqref{two_ray_model} added together with the NSPL \eqref{surface_wave}.
+\begin{align}
+Proposed model &= TRPL + NSPL \\
+P_r & = \frac{P_t G_t G_r }{L}\left(\frac{h_t^2 h_r^2+h_0^4}{d^4}\right)
+\end{align}
 
-\begin{equation}
-Our \quad model = TRPL + NSPL
-\end{equation}
+This model still suffer the weak point from NSPL of dependency upon $z$, however as only the magnitude of $z$ is needed this can be guestimated in most cases and in more critical cases it can be measured using the method described in \cite{Kim}. From our measurement the average magnitude of $z$ is 0.8122. To find out the performance of the model it is compared to the other models with the average $z$. First to analyse the applicability of the model it has the same applicability as the TRPL model which means it can be used if \eqref{two_ray_cond} is true else FSPL should still be used. The accuracy is found on the same data set as the other models as none of the data points has been used for the derivation of any part of the model. The MSE is found to 87.66.
 
-The reasoning behind adding exactly these two models is that the TRPL and NSPL overlap each other, given there conditions, where if the purposed model included FSPL, then the TRPL is not valid where FSPL is valid. 
 
+
+
+%The reasoning behind adding exactly these two models is that the TRPL and NSPL overlap each other, given there conditions, where if the purposed model included FSPL, then the TRPL is not valid where FSPL is valid. 
 
 %both takes into account the direct and reflected wave, while the NSPL, takes into account the surface wave. This is given for the conditions that the two models have to uphold \eqref{cond_surface}, \eqref{two_ray_cond}.
 
 %As both the TRPL and NSPL have their conditions these same conditions will be applied to the our purposed model. 
-When comparing the MSE and coverage are of our purposed model and the GRPL, where the MSE of our purposed model is 65.42, while the coverage is 65.00$\%$. The MSE of the GRPL is still better.  \\
+%When comparing the MSE and coverage are of our purposed model and the GRPL, where the MSE of our purposed model is 65.42, while the coverage is 65.00$\%$. The MSE of the GRPL is still better.  \\
 
 
 %The measurements at the smallest distances between the transmitter and the receiver, will suffer from not being in the Far Field, this could indicate why some of the measurements behave as they do. \\
