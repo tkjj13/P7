@@ -13,7 +13,7 @@
 
 \begin{axis}[%
 width=2.8in,
-height=2.3in,
+height=\myvar,
 at={(2.08in,0.858in)},
 scale only axis,
 xmode=log,
@@ -23,57 +23,57 @@ xlabel=Distance (m),
 xminorticks=true,
 xmajorgrids,
 xminorgrids,
-ymin=-100,
-ymax=-20,
+ymin=20,
+ymax=100,
 ylabel=Path loss (dB),
 ymajorgrids,
-legend pos = south west,
+legend pos = north west,
 axis background/.style={fill=white},
 legend style={legend cell align=left,align=left,draw=white!15!black}
 ]
 \addplot [color=mycolor1,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
-1	-39.176832441447\\
-2	-50.0236813268286\\
-4	-61.7627349006033\\
-8	-69.1568155321866\\
-15	-80.2784721484843\\
-30	-81.8463231335614\\
+1	39.176832441447\\
+2	50.0236813268286\\
+4	61.7627349006033\\
+8	69.1568155321866\\
+15	80.2784721484843\\
+30	81.8463231335614\\
 };
-\addlegendentry{2.00m};
+\addlegendentry{0.04m};
 
 \addplot [color=mycolor2,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
-1	-32.6162301822822\\
-2	-42.7733202106742\\
-4	-53.7406598744587\\
-8	-66.7692891298477\\
-15	-74.3619892107941\\
-30	-78.384604174472\\
+1	32.6162301822822\\
+2	42.7733202106742\\
+4	53.7406598744587\\
+8	66.7692891298477\\
+15	74.3619892107941\\
+30	78.384604174472\\
 };
-\addlegendentry{0.34m};
+\addlegendentry{0.14m};
 
 \addplot [color=mycolor3,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
-1	-26.9292301822822\\
-2	-34.0517673842044\\
-4	-42.7927848744587\\
-8	-54.0404141298477\\
-15	-65.4297392107941\\
-30	-70.718229174472\\
+1	26.9292301822822\\
+2	34.0517673842044\\
+4	42.7927848744587\\
+8	54.0404141298477\\
+15	65.4297392107941\\
+30	70.718229174472\\
 };
-\addlegendentry{0.08m};
+\addlegendentry{0.36m};
 
 \addplot [color=mycolor4,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
-1	-28.6391813268286\\
-2	-35.8754849006033\\
-4	-42.4804405321866\\
-8	-48.4989721484843\\
-15	-51.0989481335614\\
-30	-59.847479174472\\
+1	28.6391813268286\\
+2	35.8754849006033\\
+4	42.4804405321866\\
+8	48.4989721484843\\
+15	51.0989481335614\\
+30	59.847479174472\\
 };
-\addlegendentry{0.01m};
+\addlegendentry{2.02m};
 
 \end{axis}
 \end{tikzpicture}%
