@@ -1,5 +1,5 @@
 
-To make a simplified model, the influence of the different test parameters are analysed, to see if some of these parameters have significantly less influence on the path loss than some of the other test parameters. From the PL models it can be hinted at that the heights of the TX and Rx antennas along with the distance have more influence than the other parameters, as these influence almost all models where the other parameters only have some influence at very low heights.\\   
+To make a simplified model, the influence of the different test parameters are analysed, to see if some of these parameters have significantly less influence on the path loss than some of the other test parameters. From the PL models it can be hinted at that the heights of the TX and Rx antennas along with the distance have more influence than the other parameters, as these influence almost all models where the other parameters only have some influence at very low heights.   
 
 %In the other PL models, either the distance between the antennas or the height of the transmitting and receiving antenna are used or in the case of TRLP \eqref{two_ray_model} both are used. These parameters also influence the PL significantly. 
 
@@ -11,7 +11,7 @@ When changing the distance from one measurement point to the next, there is an i
 \hline
    & 1m & 2m & 4m & 8m & 15m & 30m\\
 \hline
-PL & 34.68 & 41.37 & 49.02 & 57.29 & 66.14 & 72.29 \\
+PL (dB)& 34.68 & 41.37 & 49.02 & 57.29 & 66.14 & 72.29 \\
 \hline
 \end{tabular}
 \caption{PL across all measurements for different distances}
@@ -22,19 +22,19 @@ PL & 34.68 & 41.37 & 49.02 & 57.29 & 66.14 & 72.29 \\
 
 In \autoref{App2}, the mean PL across all height setups is shown. It is seen that, at lower heights, the PL increases, which shows a dependency on the heights of the antennas.
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 Tx Rx & 0.04m & 0.14m & 0.36m & 2.02m \\
 \hline
-0.04m & 63.71 & 60.70 & 55.37 & 52.37\\
+0.04m & 63.71 dB & 60.70 dB & 55.37 dB & 52.37 dB\\
 \hline
-0.14m & 60.70 & 58.11 & 53.35 & 50,20\\
+0.14m & 60.70 dB & 58.11 dB & 53.35 dB & 50,20 dB\\
 \hline
-0.36m & 55.37 & 53.35 & 48.99 & 47.64\\
+0.36m & 55.37 dB & 53.35 dB & 48.99 dB & 47.64 dB\\
 \hline
-2.02m & 52.37 & 50.20 & 47.64 & 44.41\\
+2.02m & 52.37 dB & 50.20 dB & 47.64 dB & 44.41 dB\\
 \hline
 \end{tabular}
 \caption{PL across all measurements for different height combinations}
@@ -45,12 +45,12 @@ Tx Rx & 0.04m & 0.14m & 0.36m & 2.02m \\
 Compared to these two parameters, the rest of the test parameters (Environment, Antenna type and Polarization) do have a lesser impact as seen in \autoref{App3}. It should be noted that even though only two setups have been tested of each parameter, these setups has been quite different so if the parameter has any influence it should show, however there is no significantly tendencies found in the data for these parameters. 
 
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
-   \textbf{Parameter}& Environment & Antenna type & Polarization\\\hline
-\textbf{Difference} & 2.23 dB & 4.18 dB & 3.32 dB \\\hline
+Parameter& Environment & Antenna type & Polarization\\\hline
+Difference (dB) & 2.23 & 4.18 & 3.32 \\\hline
 \end{tabular}
 \caption{Difference bewteen setups of different parameters.}
 \label{App3}
