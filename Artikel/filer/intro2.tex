@@ -1,37 +1,53 @@
-\subsection{Path loss models}
+\section{Methods and materials}
+This section contains the theoretical link budget along with the theory of existing PL models and the description of the measurement campaign.
 
-In terms of finding the PL, different propagation models can be applied, to calculate the power received, given different conditions. One of the more extensive models is the Ground Wave Path Loss (GWPL) model \eqref{ground_wave}. The GWPL model takes the three most dominant factors into account when calculating the power received, the direct wave the reflected wave and the surface wave \cite{Chong,Bullington}.  
+\subsection{Link budget}
+A link budget can be calculated as \eqref{link_bud} to find the power received for a specific link.
+
+\begin{equation}
+P_{r} = \frac{P_{t}G_{t}G_{r}}{L_{p}L_{sys}}
+\label{link_bud}
+\end{equation}
+
+where $P_{r}$ and $P_{t}$ are the power received and transmitted in W respectively, $G_t$ and $G_r$ are the unitless gains in the transmitting and receiving antenna respectively, $L_{sys}$ is the system loss\footnote{The system loss consists of all loses from the Rx reference plane to the Tx reference plane, except the PL and antenna gains, examples could include cable losses, polarisation loss, impedance mismatch etc.} and $L_{p}$ is the PL, both unitless. As the aim is to develop a simple near-ground path loss model, it is necessary to identify the $L_{p}$ from \eqref{link_bud}.
+
+%loss through the whole system for a specific power transmitted, so the power received, antenna gain and the system loss need to be found, which gives the loss.
+
+\subsection{Existing Path Loss Models}
+
+In terms of finding the PL different propagation models can be used given different conditions. The PL models considerd are the: ground wave PL model (GWPL), Friss free space PL model (FSPL), approximated two-ray-ground-reflection PL model (ATRPL) and the Norton surface wave PL model (NSPL). One of the more extensive models is the GWPL model presented in \eqref{ground_wave}. The GWPL model takes the three most dominant factors into account when calculating the PL: the direct wave, the reflected wave and the surface wave \cite{Chong,Bullington}. Furthermore this PL model assumes that the antenna gain is isotropic \cite{Bullington}.  
 
 
 \begin{equation}
-P_r=P_0 \cdot \Big|\underbrace{1}_{\begin{subarray}{c}Direct\\wave\end{subarray}}+\underbrace{R\text{e}^{j\Delta}}_{\begin{subarray}{c}Reflected\\wave\end{subarray}}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{\begin{subarray}{c}Surface\\wave\end{subarray}}\Big|^2 
+L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{subarray}{c}Direct\\wave\end{subarray}}+\underbrace{R\text{e}^{j\Delta}}_{\begin{subarray}{c}Reflected\\wave\end{subarray}}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{\begin{subarray}{c}Surface\\wave\end{subarray}}\Big|^{-2} 
 \label{ground_wave}
 \end{equation}
+%where
+%\begin{equation}
+%P_0 = \frac{P_t G_t G_r}{L} \left(\frac{\lambda}{4 \pi d}\right)^2 
+%\label{ground_wave_P0}
+%\end{equation}
 where
-\begin{equation}
-P_0 = \frac{P_t G_t G_r}{L} \left(\frac{\lambda}{4 \pi d}\right)^2 
-\label{ground_wave_P0}
-\end{equation}
-
-$P_{r}$ and $P_{t}$ are the power received and transmitted respectively, $G_t$ and $G_r$ are the gains in the transmitting and receiving antenna respectively, $L$ is the system loss\footnote{The system loss consists of all loses from the Rx reference plane to the Tx reference plane, except the PL and antenna gains, examples could include cable losses, polarisation loss, impedance mismatch etc.}, $\lambda$ is the wavelength of the transmitted signal, $d$ is the distance between the transmitting and receiving antenna, $\Delta$ is the phase difference between the direct and reflected wave, $R$ is the complex reflection coefficient and $A$ is the surface wave attenuation factor \cite{Chong,Bullington}. 
+$\lambda$ is the wavelength of the transmitted signal in m, $d$ is the distance between the transmitting and receiving antenna, in m, $\Delta$ is the phase difference between the direct and reflected wave in rad, $R$ is the unitless complex reflection coefficient and $A$ is the unitless surface wave attenuation factor \cite{Chong,Bullington}. 
 
 %$\Delta$ $\approx$ $\frac{4\pi h_{r} h_{t}}{\lambda d}$
 
-The complex reflection coefficient, $R$, \eqref{reflection_coefficient} is dependent on the incidence angle and the surface materiel.
+The complex reflection coefficient, $R$, given in \eqref{reflection_coefficient} depends on the incidence angle and the surface materiel.
 \begin{equation}
-R = \frac{\sin(\theta)-z}{\sin(\theta)-z}
+R = \frac{\sin(\theta)-z}{\sin(\theta)+z}
 \label{reflection_coefficient}
 \end{equation}
 
-where $\theta$ is the incidence angle of the signal and the surface, and $z$ which is different from surface to surface is also different for vertical and horizontal polarization, and respectively given as.
+where $\theta$ is the incidence angle of the signal and the surface in rad, and the unitless $z$ which differs from surface to surface and also differs for vertical and horizontal polarization, is respectively given in \eqref{z1} and \eqref{z2}.
 
 \begin{align}
-z_v &= \frac{\sqrt{\epsilon_{0}-\cos^{2}\theta}}{\epsilon_{0}} \\
-z_h &= \sqrt{\epsilon_{0}-\cos^{2}\theta}
+z &= \frac{\sqrt{\epsilon_{0}-\cos^{2}\theta}}{\epsilon_{0}} \qquad \text{for vertical polarization} \label{z1}\\
+z &= \sqrt{\epsilon_{0}-\cos^{2}\theta}  \qquad \text{for horizontal polarization}
+\label{z2}
 \end{align}
 
-where $\epsilon_{0}$ is the Complex relative permittivity of the surface and can be found using the methods described in \cite{Kim}.\\
-The surface wave attenuation factor, $A$, can approximated as \eqref{attenuation_factor_A} \cite{Chong, Bullington}. 
+where $\epsilon_{0}$ is the unitless complex relative permittivity of the surface and can be found using the methods described in \cite{Kim}.\\
+The surface wave attenuation factor, $A$, can be approximated as given in \eqref{attenuation_factor_A} \cite{Chong, Bullington}. 
 
 
 \begin{equation}
@@ -40,82 +56,51 @@ A \approx \frac{-1}{1+j\frac{2\pi d}{\lambda}(\sin(\theta)+z)^{2}}
 \end{equation}
 
 
-As the GWPL model is quite complex different approximations of it has been made that in most cases makes it possible to calculate the PL without making measurements of the environment. The most simple model is the Friss free space path loss (FSPL) model \eqref{simple_friss} which calculates the power received, given only free space loss \cite{Chong}. This means that the reflected wave and surface wave can be set to 0 in \eqref{ground_wave}. 
+As the GWPL model is quite complicated, due to the depenedcy of surface constants, which for accurate predictions require enviromental measurements. Different approximations of it has been made that in most cases makes it possible to calculate the PL without making measurements of the environment. The most simple model is FSPL model given in \eqref{simple_friss}, which calculates the PL given only free space conditions \cite{Chong}. This means that the reflected wave and surface wave can be set to 0 in \eqref{ground_wave}. 
 
 \begin{equation}
-P_r = \frac{P_t G_t G_r}{L} \left(\frac{\lambda}{4 \pi d}\right)^2
+L_p=\left(\frac{4 \pi d}{\lambda}\right)^2
 \label{simple_friss}
 \end{equation}
 
 %This model \eqref{simple_friss} is not the the complete FSPL, as it assumes no losses due to polarization mismatch, pointing error, and matching between the system and antennas \cite{full_friss}. \\
-This model is often used as a first estimate of the PL due to its simplicity, the assumptions of no multipath however does render its applicability inadequate in the case of near ground WSN. \\
+This model is often used as a first estimate of the PL due to its simplicity, the assumptions of no multipath however does render its applicability inadequate in the case of near ground scenarios, as the free space conditions are not fulfilled \cite{two_ray}. \\
 
 
 
 %As the FSPL only accounts for the direct wave between the receiver and the transmitter. 
-A model that also accounts for the single point reflected wave is the two-ray-ground-reflection path loss model (TRPL) \eqref{two_ray_model} \cite{two_ray}. 
+A model that accounts for the single point reflected wave is the ATRPL model given in \eqref{two_ray_model} \cite{two_ray, Chong}. 
 
 \begin{equation}
-P_r(d) = \frac{P_t G_t G_r }{L}\left(\frac{h_t h_r}{d^2}\right)^2
+L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
 \label{two_ray_model}
 \end{equation}
 
-where $h_t$, $h_r$ are the heights of the transmitting and receiving antenna respectively. \\
-The TRPL is a simplified version of \eqref{ground_wave}. The approximations made to derive TRPL include $\frac{\Delta}{2}$ $<$ $\pi$/$10$ $\Rightarrow$ $\sin$ $\frac{\Delta}{2}$ $\approx$ $\frac{\Delta}{2}$ \cite{Chong}. This approximation holds when \eqref{two_ray_cond} is true and thus the simplified TRPL \eqref{two_ray_model} can be applied. If \eqref{two_ray_cond} is false FSPL \eqref{simple_friss} can be applied \cite{two_ray}.
+where $h_t$, $h_r$ are the heights in m of the transmitting and receiving antenna respectively. 
+The ATRPL is a simplified and approximated version of \eqref{ground_wave}. The approximations made to derive ATRPL include $\frac{\Delta}{2}$ $<$ $\pi$/$10$ $\Rightarrow$ $\sin$ $\frac{\Delta}{2}$ $\approx$ $\frac{\Delta}{2}$ as well as $R$ $\approx$ -1 for near gracing angles \cite{Chong}. This approximation is valid when is true and thus the ATRPL \eqref{two_ray_model} can be applied. If \eqref{two_ray_cond} is false FSPL \eqref{simple_friss} can be applied.
   
 \begin{equation}
 d > \frac{4\pi \cdot h_t h_r }{\lambda}
 \label{two_ray_cond}
 \end{equation}
 
-This fraction is often referred to as the critical distance, $d_c$, of the TRPL. 
-
-%The condition \eqref{two_ray_cond}, exists because the direct and reflected wave interferes in an alternating constructive or destructive manner which the TRPL model does not consider.
-%The condition \eqref{two_ray_cond}, exists because the TRPL model considers two waves, a direct and a reflected wave, which interferes in an alternating constructive or destructive manner.
-
-%\begin{equation}
-%P_r(d) = \frac{P_t G_t G_r }{L}\left(\frac{h_t h_r}{d^2}\right)^2
-%\label{two_ray_model}
-%\end{equation}
-
-%where $h_t$, $h_r$ are the heights of the transmitting and receiving antenna respectively. \\
-%As the TRPL model considers two waves, a direct and a reflected wave, this model predicts interferences, which are caused by the constructive and destructive combination of the two waves. The interference is dominant if \eqref{two_ray_cond} is true\cite{two_ray}.
-
-
-%this gives the following condition:
-
-
-%a condition is introduced given as:
-
-%\begin{equation}
-%d < d_{c}
-%\label{two_ray_cond}
-%\end{equation}
-
-%where %$d_{c}$ is called the cross over distance and is given as:
-
-%\begin{equation}
-%d_{c} = \frac{4\pi \cdot h^2_t h^2_r }{\lambda}
-%\label{two_ray_cross_dis}
-%\end{equation}  
-
-However when placing the antennas at ground level, the TRLP predicts that the power received is zero, which as the GWPL suggest is not the case with the introduction of the surface wave. The Norton Surface wave PL model (NSPL)\eqref{surface_wave} assumes a minimum effective height of the antennas. 
+This fraction is often referred to as the critical distance, $d_c$, of the ATRPL. However when placing a antenna at ground level, the ATRLP predicts that the power received is zero, which as the GWPL suggest is not the case partly because of the surface wave. NSPL as given in \eqref{surface_wave} assumes a minimum effective height of the antennas. 
 
 \begin{equation}
-P_r=\frac{P_t G_t G_r }{L}\left(\frac{h_0}{d}\right)^4
+L_p=\left(\frac{d}{h_{0}}\right)^4
 \label{surface_wave}
 \end{equation}
 
-where $h_0$ is the minimum effective height of the antennas given as. 
+where $h_0$ is the minimum effective height in m of the antennas given as. 
 
 \begin{equation}
 h_{0} = \left|\frac{\lambda}{2\pi z}\right|
 \label{h_0}
 \end{equation}
 
-NSPL assumes that $\Delta \approx 0$ and $R\approx -1$ in the GWPL model \cite{Chong}. The condition in terms of when to use the NSPL \eqref{cond_surface} is dependent on the height of the antennas and the wavelength og the signal \cite{Chong}.
+NSPL assumes that $\Delta \approx 0$ and $R\approx -1$ in the GWPL model, for the same reason as ARTPL \cite{Chong}. The condition in terms of when to use the NSPL \eqref{cond_surface} is further dependent on the height of the antennas and the wavelength og the signal \cite{Chong}.
 \begin{equation}
 h_{r,t} < \lambda
 \label{cond_surface}
 \end{equation}
-When \eqref{cond_surface} is true the FSPL and TRPL respectively under and overestimate the PL.
+When \eqref{cond_surface} is true the FSPL and ATRPL respectively under and overestimate the PL.
