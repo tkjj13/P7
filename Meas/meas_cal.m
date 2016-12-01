@@ -364,9 +364,9 @@ ymin = -100;
 ymax = -20;
 %
 figure
-for n = 7:7
+for n = 1:10
     trace = n;
-    %subplot(3,4,n);
+    subplot(3,4,n);
     %figure
     semilogx(dRec(:,trace),rec2(:,trace),'*','MarkerSize',5);
     hold on
