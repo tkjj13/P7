@@ -1,16 +1,18 @@
 
-\section{Methods and materials}
+\subsection{Measurement Campaign}
 
-%To solve a problem like this there is generally two types of approaches, a theoretic approach where the models are derieved using physics and electromagnetism and an experimental approach where the PL is measured and a model is fitted to the data. %This article will focus on validation of existing models using experiments. 
+%To solve a problem like this there is generally two types of approaches, a theoretic approach where the models are derieved using physics and electromagnetism and an experimental approach where the PL is measured and a model is fitted to the data. %This article will focus on validation of existing models using experiments. %validation will be made over multiple steps, the first is to assume no knowledge of existing models and design a measurement campaign.
 
-This article has two parts to it the first is validation of PL models the second is to develop an extended PL model. The validation will be made over multiple steps, the first is to assume no knowledge of existing models and design a measurement campaign. The link of the measurement campaign can be seen in \autoref{link}. 
+The measurement campaign should be designed such that the strengths and weaknesses of the different PL models are explored. 
+The first step in the measurement campaign is to design the link. The link of the measurement campaign can be seen in \autoref{link}, and the setup hereof can be seen in \autoref{link_dd}. 
 
 \begin{table}[!htbp]
 \centering
+\caption{Equipment used for the Tx and Rx links in the measurement campaign.}
 \begin{tabular}{|c|c|}\hline
 \textbf{Tx link}&\textbf{Rx link}\\\hline
 Marconi instruments low noise & \multirow{2}{*}{Rx antenna} \\
-signal generator 2042 (AAUNR. 33376) \\\hline
+signal generator 2042 (AAUNR. 33376) & \\\hline
 1.5 m SUCOFLEX\_104 & 2.5 m SUCOFLEX\_104 \\\hline 
 \multirow{3}{*}{SMA male/male} & Rhode \& Schwarz FSL \\
 &spectrum analyser \\
@@ -18,10 +20,19 @@ signal generator 2042 (AAUNR. 33376) \\\hline
 1 m RG223/U & \\\hline
 Tx antenna &\\\hline
 \end{tabular}
-\caption{Equipment used for the Tx and Rx links in the measurement campaign.}
+
 \label{link}
 \end{table}
-The measurement campaign accounts for six different parameters. 1) Two different locations, outside an empty parking lot as seen on \autoref{fig:test1} and inside a gym (45 by 25 meters) as seen on \autoref{fig:test2}. 2) Both horizontal and vertical polarization are tested. 3) Two different antenna structures have been tested, a set of monopole antennas (858 MHz) a set of patch antennas (858 MHz). 4) and 5) The height of the Tx and Rx antennas are varied\footnote{It is assumed that the PL for mirrored heights for example Rx = 0.04 m, Tx = 2.02 m and Rx at 2.02 m, Tx at 0.04 m is identical} between 0.04 m, 0.14 m, 0.36 m and 2.02 m. This is achieved by mounting the antennas on 2.5 m wooden poles using clamps. 6) The distance between Rx poles and Tx poles is varied across 1 m, 2 m, 4 m, 8 m, 15 m and 30 m. This gives 480 measurement points at each point 10 measurements are performed.
+
+\begin{figure}[!htbp]
+\centering 
+\includegraphics[scale=0.5]{figures/setup.png} 
+\caption{Equipment used for the Tx and Rx links in the measurement campaign.}
+\label{link_dd}
+\end{figure}
+
+
+The measurement campaign accounts for six different parameters: 1) Two different locations, outside an empty parking lot as seen on \autoref{fig:test1} and inside a gym (45 by 25 meters) as seen on \autoref{fig:test2}. 2) Both horizontal and vertical polarization are tested. 3) Two different antenna structures have been tested, a set of monopole antennas (858 MHz) a set of patch antennas (858 MHz). 4) and 5) The height of the Tx and Rx antennas are varied\footnote{It is assumed that the PL for mirrored heights for example Rx = 0.04 m, Tx = 2.02 m and Rx at 2.02 m, Tx at 0.04 m is identical} between 0.04 m, 0.14 m, 0.36 m and 2.02 m. This is achieved by mounting the antennas on 2.5 m wooden poles using clamps. 6) The distance between Rx poles and Tx poles is varied across 1 m, 2 m, 4 m, 8 m, 15 m and 30 m. This gives 480 measurement points at each point 10 measurements are performed.
 
 %A experiential method based on measurements is used to make the PL model, that will be used to calculate the loss for near ground communication. This model is based on data gathered from measuring the PL at different heights and distances. In each point there will be taken multiple measurements, so the noise factor will have a less of an effect on the results.
 
