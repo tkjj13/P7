@@ -11,14 +11,16 @@
 %
 \begin{tikzpicture}
 
-\begin{axis}[%
+\begin{semilogxaxis}[%
 width=2.8in,
 height=\myvar,
 at={(2.08in,0.858in)},
 scale only axis,
-xmode=log,
 xmin=0.9,
 xmax=31,
+extra x ticks={2,5,20}, 
+extra x tick style={log identify minor tick positions=false},
+log ticks with fixed point,
 xlabel=Distance (m),
 xminorticks=true,
 xmajorgrids,
@@ -75,5 +77,5 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 };
 \addlegendentry{2.02m};
 
-\end{axis}
+\end{semilogxaxis}
 \end{tikzpicture}%

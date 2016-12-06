@@ -18,6 +18,9 @@ height=\myvar,
 at={(0.758in,0.481in)},
 scale only axis,
 xmode=log,
+extra x ticks={2,5,20}, 
+extra x tick style={log identify minor tick positions=false},
+log ticks with fixed point,
 xmin=0.9,
 xmax=31,
 xlabel=Distance (m),
@@ -253,7 +256,7 @@ legend pos = north west
 29.7070707070707	46.5036585310829\\
 30	46.6741155234886\\
 };
-\addlegendentry{TRPL};
+\addlegendentry{ATRPL};
 
 \addplot [color=mycolor4,solid]
   table[row sep=crcr]{%

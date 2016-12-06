@@ -1,8 +1,20 @@
 %\newpage
 \section{Results}
 %\vspace{-1em}
-The results from the measurement campaign have been analysed, which can be seen in Appendix. The result of this is shown in \autoref{App1}, \autoref{App2} and \autoref{App3}, where it can be seen that the environment, antenna type and polarization are less influential parameters (LIP). %, which is the placement, antenna type and polarization. 
-That makes it possible to take the mean across the LIP, and focus only on the different combinations of height and distances. To show the findings of the measurement campaign, \autoref{Meas1} shows PL at equal height of the receivers and different distances, \autoref{Meas2} shows PL with an Rx height of 0.04 m varying the Tx height and the distance, \autoref{Meas3} shows PL at with an Rx height of 2.02 m varying the Tx height and the distance, in all cases a mean has been taken across the LIP. 
+\input{filer/app}
+
+\section{Discussion}
+
+*Insert awesome text*
+
+\subsection{Less influential parameters}
+
+So from the analysis of the test parameters, it is seen that only the distance between the antennas and the heights of antennas has a influence that exceeds 5 dB. By that account the other parameters are deemed to be less influential parameters (LIP). 
+
+
+
+% which can be seen in Appendix. The result of this is shown in \autoref{App1}, \autoref{App2} and \autoref{App3}, where it can be seen that the environment, antenna type and polarization are less influential parameters (LIP). %, which is the placement, antenna type and polarization. 
+%That makes it possible to take the mean across the LIP, and focus only on the different combinations of height and distances. To show the findings of the measurement campaign, \autoref{Meas1} shows PL at equal height of the receivers and different distances, \autoref{Meas2} shows PL with an Rx height of 0.04 m varying the Tx height and the distance, \autoref{Meas3} shows PL at with an Rx height of 2.02 m varying the Tx height and the distance, in all cases a mean has been taken across the LIP. 
 
 
 %It is seen on \autoref{Meas1}, that the longer the distance, the higher the PL. This comes from the same principle, that the FSPL model is based on, which is given as signal = $\frac{1}{d^{2}}$, this means that the larger the distance the less signal is obtained, and more PL loss. When looking at the graph compared to changing the heights, it is seen, that the lower the antennas is placed, the higher PL. This comes from the principle, that reflections comes from the ground and comes with (in most cases) destructive interference, which the TRPL model is based on. 
@@ -10,30 +22,32 @@ That makes it possible to take the mean across the LIP, and focus only on the di
 %Secondly there will be looked at the case, where the height of the transmitting antenna is kept at a single height, both low at 0.01m \autoref{Meas2} and high at 2.00m \autoref{Meas3}, while the height of the receiving antenna is varying.
 
 
-\begin{figure}[!htbp]
-\centering
-\input{figures/xTox.tex}
-\caption{Mean PL across LIP for transmitter and receiver antenna at the same height, at varying distance.}
-\label{Meas1}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
-\input{figures/LowTox.tex}
-\caption{Mean PL across LIP for transmitter at 0.01m and receiver antenna at varying heights}
-\label{Meas2}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
-\input{figures/HighTox.tex}
-\caption{Mean PL across LIP for transmitter at 2.00m and receiver antenna at varying heights}
-\label{Meas3}
-\end{figure}
+%\begin{figure}[!htbp]
+%\centering
+%\input{figures/xTox.tex}
+%\caption{Mean PL across LIP for transmitter and receiver antenna at the same height, at varying distance.}
+%\label{Meas1}
+%\end{figure}
+%
+%\begin{figure}[!htbp]
+%\centering
+%\input{figures/LowTox.tex}
+%\caption{Mean PL across LIP for transmitter at 0.01m and receiver antenna at varying heights}
+%\label{Meas2}
+%\end{figure}
+%
+%\begin{figure}[!htbp]
+%\centering
+%\input{figures/HighTox.tex}
+%\caption{Mean PL across LIP for transmitter at 2.00m and receiver antenna at varying heights}
+%\label{Meas3}
+%\end{figure}
 
 %In both cases, it is seen that the lower the heights of the antennas is, the higher the PL. Some of the measurements are very close at the short distance on \autoref{Meas3}. This comes from the destructive interference, that comes at different angles. As the different heights of the receiver antenna gives different angles, where the difference is much higher close by the transmitter antenna, the difference in destructive interference is larger and the measurements get closer to each other.
 
+\subsection{Comparison and coverage of exiting PL models}
 
+The measured PL, where the mean across LIP again has been taken, is now compared to predictions of the models described earlier, to see if the models predict the PL accurately, this is done at selected heights of the transmitting and receiving antenna, as seen on \autoref{Models1}, \autoref{Models7} and \autoref{Models10}.
 
 \begin{figure}[H]
 \centering
@@ -42,8 +56,8 @@ That makes it possible to take the mean across the LIP, and focus only on the di
 \label{Models1}
 \end{figure}
 
-\newpage
-The measured PL, where the mean across LIP again has been taken, is now compared to predictions of the models described earlier, to see if the models predict the PL accurately, this is done at selected heights of the transmitting and receiving antenna, as seen on \autoref{Models1}, \autoref{Models7} and \autoref{Models10}.\\
+
+
 
 %THOMAS, INSERT FIGURER HER, SOM VISER AT DE FORSKELLIGE MODELLER VIRKER I FORSKELLIGE OMRÅDE... SÅ BURDE DU HAVE EN GOD NOK OVERGANG TIL DIT :)
 

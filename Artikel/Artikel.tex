@@ -331,7 +331,8 @@
 \bibliographystyle{setup/IEEEtran}
 
 
-\usepackage{caption}
+\usepackage[labelfont={bf,it},
+            textfont=it]{caption}
 \captionsetup[table]{name=Tab.}
 % Figures - TIKZ
 \usepackage{tikz}
@@ -347,6 +348,9 @@
 \titlespacing*{\section}{0pt}{1.1\baselineskip}{\baselineskip}
 \def\myvar{1.9in}
 \usepackage{multirow}
+
+\pagestyle{plain}
+
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -459,7 +463,7 @@ This article focuses on developing a model that can be used to predict the path 
 \input{filer/delkonlusion}
 
 
-\section{Proposed model}
+\subsection{Proposed model}
 \input{filer/Discussion}
 
 % An example of a floating figure using the graphicx package.
@@ -612,7 +616,7 @@ The authors would like to thank Vendelbo hallen for letting us borrow their faci
 \bibliography{setup/mybib}
 
 \section*{Appendix}
-\input{filer/app}
+%\input{filer/app}
 %\begin{thebibliography}{1}
 %
 %\bibitem{IEEEhowto:kopka}

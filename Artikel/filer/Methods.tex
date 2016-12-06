@@ -3,8 +3,7 @@
 
 %To solve a problem like this there is generally two types of approaches, a theoretic approach where the models are derieved using physics and electromagnetism and an experimental approach where the PL is measured and a model is fitted to the data. %This article will focus on validation of existing models using experiments. %validation will be made over multiple steps, the first is to assume no knowledge of existing models and design a measurement campaign.
 
-The measurement campaign should be designed such that the strengths and weaknesses of the different PL models are explored. 
-The first step in the measurement campaign is to design the link. The link of the measurement campaign can be seen in \autoref{link}, and the setup hereof can be seen in \autoref{link_dd}. 
+A measurement campaign is designed to explore the strength and weaknesses of the different PL models. For this the received power is measured from a reference signal to estimate the PL. The first step in the measurement campaign is to design the link. The link of the measurement campaign can be seen in \autoref{link}, and the setup hereof can be seen in \autoref{link_dd}. 
 
 \begin{table}[!htbp]
 \centering
@@ -32,7 +31,17 @@ Tx antenna &\\\hline
 \end{figure}
 
 
-The measurement campaign accounts for six different parameters: 1) Two different locations, outside an empty parking lot as seen on \autoref{fig:test1} and inside a gym (45 by 25 meters) as seen on \autoref{fig:test2}. 2) Both horizontal and vertical polarization are tested. 3) Two different antenna structures have been tested, a set of monopole antennas (858 MHz) a set of patch antennas (858 MHz). 4) and 5) The height of the Tx and Rx antennas are varied\footnote{It is assumed that the PL for mirrored heights for example Rx = 0.04 m, Tx = 2.02 m and Rx at 2.02 m, Tx at 0.04 m is identical} between 0.04 m, 0.14 m, 0.36 m and 2.02 m. This is achieved by mounting the antennas on 2.5 m wooden poles using clamps. 6) The distance between Rx poles and Tx poles is varied across 1 m, 2 m, 4 m, 8 m, 15 m and 30 m. This gives 480 measurement points at each point 10 measurements are performed.
+
+The measurement campaign accounts for six different parameters: 
+\begin{enumerate}
+\item Two different locations, outside a big empty parking lot with no obstacles and inside a school gym (45 by 25 meters). 
+\item Both horizontal and vertical polarization are tested. 
+\item Two sets of different antenna structures have been tested, monopole antennas (858 MHz) and rectangular patch antennas (858 MHz). 
+\item The height of the Tx antenna is varied between 0.04 m, 0.14 m, 0.36 m and 2.02 m. This is achieved by mounting the antenna on 2.5 m wooden pole using a clamp.
+\item The height of the Rx antenna is varied the same way as the Tx antenna\footnote{It is assumed that the PL for mirrored heights for example Rx = 0.04 m, Tx = 2.02 m and Rx at 2.02 m, Tx at 0.04 m is identical}.
+\item The distance between Rx and Tx poles is varied across 1 m, 2 m, 4 m, 8 m, 15 m and 30 m.
+\end{enumerate}
+This gives 480 measurement points at each point 10 measurements are performed. To minimize uncertainties at the individual test points the sample mean of the 10 measurements is found. The PL is then found from the received power by using the link budget calculation \eqref{link_bud}. %The next step of the validation is to exclude parameters that have little to no statistical influence on the PL. Lastly the models will be used to predict the PL, which will be matched with the data to verify the accuracy of the predictions using the mean square error (MSE) method.
 
 %A experiential method based on measurements is used to make the PL model, that will be used to calculate the loss for near ground communication. This model is based on data gathered from measuring the PL at different heights and distances. In each point there will be taken multiple measurements, so the noise factor will have a less of an effect on the results.
 
@@ -55,21 +64,21 @@ The measurement campaign accounts for six different parameters: 1) Two different
 %\end{figure}
 
 %\captionsetup{belowskip=-6.5em}
-\begin{figure}[H]
-\centering
-\begin{minipage}{.23\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{Pplads.jpg}
-  \captionof{figure}{Measurement at the empty parking lot}
-  \label{fig:test1}
-\end{minipage}%
-\hspace{2mm}
-\begin{minipage}{.23\textwidth}
-  \centering
-  \includegraphics[angle=-90, width=\linewidth]{Hal.jpg}
-  \captionof{figure}{Measurement at the gym}
-  \label{fig:test2}
-\end{minipage}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\begin{minipage}{.23\textwidth}
+%  \centering
+%  \includegraphics[width=\linewidth]{Pplads.jpg}
+%  \captionof{figure}{Measurement at the empty parking lot}
+%  \label{fig:test1}
+%\end{minipage}%
+%\hspace{2mm}
+%\begin{minipage}{.23\textwidth}
+%  \centering
+%  \includegraphics[angle=-90, width=\linewidth]{Hal.jpg}
+%  \captionof{figure}{Measurement at the gym}
+%  \label{fig:test2}
+%\end{minipage}
+%\end{figure}
 
-To minimize uncertainties at the individual test points a mean of 10 measurements is found. Next the received power is adjusted according to $P_t$, $G_t$, $G_r$ and $L$ to find the pure PL. The next step of the validation is to exclude parameters that have little to no statistical influence on the PL. Lastly the models will be used to predict the PL, which will be matched with the data to verify the accuracy of the predictions using the mean square error (MSE) method.  
+  
