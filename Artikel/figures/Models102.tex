@@ -152,7 +152,7 @@ legend pos = north west
 };
 \addlegendentry{FSPL};
 
-\addplot [color=mycolor3,solid]
+\addplot [color=mycolor3,dashed,forget plot]
   table[row sep=crcr]{%
 1	12.4107346652979\\
 1.29292929292929	7.94774366328517\\
@@ -254,6 +254,10 @@ legend pos = north west
 29.4141414141414	46.3315123764401\\
 29.7070707070707	46.5036585310829\\
 30	46.6741155234886\\
+};
+\addplot [color=mycolor3,solid]
+  table[row sep=crcr]{%
+  30	46.6741155234886\\
 };
 \addlegendentry{ATRPL};
 
@@ -362,7 +366,7 @@ legend pos = north west
 };
 \addlegendentry{GWPL};
 
-\addplot [color=mycolor5,solid]
+\addplot [color=mycolor5,dashed,forget plot]
   table[row sep=crcr]{%
 1	49.9158446993248\\
 1.29292929292929	54.2148764607763\\
@@ -465,9 +469,12 @@ legend pos = north west
 29.7070707070707	104.246299242965\\
 30	104.414933391451\\
 };
+\addplot [color=mycolor5,solid]
+  table[row sep=crcr]{%
+  30	104.414933391451\\
+};
 \addlegendentry{NSPL};
-
-\addplot [color=black,solid]
+\addplot [color=black,dashed,forget plot]
   table[row sep=crcr]{%
 1	12.4107401591255\\
 1.29292929292929	7.94774915711273\\
@@ -568,6 +575,10 @@ legend pos = north west
 29.1212121212121	46.1576377525009\\
 29.4141414141414	46.3315068826125\\
 29.7070707070707	46.5036530372553\\
+30	46.674110029661\\
+};
+\addplot [color=black,solid]
+  table[row sep=crcr]{%
 30	46.674110029661\\
 };
 \addlegendentry{Proposed Model};

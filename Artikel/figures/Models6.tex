@@ -52,6 +52,11 @@ legend pos = north west
 1.29292929292929	33.3430134440292\\
 1.58585858585859	35.1168070992565\\
 1.87878787878788	36.5890729354301\\
+};
+\addlegendentry{FSPL};
+\addplot [color=mycolor2,dashed, forget plot]
+  table[row sep=crcr]{%
+1.87878787878788	36.5890729354301\\
 2.17171717171717	37.8475832493839\\
 2.46464646464646	38.9466105778464\\
 2.75757575757576	39.9220669918869\\
@@ -149,13 +154,16 @@ legend pos = north west
 29.7070707070707	60.5687145412132\\
 30	60.653943037416\\
 };
-\addlegendentry{FSPL};
 
-\addplot [color=mycolor3,solid]
+\addplot [color=mycolor3,dashed, forget plot]
   table[row sep=crcr]{%
 1	25.7293491507274\\
 1.29292929292929	30.1923401527402\\
 1.58585858585859	33.7399274631948\\
+1.87878787878788	36.6844591355421\\
+};
+\addplot [color=mycolor3,solid]
+  table[row sep=crcr]{%
 1.87878787878788	36.6844591355421\\
 2.17171717171717	39.2014797634496\\
 2.46464646464646	41.3995344203746\\
@@ -361,7 +369,7 @@ legend pos = north west
 };
 \addlegendentry{GWPL};
 
-\addplot [color=mycolor5,solid]
+\addplot [color=mycolor5,dashed, forget plot]
   table[row sep=crcr]{%
 1	46.255884046764\\
 1.29292929292929	50.3667792108431\\
@@ -464,6 +472,10 @@ legend pos = north west
 29.7070707070707	104.151962082632\\
 30	104.322390286748\\
 };
+\addplot [color=mycolor5,solid]
+  table[row sep=crcr]{%
+  30	104.322390286748\\
+  };
 \addlegendentry{NSPL};
 
 \end{axis}
