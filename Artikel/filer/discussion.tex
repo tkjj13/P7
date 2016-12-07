@@ -4,11 +4,10 @@ In terms proposing a PL model all six parameters from the measurement campaign h
 The proposed model is designed around the existing models, as the theory for those are still firm. The aim is therefore to make a model that is simple, compared to the GWPL model, but has high applicability and high accuracy compared to the other PL models. 
 
 
-The base of the model is chosen to be the ATRPL as it already has highest applicability of the models except for the GWPL and a simple structure compared to the GWPL. The weak point in the ATRPL is its inaccuracy at very low heights which is a problem as the scenarios in focus are near-ground scenarios. This could be accommodated by adding the NSPL, the reasoning behind this is found in the structure of GWPL, where all the waves are added together. The NSPL is chosen because it only accounts for the surface wave part that has been set to zero in the approximation of the ATRPL. 
-
+The base of the model is chosen to be the ATRPL as it already has the highest applicability of the models except for the GWPL and a simple structure compared to the GWPL. The weak point in the ATRPL is its inaccuracy at very low heights which is a problem as the focus are near-ground scenarios. This could be compensated by the NSPL, the reasoning behind this is that NSPL accounts for the surface wave part that has been set to zero in the approximation of the ATRPL. Together these model will account for the all three waves in the GWPL. These can however not be simply added together as it is the power of the waves that can be added and not the respective PL. To find the predicted $P_r$ from the models, \eqref{two_ray_model} and \eqref{surface_wave} are inserted into \eqref{link_bud} and added finally the PL is isolated again. A more simple way to express this is seen in \eqref{proposedModel1}.
 \begin{align}
-Proposed\; PL\; model &= ATRPL + NSPL \\
-L_p &= \frac{d^4}{h_t^2 h_r^2+h_0^4}
+Proposed\; PL\; model &= \left(ATRPL^{-1} + NSPL^{-1}\right)^{-1} \label{proposedModel1}\\
+L_p &= \frac{d^4}{h_t^2 h_r^2+h_0^4} \label{proposedModel2}
 \end{align}
 
 This model still suffer from the weak point of NSPL's dependency upon $z$. However as only the magnitude of $z$ is needed this can be guestimated in most cases and in more critical cases it can be measured using the method described in \cite{Kim}. From our measurement the average magnitude of $z$ across environment and polarization is 0.8122. To find out the performance of the model it is compared to the other models using this average of $z$. First to analyse the applicability of the model it has the same applicability as the TRPL model which means it can be used if \eqref{two_ray_cond} is true else FSPL should still be used. 
