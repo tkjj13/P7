@@ -100,8 +100,8 @@ rec = cat(3,recVMHal, recHMHal, recVMpplads, recHMpplads,...
 
 % calculate FSPL
 numbers = 100;
-%dist = linspace(1,30,numbers);
-dist = d;
+dist = linspace(1,30,numbers);
+%dist = d;
 FSPL = 20*log10((3E8/freqP)./(4*pi*dist));
 
 
@@ -364,9 +364,9 @@ ymin = -100;
 ymax = -20;
 %
 figure
-for n = 1:10
+for n = 10:10
     trace = n;
-    subplot(3,4,n);
+    %subplot(3,4,n);
     %figure
     semilogx(dRec(:,trace),rec2(:,trace),'*','MarkerSize',5);
     hold on

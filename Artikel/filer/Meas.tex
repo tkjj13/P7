@@ -9,7 +9,7 @@
 
 \subsection{Less influential parameters}
 
-So from the analysis of the test parameters, it is seen that only the distance between the antennas and the heights of antennas has a influence that exceeds 5 dB. By that account the other parameters are deemed to be less influential parameters (LIP). 
+So from the analysis of the test parameters, it is seen that only the distance between the antennas and the heights of antennas has a influence that exceeds 5 dB. By that account the other parameters are deemed to be less influential parameters (LIP). Because of this the sample mean can be taken across these parameters. This is in accordance with PL models where only the GWPL and to some extent the NSPL take the environment and polarization into account.
 
 
 
@@ -47,7 +47,7 @@ So from the analysis of the test parameters, it is seen that only the distance b
 
 \subsection{Comparison and coverage of exiting PL models}
 
-The measured PL, where the mean across LIP again has been taken, is now compared to predictions of the models described earlier, to see if the models predict the PL accurately, this is done at selected heights of the transmitting and receiving antenna, as seen on \autoref{Models1}, \autoref{Models7} and \autoref{Models10}.
+The measured PL is now compared to the models described earlier, to see if the models predict the PL accurately according to their coverage area\footnote{The coverage area is here defined as the part of the measurement campaign which fulfils the condition for the individual models.}. This is done at all height combinations and selected combinations can be seen on \autoref{Models1}, \autoref{Models6}, \autoref{Models7} and \autoref{Models10}.
 
 \begin{figure}[H]
 \centering
@@ -58,34 +58,44 @@ The measured PL, where the mean across LIP again has been taken, is now compared
 
 
 
-
 %THOMAS, INSERT FIGURER HER, SOM VISER AT DE FORSKELLIGE MODELLER VIRKER I FORSKELLIGE OMRÅDE... SÅ BURDE DU HAVE EN GOD NOK OVERGANG TIL DIT :)
 
 
 
-On \autoref{Models1} it can be seen that GWPL and NSPL predicts the PL best, as expected due to the conditions of the PL models, however both PL models overestimate the PL by close around 10 dB, which could indicate that the measurements of $\epsilon_0$ might not be completely accurate, as it occurs in both PL models. Here the general problem with low height is also seen as FSPL greatly underestimate the PL where TRPL greatly overestimate the PL.
+On \autoref{Models1} it can be seen that GWPL and NSPL predicts the PL best, as expected due to the measured points being inside the coverage area of these PL models. However both PL models overestimate the PL by around 10 dB, which could suggest that the measurements of $\epsilon_0$ might not be completely accurate, as it occurs in both PL models. The procedure to determine $\epsilon_0$ is described in \cite{Kim}, a few inconsistencies occurred when calculating $\epsilon_0$ which further supports that it might be inaccurate. A problem occurring at low heights is that ATRPL greatly overestimates the PL, even though the measured points are inside its coverage area. The FSPL underestimates the PL as expected as none of the points are inside its coverage area.
+
+
+\begin{figure}[H]
+\centering
+\input{figures/Models6.tex}
+\caption{Comparison between measured PL and predicted PL from models at a height of 0.14 m and 0.36 m for the Tx and Rx respectively.}
+\label{Models6}
+\end{figure}
+
 
 \begin{figure}[H]
 \centering
 \input{figures/Models7.tex}
-\caption{Comparison between measured PL and predicted PL from models at a height of 0.14 m and 2.00 m for the Tx and Rx respectively.}
+\caption{Comparison between measured PL and predicted PL from models at a height of 0.14 m and 2.02 m for the Tx and Rx respectively.}
 \label{Models7}
 \end{figure}
 
-On \autoref{Models7} it can be seen that GWPL predicts the path loss across all distances, where the predictions from FSPL and TRPL crosses at a distance which matches the condition mentioned in \eqref{two_ray_cond}. The NSPL greatly overestimate the PL which is expected since \eqref{cond_surface} is not true.
+On \autoref{Models6} and \autoref{Models7} it can be seen that GWPL predicts the PL across all distances, where the predictions from FSPL and ATRPL crosses at a distance which matches the condition mentioned in \eqref{two_ray_cond}. The NSPL greatly overestimates the PL which is expected since the measured points are outside its coverage area.\\
+
+On \autoref{Models10} it can be seen that GWPL together with the FSPL predicts the PL across all distances, but as it can also be seen the GWPL predicts ripples, the reason being the interference between the direct and reflected wave components. The predictions from ATRPL and NSPL is underestimating and overestimating the PL respectively as expected from their coverage areas.
 
 \begin{figure}[H]
 \centering
 \input{figures/Models10.tex}
-\caption{Comparison between measured PL and predicted PL from models at a height of 2.00 m for both Tx and Rx.}
+\caption{Comparison between measured PL and predicted PL from models at a height of 2.02 m for both Tx and Rx.}
 \label{Models10}
 \end{figure}
 
-On \autoref{Models10} it can be seen that GWPL together with the FSPL predicts the path loss across all distances, where the predictions from TRPL is underestimating the path loss which is because \eqref{two_ray_cond} is false. The NSPL greatly overestimate the PL which is expected since \eqref{cond_surface} is not true.\\
 
 
 
-As it is seen from the figures \autoref{Models1}, \autoref{Models7}, \autoref{Models10}, the different models, besides GWPL, have different areas where they are accurate, while having other areas, where they either over or underestimate the PL. To compare the different models accuracy the mean square error (MSE) is calculated based on the measured PL. To make this estimate valid it is necessary to work only inside the valid regions of the different models, which is found based on \eqref{two_ray_cond} and \eqref{cond_surface}. 
+
+To compare the different models accuracy the mean square error (MSE) is calculated based on the measured PL. To make this estimate valid it is of course necessary to work only inside the coverage area of the different PL models. 
 
 %Conditions
 %GWPL = none
@@ -98,18 +108,19 @@ As it is seen from the figures \autoref{Models1}, \autoref{Models7}, \autoref{Mo
 
 \begin{table}[!htbp]
 \centering
+\caption{The MSE of the different models, inside their coverage area. The applicability, is the percent of the measurement points, that is inside the coverage area.}
+\label{model_comparison}
 \begin{tabular}{|l|l|l|}
 \hline
-\textbf{Models} & \textbf{MSE} & \textbf{Covarge in \%} \\ \hline
+\textbf{Models} & \textbf{MSE} & \textbf{Applicability} \\ \hline
 FSPL            & 15.95        & 35 \%                  \\ \hline
-TRPL 		    & 141.58       & 65 \%                  \\ \hline %approx.
+ATRPL 		    & 141.58       & 65 \%                  \\ \hline %approx.
 %TRPL     		& 42.12        & 100 \%                 \\ \hline
 GWPL            & 35.49        & 100 \%                 \\ \hline
 NSPL            & 230.05       & 30 \%                  \\ \hline
 %Our            & 60.18        & 65 \%                  \\ \hline
 \end{tabular}
-\caption{The MSE of the different models, inside the areas, where the different models are valid. The coverage, is the percent of the measurement points, that is inside this area.}
-\label{model_comparison}
+
 \end{table}
 
 %From \autoref{model_comparison} it can be seen that GWPL works quite well but 
