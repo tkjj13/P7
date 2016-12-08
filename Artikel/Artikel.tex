@@ -352,7 +352,14 @@
 \usepackage{fancyhdr}
 
 \pagestyle{fancy}
+\rhead{}
 \cfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+
+
+
+
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -419,11 +426,13 @@ Email: tkjj13@student.aau.dk}}
 % use for special paper notices
 %\IEEEspecialpapernotice{(Invited Paper)}
 
-
+    
+      
 
 
 % make the title area
 \maketitle
+
 
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
