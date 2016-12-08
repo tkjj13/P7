@@ -9,7 +9,7 @@ P_{r} = \frac{P_{t}G_{t}G_{r}}{L_{p}L_{sys}}
 \label{link_bud}
 \end{equation}
 
-where $P_{r}$ and $P_{t}$ are the power received and transmitted in W respectively, $G_t$ and $G_r$ are the unitless gains in the transmitting and receiving antenna respectively, $L_{sys}$ is the system loss\footnote{The system loss consists of all loses from the Rx reference plane to the Tx reference plane, except the PL and antenna gains, examples could include cable losses, polarisation loss, impedance mismatch etc.} and $L_{p}$ is the PL, both unitless. As the aim is to develop a simple near-ground path loss model, it is necessary to identify the $L_{p}$ from \eqref{link_bud}.
+where $P_{r}$ and $P_{t}$ are the power received and transmitted in W respectively, $G_t$ and $G_r$ are the unitless gains in the Tx and Rx antenna respectively, $L_{sys}$ is the system loss\footnote{The system loss consists of all loses from the Rx reference plane to the Tx reference plane, except the PL and antenna gains, examples could include cable losses, polarisation loss, impedance mismatch etc.} and $L_{p}$ is the PL, both unitless. As the aim is to develop a simple near-ground path loss model, it is necessary to identify the $L_{p}$ from \eqref{link_bud}.
 
 %loss through the whole system for a specific power transmitted, so the power received, antenna gain and the system loss need to be found, which gives the loss.
 
@@ -28,7 +28,7 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{sub
 %\label{ground_wave_P0}
 %\end{equation}
 where
-$\lambda$ is the wavelength of the transmitted signal in m, $d$ is the distance between the transmitting and receiving antenna, in m, $\Delta$ is the phase difference between the direct and reflected wave in rad, $R$ is the unitless complex reflection coefficient and $A$ is the unitless surface wave attenuation factor \cite{Chong,Bullington}. 
+$\lambda$ is the wavelength of the transmitted signal in m, $d$ is the distance between Tx and Rx, in m, $\Delta$ is the phase difference between the direct and reflected wave in rad, $R$ is the unitless complex reflection coefficient and $A$ is the unitless surface wave attenuation factor \cite{Chong,Bullington}. 
 
 %$\Delta$ $\approx$ $\frac{4\pi h_{r} h_{t}}{\lambda d}$
 
@@ -76,7 +76,7 @@ L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
 \label{two_ray_model}
 \end{equation}
 
-where $h_t$, $h_r$ are the heights in m of the transmitting and receiving antenna respectively. 
+where $h_t$, $h_r$ are the heights in m of Tx and Rx respectively. 
 The ATRPL is a simplified and approximated version of \eqref{ground_wave}. The approximations made to derive ATRPL include $\frac{\Delta}{2}$ $<$ $\pi$/$10$ $\Rightarrow$ $\sin$ $\frac{\Delta}{2}$ $\approx$ $\frac{\Delta}{2}$ as well as $R$ $\approx$ -1 for near gracing angles \cite{Chong}. This approximation is valid when is true and thus the ATRPL \eqref{two_ray_model} can be applied. If \eqref{two_ray_cond} is false FSPL \eqref{simple_friss} can be applied.
   
 \begin{equation}
