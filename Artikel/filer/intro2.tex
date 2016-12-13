@@ -15,7 +15,7 @@ where $P_{r}$ and $P_{t}$ are the power received and transmitted in W respective
 
 \subsection{Existing Path Loss Models}
 
-In terms of finding the PL different propagation models can be used given different conditions. The PL models considerd are the: ground wave PL model (GWPL), Friss free space PL model (FSPL), approximated two-ray-ground-reflection PL model (ATRPL) and the Norton surface wave PL model (NSPL). One of the more extensive models is the GWPL model presented in \eqref{ground_wave}. The GWPL model takes the three most dominant factors into account when calculating the PL: the direct wave, the reflected wave and the surface wave \cite{Chong,Bullington}. Furthermore this PL model assumes that the antenna gain is isotropic \cite{Bullington}.  
+In terms of finding the PL different propagation models can be used given different conditions. The PL models considerd are the: ground wave (GWPL), Friss free space (FSPL), approximated two-ray-ground-reflection (ATRPL) and the Norton surface wave (NSPL). One of the more extensive models is the GWPL model presented in \eqref{ground_wave}. The GWPL model takes the three most dominant factors into account when calculating the PL: the direct wave, the reflected wave and the surface wave \cite{Chong,Bullington}. Furthermore this PL model assumes that the antenna gain is isotropic \cite{Bullington}.  
 
 
 \begin{equation}
@@ -38,7 +38,7 @@ R = \frac{\sin(\theta)-z}{\sin(\theta)+z}
 \label{reflection_coefficient}
 \end{equation}
 
-where $\theta$ is the incidence angle of the signal and the surface in rad, and the unitless $z$ which differs from surface to surface and also differs for vertical and horizontal polarization, is respectively given in \eqref{z1} and \eqref{z2}.
+where $\theta$ is the incidence angle of the signal and the surface in rad, and the unitless $z$ which differs from surface to surface and also differs for vertical and horizontal polarization, is respectively given in \eqref{z1} and \eqref{z2} \cite{Bullington}.
 
 \begin{align}
 z &= \frac{\sqrt{\epsilon_{0}-\cos^{2}\theta}}{\epsilon_{0}} \qquad \text{for vertical polarization} \label{z1}\\
@@ -77,7 +77,7 @@ L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
 \end{equation}
 
 where $h_t$, $h_r$ are the heights in m of Tx and Rx respectively. 
-The ATRPL is a simplified and approximated version of \eqref{ground_wave}. The approximations made to derive ATRPL include $\frac{\Delta}{2}$ $<$ $\pi$/$10$ $\Rightarrow$ $\sin$ $\frac{\Delta}{2}$ $\approx$ $\frac{\Delta}{2}$ as well as $R$ $\approx$ -1 for near gracing angles \cite{Chong}. This approximation is valid when is true and thus the ATRPL \eqref{two_ray_model} can be applied. If \eqref{two_ray_cond} is false FSPL \eqref{simple_friss} can be applied.
+The ATRPL is a simplified and approximated version of \eqref{ground_wave}. The approximations made to derive ATRPL include $\frac{\Delta}{2}$ $<$ $\pi$/$10$ $\Rightarrow$ $\sin$ $\frac{\Delta}{2}$ $\approx$ $\frac{\Delta}{2}$ as well as $R$ $\approx$ -1 for near gracing angles \cite{Chong}. This approximation is valid when \eqref{two_ray_cond} is true and thus the ATRPL \eqref{two_ray_model} can be applied. If \eqref{two_ray_cond} is false FSPL \eqref{simple_friss} can be applied.
   
 \begin{equation}
 d > \frac{4\pi \cdot h_t h_r }{\lambda}
