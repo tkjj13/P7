@@ -1,0 +1,170 @@
+% --------------------------------------------------------------------------- %
+% Poster for the ECCS 2011 Conference about Elementary Dynamic Networks.      %
+% --------------------------------------------------------------------------- %
+% Created with Brian Amberg's LaTeX Poster Template. Please refer for the     %
+% attached README.md file for the details how to compile with `pdflatex`.     %
+% --------------------------------------------------------------------------- %
+% $LastChangedDate:: 2011-09-11 10:57:12 +0200 (V, 11 szept. 2011)          $ %
+% $LastChangedRevision:: 128                                                $ %
+% $LastChangedBy:: rlegendi                                                 $ %
+% $Id:: poster.tex 128 2011-09-11 08:57:12Z rlegendi                        $ %
+% --------------------------------------------------------------------------- %
+\documentclass[a0paper,landscape]{baposter}
+
+\usepackage{relsize}		% For \smaller
+\usepackage{url}			% For \url
+\usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
+\usepackage{amsmath,amssymb}
+
+%%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{pix/}}	% Root directory of the pictures 
+\tracingstats=2			% Enabled LaTeX logging with conditionals
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bordercol}{RGB}{40,40,40}
+\definecolor{headercol1}{RGB}{186,215,230}
+\definecolor{headercol2}{RGB}{80,80,80}
+\definecolor{headerfontcol}{RGB}{0,0,0}
+\definecolor{boxcolor}{RGB}{186,215,230}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{
+	\setlength{\itemsep}{1pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Document Start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\typeout{Poster rendering started}
+
+%%% Setting Background Image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\background{
+%	\begin{tikzpicture}[remember picture,overlay]%
+%	\draw (current page.north west)+(-2em,2em) node[anchor=north west]
+%	{\includegraphics[height=1.1\textheight]{background}};
+%	\end{tikzpicture}
+}
+
+%%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%%%%%%%%
+\begin{poster}{
+	grid=false,
+	% Option is left on true though the eyecatcher is not used. The reason is
+	% that we have a bit nicer looking title and author formatting in the headercol
+	% this way
+	%eyecatcher=false, 
+	borderColor=bordercol,
+	headerColorOne=headercol1,
+	headerColorTwo=headercol2,
+	headerFontColor=headerfontcol,
+	% Only simple background color used, no shading, so boxColorTwo isn't necessary
+	boxColorOne=boxcolor,
+	headershape=roundedright,
+	headerfont=\Large\sf\bf,
+	textborder=rectangle,
+	background=user,
+	headerborder=open,
+  boxshade=plain
+}
+%%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	Eye Catcher, empty if option eyecatcher=false - unused
+}
+%%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\sf\bf
+	Development of a Simple Near-Ground Path Loss Model Verified by Measurements
+}
+%%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	\vspace{1em} Kemal Kapetanovic, Mads Gotthardsen, Thomas Jørgensen\\
+	{\smaller kkapet08@student.aau.dk, mgotth13@student.aau.dk, tkjj13@student.aau.dk}
+}
+%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+% The logos are compressed a bit into a simple box to make them smaller on the result
+% (Wasn't able to find any bigger of them.)
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.5pt}
+	\fbox{
+		\begin{minipage}{14em}
+%			\includegraphics[width=10em,height=4em]{colbud_logo}
+%			\includegraphics[width=4em,height=4em]{elte_logo} \\
+%			\includegraphics[width=10em,height=4em]{dynanets_logo}
+%			\includegraphics[width=4em,height=4em]{aitia_logo}
+		\end{minipage}
+	}
+}
+
+\headerbox{Problem}{name=Box1,column=0,row=0}{
+In the future there will be used more wireless sensor networks  to different task and many nodes in these networks, can be placed at low heights, where communication between nodes get worse, as the path loss (PL) increases as the multipath waves can no longer be ignored. This will effect the link budget, when designing the antennas.
+
+%Maybe insert Link budget formular
+}
+
+\headerbox{PL Models}{name=Box2,column=0,below=Box1, above=bottom}{
+\textbf{Friss free space PL (FSPL)}: 
+The most simple PL model, that only takes into account the free space propagation and no multipath or reflection.
+\begin{equation}
+L_p=\left(\frac{4 \pi d}{\lambda}\right)^2
+\label{simple_friss}
+\end{equation}
+\\
+\textbf{Approximated two-ray} \\
+\textbf{ground-reflection PL (ATRPL)}: 
+This PL model takes into account a single point of reflection at the nearest surface. This is the approximated version, where the reflection coefficient and different gains is removed.
+\begin{equation}
+L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
+\label{two_ray_model}
+\end{equation}
+\\
+\textbf{Norton surface wave PL (NSPL)}: 
+This PL model only takes into account the surface wave, which comes from the reflection of the surface, which absorb some of the wave and sends out this surface wave. It is only taken into account at low height, where the antennas heights is lower than $\left|\frac{\lambda}{2\pi z}\right|$.
+\begin{equation}
+L_p=\left(\frac{d}{\left|\frac{\lambda}{2\pi z}\right|}\right)^4
+\label{surface_wave}
+\end{equation}\\
+\textbf{Ground wave PL (GWPL)}: 
+This PL model uses concept from the other three models, as it takes into account, the direct wave, the reflected and the surface wave. It is more complex than the other models, as it needs alot of different coefficients, where some of them needs to be measured first.
+\begin{equation}
+L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{subarray}{c}Direct\\wave\end{subarray}}+\underbrace{R\text{e}^{j\Delta}}_{\begin{subarray}{c}Reflected\\wave\end{subarray}}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{\begin{subarray}{c}Surface\\wave\end{subarray}}\Big|^{-2} 
+\label{ground_wave}
+\end{equation}
+\\
+}
+
+\headerbox{Test setup}{name=Box3,column=3}{
+For the test setup, there are used two different set of antennas, monopole and rectangular patch, at 858 MHz. They are measured at vertical and horizontal polarization, at two different location with plain terrain (a parking lot and a school gym). These parameters do not effect the PL sizable, so the results will be taking as a mean across these parameters. \\
+
+The measurement are made at six different distances; 1, 2, 4, 8, 15 and 30 m, and at 4 different height for both the transmitter and receiver antenna; 0.04, 0.14, 0.36 and 2.02 m. 
+In each setup, there will be taking 10 measurement and taking mean of, to lessen the effect of noise.
+
+}
+
+
+
+\headerbox{Path loss in near-ground scenarios}{name=Box5,span=2,column=1,row=0}{
+}
+
+\headerbox{Proposed model}
+{name=Box6,span=2,column=1,below=Box5,above=bottom}{
+}
+
+\headerbox{Reference}
+{name=Box7,span=1,column=3,below=Box3}{
+}
+\headerbox{Acknowledgements}{name=Box4,column=3,below=Box7, above=bottom}{
+
+}
+
+
+\end{poster}
+\end{document}
