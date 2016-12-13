@@ -62,7 +62,7 @@ Zs = [zeros(length(Gs)-1, 1); 1];  		% Initial State for Long Sequence Generator
 %------- AWGN definitions -------------
 EbEc = 10*log10(ChipRate/BitRate); 		% Bit/Chip rate loss
 EbEcVit = 10*log10(L);
-EbNo = [-2 : 0.5 : 6.5]; 		% measured EbNo range (dB) 
+EbNo = [-2 : 0.5 : 1]; 		% measured EbNo range (dB) 
 
 %==========================================================================
 % ----------------------------------------------- MAIN SIMULATION LOOP ---------------------------------
@@ -74,10 +74,19 @@ else
    fprintf('\n HARD Decision Viterbi Decoder\n\n');
 end
 
-% JHM DEFINITIONS/CHANGES
+% JHM DEFINITIONS/CHANGES 
 % 
 ErrB_N = 30 % ORIGINAL VALUE 300
 iter_N = 150 % ORIGINAL VALUE 150
+
+% WCS7 Amplifier data
+data = dlmread('../../DATA01.R1',',',9,0);
+S11 = data(1:end/4,:);
+S21 = data(end/4+1:end/2,:);
+S12 = data(end/2+1:3*end/4,:);
+S22 = data(3*end/4+1:end,:);
+p = linspace(-15,10,201);
+
 
 for i=1:length(EbNo)
    fprintf('\nProcessing %1.1f (dB)', EbNo(i));
@@ -95,8 +104,33 @@ for i=1:length(EbNo)
       % JHM: 'x' is the transmitter signal and your PA model should be applied to this signal
       % NOTE: REMEMBER TO SCALE THE POWER LEVEL OF THE SIGNAL BEFORE ADDING
       % YOUR MODEL!
-      S_TX = x;
-      
+      %S_TX = x;
+
+    % transform from cart 2 pol
+        [PolPhase PolAmp] = cart2pol(real(x),imag(x));
+
+    % calculate power of signal
+        Power = mag2db((PolAmp.^2)/2);
+
+    % find amp stats for power
+
+        for k = 1:length(Power)
+            index = 1;
+            while Power(k) > p(index)
+                index = index+1;
+            end
+            alpha(k) = abs(S21(index,1)+1i*S21(index,2));
+            phase(k) = angle(S21(index,1)+1i*S21(index,2));
+        end
+
+
+    % calculate end power and phase
+        AmpO = PolAmp.*transpose(alpha);
+        PhaseO = PolPhase;%+transpose(phase);
+    % trasform from pol 2 cart
+
+    [sOx sOy] = pol2cart(PhaseO,AmpO);
+      S_TX = sOx+1i*sOy;
       %-------------------------------- AWGN Channel ------------------------------------
       % JHM: Here is where you add noise. I have left the code from the original file here for your
       % reference. As you can see the noise is not added correctly. 
@@ -106,7 +140,7 @@ for i=1:length(EbNo)
       %noise = 1/sqrt(2)*( randn(size(S_TX)) + j*randn(size(S_TX)))*sqrt(R/2)*10^(-(EbNo(i) - EbEc)/20);
       noiseAmp = randn(size(S_TX));
       noisePhase = randn(size(S_TX));
-      noise = 1/sqrt(2)*sqrt(R/2)*(noiseAmp*cos(noisePhase)+1i*noiseAmp*sin(noisePhase))*...
+      noise = abs(S21(1,1)+1i*S21(1,2))/sqrt(2)*sqrt(R/2)*(noiseAmp.*cos(noisePhase)+1i*noiseAmp.*sin(noisePhase))*...
           10^(-(EbNo(i) - EbEc)/20);
       
       %
