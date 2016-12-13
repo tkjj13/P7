@@ -20,7 +20,7 @@
 
 \graphicspath{{pix/}}	% Root directory of the pictures 
 \tracingstats=2			% Enabled LaTeX logging with conditionals
-
+\usepackage[font=small,labelfont=bf]{caption}
 %%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \definecolor{bordercol}{RGB}{40,40,40}
@@ -63,17 +63,19 @@
 	% this way
 	%eyecatcher=false, 
 	borderColor=bordercol,
-	headerColorOne=headercol1,
+	headerColorOne=headercol2,
 	headerColorTwo=headercol2,
 	headerFontColor=headerfontcol,
 	% Only simple background color used, no shading, so boxColorTwo isn't necessary
 	boxColorOne=boxcolor,
-	headershape=roundedright,
+	headershape=rounded,
 	headerfont=\Large\sf\bf,
-	textborder=rectangle,
+	headerFontColor=white,
+	textborder=rounded,
 	background=user,
 	headerborder=open,
-  boxshade=plain
+  boxshade=plain,
+  columns=6
 }
 %%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
@@ -104,13 +106,21 @@
 	}
 }
 
-\headerbox{Problem}{name=Box1,column=0,row=0}{
+\headerbox{Problem}{name=Box1,column=0,span=4,row=0}{
+\begin{minipage}{0.48\linewidth}
 In the future there will be used more wireless sensor networks  to different task and many nodes in these networks, can be placed at low heights, where communication between nodes get worse, as the path loss (PL) increases as the multipath waves can no longer be ignored. This will effect the link budget, when designing the antennas.
+\end{minipage}
+\begin{minipage}{0.48\linewidth}
+\includegraphics[scale=0.4]{pix/intro.png}
+   \captionof{figure}{text}
+   \label{fig:name}
+\end{minipage}
+
 
 %Maybe insert Link budget formular
 }
 
-\headerbox{PL Models}{name=Box2,column=0,below=Box1, above=bottom}{
+\headerbox{PL Models}{name=Box2,column=2,span=2,row=0,below=Box1}{
 \textbf{Friss free space PL (FSPL)}: 
 The most simple PL model, that only takes into account the free space propagation and no multipath or reflection.
 \begin{equation}
@@ -141,7 +151,7 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{sub
 \\
 }
 
-\headerbox{Test setup}{name=Box3,column=3}{
+\headerbox{Test setup}{name=Box3,column=0,span=2,below=Box1}{
 A test campaign were designed to find the PL given different parameters. To do this a signal generator was set to output a reference signal that was then measured on a spectrum analyser. By adjusting the measurements according to the cable losses and the gains of the antennas the PL could be found.\\
 
 For the test setup, there are used two different set of antennas, monopole and rectangular patch, at 858 MHz. They are measured at vertical and horizontal polarization, at two different location with plain terrain (a parking lot and a school gym). The study found that the effect of these parameters in relation to the PL were not very significant, so the PL could be found by taking the mean across these parameters. \\
@@ -152,19 +162,23 @@ In each point, 10 measurements were performed and the mean hereof were found, to
 
 
 
-\headerbox{Path loss in near-ground scenarios}{name=Box5,span=2,column=1,row=0}{
+\headerbox{Path loss in near-ground scenarios}{name=Box5,span=2,column=4,row=0}{
 }
 
 \headerbox{Proposed model}
-{name=Box6,span=2,column=1,below=Box5,above=bottom}{
+{name=Box6,span=2,column=4,below=Box5}{
 }
-
+\headerbox{Acknowledgements}{name=Box4,column=0,below=Box3,span=2}{
+The authors would like to thank Vendelbo hallen for providing access to their facilities during the measurement campaign.
+}
 \headerbox{Reference}
-{name=Box7,span=1,column=3,below=Box3}{
+{name=Box7,span=4,column=0,below=Box2,above=bottom}{
+[1] K. Bullington, “Radio Propagation at Frequencies Above 30 Megacycles,” PROCEEDINGS OF THE I.R.E, 1947, årg. 35, hft. 10, 10-1947, s.1122–1136.\newline
+[2] P. K. Chong and D. Kim, “Surface-Level Path Loss Modelling for Sensor Networks in Flat and Irregular Terrain,” ACM Transactions on Sensor Networks, 2013, vol. 9, No. 2, Article 15.\newline
+[3] H.-S. Kim and R. M. Narayanan, “A New Measurement Technique for Obtaining the Complex Relative Permittivity of Terrain Surfaces,” IEEE Transactions on Geoscience and Remote Sensing, 2002.\newline
+[4] UC Berkeley, LBL, USC/ISI and Xerox PARC, “ 18.2 Two-ray ground reflection model,” http://www.isi.edu/nsnam/ns/doc/node218.html, Nov 5, 2011.
 }
-\headerbox{Acknowledgements}{name=Box4,column=3,below=Box7, above=bottom}{
 
-}
 
 
 \end{poster}
