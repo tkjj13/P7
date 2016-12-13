@@ -10,7 +10,7 @@
 % $Id:: poster.tex 128 2011-09-11 08:57:12Z rlegendi                        $ %
 % --------------------------------------------------------------------------- %
 \documentclass[a0paper,landscape]{baposter}
-
+\usepackage[utf8]{inputenc}
 \usepackage{relsize}		% For \smaller
 \usepackage{url}			% For \url
 \usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
@@ -86,7 +86,7 @@
 %%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
 	\vspace{1em} Kemal Kapetanovic, Mads Gotthardsen, Thomas Jørgensen\\
-	{\smaller kkapet08@student.aau.dk, mgotth13@student.aau.dk, tkjj13@student.aau.dk}
+	{\smaller (kkapet08, mgotth13, tkjj13)@student.aau.dk WCS7 2016}
 }
 %%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
@@ -142,10 +142,11 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{sub
 }
 
 \headerbox{Test setup}{name=Box3,column=3}{
-For the test setup, there are used two different set of antennas, monopole and rectangular patch, at 858 MHz. They are measured at vertical and horizontal polarization, at two different location with plain terrain (a parking lot and a school gym). These parameters do not effect the PL sizable, so the results will be taking as a mean across these parameters. \\
+A test campaign were designed to find the PL given different parameters. To do this a signal generator was set to output a reference signal that was then measured on a spectrum analyser. By adjusting the measurements according to the cable losses and the gains of the antennas the PL could be found.\\
 
-The measurement are made at six different distances; 1, 2, 4, 8, 15 and 30 m, and at 4 different height for both the transmitter and receiver antenna; 0.04, 0.14, 0.36 and 2.02 m. 
-In each setup, there will be taking 10 measurement and taking mean of, to lessen the effect of noise.
+For the test setup, there are used two different set of antennas, monopole and rectangular patch, at 858 MHz. They are measured at vertical and horizontal polarization, at two different location with plain terrain (a parking lot and a school gym). The study found that the effect of these parameters in relation to the PL were not very significant, so the PL could be found by taking the mean across these parameters. \\
+The measurements were further made at six different distances; (1, 2, 4, 8, 15 and 30) m, and at 4 different heights for both the transmitter and receiver antenna; (0.04, 0.14, 0.36 and 2.02) m. The study found these parameters to have a significant impact on the PL.
+In each point, 10 measurements were performed and the mean hereof were found, to lessen the effect of small scale fading.
 
 }
 
