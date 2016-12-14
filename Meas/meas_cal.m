@@ -277,15 +277,15 @@ OurModel2 = cat(3,OurModelVMHal, OurModelHMHal, OurModelVMpplads, OurModelHMppla
 M1 = mean(OurModel,3);
 M2 = mean(OurModel2,3);
 
-figure
-semilogx(dRec(:,trace),-rec2(:,trace),'*','MarkerSize',5);
-hold on
-semilogx(dist,-M1(:,1),dist,-M2(:,1))
-grid
-legend('Measured PL','Mean z (0.8122)','Adjusted z (0.4)','Location','Northwest');
-xlim([0.9 31]);
-ylim([20 100]);
-return
+% figure
+% semilogx(dRec(:,trace),-rec2(:,trace),'*','MarkerSize',5);
+% hold on
+% semilogx(dist,-M1(:,1),dist,-M2(:,1))
+% grid
+% legend('Measured PL','Mean z (0.8122)','Adjusted z (0.4)','Location','Northwest');
+% xlim([0.9 31]);
+% ylim([20 100]);
+
 dVM = sqrt(repmat(d,10,1)'.^2+repmat((hRxVM-hTxVM),6,1).^2);
 dVP = sqrt(repmat(d,10,1)'.^2+repmat((hRxVP-hTxVP),6,1).^2);
 dHM = sqrt(repmat(d,10,1)'.^2+repmat((hRxHM-hTxHM),6,1).^2);
@@ -385,7 +385,7 @@ xlim([xmin xmax]);
 ylim([ymin ymax]);
 grid;
 legend('4','7','9','10');
-
+return
 %%
 rec3 = (rec(:,:,3)+rec(:,:,4)+rec(:,:,7)+rec(:,:,8))/4;
 

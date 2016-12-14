@@ -20,7 +20,7 @@
 
 \graphicspath{{pix/}}	% Root directory of the pictures 
 \tracingstats=2			% Enabled LaTeX logging with conditionals
-
+\usepackage[font=small,labelfont=bf]{caption}
 %%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \definecolor{bordercol}{RGB}{40,40,40}
@@ -63,17 +63,19 @@
 	% this way
 	%eyecatcher=false, 
 	borderColor=bordercol,
-	headerColorOne=headercol1,
+	headerColorOne=headercol2,
 	headerColorTwo=headercol2,
 	headerFontColor=headerfontcol,
 	% Only simple background color used, no shading, so boxColorTwo isn't necessary
 	boxColorOne=boxcolor,
-	headershape=roundedright,
+	headershape=rounded,
 	headerfont=\Large\sf\bf,
-	textborder=rectangle,
+	headerFontColor=white,
+	textborder=rounded,
 	background=user,
 	headerborder=open,
-  boxshade=plain
+  	boxshade=plain,
+  	columns=4
 }
 %%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
@@ -104,36 +106,43 @@
 	}
 }
 
-\headerbox{Problem}{name=Box1,column=0,row=0}{
+\headerbox{Problem}{name=Box1,column=0,span=1,row=0}{
+
 In the future there will be used more wireless sensor networks  to different task and many nodes in these networks, can be placed at low heights, where communication between nodes get worse, as the path loss (PL) increases as the multipath waves can no longer be ignored. This will effect the link budget, when designing the antennas.
+
+\includegraphics[scale=0.4]{pix/intro.png}
+\captionof{figure}{text}
+\label{fig:name}
+
+
 
 %Maybe insert Link budget formular
 }
 
-\headerbox{PL Models}{name=Box2,column=0,below=Box1, above=bottom}{
-\textbf{Friss free space PL (FSPL)}: 
-The most simple PL model, that only takes into account the free space propagation and no multipath or reflection.
+\headerbox{PL Models}{name=Box2,column=0,span=1,row=0,below=Box1}{
+\textcolor{red}{\textbf{Friss free space PL (FSPL)}:} 
+%The most simple PL model, that only takes into account the free space propagation and no multipath or reflection.
 \begin{equation}
 L_p=\left(\frac{4 \pi d}{\lambda}\right)^2
 \label{simple_friss}
 \end{equation}
 \\
-\textbf{Approximated two-ray} \\
-\textbf{ground-reflection PL (ATRPL)}: 
-This PL model takes into account a single point of reflection at the nearest surface. This is the approximated version, where the reflection coefficient and different gains is removed.
+\textcolor{blue}{\textbf{Approximated two-ray}}
+\textcolor{blue}{\textbf{ground-reflection PL (ATRPL)}:} 
+%This PL model takes into account a single point of reflection at the nearest surface. This is the approximated version, where the reflection coefficient and different gains is removed.
 \begin{equation}
 L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
 \label{two_ray_model}
 \end{equation}
 \\
-\textbf{Norton surface wave PL (NSPL)}: 
-This PL model only takes into account the surface wave, which comes from the reflection of the surface, which absorb some of the wave and sends out this surface wave. It is only taken into account at low height, where the antennas heights is lower than $\left|\frac{\lambda}{2\pi z}\right|$.
+\textcolor{green}{\textbf{Norton surface wave PL (NSPL)}:} 
+%This PL model only takes into account the surface wave, which comes from the reflection of the surface, which absorb some of the wave and sends out this surface wave. It is only taken into account at low height, where the antennas heights is lower than $\left|\frac{\lambda}{2\pi z}\right|$.
 \begin{equation}
 L_p=\left(\frac{d}{\left|\frac{\lambda}{2\pi z}\right|}\right)^4
 \label{surface_wave}
 \end{equation}\\
-\textbf{Ground wave PL (GWPL)}: 
-This PL model uses concept from the other three models, as it takes into account, the direct wave, the reflected and the surface wave. It is more complex than the other models, as it needs alot of different coefficients, where some of them needs to be measured first.
+\textcolor{purple}{\textbf{Ground wave PL (GWPL)}:} 
+%This PL model uses concept from the other three models, as it takes into account, the direct wave, the reflected and the surface wave. It is more complex than the other models, as it needs alot of different coefficients, where some of them needs to be measured first.
 \begin{equation}
 L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{subarray}{c}Direct\\wave\end{subarray}}+\underbrace{R\text{e}^{j\Delta}}_{\begin{subarray}{c}Reflected\\wave\end{subarray}}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{\begin{subarray}{c}Surface\\wave\end{subarray}}\Big|^{-2} 
 \label{ground_wave}
@@ -141,12 +150,29 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{sub
 \\
 }
 
-\headerbox{Test setup}{name=Box3,column=3}{
-A test campaign were designed to find the PL given different parameters. To do this a signal generator was set to output a reference signal that was then measured on a spectrum analyser. By adjusting the measurements according to the cable losses and the gains of the antennas the PL could be found.\\
+\headerbox{Test setup}{name=Box3,column=3,span=1}{
+A measurement campaign were designed to find the PL given different parameters. By designing the system, with knowing gains and system losses, the PL can be calculated.
 
-For the test setup, there are used two different set of antennas, monopole and rectangular patch, at 858 MHz. They are measured at vertical and horizontal polarization, at two different location with plain terrain (a parking lot and a school gym). The study found that the effect of these parameters in relation to the PL were not very significant, so the PL could be found by taking the mean across these parameters. \\
-The measurements were further made at six different distances; (1, 2, 4, 8, 15 and 30) m, and at 4 different heights for both the transmitter and receiver antenna; (0.04, 0.14, 0.36 and 2.02) m. The study found these parameters to have a significant impact on the PL.
+For the test setup there where these different parameters;
+\begin{itemize}
+\item 2 Antenna sets at 858MHz (monopole and rectangular patch)
+\item 2 Polarization (horizontal and vertical)
+\item 2 Location (a parking lot and a school gym)
+\item 4 different height for the antennas (0.04, 0.14, 0.36 and 2.02 m)
+\item 6 distances between antennas (1, 2, 4, 8, 15 and 30 m)
+\end{itemize}
+
 In each point, 10 measurements were performed and the mean hereof were found, to lessen the effect of small scale fading.
+
+%A test campaign were designed to find the PL given different parameters. To do this a signal generator was set to output a reference signal that was then measured on a spectrum analyser. By adjusting the measurements according to the cable losses and the gains of the antennas the PL could be found.\\
+%
+%For the test setup, there are used two different set of antennas, monopole and rectangular patch, at 858 MHz. They are measured at vertical and horizontal polarization, at two different location with plain terrain (a parking lot and a school gym). The study found that the effect of these parameters in relation to the PL were not very significant, so the PL could be found by taking the mean across these parameters. \\
+%The measurements were further made at six different distances; (1, 2, 4, 8, 15 and 30) m, and at 4 different heights for both the transmitter and receiver antenna; (0.04, 0.14, 0.36 and 2.02) m. The study found these parameters to have a significant impact on the PL.
+%In each point, 10 measurements were performed and the mean hereof were found, to lessen the effect of small scale fading.
+
+\includegraphics[scale=0.6]{pix/setup.pdf}
+\captionof{figure}{text}
+\label{fig:name2}
 
 }
 
@@ -156,15 +182,19 @@ In each point, 10 measurements were performed and the mean hereof were found, to
 }
 
 \headerbox{Proposed model}
-{name=Box6,span=2,column=1,below=Box5,above=bottom}{
+{name=Box6,span=2,column=1,below=Box5}{
 }
-
+\headerbox{Acknowledgements}{name=Box4,column=3,below=Box3,span=1}{
+The authors would like to thank Vendelbo hallen for providing access to their facilities during the measurement campaign.
+}
 \headerbox{Reference}
-{name=Box7,span=1,column=3,below=Box3}{
+{name=Box7,span=1,column=3,below=Box4,above=bottom}{
+[1] K. Bullington, “Radio Propagation at Frequencies Above 30 Megacycles,” \newline
+[2] P. K. Chong and D. Kim, “Surface-Level Path Loss Modelling for Sensor Networks in Flat and Irregular Terrain,” \newline
+[3] H.-S. Kim and R. M. Narayanan, “A New Measurement Technique for Obtaining the Complex Relative Permittivity of Terrain Surfaces,”\newline
+[4] UC Berkeley, LBL, USC/ISI and Xerox PARC, “ 18.2 Two-ray ground reflection model,” .
 }
-\headerbox{Acknowledgements}{name=Box4,column=3,below=Box7, above=bottom}{
 
-}
 
 
 \end{poster}
