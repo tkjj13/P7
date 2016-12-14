@@ -15,6 +15,13 @@
 \usepackage{url}			% For \url
 \usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
 \usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage[americanresistors,americaninductors,americancurrents, americanvoltages]{circuitikz}
+
+\usepackage{pdfpages}
+\usepackage{pgfplots}
+\pgfplotsset{filter discard warning = true, unbounded coords=discard}
+\pgfplotsset{compat = newest}
 
 %%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -27,7 +34,13 @@
 \definecolor{headercol1}{RGB}{186,215,230}
 \definecolor{headercol2}{RGB}{80,80,80}
 \definecolor{headerfontcol}{RGB}{0,0,0}
-\definecolor{boxcolor}{RGB}{186,215,230}
+\definecolor{boxcolor}{RGB}{230,245,254}
+\definecolor{thomasred}{RGB}{247,73,15} %217
+\definecolor{thomasblue}{RGB}{0,114,189}
+\definecolor{thomasyellow}{RGB}{237,179,32}
+\definecolor{thomaspurple}{RGB}{126,47,142}
+\definecolor{thomasgreen}{RGB}{119,172,48}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -110,7 +123,7 @@
 
 In the future there will be used more wireless sensor networks  to different task and many nodes in these networks, can be placed at low heights, where communication between nodes get worse, as the path loss (PL) increases as the multipath waves can no longer be ignored. This will effect the link budget, when designing the antennas.
 
-\includegraphics[scale=0.4]{pix/intro.png}
+\includegraphics[scale=1]{pix/poster_cropped.pdf}
 \captionof{figure}{text}
 \label{fig:name}
 
@@ -120,28 +133,28 @@ In the future there will be used more wireless sensor networks  to different tas
 }
 
 \headerbox{PL Models}{name=Box2,column=0,span=1,row=0,below=Box1}{
-\textcolor{red}{\textbf{Friss free space PL (FSPL)}:} 
+\textcolor{thomasred}{\textbf{Friss free space PL (FSPL)}:} 
 %The most simple PL model, that only takes into account the free space propagation and no multipath or reflection.
 \begin{equation}
 L_p=\left(\frac{4 \pi d}{\lambda}\right)^2
 \label{simple_friss}
 \end{equation}
 \\
-\textcolor{blue}{\textbf{Approximated two-ray}}
-\textcolor{blue}{\textbf{ground-reflection PL (ATRPL)}:} 
+\textcolor{thomasblue}{\textbf{Approximated two-ray}}
+\textcolor{thomasblue}{\textbf{ground-reflection PL (ATRPL)}:} 
 %This PL model takes into account a single point of reflection at the nearest surface. This is the approximated version, where the reflection coefficient and different gains is removed.
 \begin{equation}
 L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
 \label{two_ray_model}
 \end{equation}
 \\
-\textcolor{green}{\textbf{Norton surface wave PL (NSPL)}:} 
+\textcolor{thomasyellow}{\textbf{Norton surface wave PL (NSPL)}:} 
 %This PL model only takes into account the surface wave, which comes from the reflection of the surface, which absorb some of the wave and sends out this surface wave. It is only taken into account at low height, where the antennas heights is lower than $\left|\frac{\lambda}{2\pi z}\right|$.
 \begin{equation}
 L_p=\left(\frac{d}{\left|\frac{\lambda}{2\pi z}\right|}\right)^4
 \label{surface_wave}
 \end{equation}\\
-\textcolor{purple}{\textbf{Ground wave PL (GWPL)}:} 
+\textcolor{thomaspurple}{\textbf{Ground wave PL (GWPL)}:} 
 %This PL model uses concept from the other three models, as it takes into account, the direct wave, the reflected and the surface wave. It is more complex than the other models, as it needs alot of different coefficients, where some of them needs to be measured first.
 \begin{equation}
 L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{subarray}{c}Direct\\wave\end{subarray}}+\underbrace{R\text{e}^{j\Delta}}_{\begin{subarray}{c}Reflected\\wave\end{subarray}}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{\begin{subarray}{c}Surface\\wave\end{subarray}}\Big|^{-2} 
@@ -179,6 +192,19 @@ In each point, 10 measurements were performed and the mean hereof were found, to
 
 
 \headerbox{Path loss in near-ground scenarios}{name=Box5,span=2,column=1,row=0}{
+
+\begin{minipage}{.5\textwidth}
+\centering
+Hallo
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+\centering
+\includegraphics[scale=0.6]{pix/Models12.tex}
+\caption{Comparison between proposed model, measured path loss existing PL models at a height of 0.04 m for Rx and Tx}
+\label{ourModel1}
+
+\end{minipage}
+
 }
 
 \headerbox{Proposed model}
