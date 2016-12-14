@@ -1,10 +1,11 @@
 
 
-In terms proposing a PL model all six parameters from the measurement campaign have been considered. From \autoref{App1} and \autoref{App2} it is shown that the distance and heights are very influential and should therefore form the base of the proposed model and from \autoref{App3} it can be seen that the other parameters might be left out. %This is in expected as only the NSPL has some dependency on polarization and environment. 
-The proposed model is designed around the existing models, as the theory for those are still firm. The aim is therefore to make a model that is simple, compared to the GWPL model, but has high applicability and high accuracy compared to the other PL models. 
+In terms proposing a PL model all six parameters from the measurement campaign have been considered. From \autoref{App1} and \autoref{App2} it is shown that the distance and heights are very influential and should therefore form the base of the proposed model. The proposed model is designed around the existing models, as the theory for those are still firm. The aim is therefore to make a model that is simple, compared to the GWPL model, but has high applicability and high accuracy compared to the other PL models. 
 
 
 The base of the model is chosen to be the ATRPL as it already has the highest applicability of the models except for the GWPL and a simple structure compared to the GWPL. The weak point in the ATRPL is its inaccuracy at very low heights which is a problem as the focus are near-ground scenarios. This could be compensated by the NSPL, the reasoning behind this is that NSPL accounts for the surface wave part that has been set to zero in the approximation of the ATRPL. Together these model will account for the all three waves in the GWPL. These can however not be simply added together as it is the power of the waves that can be added and not the respective PL. To find the predicted $P_r$ from the models, \eqref{two_ray_model} and \eqref{surface_wave} are inserted into \eqref{link_bud} and added finally the PL is isolated again. A more simple way to express this is seen in \eqref{proposedModel1}.
+
+
 \begin{align}
 Proposed\; PL\; model &= \left(ATRPL^{-1} + NSPL^{-1}\right)^{-1} \label{proposedModel1}\\
 L_p &= \frac{d^4}{h_t^2 h_r^2+h_0^4} \label{proposedModel2}
