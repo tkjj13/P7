@@ -9,13 +9,14 @@ P_{r} = \frac{P_{t}G_{t}G_{r}}{L_{p}L_{sys}}
 \label{link_bud}
 \end{equation}
 
-where $P_{r}$ and $P_{t}$ are the power received and transmitted in W respectively, $G_t$ and $G_r$ are the unitless gains in the Tx and Rx antenna respectively, $L_{sys}$ is the system loss\footnote{The system loss consists of all loses from the Rx reference plane to the Tx reference plane, except the PL and antenna gains, examples could include cable losses, polarisation loss, impedance mismatch etc.} and $L_{p}$ is the PL, both unitless. As the aim is to develop a simple near-ground path loss model, it is necessary to identify the $L_{p}$ from \eqref{link_bud}.
+where $P_{r}$ and $P_{t}$ are the power received and transmitted in Watts respectively, $G_t$ and $G_r$ are the unitless gains in the Tx and Rx antenna respectively, $L_{sys}$ is the system loss\footnote{The system loss consists of all loses from the Rx reference plane to the Tx reference plane, except the PL and antenna gains, examples could include cable losses, polarisation loss, impedance mismatch etc.} and $L_{p}$ is the PL, both unitless. As the aim is to develop a simple near-ground path loss model, it is necessary to identify the $L_{p}$ from \eqref{link_bud}.
 
 %loss through the whole system for a specific power transmitted, so the power received, antenna gain and the system loss need to be found, which gives the loss.
 
 \subsection{Existing Path Loss Models}
 
-In terms of finding the PL different propagation models can be used given different conditions. The PL models considerd are the: ground wave (GWPL), Friss free space (FSPL), approximated two-ray-ground-reflection (ATRPL) and the Norton surface wave (NSPL). One of the more extensive models is the GWPL model presented in \eqref{ground_wave}. The GWPL model takes the three most dominant factors into account when calculating the PL: the direct wave, the reflected wave and the surface wave \cite{Chong,Bullington}. Furthermore this PL model assumes that the antenna gain is isotropic \cite{Bullington}.  
+
+In terms of finding the PL different propagation models can be used given different conditions. The PL models considerd are the: ground wave (GWPL), Friss free space (FSPL), approximated two-ray-ground-reflection (ATRPL) and the Norton surface wave (NSPL). One of the more extensive models is the GWPL model presented in \eqref{ground_wave}. The GWPL model takes the three most dominant factors into account when calculating the PL: the direct wave, the reflected wave and the surface wave \cite{Chong,Bullington}. Furthermore, this PL model assumes that the antenna gain is isotropic \cite{Bullington}.  
 
 
 \begin{equation}
@@ -28,17 +29,18 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{sub
 %\label{ground_wave_P0}
 %\end{equation}
 where
-$\lambda$ is the wavelength of the transmitted signal in m, $d$ is the distance between Tx and Rx, in m, $\Delta$ is the phase difference between the direct and reflected wave in rad, $R$ is the unitless complex reflection coefficient and $A$ is the unitless surface wave attenuation factor \cite{Chong,Bullington}. 
+$\lambda$ is the wavelength of the transmitted signal in metre, $d$ is the distance between Tx and Rx in metre, $\Delta$ is the phase difference between the direct and reflected wave in radians, $R$ is the unitless complex reflection coefficient and $A$ is the unitless surface wave attenuation factor \cite{Chong,Bullington}. 
 
 %$\Delta$ $\approx$ $\frac{4\pi h_{r} h_{t}}{\lambda d}$
 
-The complex reflection coefficient, $R$, given in \eqref{reflection_coefficient} depends on the incidence angle and the surface materiel.
+The complex reflection coefficient, $R$, given in \eqref{reflection_coefficient} depends on the incidence angle and the surface materiel \cite{Bullington}.
 \begin{equation}
 R = \frac{\sin(\theta)-z}{\sin(\theta)+z}
 \label{reflection_coefficient}
 \end{equation}
 
-where $\theta$ is the incidence angle of the signal and the surface in rad, and the unitless $z$ which differs from surface to surface and also differs for vertical and horizontal polarization, is respectively given in \eqref{z1} and \eqref{z2} \cite{Bullington}.
+where $\theta$ is the incidence angle of the signal and the surface in rad and $z$ which is unitless, differs from surface to surface and also differs for vertical and horizontal polarization, is respectively given in \eqref{z1} and \eqref{z2} \cite{Bullington}.
+
 
 \begin{align}
 z &= \frac{\sqrt{\epsilon_{0}-\cos^{2}\theta}}{\epsilon_{0}} \qquad \text{for vertical polarization} \label{z1}\\
