@@ -16,7 +16,7 @@ This model still suffers from the weak point of NSPL's dependency upon $z$ which
 \begin{figure}[H]
 \centering
 \input{figures/Models72.tex}
-\caption{Comparison between proposed model, measured path loss existing PL models at a height of 0.14 m and 2.02 m for Rx and TX respectively}
+\caption{Comparison between proposed model, measured path loss existing PL models at a height of 0.14 m and 2.02 m for Rx and TX respectively.}
 \label{ourModel2}
 \end{figure}
 
@@ -31,28 +31,3 @@ This model still suffers from the weak point of NSPL's dependency upon $z$ which
 The accuracy is found on the same data set as the other models as none of the data points have been used for the derivation of any part of the model. The MSE is found to 87.66, which is significantly lower than either ATRPL or NSPL. It can therefore be concluded that the weakness of the ATRPL at very low Tx and/or Rx heights has been strengthened. The same can be said for the NSPL where the applicability has been greatly extended, the performance at low heights is still affected by the magnitude of $z$ as seen in \autoref{ourModel1}. However, as the heights increases the dependency of $z$ lessen, as the contribution from the NSPL part becomes smaller. This can be seen as the model is almost equal to the ATRPL on \autoref{ourModel2} and \autoref{Models62}.  The model does still not perform as well as the GWPL, however that could not be expected, as the proposed model still uses approximations and simplifications. When comparing the proposed PL model with the GWPL, the part where the proposed PL model, has an edge over the GWPL, is in the determination of $z$. For the proposed PL model, only the magnitude of $z$ is used, neglecting the complex part of $z$, meaning that the phase is not an issue. As for the GWPL $z$ is also a part of $R$ see \eqref{reflection_coefficient} and $A$ see \eqref{attenuation_factor_A}, in where the magnitude of $z$ is not taken, as the complex part also has an influence. However, with a better estimate of $z$ both the proposed PL model and the GWPL might fit better at low Tx and Rx heights which can be seen on \autoref{Modelzadjust} in the case of the proposed PL model. 
 
 
-\begin{figure}[H]
-\centering
-\input{figures/Models12.tex}
-\caption{Comparison between proposed model, measured path loss existing PL models at a height of 0.04 m for Rx and Tx}
-\label{ourModel1}
-\end{figure}
-
-
-%The reasoning behind adding exactly these two models is that the TRPL and NSPL overlap each other, given there conditions, where if the purposed model included FSPL, then the TRPL is not valid where FSPL is valid. 
-
-%both takes into account the direct and reflected wave, while the NSPL, takes into account the surface wave. This is given for the conditions that the two models have to uphold \eqref{cond_surface}, \eqref{two_ray_cond}.
-
-%As both the TRPL and NSPL have their conditions these same conditions will be applied to the our purposed model. 
-%When comparing the MSE and coverage are of our purposed model and the GRPL, where the MSE of our purposed model is 65.42, while the coverage is 65.00$\%$. The MSE of the GRPL is still better.  \\
-
-
-%The measurements at the smallest distances between the transmitter and the receiver, will suffer from not being in the Far Field, this could indicate why some of the measurements behave as they do. \\
-
-%Also other measurements at different distances have a weird jump this could involve an environmental factor, as also the measurments have been done over three days, at the parking lot. 
- \begin{figure}[H]
-\centering
-\input{figures/Models1zadjust.tex}
-\caption{Comparison of the proposed model with the used z value and the adjusted z value at a height of 0.04 m for both Tx and Rx.}
-\label{Modelzadjust}
-\end{figure}    
