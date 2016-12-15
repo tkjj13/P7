@@ -58,11 +58,12 @@
 %
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
-% \documentclass[conference]{../sty/IEEEtran}
+% \documentclass[conference]{../sty/IEEEtran}Fundamentals of Wireless Communications
 
 
 \usepackage[draft,danish]{fixme}
-
+\hyphenpenalty = 10000
+\exhyphenpenalty = 10000
 
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
@@ -443,7 +444,8 @@ Email: tkjj13@student.aau.dk}}
 
 
 \begin{abstract}
-The purpose of this paper is to get a better understanding of the path loss (PL) in near-ground scenarios, and then to develop a simple PL model. This is done by conducting measurements of the PL, at two different locations a school gym and an empty parking lot. Two types of antennas, a rectangular patch- and a monopole antenna, were used both at 858 Mhz. The measurements were performed at both horizontal and vertical polarization, at different heights and distances. Four different PL models have been investigated, ground wave (GWPL), Friss free space (FSPL), approximated two-ray ground reflection (ATRPL) and the Norton surface wave (NSPL), to get a better understanding of the different conditions given for the PL models. The PL results obtained from the measurements are used to estimate the accuracy of the different PL models, and to explore the applicability of the PL models. The measurements also indicate that the polarization, antenna type and environment, are less influential compared to the distance and heights. The results validate the conditions of the PL models coverage areas. A PL model is developed based on the ATRPL and the NSPL, still subject to the condition of the ATRPL model. The prediction accuracy of the proposed model exceeds the individual PL models and the applicability is equal to the ATRPL. 
+The purpose of this paper is to get a better understanding of the path loss (PL) in near-ground scenarios and then to develop a simple PL model. This is done by conducting measurements of the PL, at two different locations; a school gym and an empty parking lot. Two types of antennas, a rectangular patch- and a monopole antenna, were used both at 858 Mhz. The measurements were performed at both horizontal and vertical polarization, at different heights and distances. Four different PL models have been investigated, to get a better understanding of the different conditions given for the PL models: Ground wave (GWPL), Friss free space (FSPL), approximated two-ray ground reflection (ATRPL) and the Norton surface wave (NSPL). The PL results obtained from the measurements are used to estimate the accuracy of the different PL models, and to explore the applicability of the PL models. The measurements also indicate that the polarization, antenna type and environment, are less influential compared to the distance and heights. The results validate the conditions of the PL models coverage areas. A PL model is developed based on the ATRPL and the NSPL, still subject to the condition of the ATRPL model. The prediction accuracy of the proposed model exceeds the individual PL models and the applicability is equal to the ATRPL. 
+The prediction accuracy of the proposed model exceeds the individual PL models and the applicability is equal to the ATRPL. 
 \end{abstract}
 
 
@@ -640,6 +642,21 @@ The authors would like to thank Vendelbo hallen for providing access to their fa
 %
 %\end{thebibliography}
 
+\newpage
+\begin{figure}[H]
+\centering
+\input{figures/Models12.tex}
+\caption{Comparison between proposed model, measured path loss existing PL models at a height of 0.04 m for Rx and Tx.}
+\label{ourModel1}
+\end{figure}
+
+
+ \begin{figure}[H]
+\centering
+\input{figures/Models1zadjust.tex}
+\caption{Comparison of the proposed model with the used z value and the adjusted z value at a height of 0.04 m for both Tx and Rx.}
+\label{Modelzadjust}
+\end{figure}    
 
 
 
