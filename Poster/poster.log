@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.7)  15 DEC 2016 10:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.7)  15 DEC 2016 10:51
 entering extended mode
 **./poster.tex
 (poster.tex
@@ -1340,57 +1340,70 @@ Package pdftex.def Info: pix/poster_cropped.pdf used on input line 134.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Memory usage before: 3451&1054697; after: 3423&1054690; still untouched: 188181
+Memory usage before: 3451&1054669; after: 3423&1054662; still untouched: 188181
 3
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--218
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--218
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 218.
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
+
+ []
+
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 225.
 
 ("C:\Users\Gotti\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 218.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 225.
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--218
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 218--218
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 218--218
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 218--218
-
- []
-
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-
-Underfull \hbox (badness 1286) in paragraph at lines 237--237
+Underfull \hbox (badness 1286) in paragraph at lines 225--225
 []\T1/cmr/m/n/12 4 dif-fer-ent height for the an-ten-nas
  []
 
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
+
+ []
+
+(pix/Models1zadjust.tex
+Package pgfplots info on input line 29: Overriding colorspace to cmyk due to xc
+olor configuration.
+Package pgfplots info on input line 29: Using 'lua backend=false' for axis: xmo
+de=log unsupported (yet).
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+)
+Overfull \hbox (10.36371pt too wide) in paragraph at lines 64--261
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
+
+ []
+
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1412,7 +1425,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--279
+Underfull \hbox (badness 10000) in paragraph at lines 294--294
 
  []
 
@@ -1423,34 +1436,32 @@ Missing character: There is no ; in font nullfont!
 
 {C:/Users/Gotti/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./pix/poste
 r_cropped.pdf>]
-Memory usage before: 46664&1100881; after: 24358&1098333; still untouched: 1755
-291
+Memory usage before: 51438&1106983; after: 26897&1104341; still untouched: 1745
+290
 (poster.aux) ) 
 Here is how much of TeX's memory you used:
- 33541 strings out of 493333
- 872091 string characters out of 3130143
- 1244709 words of memory out of 3000000
- 36523 multiletter control sequences out of 15000+200000
- 19222 words of font info for 52 fonts, out of 3000000 for 9000
+ 33562 strings out of 493333
+ 872521 string characters out of 3130143
+ 1254710 words of memory out of 3000000
+ 36543 multiletter control sequences out of 15000+200000
+ 17692 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,14n,120p,774b,2900s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 69i,24n,120p,774b,2883s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Gotti\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappe
 n\ec\dpi600\ecbx1200.pk> <C:\Users\Gotti\AppData\Local\MiKTeX\2.9\fonts\pk\ljfo
 ur\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Gotti\AppData\Local\MiKTeX\2.9\fon
 ts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Gotti\AppData\Local\MiKT
 eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\Users\Gotti\AppData\
 Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk><C:/Users/Gotti
-/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C
 :/Users/Gotti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmmi12.pfb><C:/Users/Gotti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmmi8.pfb><C:/Users/Gotti/AppData/Local/Programs/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Gotti/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Gotti/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Gotti/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on poster.pdf (1 page, 164002 bytes).
+cmmi8.pfb><C:/Users/Gotti/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr12.pfb><C:/Users/Gotti/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr8.pfb><C:/Users/Gotti/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on poster.pdf (1 page, 149655 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
+ 278 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  120 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -140,79 +140,67 @@ In the future there will be used more wireless sensor networks  to different tas
 {name=Box2,column=1,span=2,row=0}{
 \large
 
-\begin{minipage}{.5\textwidth}
+\begin{minipage}{.45\textwidth}
 \textcolor{thomasred}{\textbf{Friss free space PL (FSPL)}:}
 \end{minipage}%
-\begin{minipage}{0.5\textwidth}
+\hspace{1cm}
+\begin{minipage}{0.45\textwidth}
 \textcolor{thomasyellow}{\textbf{Norton surface wave PL (NSPL)}:}
 \end{minipage} \\
 
-\begin{minipage}{.5\textwidth}
-\begin{equation*}
-L_p=\left(\frac{4 \pi d}{\lambda}\right)^2
-\label{simple_friss}
-\end{equation*} 
+%\begin{minipage}{.5\textwidth}
+%\begin{equation*}
+%L_p=\left(\frac{4 \pi d}{\lambda}\right)^2
+%\label{simple_friss}
+%\end{equation*} 
+%\end{minipage}%
+%\begin{minipage}{0.5\textwidth}
+%\begin{equation*}
+%L_p=\left(\frac{d}{\left|\frac{\lambda}{2\pi z}\right|}\right)^4
+%\label{surface_wave}
+%\end{equation*}
+%\end{minipage} \\
+
+\begin{minipage}{0.45\textwidth}
+This model only uses the direct wave and do not take any reflections into account. It is not reliable at low heights. 
 \end{minipage}%
-\begin{minipage}{0.5\textwidth}
-\begin{equation*}
-L_p=\left(\frac{d}{\left|\frac{\lambda}{2\pi z}\right|}\right)^4
-\label{surface_wave}
-\end{equation*}
+\hspace{1cm}
+\begin{minipage}{0.45\textwidth}
+This model only takes into account the surface wave and is not reliable at higher heights, than where the surface wave effects.
 \end{minipage} \\
 
-\begin{minipage}{.5\textwidth}
-\begin{itemize}
-\item Do not take into account any reflections.
-\item Do not work at low heights.
-\item Is not affected of height changes, as long as it do not go to low.
-\end{itemize}
-\end{minipage}%
-\begin{minipage}{0.5\textwidth}
-\begin{itemize}
-\item Takes into into account the surface wave, which comes from the ground absorbing the wave and repuls it again.
-\item Only works at low heights.
-\item Is not affected of height changes, as long as it do not go to high.
-\end{itemize}
-\end{minipage} \\
+%\vspace{0.3in} 
 
-\vspace{0.3in} 
-
-\begin{minipage}{.5\textwidth}
+\begin{minipage}{.45\textwidth}
 \textcolor{thomasblue}{\textbf{Approximated two-ray}}\\
 \textcolor{thomasblue}{\textbf{ground-reflection PL (ATRPL)}:}
 \end{minipage}%
-\begin{minipage}{0.5\textwidth}
+\hspace{1cm}
+\begin{minipage}{0.45\textwidth}
 \textcolor{thomaspurple}{\textbf{Ground wave PL (GWPL)}:}
 \end{minipage} \\
 
 
 
-\begin{minipage}{.5\textwidth}
-\begin{equation*}
-L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
-\label{two_ray_model}
-\end{equation*}
-\end{minipage}%
-\begin{minipage}{0.5\textwidth}
-\begin{equation*}
-L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|1+R\text{e}^{j\Delta}+(1-R)A\text{e}^{j\Delta}\Big|^{-2} 
-\label{ground_wave}
-\end{equation*}
-\end{minipage} \\
+%\begin{minipage}{.5\textwidth}
+%\begin{equation*}
+%L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
+%\label{two_ray_model}
+%\end{equation*}
+%\end{minipage}%
+%\begin{minipage}{0.5\textwidth}
+%\begin{equation*}
+%L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|1+R\text{e}^{j\Delta}+(1-R)A\text{e}^{j\Delta}\Big|^{-2} 
+%\label{ground_wave}
+%\end{equation*}
+%\end{minipage} \\
 
-\begin{minipage}{.5\textwidth}
-\begin{itemize}
-\item Take a single reflection into account, reflected from the nearest surface.
-\item Do not work at higher heights.
-\item Is affected of changes in heights of the antennas.
-\end{itemize}
+\begin{minipage}{.45\textwidth}
+This model takes the direct wave and a single reflection into account. This aproximated version of the model works best in the heights between FSPL and NSPL.
 \end{minipage}%
-\begin{minipage}{0.5\textwidth}
-\begin{itemize}
-\item Takes into account all the reflections from ATRPL and NSPL.
-\item Works at all heights.
-\item Is affected of height changes.
-\end{itemize}
+\hspace{1cm}
+\begin{minipage}{0.45\textwidth}
+This model takes into account all the waves, seen on figure 1 and also the reflection and absorbing coefficient of the surface.
 \end{minipage} \\
 
 }
@@ -241,6 +229,33 @@ In each point, 10 measurements were performed and the mean hereof were found, to
 \headerbox{New proposed PL model}{name=Box5,span=2,column=1,row=0, below=Box2, above=bottom}{
 \large
 
+\begin{minipage}{.45\textwidth}
+*Forklarende tekst*
+\begin{equation*}
+L_p = \frac{d^4}{h_t^2 h_r^2+h_0^4}
+\end{equation*}
+\end{minipage}%
+\hspace{1cm}
+\begin{minipage}{0.45\textwidth}
+*Her snakker vi omkring z og fuck up irrenterende den er*
+\end{minipage} \\
+
+\begin{minipage}{.45\textwidth}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Models} & \textbf{MSE} & \textbf{Applicability} \\ \hline
+FSPL            & 15.95        & 35 \%                  \\ \hline
+ATRPL 		    & 141.58       & 65 \%                  \\ \hline %approx.
+%TRPL     		& 42.12        & 100 \%                 \\ \hline
+GWPL            & 35.49        & 100 \%                 \\ \hline
+NSPL            & 230.05       & 30 \%                  \\ \hline
+NPPL            & 60.18        & 65 \%                  \\ \hline
+\end{tabular}
+\end{minipage}%
+\hspace{1cm}
+\begin{minipage}{0.45\textwidth}
+\input{pix/Models1zadjust.tex}
+\end{minipage} \\
 
 
 }
