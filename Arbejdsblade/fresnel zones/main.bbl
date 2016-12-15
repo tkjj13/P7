@@ -1,0 +1,56 @@
+\begin{thebibliography}{}
+
+\bibitem[Bevelacqua, 2016]{farnear_field1}
+Bevelacqua, P.~J. (2016).
+\newblock {Field Regions}.
+\newblock \url{http://www.antenna-theory.com/basics/fieldRegions.php }.
+
+\bibitem[Dr. J. Patrick (Pat)~Donohoe, 2016]{farnear_field2}
+Dr. J. Patrick (Pat)~Donohoe, P. (2016).
+\newblock {Antennas}.
+\newblock \url{http://my.ece.msstate.edu/faculty/donohoe/ece3323antennas.pdf }.
+
+\bibitem[ELEC 6040 Mobile Radio~Communications, 2016]{large_scale_fade3}
+ELEC 6040 Mobile Radio~Communications, Dept. of~E.E.E., H. (2016).
+\newblock {Part 4. Communications over Wireless Channels}.
+\newblock
+  \url{http://www.eee.hku.hk/~sdma/elec6040_2008/Part%204-Communications%20over%20wireless%20channels.pdf
+  }.
+
+\bibitem[Keysight, 2016]{large_scale_fade2}
+Keysight (2016).
+\newblock {About Fading}.
+\newblock
+  \url{http://rfmw.em.keysight.com/wireless/helpfiles/n5106a/about_fading.htm
+  }.
+
+\bibitem[Schmitz and Becker, 2003]{large_scale_fade}
+Schmitz, N. and Becker, R. (2003).
+\newblock {Fading Simulation Made Easy}.
+\newblock
+  \url{http://www.keysight.com/upload/cmc_upload/All/07-24-03-Fading-Schmitz_1mb-notes.pdf?&cc=DK&lc=dan
+  }.
+
+\bibitem[Seybold, 2005]{introRF}
+Seybold, J.~S. (2005).
+\newblock {\em {Introduction for RF Propagation}}.
+\newblock JOHN WILEY and SONS, INC.
+
+\bibitem[Solutions, 2016]{Fres2}
+Solutions, G. (2016).
+\newblock {Fresnel Zones}.
+\newblock \url{http://www.4gon.co.uk/solutions/technical_fresnel_zones.php}.
+
+\bibitem[tutorialspoint, 2016]{farnear_field}
+tutorialspoint (2016).
+\newblock {Antenna Theory - Near and Far Fields}.
+\newblock
+  \url{https://www.tutorialspoint.com/antenna_theory/antenna_theory_near_and_far_fields.htm
+  }.
+
+\bibitem[ZyTrax, 2016]{Fres1}
+ZyTrax, I. (2016).
+\newblock {Tech Stuff - Wireless - Fresnel Zones and their Effect}.
+\newblock \url{http://www.zytrax.com/tech/wireless/fresnel.htm}.
+
+\end{thebibliography}
