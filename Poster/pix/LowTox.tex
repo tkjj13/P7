@@ -1,0 +1,82 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=2.24in,
+height=1.44in,
+at={(2.08in,0.858in)},
+scale only axis,
+xmode=log,
+extra x ticks={2,5,20}, 
+extra x tick style={log identify minor tick positions=false},
+log ticks with fixed point,
+xmin=0.9,
+xmax=31,
+xlabel=Distance (m),
+xminorticks=true,
+xmajorgrids,
+xminorgrids,
+ymin=20,
+ymax=100,
+ylabel=Path loss (dB),
+ymajorgrids,
+legend pos = north west,
+axis background/.style={fill=white},
+legend style={legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+1	39.176832441447\\
+2	50.0236813268286\\
+4	61.7627349006033\\
+8	69.1568155321866\\
+15	80.2784721484843\\
+30	81.8463231335614\\
+};
+\addlegendentry{0.04m};
+
+\addplot [color=mycolor2,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+1.00422308278589	36.2750685665333\\
+2.00211488181872	46.4255855564945\\
+4.0010578601165	56.521087110148\\
+8.00052898251109	65.8421427417313\\
+15.0002821306801	78.7553243580291\\
+30.000141066335	80.3591753431061\\
+};
+\addlegendentry{0.14m};
+
+\addplot [color=mycolor3,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+1.05621967412087	33.1826999363486\\
+2.02869416127715	41.0212571697177\\
+4.01442399355125	51.2789435665333\\
+8.0072217404041	62.2242106975379\\
+15.0038528385212	70.1578243580291\\
+30.0019266048032	74.3636753431061\\
+};
+\addlegendentry{0.36m};
+
+\addplot [color=mycolor4,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+2.23606797749979	40.2024392944793\\
+2.82842712474619	41.1498149750094\\
+4.47213595499958	45.3166779228563\\
+8.24621125123532	51.29571423555\\
+15.1327459504216	61.8265071697177\\
+30.0665927567458	73.152023643832\\
+};
+\addlegendentry{2.02m};
+
+\end{axis}
+\end{tikzpicture}%

@@ -14,17 +14,20 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=2.8in,
-height=2in,
+width=2.5in,
+height=1.6in,
 at={(0.758in,0.481in)},
 scale only axis,
 xmode=log,
 extra x ticks={2,5,20}, 
 extra x tick style={log identify minor tick positions=false},
 log ticks with fixed point,
+xticklabel style={yshift=-0.5ex},
+yticklabel style={xshift=-0.5ex},
+every axis x label/.style={at = {(0.8 in, -0.27 in)}},
 xmin=0.9,
 xmax=31,
-xlabel=Distance (m),
+xlabel=\textbf{(b)} Distance (m),
 xminorticks=true,
 xmajorgrids,
 xminorgrids,
@@ -47,7 +50,6 @@ legend pos = south east
 15	80.2784721484843\\
 30	81.8463231335614\\
 };
-\addlegendentry{Measured PL};
 
 \addplot [color=mycolor2,dashed]
   table[row sep=crcr]{%
@@ -152,7 +154,6 @@ legend pos = south east
 29.7070707070707	60.5687145412132\\
 30	60.653943037416\\
 };
-\addlegendentry{FSPL};
 
 \addplot [color=mycolor3, solid]
   table[row sep=crcr]{%
@@ -257,7 +258,6 @@ legend pos = south east
 29.7070707070707	113.575654973197\\
 30	113.746111965603\\
 };
-\addlegendentry{ATRPL};
 
 \addplot [color=mycolor4,solid]
   table[row sep=crcr]{%
@@ -362,7 +362,6 @@ legend pos = south east
 29.7070707070707	102.371203878887\\
 30	102.541143848821\\
 };
-\addlegendentry{GWPL};
 
 \addplot [color=mycolor5,solid]
   table[row sep=crcr]{%
@@ -467,7 +466,6 @@ legend pos = south east
 29.7070707070707	104.150525549075\\
 30	104.320981660217\\
 };
-\addlegendentry{NSPL};
 
 \addplot [color=black,solid]
   table[row sep=crcr]{%
@@ -478,6 +476,5 @@ legend pos = south east
 15	92.9856789639248\\
 30	105.026878790484\\
 };
-\addlegendentry{Proposed model};
 \end{axis}
 \end{tikzpicture}%
