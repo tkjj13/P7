@@ -1,0 +1,49 @@
+\chapter{Mini Project}
+
+
+\section{Basic RF imperfections}
+
+\subsection{Complex baseband Representation}
+When representing a  baseband signal, it can be done the following way:
+\begin{equation}
+s(t) = I(t) \cdot \sqrt{2} \cdot \cos(2 \pi f_{c}t)-Q(t)\cdot \sqrt{2} \cdot \sin(2 \pi f_{c}t)
+\label{org_base_band_rep} 
+\end{equation}
+
+\begin{itemize}
+\item $I(t)$ = $S_{A}(t) \cdot \cos(s_{p}(t))$
+\item $Q(t)$ = $S_{A}(t) \cdot \sin(s_{p}(t))$
+\end{itemize}
+
+From the above representation is it important to note that all the information of the signal lies in the $I$ and $Q$ part. Both $I$ and $Q$ are real value low frequency signals. All the information lies in the $I$ and $Q$, and can be represented as AM or FM. All the RF, can therefore be neglected, as all the information is in the $I$ and $Q$ part. 
+
+The complex valued base band signal, denoted the complex envelope in where all the signal information lies in is defined as:
+
+\begin{equation}
+s_{BB}(t) = I(t) + j\cdot Q(t)
+\label{com_base} 
+\end{equation}
+
+While the original bandpass signal given in \eqref{org_base_band_rep} from the complex envelop signal, can be obtained as:
+
+\begin{equation}
+s(t) = \sqrt{2} \cdot \Re[s_{BB} \cdot \exp(j\cdot 2\pi f_{c}t)]
+\label{com_bas_to_org_bas}
+\end{equation}
+
+
+\subsection{I/Q mismatch}
+
+
+\subsection{Noise}
+
+
+\section{Model of PA}
+
+
+%\begin{where}
+%\va{$d_{1}$}{The distance of $a$ from TX}{m}
+%\va{$d_{2}$}{The distance of $a$ from RX}{m}
+%\va{$\lambda$}{The wavelength of the signal}{m}
+%\end{where}
+
