@@ -15,6 +15,7 @@
 \usepackage{url}			% For \url
 \usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
 \usepackage{amsmath,amssymb}
+\usepackage{colortbl}
 \geometry{top=10mm}
 \usepackage{tikz}
 \usepackage[americanresistors,americaninductors,americancurrents, americanvoltages]{circuitikz}
@@ -76,7 +77,7 @@
 	% Option is left on true though the eyecatcher is not used. The reason is
 	% that we have a bit nicer looking title and author formatting in the headercol
 	% this way
-	%eyecatcher=false, 
+	eyecatcher=true, 
 	borderColor= aaublue,
 	headerColorOne=aaublue,
 	headerColorTwo=aaublue,
@@ -94,6 +95,7 @@
 %%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
 	Eye Catcher, empty if option eyecatcher=false - unused
+	\hspace{1cm} \includegraphics[scale=0.9]{aau_logo_new}
 }
 %%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\sf\bf
@@ -112,7 +114,7 @@
 \setlength\fboxrule{0pt}
 	\fbox{
 		%\begin{minipage}{5em}
-			\includegraphics[scale=0.8]{aau_logo_new}\hspace{1cm}
+			\includegraphics[scale=0.9]{aau_logo_new}\hspace{1cm}
 %			\includegraphics[width=4em,height=4em]{elte_logo} \\
 %			\includegraphics[width=10em,height=4em]{dynanets_logo}
 %			\includegraphics[width=4em,height=4em]{aitia_logo}

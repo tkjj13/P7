@@ -38,9 +38,10 @@ axis background/.style={fill=white},
 title style={font=\bfseries},
 legend style={legend cell align=left,align=left,draw=white!15!black},
 legend pos = north west
+%axis line style = ultra thick
 ]
 
-\addplot [color=mycolor1,mark size=2.5pt,only marks,mark=asterisk,mark options={solid}]
+\addplot [color=black,mark size=2.5pt,only marks,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
 2.1541736234575	40.5286184873639\\
 2.7641389255969	41.7634386176021\\
@@ -49,7 +50,7 @@ legend pos = north west
 15.1208618801972	58.5868821697177\\
 30.060613167399	67.725648643832\\
 };
-\addplot [color=mycolor2,solid]
+\addplot [color=mycolor1,solid,ultra thick]
   table[row sep=crcr]{%
 1	31.1115179430228\\
 1.29292929292929	33.3430134440292\\
@@ -84,7 +85,7 @@ legend pos = north west
 9.78787878787879	50.9252895920871\\
 10.0808080808081	51.1814248768192\\
 };
-\addplot [color=mycolor2,dashed,forget plot]
+\addplot [color=mycolor1,dashed,forget plot,ultra thick]
   table[row sep=crcr]{%
 3.34343434343434	41.5953739265862\\
 3.63636363636364	42.3248640664175\\
@@ -180,7 +181,7 @@ legend pos = north west
 30	60.653943037416\\
 };
 
-\addplot [color=mycolor3,dashed,forget plot]
+\addplot [color=mycolor2,dashed,forget plot,ultra thick]
   table[row sep=crcr]{%
 1	11.1879572974509\\
 1.29292929292929	15.6509482994637\\
@@ -220,7 +221,7 @@ legend pos = north west
 11.2525252525253	53.2379571470573\\
 };
 
-\addplot [color=mycolor3,solid]
+\addplot [color=mycolor2,solid,ultra thick]
   table[row sep=crcr]{%
 10.0808080808081	51.3277711650438\\
 10.3737373737374	51.8253672574401\\
@@ -293,7 +294,7 @@ legend pos = north west
 30	70.2728074862374\\
 };
 
-\addplot [color=mycolor4,solid]
+\addplot [color=mycolor4,solid,ultra thick]
   table[row sep=crcr]{%
 1	30.7915254982822\\
 1.29292929292929	33.9434222862678\\
@@ -397,7 +398,7 @@ legend pos = north west
 30	70.8578117847193\\
 };
 
-\addplot [color=mycolor5,dashed,forget plot]
+\addplot [color=mycolor5,dashed,forget plot,ultra thick]
   table[row sep=crcr]{%
 1	49.3538609508286\\
 1.29292929292929	53.3959745464176\\
@@ -500,12 +501,12 @@ legend pos = north west
 29.7070707070707	104.178180578881\\
 30	104.348102563768\\
 };
-\addplot [color=mycolor5,solid]
+\addplot [color=mycolor5,solid,ultra thick]
   table[row sep=crcr]{%
 30	104.348102563768\\
 };
 
-\addplot [color=black,dashed,forget plot]
+\addplot [color=mycolor3,dashed,forget plot,very thick]
   table[row sep=crcr]{%
 1	11.1879572974509\\
 1.29292929292929	15.6509482994637\\
@@ -545,7 +546,7 @@ legend pos = north west
 11.2525252525253	53.2379571470573\\
 };
 
-\addplot [color=black,solid]
+\addplot [color=mycolor3,solid,very thick]
   table[row sep=crcr]{%
 10.0808080808081	51.3277711650438\\
 10.3737373737374	51.8253672574401\\
