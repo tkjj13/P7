@@ -1,11 +1,10 @@
 \large
 
 \begin{minipage}{.45\textwidth}
-The study found that a combination of the ATRPL and NSPL models, enhanced the pridiction capability. The proposed model is:
-\begin{align*}
+The study found that a combination of the ATRPL and NSPL models, enhanced the pridiction capability. The proposed PL model (PPL) is:
+\vspace{-0.5em}\begin{align*}
 L_p = \frac{d^4}{h_t^2 h_r^2+h_0^4}\quad for \quad d > \frac{4\pi\cdot h_th_r}{\lambda}
 \end{align*}
-
 where $h_0$ is the minimum effective antenna height and depend upon wavelength and surface constants and $\lambda$ is the wavelength.
 
 
@@ -17,7 +16,7 @@ where $h_0$ is the minimum effective antenna height and depend upon wavelength a
 \end{center}
 \end{minipage}
 
-\vspace{1em}
+\vspace{0.5em}
 \begin{minipage}{0.5\textwidth}
 \begin{center}
 \input{pix/Models12.tex}
@@ -25,9 +24,11 @@ where $h_0$ is the minimum effective antenna height and depend upon wavelength a
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \begin{center}
-\input{pix/Models12.tex}
+\input{pix/Models102.tex}
 \end{center}
 \end{minipage}
 
-\captionof{figure}{Comparison between the different PL model. in \textbf{(a)} the Tx and Rx heights are 0.14 and 2.02 m in \textbf{(b)} both are 0.04 m and in \textbf{(c)} both are 2.02 m\\
-}%The points are the measured PL, The red is FSPL, the blue is ATRPL, the yellow is NSPL, the purple is GWPL and the black is the NPPL.}
+%\captionof{figure}{
+\vspace{0.5em}
+\textbf{Legend:} Points are measured PL, \textcolor{thomasblue}{line} is FSPL, \textcolor{thomasred}{line} is ATRPL, \textcolor{thomasgreen}{line} is NSPL, \textcolor{thomaspurple}{line} is GWPL and \textcolor{thomasyellow}{line} is the PPL. Dashed line means the point is outside the model's coverage area.\\
+In \textbf{(a)} the Tx and Rx heights are 0.14 and 2.02 m, in \textbf{(b)} both are 0.04 m and in \textbf{(c)} both are 2.02 m.
