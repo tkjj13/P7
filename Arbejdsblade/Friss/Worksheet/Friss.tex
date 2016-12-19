@@ -1,17 +1,12 @@
 \chapter{Worksheet}
 \section{Friis}
 
-The reason why there is a loss through free space, is that the signal density gets lower, as it spread over a larger area, which happens when the distance, that the signal has travelled, gets longer.  This is given by the following Equation \cite{friss_signal_dec}.
+The reason why there is a loss through free space, is that the signal density gets lower, as it spread over a larger area, which happens when the distance  that the signal has travelled gets longer \citep{friss_signal_dec}.
 
-\begin{equation}
-Signal = \frac{1}{distance^{2}}
-\label{firss_signal decrease}
-\end{equation}
-
-A example, is when using a isotropic antenna, the signal density is equal all the way around the antenna, forming a sphere around the antenna. As the power of the signal in total always is the same, the density of the signal power is depended on the surface of the sphere. As the signal travels longer away from the antenna, the sphere gets bigger and the surface bigger to, which means that the signal density gets lower. So the free space loss, is the factor describing the signal that is not going in the direction of the receiving antenna.
+For example, when using an isotropic antenna the signal density is equal all the way around the antenna, forming a sphere around the antenna. The power of the signal is in total always the same. Therefore the density of the signal power is only depended on the surface area of the sphere. As the signal travels longer away from the antenna the sphere gets bigger as do the surface, which means that the signal density gets lower. So the free space loss, is the factor describing the signal that is not going in the direction of the receiving antenna.
 
 
-Friis transmission equation is used to calculate the power, that is received at the receiving antenna, out from the gains in the antenna, the power of the transmitted signal and the free space loss \cite{friss_worksheet}. 
+Friis transmission equation is used to calculate the power, that is received at the receiving antenna, out from the gains in the antenna, the power of the transmitted signal and the free space loss \citep{friss_worksheet}. 
 
 \begin{equation}
 P_r = P_t G_t G_r (\frac{\lambda}{4 \pi d})^2
@@ -25,9 +20,7 @@ P_r = P_t G_t G_r (\frac{\lambda}{4 \pi d})^2
 \va{$d$}{is the distance between the transmitting antenna and the receiving antenna}{m}
 \end{where}
 
-It is used to calculate the loss through the free space and does not take into account other waves, than the direct wave. The free space loss is equal to $(\frac{\lambda}{4 \pi d})^2$ and is multiplied by the gains in both antennas and the power transmitted, to get the received power level.
-
-The free space loss comes from the spreading of the signal, which is compared to the spheres, which in the signal spread in, surface, which is calculated by $\frac{1}{4 \pi d^2}$. Furthermore, there also comes the loss, when the signal is received at the receiver, where the effective antenna area is equal to $\frac{\lambda^2}{4 \pi}$. These two losses give in total the free space loss. (Hans eberts pdf)
+It is used to calculate the loss through the free space and only accounts for the direct wave, the free space loss is equal to $(\frac{\lambda}{4 \pi d})^{-2}$. To find the power received the power transmitted is multiplied by the gains in both antennas and divided with the free space path loss.
 
 
 This is the simple form of friis formulae and it is only correct, if these conditions is met:

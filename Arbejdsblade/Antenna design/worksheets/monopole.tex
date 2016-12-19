@@ -1,6 +1,6 @@
 \chapter{Monopole design}
 
-A monopole antenna is the most simple antenna, as it is a wire, where the signal generator is connected at one end and nothing a the other end. It is normally place atop of a ground plane. The radiation pattern is the same as a dipole antenna with a larger ground plane, which is a doughnut shape, where there is less to none radiation directly above and below the antenna, while the strength of the radiation gets better, the more horizontal the direction gets. But if the ground plane is not large enough, the doughnut shape, will be tilted more upwards.
+A monopole antenna is one of the most simple antenna structures, as it is just a wire, where the signal generator is connected at one end, place atop of a ground plane. The theoretic radiation pattern can be seen on \autoref{fig:disMono}. As the ground plane is not perfect in reality, the shape might distort by either changing the tilt or going towards a more doughnut shape.
 
 \begin{figure}[H]
 \centering
@@ -19,3 +19,34 @@ L = \frac{\lambda}{4}
 \va{$\lambda$}{is the wavelength of the wanted frequency}{m}
 \end{where}
 
+\section{Dimensions of Monopole Antennas}
+
+The monopole antennas have been designed with the dimensions
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l|lll}
+                				& \textbf{858MHz} 	& \textbf{2.58GHz} 	& \textbf{Unit} \\\hline
+\textbf{Height}  				& 87           		& 29            	& mm            \\
+\textbf{Width of ground plane} 	& 130            	& 60            	& mm 
+\end{tabular}
+\caption{Calculated parameters}
+\label{tab:parameters}
+\end{table}
+
+
+\begin{figure}[H]
+\captionsetup{belowskip=0em}
+\begin{subfigure}[b]{0.48\textwidth}
+\includegraphics[width=\textwidth]{figure/IMG_0918.jpg}
+\caption{Designed monopole for 858 MHz}
+\label{fig:868Patch}
+\end{subfigure}
+\begin{subfigure}[b]{0.48\textwidth}
+\includegraphics[width=\textwidth]{figure/IMG_0919.jpg}
+\caption{Designed monopole for 2.58 GHz}
+\label{fig:2.4Patch}
+\end{subfigure}
+\captionsetup{belowskip=-1.5em}
+\caption{The manufactored monopole antennas}
+\end{figure}
