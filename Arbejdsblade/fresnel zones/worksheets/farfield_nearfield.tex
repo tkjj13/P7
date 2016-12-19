@@ -1,11 +1,11 @@
 \chapter{Far field and near field}
 
-An graphical illustration of the Far field and Near field \citep{farnear_field1}\citep{farnear_field2} can be seen on the following Figure:
+A graphical illustration of the far field and near field \citep{farnear_field1}\citep{farnear_field2} can be seen on the following Figure:
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{nearfield_farfield.pdf}
-\caption{Illustration of Near field and Far field \citep{farnear_field}}
+\caption{Illustration of near field and far field \citep{farnear_field}}
 \label{para_wave}
 \end{figure}
 
@@ -13,7 +13,7 @@ An graphical illustration of the Far field and Near field \citep{farnear_field1}
 
 \subsection{Far field region}
 
-The Far field region is the region that is furthest from the antenna. The Far field region $R$ is given by the following formula:
+The far field region is the region that is furthest from the antenna. The far field region $R$ is given by the following formula:
 
 \begin{equation}
 R > \frac{2 \cdot D^{2}}{\lambda}
@@ -25,7 +25,7 @@ R > \frac{2 \cdot D^{2}}{\lambda}
 \va{$\lambda$}{Wavelength}{m}
 \end{where}
 
-The Far field region $R$ provides the limit between Far field and Near field. The Far field region must also satisfy the following two equations:
+The far field region $R$ provides the limit between far field and near field. The far field region must also satisfy the following two equations:
 
 \begin{equation}
 R \gg D
@@ -39,7 +39,7 @@ R \gg \lambda
 \label{far_eq_3}
 \end{equation}
 
-The first two equations given in \ref{far_field_eq1} and \ref{far_eq2} ensure that the power radiated in a given direction from different parts of the antenna are approximately parallel. This helps to ensure that waves in the Far field behave like plane waves. Plane waves only radiate towards the forward direction, and are in parallel. %This is illustrated on the following Figure:
+The first two equations given in \ref{far_field_eq1} and \ref{far_eq2} ensure that the power radiated in a given direction from different parts of the antenna are approximately parallel. This helps to ensure that waves in the far field behave like plane waves. Plane waves only radiate towards the forward direction, and are in parallel. %This is illustrated on the following Figure:
 
 %\begin{figure}[H]
 %\centering
@@ -48,7 +48,7 @@ The first two equations given in \ref{far_field_eq1} and \ref{far_eq2} ensure th
 %\label{para_wave}
 %\end{figure}
 
-The third equation given in \ref{far_eq_3} makes sure that the reactive Near fields are gone. The reactive near field is the region surrounding the antenna where the reactive field(standing waves or stored energy) are dominant. In a reactive field two oppositely waves are travelling, which are non-radiative, they do not radiate power, they store the energy. This means that the receiver antenna will not receive power in the Near field, as it does not radiate. %So the receiver antenna will not receive these standing waves, as a part of the power radiated, in the far field. 
+The third equation given in \ref{far_eq_3} makes sure that the reactive near fields are gone. The reactive near field is the region surrounding the antenna where the reactive field(standing waves or stored energy) are dominant. In a reactive field two oppositely waves are travelling, which are non-radiative, they do not radiate power, they store the energy. This means that the receiver antenna will not receive power in the near field, as it does not radiate. %So the receiver antenna will not receive these standing waves, as a part of the power radiated, in the far field. 
 The much larger sign $\gg$ stands for 10 times larger. 
 %The problem with the reactive field is that the receiving and the transmitting antenna may interact with each other 
 
@@ -72,7 +72,7 @@ The much larger sign $\gg$ stands for 10 times larger.
 
 \subsection{Near field region}
 
-In the Near field there are two regions the Non-radiative(Reactive) and Radiative(Fresnel) regions. The boundary for the Non-radiative(Reactive) is given in the following Equation:
+In the near field there are two regions the non-radiative(Reactive) and radiative(Fresnel) regions. The boundary for the non-radiative(Reactive) is given in the following Equation:
 
 \begin{equation}
 R < 0.62 \cdot \sqrt{\frac{D^{3}}{\lambda}}
@@ -80,7 +80,7 @@ R < 0.62 \cdot \sqrt{\frac{D^{3}}{\lambda}}
 \end{equation}
 
 
-While the Radiative(Fresnel) region is the region between the Near and Far fields. In this region unlike for the Far field region the shape of the radiation pattern may vary considerably with distance. The Radiative(Fresnel) region is given by the following Equation:
+While the radiative(Fresnel) region is the region between the near and far fields. In this region unlike for the far field region the shape of the radiation pattern may vary considerably with distance. The radiative(Fresnel) region is given by the following Equation:
 
 
 \begin{equation}
@@ -103,7 +103,7 @@ The above can be summarized in the following Figure:
 
 \subsubsection{Patch 858Mhz}
 
-In order to calculate if the measurements are done in the Far field, the maximum dimension of a given antenna must be known. The maximum dimension $D$ is 0.105m, this given for the patch antenna of 858MHz. Then in terms of being in the Far field:
+In order to calculate if the measurements are done in the far field, the maximum dimension of a given antenna must be known. The maximum dimension $D$ is 0.105m, this given for the patch antenna of 858MHz. Then in terms of being in the Far field:
 
 \begin{equation}
 R > \frac{2 \cdot D^{2}}{\lambda}
@@ -124,21 +124,21 @@ Then:
 R> \frac{2 \cdot (0.105m)^{2}}{0.3453m} = 0.0639 m 
 \end{equation} 
 
-While the minimum R is 1m, as the minimum distance between the transmitter and receiver antenna is 1 m. And as it can be seen, the first Far field equation \ref{far_field_eq1_3} is fulfilled. 
+While the minimum R is 1m, as the minimum distance between the transmitter and receiver antenna is 1 m. And as it can be seen, the first far field equation \ref{far_field_eq1_3} is fulfilled. 
 
-The two other Far field equations \ref{far_eq2} and \ref{far_eq_3}, the first one being:
+The two other far field equations \ref{far_eq2} and \ref{far_eq_3}, the first one being:
 
 \begin{equation}
 1m \gg 0.105m
 \end{equation}
 
-Which is on the limit, to  being in the Far field. While the third one given in \ref{far_eq_3}:
+Which is on the limit, to  being in the far field. While the third one given in \ref{far_eq_3}:
 
 \begin{equation}
 1m \gg 0.3453m
 \end{equation}
 
-This is not fullfiled, and therefore it is not in the Far field the equation given in \ref{near_field_eq} is used.
+This is not fulfilled, and therefore it is not in the far field the equation given in \ref{near_field_eq} is used.
 \newpage
 
 \subsubsection{Patch 2.58Ghz}

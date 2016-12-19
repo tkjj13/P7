@@ -21,37 +21,35 @@ A link budget is calculated to find the loss though the whole system, so the nee
 Such a calculation is given as:
 
 \begin{equation}
-P_{RX} = P_{TX} + G_{TX} - L_{TX} - L_{PL} - L_{MISC} + G_{RX} - L_{RX}
+P_{r} = \frac{P_{t}G_{t}G_{r}}{L_{p}L_{sys}}
 \label{link_calc}
 \end{equation}
 
 \begin{where}
-\va{$P_{RX}$}{Power Received}{dBm}
-\va{$P_{TX}$}{Power transmitted}{dBm}
-\va{$G_{TX}$}{Transmitter antenna gain}{dBi}
-\va{$L_{TX}$}{Transmitter losses (cable,coax)}{dB}
-\va{$L_{PL}$}{Path Loss}{dB}
-\va{$L_{MISC}$}{misc losses(polarization losses, other losses)}{dB}
-\va{$G_{RX}$}{Receiver antenna gain}{dBi}
-\va{$L_{RX}$}{Receiver losses (cable,coax)}{dB}
+\va{$P_{r}$}{Power Received}{W}
+\va{$P_{t}$}{Power transmitted}{W}
+\va{$G_{t}$}{Transmitter antenna gain}{-}
+\va{$L_{p}$}{Path Loss}{-}
+\va{$L_{sys}$}{system loss(polarization losses, other losses)}{-}
+\va{$G_{r}$}{Receiver antenna gain}{-}
 \end{where}
 \newpage
 \subsection{Polarization loss factor (PLF)}
-Polarization loss plays a factor in the Link Budget calculation. There is Linear Polarization and Circular Polarization. For Linear polarization the antenna can be turned horizontal and vertical direction this is illustrated in the following Figure:
+Polarization loss \citep{PLF} plays a factor in the link budget calculation. There is linear polarization and circular polarization. For linear polarization the antenna can be turned horizontal and vertical direction this is illustrated in the following Figure:
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.4\textwidth]{polariz_ver_hor_lin.pdf}
-\caption{Linear horizontal and vertical polarization}
+\caption{Linear horizontal and vertical polarization \citep{plf_illu}}
 \label{fig:pol_ver_hor}
 \end{figure} 
 
-The PLF for Linear Polarized antennas can be calculated by the equations given on the following Figure depending on the angle of the the antennas, an illustration of the PLF for max, non and signal loss with dependence on an angle:
+The PLF for linear polarized antennas can be calculated by the equations given on the following Figure depending on the angle of the the antennas, an illustration of the PLF for max, non and signal loss with dependence on an angle:
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{plf.pdf}
-\caption{Minimum, maximum and PLF loss depending on the angle}
+\caption{Minimum, maximum and PLF loss depending on the angle \citep{plf_illu}}
 \label{fig:lin_plf}
 \end{figure} 
 
@@ -77,18 +75,18 @@ Then to get it in dB:
 
 
 \subsection{Cable Loss}
-As a part of the Link Budget cable loss is also included. The cable loss is depended on the length of the cable, where the longer the cable the more cable loss there will be as the signal will lose travelling strength through the cable. Where for each cable it is indicated in the data sheet how much power is lost per meter at different frequencies, this is different for each type of cable. 
+As a part of the link budget cable loss is also included. The cable loss is depended on the length of the cable, where the longer the cable the more cable loss there will be as the signal will lose strength travelling through the cable. Where for each cable it is indicated in the data sheet how much power is lost per meter at different frequencies, this is different for each type of cable. 
 
 
 \subsubsection{Calculated cable loss}
-Two different types of cables where used these are:
+Two different types of cables were used these are:
 
 \begin{itemize}
 \item rg223/u 
 \item SUCOFLEX$\_$104
 \end{itemize}
 
-The length for the  rg223/u cable is of 1m, while for the SUCOFLEX$\_$104 cable, two SUCOFLEX$\_$104 cables where used with different lengths of 1.5m and 2.20m.
+The length for the  rg223/u \citep{rg} cable is of 1m, while for the SUCOFLEX$\_$104 cable \citep{sucoflex_104}, two SUCOFLEX$\_$104 cables where used with different lengths of 1.5m and 2.20m.
 
 The cable loss for the rg223/u cable is read from the data sheet then interpolated, from the data sheet it is given that the attenuation factor is given in dB per 100 meters. 
 
@@ -96,7 +94,7 @@ The cable loss for the rg223/u cable is read from the data sheet then interpolat
 %Attenuation factor = [dB/100]
 %\end{equation}
 
-In the data sheet it can be read that for 1000MHz a loss of  13.4dB per 100 m, while for 3 GHz it is 24.8dB per 100 m. There has been made an interpolation of the Attenuation factors, so that a more precise Attenuation factor can be calculated so for 2.58 GHz and 856 MHz the following Attenuation factors have been calculated, for 1 m:
+In the data sheet it can be read that for 1000MHz a loss of  13.4dB per 100 m, while for 3 GHz it is 24.8dB per 100 m. There has been made an interpolation of the attenuation factors, so that a more precise attenuation factor can be calculated so for 2.58 GHz and 856 MHz the following attenuation factors have been calculated, for 1 m:
 
 \begin{equation}
 Attenuation factor\_2.58 = \frac{22.4}{100}  = 0.224dB
@@ -106,7 +104,7 @@ Attenuation factor\_2.58 = \frac{22.4}{100}  = 0.224dB
 Attenuation factor\_858 = \frac{12.7}{100}  = 0.127dB
 \end{equation}
 
-While for the SUCOFLEX$\_$104 cable the following formula has been used to calculate the Attenuation factor, for both 1.5m and 2.20m:
+While for the SUCOFLEX$\_$104 cable the following formula has been used to calculate the attenuation factor, for both 1.5m and 2.20m:
 
 \begin{equation}
 a_{25} = a\cdot \sqrt{f(Ghz)} + b \cdot f(Ghz) \quad [db/m]
@@ -126,7 +124,7 @@ The attenuation factor for 858 MHz is equal to 0.327 dB while for 2.58 GHz it is
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-                                                                            & \begin{tabular}[c]{@{}l@{}}Mono \\ 2.58 Ghz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Mono \\ 858 MHz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Patch \\ 2.58GHz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Patch \\ 858MHz\end{tabular} & \begin{tabular}[c]{@{}l@{}}Demo board \\ 868 MHz\end{tabular} \\ \hline
+                                                                            & \begin{tabular}[c]{@{}l@{}}Mono \end{tabular} & \begin{tabular}[c]{@{}l@{}}Mono \end{tabular} & \begin{tabular}[c]{@{}l@{}}Patch  \end{tabular} & \begin{tabular}[c]{@{}l@{}}Patch \end{tabular} & \begin{tabular}[c]{@{}l@{}}Demo board \end{tabular} \\ \hline
 Cable loss: rg223\_u                                                        & -0.224dB                                                 & -0.127dB                                                & -0.224dB                                                 & -0.127dB                                                & -                                                             \\ \hline
 \begin{tabular}[c]{@{}l@{}}Cable loss: SUCOFLEX\_104 \\ (1.5m)\end{tabular} & -0.579dB                                                 & -0.327dB                                                & -0.579dB                                                 & -0.327dB                                                & -                                                             \\ \hline
 \begin{tabular}[c]{@{}l@{}}Cable loss: SUCOFLEX\_104 \\ (2.5m)\end{tabular} & -0.850dB                                                 & -0.480dB                                                & -0.850dB                                                 & -0.480dB                                                & -                                                             \\ \hline
@@ -140,7 +138,7 @@ Total Loss                                                                  & -1
 
 \subsection{LOS, nLOS and NLOS}
 
-Other factors to consider when calculating a link budget is if there is \textbf{Line-Of-Sight(LOS)}, which means that if there is an obstacle in between the transmitter antenna and the receiver antenna it does not block the signal, as the two antennas can see each other, this is illustrated on the following Figure:
+Other factors to consider when calculating a link budget is if there is Line-Of-Sight(LOS). LOS is when there is no obstacle blocking the signal between the transmitter and receiver antenna. This is illustrated on the following Figure:
 
 \begin{figure}[H]
 \centering
@@ -150,7 +148,7 @@ Other factors to consider when calculating a link budget is if there is \textbf{
 \end{figure}  
 
 
-Where the counter-part is \textbf{Non-Line-Of-Sight(NLOS)}, which means that the path is interfered, which could be by a building standing in-between the transmitter antenna and the receiver antenna, where the two antennas cannot see each other, this is illustrated on the following Figure: 
+Where the counter-part is Non-Line-Of-Sight(NLOS), which means that the path is interfered, which could be by a building standing in-between the transmitter antenna and the receiver antenna, where the two antennas cannot see each other, this is illustrated on the following Figure: 
 
 \begin{figure}[H]
 \centering
@@ -159,7 +157,7 @@ Where the counter-part is \textbf{Non-Line-Of-Sight(NLOS)}, which means that the
 \label{dijdkkfkfddd}
 \end{figure} 
 
-Another one is \textbf{Near Line Of Sight(nLOS)}, which means that the path is partially interfered,  which could be by a building. Which is illustrated on the following Figure:
+Another one is Near Line Of Sight(nLOS), which means that the path is partially interfered,  which could be by a building. Which is illustrated on the following Figure:
 
 \begin{figure}[H]
 \centering
@@ -169,7 +167,7 @@ Another one is \textbf{Near Line Of Sight(nLOS)}, which means that the path is p
 \end{figure} 
 
 
-The different Line-Of-Sights, play a big factor when considering the Fresnel Zones which is further explained in Chapter \ref{fres_zone}, which also plays a big part in the received Power. As explained in the Fresnel Zone chapter there must be $60\%$ clearance in the first Fresnel zone, as the strongest signals are in the first Fresnel zone ,this could be a problem if there is too much \textbf{NLOS}, as the antennas would need to be risen higher.       
+The different line-of-sights, play a big factor when considering the Fresnel Zones which is further explained in Chapter \ref{fres_zone}, which also plays a big part in the received Power. As explained in the Fresnel Zone chapter there must be $60\%$ clearance in the first Fresnel zone, as the strongest signals are in the first Fresnel zone ,this could be a problem if there is too much NLOS, as the antennas would need to be risen higher.       
 
 
 
