@@ -1,6 +1,6 @@
 \chapter{Groundwave}
 
-When transmitting from one radio to another the signal travel as electromagnetic waves. These waves can reach the receiver taking multiple paths. It could be a direct path from transmitter to receiver, or a reflected wave of a surface such as the ground this can be seen in \autoref{fig:directReflectedPath}. 
+When transmitting from one radio to another the signal travel as electromagnetic waves. These waves can reach the receiver taking multiple paths. It could be a direct path from transmitter to receiver, or a reflected wave of a surface such as the ground this can be seen in \autoref{fig:directReflectedPath}, where the scenario is without any obstacles. 
 
 \begin{figure}[H]
 \centering
@@ -9,10 +9,11 @@ When transmitting from one radio to another the signal travel as electromagnetic
 \label{fig:directReflectedPath}
 \end{figure}
 
-This worksheet will focus on the paths close to the ground, and primarily on the surface wave component since the direct and reflected wave are described in further detail in ??. The ground acts both as a reflector and also as an absorber \citep{Bullington}. This means that a received wave can be contributed from three main factors. In 1947 Burlington wrote that \textit{"The principal effect of plane earth on the propagation of radio waves is indicated by the following equation"}\citep{Bullington}. The surface part comes from the grounds absorption of the electromagnetic wave, when the energy enters the ground it sets up ground currents. These currents are a representation of the imperfect reflection.    
+This worksheet will focus on the paths close to the ground, and primarily on the surface wave component since the direct and reflected wave are described in further detail in (See worksheet Friss). The ground acts both as a reflector and also as an absorber \citep{Bullington}. This means that a received wave can be contributed from three main factors, given in \eqref{ground_wave}. In 1947 Burlington wrote that \textit{"The principal effect of plane earth on the propagation of radio waves is indicated by the following equation"}\citep{Bullington}. The surface part comes from the grounds absorption of the electromagnetic wave, when the energy enters the ground it sets up ground currents. These currents are a representation of the imperfect reflection.    
 
 \begin{equation}
 E=E_0\left[\underbrace{1}_{direct}+\underbrace{R\text{e}^{j\Delta}}_{reflected}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{surface}\right]
+\label{ground_wave}
 \end{equation}
 \begin{where}
 \va{E}{is the recieved field intensity}{$\frac{V}{m}$}
@@ -31,7 +32,7 @@ The phase difference $\Delta$, is the difference in phase resulting only from th
 \va{$\lambda$}{is wavelenght}{m}
 \end{where}
 
-For a plane earth case meaning that there are no bumps or curvatures on the earth, its just plane then L is found as:
+For a plane earth case meaning that there are no bumps or curvatures on the earth, its just plane then $L$ is found as:
 \begin{equation}
 L=\sqrt{(h_t+h_r)^2+d^2}-d
 \label{plane_earth}
