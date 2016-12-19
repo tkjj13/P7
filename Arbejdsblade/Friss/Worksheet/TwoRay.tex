@@ -1,46 +1,42 @@
 \section{Two Ray Plane Earth}
-In contrast to the Friss pathloss model, the approximated two-ray-ground-reflection path loss model (ATPL) \citep{two_ray}, considers both the direct wave and the reflected ground wave. Also the ATPL does not depend on the frequency, as the Friss pathloss model does. The received power depending on the distance is given in the following Formula:
+In contrast to the Friss pathloss model, the approximated two-ray-ground-reflection path loss model (ATRPL) \citep{two_ray}, considers both the direct wave and the reflected ground wave. Also the ATRPL does not depend on the frequency, as the Friss path loss model does. The received power depending on the distance is given in \eqref{two_ray_model}.
 
 \begin{equation}
-P_r(d) = \frac{P_t G_t G_r h^2_t h^2_r}{L \cdot d^4}
+P_r(d) = \frac{P_t G_t G_r}{L} \left(\frac{h_t h_r}{d^2}\right)^2
 \label{two_ray_model}
 \end{equation}
 
-Where $h^2_t$ and $h^2_r$ are the heights of the transmitter and receiver antennas squared respectively. And L is the system loss. A illustration of a scenario of when to use the ATPL, can be seen on the following Figure.
+Where $h_t$ and $h_r$ are the heights of the transmitter and receiver antennas respectively. And L is the system loss. A illustration of a scenario of when to use the ATRPL, can be seen on the following Figure.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{Figures/two_ray_illu.pdf}
-\caption{Illustration of a scenario of when to use the ATPL model}
+\caption{Illustration of a scenario of when to use the ATRPL model}
 \label{two_ray_scena}
 \end{figure}
 
 
-The ATPL is not used if the distance $d$ is less then a critical point $d_{c}$ given in \eqref{two_ray_cond} where Friss is used, while if the condition is false then the it is used. 
+The ATRPL is used if the distance $d$ is greater then a critical point $d_{c}$ given in \eqref{two_ray_cond} if the condition is false then Friss path loss model can be used. 
 
 \begin{equation}
-d<d_{c}
+d>d_{c}
 \label{two_ray_cond}
 \end{equation}
 
-Where $d_{c}$ is given as:
+with $d_{c}$ given as:
 
 \begin{equation}
 d_{c} = \frac{4\pi \cdot h_t h_r}{\lambda}
 \label{critical_fac_dc}
 \end{equation}
 
-If this condition is true then the ATPL predicts interference which is caused by the constructive and destructive combination of the two rays. If this condition is not true, the Friss transmission equation shall be used. This condition is true for small distances $d$. 
+If the condition is false then interference occur which looks like ripples this is caused by the constructive and destructive combination of the two rays. The ATRPL does not account for this.  
 
 \subsection{Critical point calculation}
-For the measurements done, the condition is tested:
+For the measurements done, the condition given in \eqref{two_ray_cond} is tested:
 
-\begin{equation}
-d<d_{c}
-\label{two_ray_cond_1}
-\end{equation}
 
-\subsubsection{For 2m and 2m heights of transmitter and receiver antennas, for both 858MHz and 2.58GHz}
+\subsubsection{Calculation example for both transmitter and receiver antennas heights at 2 m, at 858MHz}
 
 For 2m and 2m heights of the transmitter antenna and receiver antenna. This for a frequency of 858MHz:
 
@@ -51,12 +47,6 @@ d_{c} = \frac{4\pi \cdot 2m \cdot 2m}{0.3494m} = 143.86m
 
 So for 2m and 2m, for all distances from 1m to 30m between the sender and the receiver, it is indicated that Friss shall be used. 
 
-While the the same for 2.58GHz:
-
-\begin{equation}
-d_{c} = \frac{4\pi \cdot 2m \cdot 2m}{0.1161m} = 432.94m
-\label{critical_fac_dc_calc_2_2_2.58GHz}
-\end{equation}
 
 Again the condition is not met, for all distances, for 2m and 2m. This means that the ATPL shall not be used.
 
