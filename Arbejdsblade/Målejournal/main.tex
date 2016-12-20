@@ -41,30 +41,7 @@
 
 \include{Worksheet/Maaling}
 
-\citep{1GMSK}
 
-
-%% literaturliste og bilag %%
-\bookmarksetup{startatroot}% this is it
-\addtocontents{toc}{\bigskip}% perhaps as well
-\bibliography{setup/mybib}
-\label{bib:mybiblio}
- 
- \newpage
- \fancyhead[RO]{\small Appendix \nouppercase\rightmark} %even page - chapter title
- \fancyhead[LE]{\small Appendix \nouppercase\rightmark} %uneven page - section title
-\fancyhead[RE,LO]{}
- \titleformat{\section}[hang]{\Large\bfseries}{\thesection\hsp\textcolor{black}{|}\hsp}{0pt}{\Large\bfseries}
-
- \renewcommand{\thesection}{\Alph{section}}
- \setcounter{section}{0}
-
-
-
-
-\chapter*{Appendix}
- \addcontentsline{toc}{chapter}{Appendix}
- \addtocounter{chapter}{1}
 
 
 \end{document}
