@@ -15,7 +15,7 @@
 
 
 %A Link budget, takes into account all the losses and gains from the transmitter antenna to the receiver antenna. 
-A link budget is calculated to find the loss though the whole system, so the needed transmission power is found or the needed antenna gain is found, for a specific transmission power.
+A link budget is calculated to find the received power for the whole system, based on the transmission power, antenna gains, system loss and path loss.
 
 %A Link budget is calculated to take into account the attenuation of the transmitted signal due to propagation, which depends on the circumstances like reflections, free-space loss ,buildings etc. other factors included are cable loss, antenna gains, polarization loss. %which depends if the transmitter antenna and the receiver antenna a pointing directly at each other, if not some loss will occur  etc. 
 Such a calculation is given as:
@@ -28,13 +28,13 @@ P_{r} = \frac{P_{t}G_{t}G_{r}}{L_{p}L_{sys}}
 \begin{where}
 \va{$P_{r}$}{Power Received}{W}
 \va{$P_{t}$}{Power transmitted}{W}
-\va{$G_{t}$}{Transmitter antenna gain}{-}
-\va{$L_{p}$}{Path Loss}{-}
-\va{$L_{sys}$}{system loss(polarization losses, other losses)}{-}
-\va{$G_{r}$}{Receiver antenna gain}{-}
+\va{$G_{t}$}{Transmitter antenna gain}{1}
+\va{$L_{p}$}{Path Loss}{1}
+\va{$L_{sys}$}{system loss(polarization losses, other losses)}{1}
+\va{$G_{r}$}{Receiver antenna gain}{1}
 \end{where}
 \newpage
-\subsection{Polarization loss factor (PLF)}
+\section{Polarization loss factor (PLF)}
 Polarization loss \citep{PLF} plays a factor in the link budget calculation. There is linear polarization and circular polarization. For linear polarization the antenna can be turned horizontal and vertical direction this is illustrated in the following Figure:
 
 \begin{figure}[H]
@@ -49,15 +49,15 @@ The PLF for linear polarized antennas can be calculated by the equations given o
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{plf.pdf}
-\caption{Minimum, maximum and PLF loss depending on the angle \citep{plf_illu}}
+\caption{Minimum, PLF loss depending on the angle and maximum  \citep{plf_illu}}
 \label{fig:lin_plf}
 \end{figure} 
 
-As it can be seen if the two antennas are pointing directly at each other with the same polarization there will be no PLF. While if one antenna is vertically polarized and the other is horizontally polarized, then no power will be transferred. While there will be some power loss if the two antennas are not $100\%$ polarized, meaning there is an polarization miss match ,there will be some power loss depending on the angle.
+As it can be seen if the two antennas are pointing directly at each other with the same polarization there will be no PLF. While if one antenna is vertically polarized and the other is horizontally polarized, then no power will be transferred. While there will be some power loss if the two antennas are not $100\%$ aligned, meaning there is an polarization miss match ,there will be some power loss depending on the angle.
 
-\subsubsection{PLF loss calculated}
+\subsection{PLF loss calculated}
 
-For the measurements conducted the PLF factor is calculated with an angle $\psi$ of 5$^{\circ}$, as the two antennas are not pointing directly at each other, this gives the following PLF loss factor:
+For the measurements conducted the PLF factor is calculated with an angle $\psi$ of 5$^{\circ}$, as a margin for the two antennas alignment, this gives the following PLF loss factor:
 
 \begin{equation}
 cos(\psi)^{2} = cos(5)^2 = 0.9962
@@ -74,11 +74,11 @@ Then to get it in dB:
 %the angle of the antennas as they are not pointing directly at each other is around  5$^{\circ}$
 
 
-\subsection{Cable Loss}
+\section{Cable Loss}
 As a part of the link budget cable loss is also included. The cable loss is depended on the length of the cable, where the longer the cable the more cable loss there will be as the signal will lose strength travelling through the cable. Where for each cable it is indicated in the data sheet how much power is lost per meter at different frequencies, this is different for each type of cable. 
 
 
-\subsubsection{Calculated cable loss}
+\subsection{Calculated cable loss}
 Two different types of cables were used these are:
 
 \begin{itemize}
@@ -86,7 +86,7 @@ Two different types of cables were used these are:
 \item SUCOFLEX$\_$104
 \end{itemize}
 
-The length for the  rg223/u \citep{rg} cable is of 1m, while for the SUCOFLEX$\_$104 cable \citep{sucoflex_104}, two SUCOFLEX$\_$104 cables where used with different lengths of 1.5m and 2.20m.
+The length for the  rg223/u \citep{rg} cable is of 1m, while for the SUCOFLEX$\_$104 cable \citep{sucoflex_104}, two SUCOFLEX$\_$104 cables where used with different lengths of 1.5m and 2.5m.
 
 The cable loss for the rg223/u cable is read from the data sheet then interpolated, from the data sheet it is given that the attenuation factor is given in dB per 100 meters. 
 
@@ -136,7 +136,7 @@ Total Loss                                                                  & -1
 %The Antenna Efficiency is measured in Satimo lab, which gives an Antenna Efficiency txt. file where the Antenna Efficiency for the given frequency is specified and multiplied with 2 as there are two antennas.  
 
 
-\subsection{LOS, nLOS and NLOS}
+\section{LOS, nLOS and NLOS}
 
 Other factors to consider when calculating a link budget is if there is Line-Of-Sight(LOS) \citep{los}. LOS is when there is no obstacle blocking the signal between the transmitter and receiver antenna. This is illustrated on the following Figure:
 
