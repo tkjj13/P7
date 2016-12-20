@@ -1,0 +1,20 @@
+\begin{thebibliography}{}
+
+\bibitem[{Ian Poole}, 2016]{friss_signal_dec}
+{Ian Poole} (2016).
+\newblock {Free Space Path Loss: Details, Formula, Calculator}.
+\newblock
+  \url{http://www.radio-electronics.com/info/propagation/path-loss/free-space-formula-equation.php}.
+
+\bibitem[{Prof. Amy Connolly’s group}, 2013]{friss_worksheet}
+{Prof. Amy Connolly’s group} (2013).
+\newblock {Friis Transmission Equation}.
+\newblock \url{https://u.osu.edu/connolly/files/2013/12/Friis-1ty893p.pdf}.
+
+\bibitem[Wikipedia, 2016]{wiki}
+Wikipedia (2016).
+\newblock {Friis transmission equation}.
+\newblock \url{https://en.wikipedia.org/wiki/Friis_transmission_equation}.
+\newblock Accessed November 19, 2016.
+
+\end{thebibliography}

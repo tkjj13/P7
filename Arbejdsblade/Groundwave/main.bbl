@@ -1,0 +1,16 @@
+\begin{thebibliography}{}
+
+\bibitem[Bullington, 1947]{Bullington}
+Bullington, K. (1947).
+\newblock {Radio Propagation at Frequencies Above 30 Megacycles}.
+\newblock {\em PROCEEDINGS OF THE I.R.E}.
+\newblock årg. 35, hft. 10, 10-1947, s. 1122–1136.
+
+\bibitem[Chong and Kim, 2013]{Chong}
+Chong, P.~K. and Kim, D. (2013).
+\newblock {Surface-Level Path Loss Modelling for Sensor Networks in Flat and
+  Irregular Terrain}.
+\newblock {\em ACM Transactions on Sensor Networks}.
+\newblock Vol. 9, No. 2, Article 15.
+
+\end{thebibliography}
