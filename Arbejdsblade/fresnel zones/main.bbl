@@ -1,20 +1,28 @@
 \begin{thebibliography}{}
 
-\bibitem[Bevelacqua, 2016]{farnear_field1}
+\bibitem[Bevelacqua, 2016]{PLF}
 Bevelacqua, P.~J. (2016).
-\newblock {Field Regions}.
-\newblock \url{http://www.antenna-theory.com/basics/fieldRegions.php }.
+\newblock { Polarization of Plane Waves }.
+\newblock \url{http://www.antenna-theory.com/basics/polarization.php }.
 
-\bibitem[Dr. J. Patrick (Pat)~Donohoe, 2016]{farnear_field2}
-Dr. J. Patrick (Pat)~Donohoe, P. (2016).
-\newblock {Antennas}.
-\newblock \url{http://my.ece.msstate.edu/faculty/donohoe/ece3323antennas.pdf }.
+\bibitem[Elektronik, 2016]{sucoflex_104}
+Elektronik, H.~S. (2016).
+\newblock {Sucoflex 104}.
+\newblock \url{http://www.helmut-singer.de/pdf/sucoflex104pb.pdf }.
 
-\bibitem[tutorialspoint, 2016]{farnear_field}
-tutorialspoint (2016).
-\newblock {Antenna Theory - Near and Far Fields}.
-\newblock
-  \url{https://www.tutorialspoint.com/antenna_theory/antenna_theory_near_and_far_fields.htm
-  }.
+\bibitem[l~com, 2010]{los}
+l~com (2010).
+\newblock { Line of Sight (LOS)}.
+\newblock \url{http://www.l-com.com/content/Article.aspx?Type=L&ID=10060 }.
+
+\bibitem[pasternack, 2016]{rg}
+pasternack (2016).
+\newblock {Flexible RG223 Coax Cable Double Shielded with Black PVC Jacket}.
+\newblock \url{https://www.pasternack.com/images/ProductPDF/RG223-U.pdf }.
+
+\bibitem[Rodrigo, 2010]{plf_illu}
+Rodrigo, R. (2010).
+\newblock {Fundamental Parameters of Antennas}.
+\newblock \url{http://www.ent.mrt.ac.lk/~ranga/courses/en4620_2010/L03.pdf }.
 
 \end{thebibliography}
