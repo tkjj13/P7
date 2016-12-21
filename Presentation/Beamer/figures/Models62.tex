@@ -14,7 +14,7 @@
 
 \begin{axis}[%
 width=2.8in,
-height=\myvar,
+height=2in,
 at={(0.758in,0.481in)},
 scale only axis,
 xmode=log,
@@ -31,6 +31,8 @@ ymin=20,
 ymax=110,
 ylabel=Path loss (dB),
 ymajorgrids,
+title style={font=\bfseries},
+title = Medium heights,
 axis background/.style={fill=white},
 legend style={legend cell align=left,align=left,draw=white!15!black},
 legend pos = north west
@@ -46,7 +48,7 @@ legend pos = north west
 };
 \addlegendentry{Measured PL};
 
-\addplot [color=mycolor2,solid]
+\addplot [color=mycolor2,solid,ultra thick]
   table[row sep=crcr]{%
 1	31.1115179430228\\
 1.29292929292929	33.3430134440292\\
@@ -54,7 +56,7 @@ legend pos = north west
 1.87878787878788	36.5890729354301\\
 };
 \addlegendentry{FSPL};
-\addplot [color=mycolor2,dashed, forget plot]
+\addplot [color=mycolor2,dashed, forget plot,ultra thick]
   table[row sep=crcr]{%
 1.87878787878788	36.5890729354301\\
 2.17171717171717	37.8475832493839\\
@@ -155,14 +157,14 @@ legend pos = north west
 30	60.653943037416\\
 };
 
-\addplot [color=mycolor3,dashed, forget plot]
+\addplot [color=mycolor3,dashed, forget plot,ultra thick]
   table[row sep=crcr]{%
 1	25.7293491507274\\
 1.29292929292929	30.1923401527402\\
 1.58585858585859	33.7399274631948\\
 1.87878787878788	36.6844591355421\\
 };
-\addplot [color=mycolor3,solid]
+\addplot [color=mycolor3,solid,ultra thick]
   table[row sep=crcr]{%
 1.87878787878788	36.6844591355421\\
 2.17171717171717	39.2014797634496\\
@@ -264,7 +266,7 @@ legend pos = north west
 };
 \addlegendentry{ATRPL};
 
-\addplot [color=mycolor4,solid]
+\addplot [color=mycolor4,solid,ultra thick]
   table[row sep=crcr]{%
 1	31.2328670540324\\
 1.29292929292929	34.5552771726006\\
@@ -369,7 +371,7 @@ legend pos = north west
 };
 \addlegendentry{GWPL};
 
-\addplot [color=mycolor5,dashed, forget plot]
+\addplot [color=mycolor5,dashed, forget plot,ultra thick]
   table[row sep=crcr]{%
 1	46.255884046764\\
 1.29292929292929	50.3667792108431\\
@@ -472,7 +474,7 @@ legend pos = north west
 29.7070707070707	104.151962082632\\
 30	104.322390286748\\
 };
-\addplot [color=mycolor5,solid]
+\addplot [color=mycolor5,solid,ultra thick]
   table[row sep=crcr]{%
   30	104.322390286748\\
   };
