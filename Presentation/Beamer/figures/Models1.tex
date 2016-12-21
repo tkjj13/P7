@@ -49,7 +49,7 @@ legend pos = south east
 };
 \addlegendentry{Measured PL};
 
-\addplot [color=mycolor2,dashed]
+\addplot [color=mycolor2,dashed,ultra thick,forget plot]
   table[row sep=crcr]{%
 1	31.1115179430228\\
 1.29292929292929	33.3430134440292\\
@@ -152,9 +152,13 @@ legend pos = south east
 29.7070707070707	60.5687145412132\\
 30	60.653943037416\\
 };
+\addplot [color=mycolor2,ultra thick]
+  table[row sep=crcr]{%
+1	31.1115179430228\\
+};
 \addlegendentry{FSPL};
 
-\addplot [color=mycolor3, solid]
+\addplot [color=mycolor3, solid,ultra thick]
   table[row sep=crcr]{%
 1	54.6612617768166\\
 1.29292929292929	59.1242527788293\\
@@ -259,7 +263,7 @@ legend pos = south east
 };
 \addlegendentry{ATRPL};
 
-\addplot [color=mycolor4,solid]
+\addplot [color=mycolor4,solid,ultra thick]
   table[row sep=crcr]{%
 1	44.9214537765832\\
 1.29292929292929	49.050887223414\\
@@ -364,7 +368,7 @@ legend pos = south east
 };
 \addlegendentry{GWPL};
 
-\addplot [color=mycolor5,solid]
+\addplot [color=mycolor5,solid,ultra thick]
   table[row sep=crcr]{%
 1	45.2757493241887\\
 1.29292929292929	49.7228898745648\\
