@@ -55,9 +55,6 @@ stem(acfx1(1,:));
 hold on
 stem(acfx(1,:))
 figure;
-stem(acfx1res);
-hold on
-stem(acfxres)
 return
 autocorr(x);
 autocorr(y);
