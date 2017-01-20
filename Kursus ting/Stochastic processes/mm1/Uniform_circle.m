@@ -12,7 +12,7 @@ i = 0;
 for k = 1:n
     if sqrt(X(k)^2+Y(k)^2) <= 1
       i = i + 1;
-      %plot(X(k),Y(k),'*');
+      plot(X(k),Y(k),'*');
       %hold on;
     end    
 end
