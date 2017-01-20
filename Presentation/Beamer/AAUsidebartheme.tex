@@ -49,7 +49,6 @@ hideothersubsections,% hide all subsections but the subsections in the current s
 \title[]% optional, use only with long paper titles
 {Development of a Simple Near-Ground Path Loss Model Verified by Measurements\\}
 
-\subtitle{SEMCON 2016}  % could also be a conference name
 
 
 
@@ -60,7 +59,7 @@ Mads Gotthardsen and Thomas Jørgensen
   %\href{mailto:jkn@es.aau.dk}{{\tt jkn@es.aau.dk}}
 }
 
-\date{December 22, 2016}
+\date{Januar 24, 2016}
 % - Give the names in the same order as they appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation. See the beamer manual for an example
@@ -136,182 +135,27 @@ skipabove=\baselineskip]{TitleBox}
 %    \end{figure}
 \end{frame}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
-\begin{frame}{Introduction}
-\begin{minipage}{0.5\textwidth}
-\begin{itemize}
-\item Wireless Sensor Networks
-\begin{itemize}
-\item Commercial
-\item Military
-\end{itemize}
-\item Focus
-\begin{itemize}
-\item Accuracy
-\item Applicability
-\item Simplicity
-\end{itemize}
-\end{itemize}
-\end{minipage}
-\begin{minipage}{0.45\textwidth}
-\begin{figure}[!htbp]
- \centering
-  \includegraphics[width = \columnwidth]{figures/wsn_ill.pdf}
-  \end{figure}
-\end{minipage}
-\end{frame}
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{PL models}
-\begin{frame}{PL models}
-\begin{minipage}{.45\textwidth}
-\raggedright\textcolor{thomasblue}{\textbf{Friss free space PL (FSPL)}:}
-\begin{itemize}
-\item Only direct wave
-\item High heights
-\end{itemize} 
 
-\vspace{1em}
-\textcolor{black}{\textbf{Conditions:}}
-\begin{itemize}
-\item No Multipath
-\item $d >> \lambda$
-\end{itemize}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-
-\begin{figure}[!htbp]
- \centering
-  \includegraphics[width = \columnwidth]{figures/friss_illu.pdf}
-  \end{figure}
-\end{minipage}
-
-\vspace{1em}
-\begin{equation*}
-L_p=\left(\frac{4 \pi d}{\lambda}\right)^2
-\end{equation*}
-\end{frame}
-
-
-\begin{frame}{PL models}
-\begin{minipage}{.45\textwidth}
-\raggedright\textcolor{thomasred}{\textbf{Approximated two-ray}}\\
-\raggedright\textcolor{thomasred}{\textbf{ground-reflection PL (ATRPL)}:}
-\begin{itemize}
-\item Direct and reflected wave
-\item Medium heights
-\end{itemize} 
-
-\vspace{1em}
-\textcolor{black}{\textbf{Conditions:}}
-\begin{itemize}
-\item No obstacles
-\item Plane surface
-\item $d > \frac{4\pi \cdot h_t h_r }{\lambda}$
-\end{itemize}
-
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-\begin{figure}[!htbp]
- \centering
-  \includegraphics[width = \columnwidth]{figures/two_ray_illu.pdf}
-  \end{figure}
-\end{minipage}
-
-\vspace{1em}
-\begin{equation*}
-L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
-\label{two_ray_model}
-\end{equation*}
-\end{frame}
-
-
-\begin{frame}{PL models}
-\begin{minipage}{.45\textwidth}
-\raggedright\textcolor{thomasgreen}{\textbf{Norton surface wave PL (NSPL)}:}
-\begin{itemize}
-\item Only surface wave
-\item Low heights
-\item Dependent on surface constants
-\end{itemize}
-
-\vspace{1em}
-\textcolor{black}{\textbf{Conditions:}}
-\begin{itemize}
-\item No obstacles
-\item Plane surface
-\item $h_t,h_r > \lambda$
-\end{itemize}
-
-\end{minipage}%
-\begin{minipage}{0.5\textwidth}
-\begin{figure}[!htbp]
- \centering
-  \includegraphics[width = \columnwidth]{figures/surf_illu.pdf}
-  \end{figure}
-\end{minipage}
-
-\vspace{1em}
-\begin{equation}
-L_p=\left({d} \cdot \left|\frac{\lambda}{2\pi z}\right|^{-1}\right)^4
-\label{surface_wave}
-\end{equation}
-\end{frame}
-
-
-
-\begin{frame}{PL models}
-\begin{minipage}{.45\textwidth}
-\raggedright\textcolor{thomaspurple}{\textbf{Ground wave PL (GWPL)}:}
-\begin{itemize}
-\item All waves
-\item All heights
-\item Dependent on surface constants
-\end{itemize} 
-
-\vspace{1em}
-\textcolor{black}{\textbf{Conditions:}}
-\begin{itemize}
-\item No obstacles
-\item Plane surface
-\end{itemize}
-
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-\begin{figure}[!htbp]
- \centering
-  \includegraphics[width = \columnwidth]{figures/poster_cropped_1.pdf}
-  \end{figure}
-\end{minipage}
-
-\vspace{1em}
-\begin{equation}
-L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{subarray}{c}Direct\\wave\end{subarray}}+\underbrace{R\text{e}^{j\Delta}}_{\begin{subarray}{c}Reflected\\wave\end{subarray}}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{\begin{subarray}{c}Surface\\wave\end{subarray}}\Big|^{-2} 
-\label{ground_wave}
-\end{equation}
-\end{frame}
+\input{AAU2.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Measurements}
+\section{Test og Målinger}
 \begin{frame}{Measurements}
+\begin{minipage}{0.45\textwidth}
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width = \columnwidth]{figures/setup.pdf}
+	\includegraphics[width = \columnwidth]{figures/MonoStor2500.png}
 \end{figure}
-\begin{minipage}{0.15\textwidth}
- \textcolor{white}{.}  
 \end{minipage}%
-\begin{minipage}{0.8\textwidth}
-\begin{itemize}
-\item 1 Frequency (858 MHz)
-\item 2 Antenna sets (monopole and patch)
-\item 2 Polarization (horizontal and vertical)
-\item 2 Location (outdoor and indoor)
-\item 4 Rx/Tx heights (from 0.04 to 2.02 m)
-\item 6 Distances (from 1 to 30 m)
-\end{itemize}
+\begin{minipage}{0.1\textwidth}
+\textcolor{white}{.} 
+\end{minipage}%
+\begin{minipage}{0.45\textwidth}
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width = \columnwidth]{figures/PatchNy858.png}
+\end{figure}
 \end{minipage}
 \end{frame}
 
