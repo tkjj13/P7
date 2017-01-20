@@ -68,7 +68,11 @@ MSE_MMSE = mean((theta-theta_hat_MMSE).^2)
 
 % LMMSE
 
-EZ = mean(Z);
+z=x
+theta = T
+
+
+EZ = mean(Z); 
 ETheta = mean(theta);
 EW = mean(W);
 vZ = var(Z);

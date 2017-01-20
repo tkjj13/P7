@@ -62,7 +62,7 @@ Zs = [zeros(length(Gs)-1, 1); 1];  		% Initial State for Long Sequence Generator
 %------- AWGN definitions -------------
 EbEc = 10*log10(ChipRate/BitRate); 		% Bit/Chip rate loss
 EbEcVit = 10*log10(L);
-EbNo = [-2 : 0.5 : 1]; 		% measured EbNo range (dB) 
+EbNo = [-2 : 0.5 : 3]; 		% measured EbNo range (dB) 
 
 %==========================================================================
 % ----------------------------------------------- MAIN SIMULATION LOOP ---------------------------------
@@ -104,7 +104,7 @@ for i=1:length(EbNo)
       % JHM: 'x' is the transmitter signal and your PA model should be applied to this signal
       % NOTE: REMEMBER TO SCALE THE POWER LEVEL OF THE SIGNAL BEFORE ADDING
       % YOUR MODEL!
-      %S_TX = x;
+      % S_TX = x;
 
     % transform from cart 2 pol
         [PolPhase PolAmp] = cart2pol(real(x),imag(x));
@@ -126,21 +126,22 @@ for i=1:length(EbNo)
 
     % calculate end power and phase
         AmpO = PolAmp.*transpose(alpha);
-        PhaseO = PolPhase;%+transpose(phase);
+        PhaseO = PolPhase+transpose(phase) - repmat(angle(S21(1,1)+1i*S21(1,2)),size(transpose(phase)));;
     % trasform from pol 2 cart
 
-    [sOx sOy] = pol2cart(PhaseO,AmpO);
-      S_TX = sOx+1i*sOy;
+    [sOI sOQ] = pol2cart(PhaseO,AmpO);
+      S_TX = sOI+1i*sOQ;
       %-------------------------------- AWGN Channel ------------------------------------
       % JHM: Here is where you add noise. I have left the code from the original file here for your
       % reference. As you can see the noise is not added correctly. 
       % NOTE: REMEMBER TO SCALE SIGNAL AND NOISE CORRECTLY. 
       %
       
-      %noise = 1/sqrt(2)*( randn(size(S_TX)) + j*randn(size(S_TX)))*sqrt(R/2)*10^(-(EbNo(i) - EbEc)/20);
+      noise = 1/sqrt(2)*( randn(size(S_TX)) + j*randn(size(S_TX)))*sqrt(R/2)*10^(-(EbNo(i) - EbEc)/20);
       noiseAmp = randn(size(S_TX));
       noisePhase = randn(size(S_TX));
-      noise = abs(S21(1,1)+1i*S21(1,2))/sqrt(2)*sqrt(R/2)*(noiseAmp.*cos(noisePhase)+1i*noiseAmp.*sin(noisePhase))*...
+      Power = mean(abs(S21(:,1)+1i*S21(:,2)));
+      noise = Power/sqrt(2)*sqrt(R/2)*(noiseAmp.*cos(noisePhase)+1i*noiseAmp.*sin(noisePhase))*...
           10^(-(EbNo(i) - EbEc)/20);
       
       %
