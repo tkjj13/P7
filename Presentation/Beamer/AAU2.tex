@@ -5,9 +5,12 @@
 \item Problem introduktion
 \item Eksisterende modeller
 \item Parameter bestemmelse
-\item Test \& målinger
-\item Data behandling
-\item Ny model
+\item Test og målinger
+\item Databehandling
+\item Parameternes betydning
+\item Foreslået PL model
+\item Model sammenligning
+\item z parameteren
 \item Konklusion
 \end{itemize}
 \end{frame}
@@ -18,13 +21,18 @@
 
 \begin{itemize}
 \item Lavstående antenner.
+\item Kommunikation mellem nodes og basestationer.
+\item Ikke idealle forhold
 \item Jorden og andre objekters påvirkning kan ikke længere negleres.
 \end{itemize}
 
 \end{minipage}
 \begin{minipage}{0.45\textwidth}
 
-%Find fedt billede
+\begin{figure}[!htbp]
+ \centering
+  \includegraphics[width = \columnwidth]{figures/wsn_ill.pdf}
+  \end{figure}
 
 \end{minipage}
 \end{frame}
@@ -34,52 +42,74 @@
 \begin{minipage}{0.5\textwidth}
 
 \begin{itemize}
-\item Direct wave
-\item Reflected wave
-\item Surface wave
-\end{itemize}
-
-\end{minipage}
-\begin{minipage}{0.45\textwidth}
-
-%Find fedt billede
-
-\end{minipage}
-\end{frame}
-
-%%%% Andre effekter
-\begin{frame}{Problem introduktion}
-\begin{minipage}{0.5\textwidth}
-
+\item Projekt begrænsninger
 \begin{itemize}
 \item Line of sight (LOS)
-\item Far field og Near field
-\item Scattering
+\item Kun refleksion fra fladt underlag
+\item Ingen forstyrrende elemeter
+\item Konstant signal styrke
+\end{itemize}
 \end{itemize}
 
 \end{minipage}
 \begin{minipage}{0.45\textwidth}
 
-%Find fedt billede
+\begin{figure}[!htbp]
+ \centering
+  \includegraphics[width = \columnwidth, angle = -90]{figures/Hal.jpg}
+  \end{figure}
 
 \end{minipage}
 \end{frame} 
  
- 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Exiterende modeller}
+\begin{minipage}{.45\textwidth}
+\raggedright\textcolor{thomaspurple}{\textbf{Ground wave PL (GWPL)}:}
+\begin{itemize}
+\item Alle signaler
+\item Alle højder
+\item Flade konstanter nødvendige
+\end{itemize} 
+
+\vspace{1em}
+\textcolor{black}{\textbf{Krav:}}
+\begin{itemize}
+\item LOS og ingen forstyrrende elementer
+\item Flad overflade
+\end{itemize}
+
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{figure}[!htbp]
+ \centering
+  \includegraphics[width = \columnwidth]{figures/poster_cropped_1.pdf}
+  \end{figure}
+\end{minipage}
+
+\vspace{1em}
+\begin{equation}
+L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{subarray}{c}Direct\\wave\end{subarray}}+\underbrace{R\text{e}^{j\Delta}}_{\begin{subarray}{c}Reflected\\wave\end{subarray}}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{\begin{subarray}{c}Surface\\wave\end{subarray}}\Big|^{-2} 
+\label{ground_wave}
+\end{equation}
+\end{frame}
+
+
 \section{Exiterende modeller}
 \begin{frame}{Exiterende modeller}
 \begin{minipage}{.45\textwidth}
 \raggedright\textcolor{thomasblue}{\textbf{Friss free space PL (FSPL)}:}
 \begin{itemize}
-\item Only direct wave
-\item High heights
+\item LOS og ingen forstyrrende elementer
+\item Kun det direkte signal
+\item Høje højder
 \end{itemize} 
 
 \vspace{1em}
-\textcolor{black}{\textbf{Conditions:}}
+\textcolor{black}{\textbf{Krav:}}
 \begin{itemize}
-\item No Multipath
+\item Ingen reklsioner eller ekstra signaler
+\item LOS
 \item $d >> \lambda$
 \end{itemize}
 \end{minipage}
@@ -103,15 +133,15 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2
 \raggedright\textcolor{thomasred}{\textbf{Approximated two-ray}}\\
 \raggedright\textcolor{thomasred}{\textbf{ground-reflection PL (ATRPL)}:}
 \begin{itemize}
-\item Direct and reflected wave
-\item Medium heights
+\item Direkte og reflekteret signal
+\item Mellem højder til lave højder
 \end{itemize} 
 
 \vspace{1em}
-\textcolor{black}{\textbf{Conditions:}}
+\textcolor{black}{\textbf{Krav:}}
 \begin{itemize}
-\item No obstacles
-\item Plane surface
+\item LOS og ingen forstyrrende elementer
+\item Flad overflade
 \item $d > \frac{4\pi \cdot h_t h_r }{\lambda}$
 \end{itemize}
 
@@ -135,16 +165,16 @@ L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
 \begin{minipage}{.45\textwidth}
 \raggedright\textcolor{thomasgreen}{\textbf{Norton surface wave PL (NSPL)}:}
 \begin{itemize}
-\item Only surface wave
-\item Low heights
-\item Dependent on surface constants
+\item Overflade signalet
+\item Lave højder
+\item Flade konstanter nødvendige
 \end{itemize}
 
 \vspace{1em}
-\textcolor{black}{\textbf{Conditions:}}
+\textcolor{black}{\textbf{Krav:}}
 \begin{itemize}
-\item No obstacles
-\item Plane surface
+\item LOS og ingen forstyrrende elementer
+\item Flad overflade
 \item $h_t,h_r > \lambda$
 \end{itemize}
 
@@ -165,40 +195,11 @@ L_p=\left({d} \cdot \left|\frac{\lambda}{2\pi z}\right|^{-1}\right)^4
 
 
 
-\begin{frame}{Exiterende modeller}
-\begin{minipage}{.45\textwidth}
-\raggedright\textcolor{thomaspurple}{\textbf{Ground wave PL (GWPL)}:}
-\begin{itemize}
-\item All waves
-\item All heights
-\item Dependent on surface constants
-\end{itemize} 
 
-\vspace{1em}
-\textcolor{black}{\textbf{Conditions:}}
-\begin{itemize}
-\item No obstacles
-\item Plane surface
-\end{itemize}
-
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-\begin{figure}[!htbp]
- \centering
-  \includegraphics[width = \columnwidth]{figures/poster_cropped_1.pdf}
-  \end{figure}
-\end{minipage}
-
-\vspace{1em}
-\begin{equation}
-L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{subarray}{c}Direct\\wave\end{subarray}}+\underbrace{R\text{e}^{j\Delta}}_{\begin{subarray}{c}Reflected\\wave\end{subarray}}+\underbrace{(1-R)A\text{e}^{j\Delta}}_{\begin{subarray}{c}Surface\\wave\end{subarray}}\Big|^{-2} 
-\label{ground_wave}
-\end{equation}
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Parameter bestemmelse}
-\begin{frame}{Measurements}
+\begin{frame}{Parameter bestemmelse}
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width = 0.8\columnwidth]{figures/setup.pdf}
@@ -208,20 +209,64 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{sub
 \end{minipage}%
 \begin{minipage}{0.8\textwidth}
 \begin{itemize}
-\item Frequency
-\item Antenna sets
-\item Polarization
-\item Location
-\item Rx/Tx heights
-\item Distances
+\item Frekvenser
+\item Antenne par
+\item Polarisering
+\item Lokationer
+\item Rx/Tx højder
+\item Afstande
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Parameter bestemmelse}
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width = 0.8\columnwidth]{figures/setup.pdf}
+\end{figure}
+\begin{minipage}{0.15\textwidth}
+ \textcolor{white}{.}  
+\end{minipage}%
+\begin{minipage}{0.8\textwidth}
+\begin{itemize}
+\item Flere målinger per punkt (10 stk.) \pause
+\item Antal af de forskellige parameter
+\begin{itemize}
+\item Hvis der er 2 af hver parameter, vil det kræve 1280 målinger
+\item Hvis der er 5 af hver parameter, vil det kræve 781250 \pause
+\end{itemize}
+\item Noget skal der gøres ved dette!
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Parameter bestemmelse}
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width = 0.8\columnwidth]{figures/setup.pdf}
+\end{figure}
+\begin{minipage}{0.15\textwidth}
+ \textcolor{white}{.}  
+\end{minipage}%
+\begin{minipage}{0.8\textwidth}
+\begin{itemize}
+\item Vigtige parameter:
+\begin{itemize}
+\item Højder og afstande
+\end{itemize}
+\item Mindre vigtige parameter:
+\begin{itemize}
+\item Antenner, polarisering, grekvens og lokation
+\end{itemize}
+\item Ikke alle højde kombinationer
 \end{itemize}
 \end{minipage}
 \end{frame}
 
 
 
-\section{Parameter bestemmelse}
-\begin{frame}{Measurements}
+
+\begin{frame}{Parameter bestemmelse}
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width = 0.8\columnwidth]{figures/setup.pdf}
@@ -231,13 +276,13 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{sub
 \end{minipage}%
 \begin{minipage}{0.8\textwidth}
 \begin{itemize}
-\item 1 Frequency (858 MHz)
-\item 2 Antenna sets (monopole and patch)
-\item 2 Polarization (horizontal and vertical)
-\item 2 Location (outdoor and indoor)
-\item 4 Rx/Tx heights (from 0.04 to 2.02 m)
-\item 6 Distances (from 1 to 30 m)
-\item Total count : 4800 measurements
+\item 1 Frekvenser (858 MHz)
+\item 2 Antenne par (monopol and patch)
+\item 2 Polarisering (vandret and lodret)
+\item 2 Lokationer (inde- og udendørs)
+\item 10 Rx/Tx højder kombinationer (fra 0.04 til 2.02 m)
+\item 6 Afstande (fra 1 til 30 m)
+\item Total : 4800 målinger
 \end{itemize}
 \end{minipage}
 \end{frame}
