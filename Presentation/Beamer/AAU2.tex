@@ -67,7 +67,7 @@
 \begin{minipage}{.45\textwidth}
 \raggedright\textcolor{thomaspurple}{\textbf{Ground wave PL (GWPL)}:}
 \begin{itemize}
-\item Alle signaler
+\item Alle bølger
 \item Alle højder
 \item Flade konstanter nødvendige
 \end{itemize} 
@@ -101,7 +101,7 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2 \cdot \Big|\underbrace{1}_{\begin{sub
 \raggedright\textcolor{thomasblue}{\textbf{Friss free space PL (FSPL)}:}
 \begin{itemize}
 \item LOS og ingen forstyrrende elementer
-\item Kun det direkte signal
+\item Kun den direkte bølge
 \item Høje højder
 \end{itemize} 
 
@@ -133,7 +133,7 @@ L_p=\left(\frac{4 \pi d}{\lambda}\right)^2
 \raggedright\textcolor{thomasred}{\textbf{Approximated two-ray}}\\
 \raggedright\textcolor{thomasred}{\textbf{ground-reflection PL (ATRPL)}:}
 \begin{itemize}
-\item Direkte og reflekteret signal
+\item Direkte og reflekteret bølger
 \item Mellem højder til lave højder
 \end{itemize} 
 
@@ -165,7 +165,7 @@ L_{p} = \left(\frac{d^2}{h_t h_r}\right)^2
 \begin{minipage}{.45\textwidth}
 \raggedright\textcolor{thomasgreen}{\textbf{Norton surface wave PL (NSPL)}:}
 \begin{itemize}
-\item Overflade signalet
+\item Overflade bølgen
 \item Lave højder
 \item Flade konstanter nødvendige
 \end{itemize}
@@ -258,12 +258,103 @@ L_p=\left({d} \cdot \left|\frac{\lambda}{2\pi z}\right|^{-1}\right)^4
 \begin{itemize}
 \item Antenner, polarisering, grekvens og lokation
 \end{itemize}
-\item Ikke alle højde kombinationer
 \end{itemize}
 \end{minipage}
 \end{frame}
 
+\begin{frame}{Parameter bestemmelse}
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width = 0.8\columnwidth]{figures/setup.pdf}
+\end{figure}
+\begin{minipage}{0.15\textwidth}
+ \textcolor{white}{.}  
+\end{minipage}%
+\begin{minipage}{0.8\textwidth}
+\begin{itemize}
+\item Frekvens
+\begin{itemize}
+\item Kræver helt nye antenner per frekvens
+\end{itemize}
+\item Antenne par
+\begin{itemize}
 
+\item Kræver to antenner, en til at sende og en til at modtage
+\item Simple konstrution, samt isometrisk udstråling
+\item Monopol og patch antenner
+
+\end{itemize}
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Parameter bestemmelse}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width = 0.87\columnwidth]{figures/MonoAnt.jpg}\\
+	\includegraphics[width = 0.87\columnwidth]{figures/MonoStor2500.png}
+\end{figure}
+\end{minipage}%
+\begin{minipage}{0.1\textwidth}
+\textcolor{white}{.} 
+\end{minipage}%
+\begin{minipage}{0.45\textwidth}
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width = \columnwidth]{figures/PatchAnt.jpg}\\
+	\includegraphics[width = \columnwidth]{figures/PatchNy858.png}
+\end{figure}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Parameter bestemmelse}
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width = 0.8\columnwidth]{figures/setup.pdf}
+\end{figure}
+\begin{minipage}{0.15\textwidth}
+ \textcolor{white}{.}  
+\end{minipage}%
+\begin{minipage}{0.8\textwidth}
+\begin{itemize}
+\item Polarisering
+\begin{itemize}
+\item Lodret og vandret polarisering
+\end{itemize}
+\item Lokationer
+\begin{itemize}
+\item Vind og vejr for udendørs
+\item Vægge og pladskapacitet for indedørs
+\item Tilgængelighed
+\end{itemize}
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Parameter bestemmelse}
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width = 0.8\columnwidth]{figures/setup.pdf}
+\end{figure}
+\begin{minipage}{0.15\textwidth}
+ \textcolor{white}{.}  
+\end{minipage}%
+\begin{minipage}{0.8\textwidth}
+\begin{itemize}
+\item Højder
+\begin{itemize}
+\item Spejlvending i sender og modtager højderne
+\item Flere højder i de lave højder
+\end{itemize}
+\item Afstande
+\begin{itemize}
+\item Plads i længde og bredde
+\item Logaritmisk fordelt
+\end{itemize}
+\end{itemize}
+\end{minipage}
+\end{frame}
 
 
 \begin{frame}{Parameter bestemmelse}
