@@ -12,7 +12,7 @@
 \begin{tikzpicture}
 
 \begin{semilogxaxis}[%
-width=2.8in,
+width=\myvara,
 height=\myvar,
 at={(2.08in,0.858in)},
 scale only axis,
@@ -21,17 +21,19 @@ xmax=31,
 extra x ticks={2,5,20}, 
 extra x tick style={log identify minor tick positions=false},
 log ticks with fixed point,
-xlabel=Distance (m),
+every tick label/.append style={font=\tiny},
+xlabel=\tiny Distance (m),
 xminorticks=true,
 xmajorgrids,
 xminorgrids,
 ymin=20,
 ymax=100,
-ylabel=Path loss (dB),
+ylabel=\tiny Path loss (dB),
+title = \tiny\textbf{ht = hr},
 ymajorgrids,
 legend pos = north west,
 axis background/.style={fill=white},
-legend style={legend cell align=left,align=left,draw=white!15!black}
+legend style={legend cell align=left,align=left,draw=white!15!black,font=\tiny}
 ]
 \addplot [color=mycolor1,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
@@ -42,7 +44,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	80.2784721484843\\
 30	81.8463231335614\\
 };
-\addlegendentry{0.04m};
+%\addlegendentry{0.04m};
 
 \addplot [color=mycolor2,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
@@ -53,7 +55,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	74.3619892107941\\
 30	78.384604174472\\
 };
-\addlegendentry{0.14m};
+%\addlegendentry{0.14m};
 
 \addplot [color=mycolor3,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
@@ -64,7 +66,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	65.4297392107941\\
 30	70.718229174472\\
 };
-\addlegendentry{0.36m};
+%\addlegendentry{0.36m};
 
 \addplot [color=mycolor4,solid,mark size=1.0pt,mark=asterisk,mark options={solid}]
   table[row sep=crcr]{%
@@ -75,7 +77,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	51.0989481335614\\
 30	59.847479174472\\
 };
-\addlegendentry{2.02m};
+%\addlegendentry{2.02m};
 
 \end{semilogxaxis}
 \end{tikzpicture}%
